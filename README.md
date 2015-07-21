@@ -1,5 +1,5 @@
-# VSSDK-Extensibility-Samples
-Customize the Visual Studio Editor using the VSSDK. You can use editor extensions to customize the appearance and behavior of the Visual Studio. The following are some of the ways in which you can extend Visual Studio: 
+# VS SDK Extensibility Samples
+Customize the Visual Studio Editor using the [VS SDK](https://msdn.microsoft.com/en-us/library/bb166441.aspx). You can use editor extensions to customize the appearance and behavior of the Visual Studio. The following are some of the ways in which you can extend Visual Studio: 
 
 * Add commands, buttons, menus, and other UI elements to the IDE
 * Add tool windows for new functionality
