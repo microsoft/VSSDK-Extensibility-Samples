@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="Microsoft.VsTemplateDesigner.VsDesignerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vstd="clr-namespace:Microsoft.VsTemplateDesigner"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="800">
+    <ScrollViewer CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <StackPanel AllowDrop="False">
+        <StackPanel.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFDEDEDE" Offset="0" />
+                <GradientStop Color="#FFE8E8E8" Offset="1" />
+            </LinearGradientBrush>
+            </StackPanel.Background>
+        <StackPanel>
+            <Grid Margin="10,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                    <Label Content="Template Name" Name="lbName" />
+                    <TextBox IsEnabled="{Binding Path=IsNameEnabled}" Name="tbName" Text="{Binding Path=Name}" VerticalAlignment="Top" />
+                    <Label Content="Description" Name="lbDescription" />
+                    <TextBox IsEnabled="{Binding Path=IsDescriptionEnabled}" Name="tbDescription" Text="{Binding Path=Description}" />
+                    <Label Content="Icon" Name="lbIcon" />
+                    <TextBox IsEnabled="{Binding Path=IsIconEnabled}" Name="tbIconPath" Text="{Binding Path=Icon}" />
+                    <Label Content="Sort Order" Name="lbSortOrder" />
+                    <TextBox Name="tbSortOrder" Text="{Binding Path=SortOrder}" />
+                    <Label Content="Default Name" Name="lbDefaultName" />
+                    <TextBox Name="tbDefaultName" Text="{Binding Path=DefaultName}" />
+                    <CheckBox Margin="0,10" Content="Provide default name" IsChecked="{Binding Path=ProvideDefaultName}" Name="chkProvideDefaultName" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                    <Label Content="Project Type" Name="lbProjectType" VerticalAlignment="Top" />
+                    <TextBox Name="tbProjectType" Text="{Binding Path=ProjectType}" />
+                    <Label Content="Project Sub-type" Name="lbProjectSubType" />
+                    <TextBox Name="tbProjectSubType" Text="{Binding Path=ProjectSubType}" />
+                    <Label Content="Preview Image" Name="lbPreviewImage" />
+                    <TextBox Name="tbPreviewImage" Text="{Binding Path=PreviewImage}" />
+                    <Label Content="Template ID" Name="label1" />
+                    <TextBox Name="tbTemplateId" Text="{Binding Path=TemplateID}" />
+                    <Label Content="Group ID" Name="lbGroupId" />
+                    <TextBox Name="tbGroupId" Text="{Binding Path=GroupID}" />
+                    <CheckBox Margin="0,10" Content="Create new folder" IsChecked="{Binding Path=CreateNewFolder}" Name="chkCreateNewFolder" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Margin="10">
+            <Label Content="Template Content" Name="lbTemplateContent" />
+                <ScrollViewer Height="200" CanContentScroll="True">
+                <TreeView HorizontalAlignment="Stretch" Name="treeContent" VerticalAlignment="Stretch" ItemsSource="{Binding Path=TemplateContent.Items}" Loaded="treeContent_Loaded" SelectedItemChanged="treeContent_SelectedItemChanged">
+                    <TreeView.Resources>
+                            <HierarchicalDataTemplate DataType="{x:Type vstd:VSTemplateTemplateContentProject}" ItemsSource="{Binding Path=Items}">
+                                <DockPanel>
+                                    <Ellipse Width="7" Height="7" Fill="Blue" DockPanel.Dock="Left"/>
+                                    <TextBlock Text="{Binding Path=File}" VerticalAlignment="Center" DockPanel.Dock="Right" />
+                                </DockPanel>
+                            </HierarchicalDataTemplate>
+                            <HierarchicalDataTemplate DataType="{x:Type vstd:ProjectItem}">
+                                <DockPanel>
+                                    <Rectangle Width="7" Height="7" Stroke="Black" StrokeThickness="0.5" DockPanel.Dock="Left"/>
+                                    <TextBlock Text="{Binding Path=Value}" Margin="2,0,0,0" VerticalAlignment="Center" DockPanel.Dock="Right" />
+                                </DockPanel>
+                            </HierarchicalDataTemplate>
+                            <HierarchicalDataTemplate DataType="{x:Type vstd:VSTemplateTemplateContentProjectItem}">
+                                <DockPanel>
+                                    <Rectangle Width="7" Height="7" Stroke="Black" StrokeThickness="0.5" DockPanel.Dock="Left"/>
+                                    <TextBlock Text="{Binding Path=Value}" Margin="2,0,0,0" VerticalAlignment="Center" DockPanel.Dock="Right" />
+                                </DockPanel>
+                            </HierarchicalDataTemplate>
+                            <HierarchicalDataTemplate DataType="{x:Type vstd:Folder}" ItemsSource="{Binding Path=Items}">
+                                <DockPanel>
+                                    <Rectangle Width="7" Height="7" Fill="Gold" DockPanel.Dock="Left"/>
+                                    <TextBlock Text="{Binding Path=Name}" Margin="2,0,0,0" VerticalAlignment="Center" DockPanel.Dock="Right" />
+                                </DockPanel>
+                            </HierarchicalDataTemplate>
+                    </TreeView.Resources>
+                </TreeView>
+            </ScrollViewer>
+        </StackPanel>
+        <Grid>
+            <Expander Header="Wizard" Margin="10, 2" Name="grpWizard" VerticalAlignment="Top">
+                <Grid Margin="10">
+                    <StackPanel>
+                        <Label Content="Assembly" Name="lblWizardAssembly" />
+                        <TextBox Name="tbWizardAssembly" IsEnabled="False" Text="{Binding Path=WizardAssembly}" />
+                        <Label Content="Full Class Name" Name="lblWizardClassName" />
+                        <TextBox Name="tbWizardClassName" IsEnabled="False" Text="{Binding Path=WizardClassName}" />
+                        <Label Content="Wizard Data" Name="lblWizardData" />
+                        <TextBox Name="tbWizardData" Text="{Binding Path=WizardData}" IsEnabled="False" VerticalScrollBarVisibility="Auto" TextWrapping="NoWrap" />
+                    </StackPanel>
+                </Grid>
+            </Expander>
+        </Grid>
+        <Grid>
+            <Expander Header="Advanced" Margin="10, 2" Name="grpAdvanced" VerticalAlignment="Top">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                        <CheckBox Content="Prompt for save (on creation)" IsChecked="{Binding Path=PromptForSaveOnCreation}" Name="chkPromptForSave" Margin="0,3" />
+                        <CheckBox Content="Hidden" IsChecked="{Binding Path=Hidden}" Name="chkHidden" Margin="0,3" />
+                        <CheckBox Content="Supports master page" IsChecked="{Binding Path=SupportsMasterPage}" Name="chkSupportsMasterPage" Margin="0,3" />
+                        <CheckBox Content="Supports code separation" IsChecked="{Binding Path=SupportsCodeSeparation}" Name="chkSupportsCodeSeparation" Margin="0,3" />
+                        <CheckBox Content="Supports language drop down" IsChecked="{Binding Path=SupportsLanguageDropDown}" Name="chkSupportsLanguageDropDown" Margin="0,3" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <StackPanel.Resources>
+                                <ObjectDataProvider x:Key="VisibilityList" ObjectType="{x:Type sys:Enum}" MethodName="GetValues">
+                                    <ObjectDataProvider.MethodParameters>
+                                        <x:TypeExtension TypeName="vstd:VSTemplateTemplateDataLocationField" />
+                                    </ObjectDataProvider.MethodParameters>
+                                </ObjectDataProvider>
+                            </StackPanel.Resources>
+                            <Label Content="Location Field" Name="lbLocation" />
+                            <ComboBox Name="cbLocation" ItemsSource="{Binding Source={StaticResource VisibilityList}}" SelectedValue="{Binding Path=LocationField}" Loaded="cbLocation_Loaded" />
+                        <Label Content="Location Field MRU Prefix" Name="lbLocationFieldMRUPrefix" />
+                        <TextBox Name="tbLocationFieldMRUPrefix" Text="{Binding Path=LocationFieldMRUPrefix}" />
+                    </StackPanel>
+                </Grid>
+            </Expander>
+        </Grid>
+    </StackPanel>
+    </ScrollViewer>
+</UserControl>
