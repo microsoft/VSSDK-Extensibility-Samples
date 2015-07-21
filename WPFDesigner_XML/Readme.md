@@ -14,9 +14,9 @@ Last Updated:
 
 [ View this sample online ](https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/WPFDesigner_XML)
 
- ** Abstract: ** Provides a WPF Editor when editing XML files that have the '.vstemplate' file extension
+**Abstract:** Provides a WPF Editor when editing XML files that have the '.vstemplate' file extension
 
-** Description **
+**Description**
 
 This sample demonstrates how to create an extension with a WPF-based Visual
 Designer for editing XML files with a specific schema (XSD) in coordination
@@ -24,7 +24,7 @@ with the Visual Studio XML Editor. In this sample we implement a basic view
 for .vstemplate files.
 
 
-** Requirements **
+**Requirements**
 
 [ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-
 us/try/default.mspx#download)
@@ -34,7 +34,7 @@ us/try/default.mspx#download)
 
 
 
-** Build the sample **
+**Build the sample**
 
   * Download the zip file associated with the sample 
   * Unzip the sample to your machine 
@@ -42,58 +42,58 @@ us/try/default.mspx#download)
 
 
 
-** Run the sample **
+**Run the sample**
 
-  1. To run the sample, hit **F5** or choose the **Debug &gt; Start Debugging** menu command. A new experimental instance of Visual Studio will launch. 
-  2. Once loaded, press the **Open File** button. (Ctrl + O) 
+  1. To run the sample, hit**F5** or choose the**Debug &gt; Start Debugging** menu command. A new experimental instance of Visual Studio will launch. 
+  2. Once loaded, press the**Open File** button. (Ctrl + O) 
   3. Browse to the TestTemplates sub-directory within the solution and open a file with the '.vstemplate' file extension. 
   4. A new tab opens with the contents of the file laid out in the fields of a WPF form 
-  5. Navigate to the **View** menu and click on **Code**. 
+  5. Navigate to the**View** menu and click on**Code**. 
   6. An additional tab opens with the contents of the file formatted by the XmlEditor 
 
 
 
-** Project Files **
+**Project Files**
 
- * ** AssemblyInfo.cs **  
+ * **AssemblyInfo.cs**  
  
  This file contains assembly custom attributes.
 
- * ** VsTemplateDesignerPackage.cs ** 
+ * **VsTemplateDesignerPackage.cs** 
  
 Registers the designer, via ProvideXmlEditorChooserDesignerView, as the preferred editor view for files with the .vstemplate extension and indicated schema .
 
-* ** EditorFactory.cs ** 
+* **EditorFactory.cs** 
 
 Determines if the document to be edited already exists (was already opened in the Xml Editor view), rather than assuming it must be created; creates the designer’s EditorPane as the new Editor.
 
-* ** EditorPane.cs **
+* **EditorPane.cs**
 
 Creates the sited designer control and associated XmlModel for the file and
 text buffer.
 
-* ** IViewModel.cs **
+* **IViewModel.cs**
 
 Expresses the interface needed to bind the designer controls to the XmlSchema.
 
-* ** ViewModel.cs **
+* **ViewModel.cs**
 
 Implements IViewModel and manages the events needed to synchronize data
 between the fields in the designer and the underlying XML document, which may
 also be seen in the XML Editor.
 
-* ** VsDesignerControl.xaml[.cs] **
+* **VsDesignerControl.xaml[.cs]**
 
 Implements the WPF controls expressing the designer interface and binds them
 to the ViewModel.
 
-* ** VsTemplateSchema.cs **
+* **VsTemplateSchema.cs**
 
 XML schema file generated via xsd.exe vstemplate.xsd /classes /e
 /n:MyNameSpace.
 
 
-** Related topics **
+**Related topics**
 
   * [ WPF Designer Overview ](https://msdn.microsoft.com/en-us/library/bb514528(v=vs.90).aspx)
   * [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
