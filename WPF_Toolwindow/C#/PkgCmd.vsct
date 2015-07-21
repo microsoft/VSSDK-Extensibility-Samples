@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ 
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- Definition of the command and menus used by this sample -->
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+  <Include href="KnownImageIds.vsct"/>
+
+  <!-- Commands definition for the client package -->
+  <Commands package="guidClientPkg">
+    <Menus>
+      <!-- A toolbar is a menu with itself as the "Relative to Group" and a "Type" of "ToolWindowToolbar" -->
+      <Menu guid="guidClientCmdSet" id="MyToolbar" priority="0x0000" type="ToolWindowToolbar">
+        <Parent guid="guidClientCmdSet" id="MyToolbar" />
+        <Strings>
+          <ButtonText>Window ToolBar</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+    <Groups>
+      <!-- On the toolbar (menu) we can have 1 or more group that will contain the buttons -->
+      <Group guid="guidClientCmdSet" id="MyToolbarGroup" priority="0x0500">
+        <Parent guid="guidClientCmdSet" id="MyToolbar" />
+      </Group>
+    </Groups>
+    <!--  Buttons (commands) defined by the package.
+          This section defines the elements the user can interact with, like a menu command or a button
+          or combo box in a toolbar. -->
+    <Buttons>
+      <!-- An element inside this section is defined by its ID and must specify a parent group, a display
+           priority, an image, a type, some visibility flags (optional) and a default text. -->
+      <Button guid="guidClientCmdSet" id="cmdidPersistedWindow" priority="0x100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Icon guid="ImageCatalogGuid" id="OneX" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Persisted Window</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidClientCmdSet" id="cmdidUiEventsWindow" priority="0x101" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Icon guid="ImageCatalogGuid" id="TwoX" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Dynamic Visibility Window</ButtonText>
+        </Strings>
+      </Button>
+      <!-- The following command will appear on the tool window toolbar -->
+      <Button guid="guidClientCmdSet" id="cmdidRefreshWindowsList" priority="0x100" type="Button">
+        <Parent guid="guidClientCmdSet" id="MyToolbarGroup" />
+        <Icon guid="ImageCatalogGuid" id="Refresh" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Refresh</ButtonText>
+        </Strings>
+      </Button>
+      <!--The menu items will be placed in one of the first group of the View->Other Windows menu. To
+      find IDG_VS_WNDO_OTRWNDWS1 (which is the group ID), we searched ShellCmdPlace.ctc for Other
+      Windows from which we got the IDM_VS_CSCD_WINDOWS menu, and searching for that showed us 
+      which groups were already part of that menu. Of those we picked IDG_VS_WNDO_OTRWNDWS1. -->
+    </Buttons>
+
+  </Commands>
+
+  <Symbols>
+    <!--
+    The definition of symbols in a VSCT file derives from the way the IDs of the elements are defined
+    by the command table. We have seen that the ID is a GUID/Number pair, where the GUID is also called
+    Command Set and it provides the context in which the numeric ID is evaluated.
+    It makes then sense for the VSCT schema to define the GuidSymbl tag as top level element containig
+    the definiton of the numeric IDs.
+    -->
+
+    <!--The first GUID defined here is the one for the package. It does not contains numeric IDs.-->
+    <GuidSymbol name="guidClientPkg" value="{01069CDD-95CE-4620-AC21-DDFF6C57F012}" />
+
+    <!--The GUID for the command set is the one that contains the numeric IDs used in this sample
+        with the only exception of the one used for the bitmap.-->
+    <GuidSymbol name="guidClientCmdSet" value="{1227033A-2F60-4bd6-8208-B43EC8C12510}">
+      <!--Menus-->
+      <IDSymbol name="MyToolbar" value="0x101" />
+      <!--Groups-->
+      <IDSymbol name="MyToolbarGroup" value="0x1001" />
+      <!--Commands-->
+      <IDSymbol name="cmdidPersistedWindow" value="0x2001" />
+      <IDSymbol name="cmdidUiEventsWindow" value="0x2002" />
+      <IDSymbol name="cmdidRefreshWindowsList" value="0x2003" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

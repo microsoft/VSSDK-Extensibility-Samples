@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="packages\Microsoft.VSSDK.BuildTools.14.0.22823-RC-Updated\build\Microsoft.VSSDK.BuildTools.props" Condition="Exists('packages\Microsoft.VSSDK.BuildTools.14.0.22823-RC-Updated\build\Microsoft.VSSDK.BuildTools.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E7729C46-9822-4D2C-BE5B-5C4AAC2FEA82}</ProjectGuid>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Samples.VisualStudio.IDE.ToolWindow</RootNamespace>
+    <AssemblyName>ToolWindow</AssemblyName>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartAction>Program</StartAction>
+    <StartProgram>$(ProgramFiles)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <StartAction>Program</StartAction>
+    <StartProgram>$(ProgramFiles)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.ImageCatalog, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.ImageCatalog.14.0.22823-RC\lib\net45\Microsoft.VisualStudio.ImageCatalog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Imaging, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Imaging.14.0.22823-RC\lib\net45\Microsoft.VisualStudio.Imaging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.14.0.22823-RC\lib\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.OLE.Interop.7.10.6070-pre\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.14.0.14.0.22823-RC\lib\Microsoft.VisualStudio.Shell.14.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="microsoft.visualstudio.shell.immutable.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Immutable.10.0.10.0.30319-pre\lib\net40\microsoft.visualstudio.shell.immutable.10.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="microsoft.visualstudio.shell.immutable.11.0, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Immutable.11.0.11.0.50727-pre\lib\net45\microsoft.visualstudio.shell.immutable.11.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="microsoft.visualstudio.shell.immutable.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Immutable.12.0.12.0.21003-pre\lib\net45\microsoft.visualstudio.shell.immutable.12.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Immutable.14.0.14.0.22823-RC\lib\net45\Microsoft.VisualStudio.Shell.Immutable.14.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Interop.7.10.6071-pre\lib\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Interop.10.0.10.0.30319-pre\lib\Microsoft.VisualStudio.Shell.Interop.10.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Interop.11.0.11.0.61030-pre\lib\Microsoft.VisualStudio.Shell.Interop.11.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Interop.12.0.12.0.30110-pre\lib\Microsoft.VisualStudio.Shell.Interop.12.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Interop.8.0.8.0.50727-pre\lib\Microsoft.VisualStudio.Shell.Interop.8.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Shell.Interop.9.0.9.0.30729-pre\lib\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.TextManager.Interop.7.10.6070-pre\lib\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.TextManager.Interop.8.0.8.0.50727-pre\lib\Microsoft.VisualStudio.TextManager.Interop.8.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Threading, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Threading.14.0.50417-pre\lib\net45\Microsoft.VisualStudio.Threading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Utilities, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Utilities.14.0.22823-RC\lib\net45\Microsoft.VisualStudio.Utilities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Validation, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\v-rokuhl\Source\Repos\VSIDEProj.VSSDKSamples\Samples\VSSDK_IDE_Sample_Tool_WPF_Tool_Windows\C#\C#\packages\Microsoft.VisualStudio.Validation.14.0.50417-pre\lib\net45\Microsoft.VisualStudio.Validation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomTypeDescriptor.cs" />
+    <Compile Include="DynamicWindowPane.cs" />
+    <Compile Include="DynamicWindowWPFControl.xaml.cs">
+      <DependentUpon>DynamicWindowWPFControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\Guids.cs" />
+    <Compile Include="PackageToolWindow.cs" />
+    <Compile Include="PersistedWindowPane.cs" />
+    <Compile Include="PersistedWindowWPFControl.xaml.cs">
+      <DependentUpon>PersistedWindowWPFControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PkgCmdId.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\GlobalSuppressions.cs" />
+    <Compile Include="SelectionProperties.cs" />
+    <Compile Include="WindowList.cs" />
+    <Compile Include="WindowStatus.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <MergeWithCTO>true</MergeWithCTO>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Misc\packages.config" />
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <VSCTCompile Include="PkgCmd.vsct">
+      <ResourceName>1000</ResourceName>
+    </VSCTCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DynamicWindowWPFControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ListViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PersistedWindowWPFControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Misc\Example.WPFToolWindows.png" />
+  </ItemGroup>
+  <PropertyGroup>
+    <UseCodebase>true</UseCodebase>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="packages\Microsoft.VisualStudio.SDK.VsixSuppression.14.0.50420-pre\build\Microsoft.VisualStudio.SDK.VsixSuppression.targets" Condition="Exists('packages\Microsoft.VisualStudio.SDK.VsixSuppression.14.0.50420-pre\build\Microsoft.VisualStudio.SDK.VsixSuppression.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.VisualStudio.SDK.VsixSuppression.14.0.50420-pre\build\Microsoft.VisualStudio.SDK.VsixSuppression.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.SDK.VsixSuppression.14.0.50420-pre\build\Microsoft.VisualStudio.SDK.VsixSuppression.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.VSSDK.BuildTools.14.0.22823-RC-Updated\build\Microsoft.VSSDK.BuildTools.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VSSDK.BuildTools.14.0.22823-RC-Updated\build\Microsoft.VSSDK.BuildTools.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.VSSDK.BuildTools.14.0.22823-RC-Updated\build\Microsoft.VSSDK.BuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VSSDK.BuildTools.14.0.22823-RC-Updated\build\Microsoft.VSSDK.BuildTools.targets'))" />
+  </Target>
+  <Import Project="packages\Microsoft.VSSDK.BuildTools.14.0.22823-RC-Updated\build\Microsoft.VSSDK.BuildTools.targets" Condition="Exists('packages\Microsoft.VSSDK.BuildTools.14.0.22823-RC-Updated\build\Microsoft.VSSDK.BuildTools.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

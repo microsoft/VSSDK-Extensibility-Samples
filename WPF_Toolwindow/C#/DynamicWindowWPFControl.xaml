@@ -1,0 +1,69 @@
+<!--
+ 
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+
+<UserControl x:Class="Microsoft.Samples.VisualStudio.IDE.ToolWindow.DynamicWindowWPFControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vsp="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.14.0"
+             xmlns:catalog="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+             xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+             xmlns:theming="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Imaging" 
+             x:Name="Toolwindow"
+             Background="{DynamicResource {x:Static vsp:EnvironmentColors.ToolWindowBackgroundBrushKey}}"
+             Foreground="{DynamicResource {x:Static vsp:EnvironmentColors.ToolWindowTextBrushKey}}">
+
+    <Grid Margin="10" Height="290" Width="180" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="13" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Text="X:"></TextBlock>
+        <TextBox Grid.Column="2" Grid.Row="0" Margin="0,2,0,2" IsReadOnly="True" Name="xText"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Text="Y:"></TextBlock>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="0,2,0,2" IsReadOnly="True" Name="yText"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Text="Width:"></TextBlock>
+        <TextBox Grid.Column="2" Grid.Row="2" Margin="0,2,0,2" IsReadOnly="True" Name="widthText"></TextBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Text="Height:"></TextBlock>
+        <TextBox Grid.Column="2" Grid.Row="3" Margin="0,2,0,2" IsReadOnly="True" Name="heightText"></TextBox>
+
+        <CheckBox Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Margin="0,10,0,10" IsEnabled="False" Name="dockedCheckBox">
+            <CheckBox.Content>
+                <TextBlock Text="Docked" Foreground="{DynamicResource {x:Static vsp:EnvironmentColors.SystemGrayTextBrushKey}}" />
+            </CheckBox.Content>
+        </CheckBox>
+
+        <Button x:Name="BackgroundInvert"  Grid.Column="0" Grid.Row="5" Height="40" VerticalAlignment="Top" Click="InvertColors" ToolTip="Invert Colors">
+            <imaging:CrispImage x:Uid="CrispImage_1" Width="32" Height="32" Moniker="{x:Static catalog:KnownMonikers.Settings}" 
+                                theming:ImageThemingUtilities.ImageBackgroundColor="{Binding Background, ElementName=BackgroundInvert, Converter={StaticResource BrushToColorConverter}}" />
+        </Button>
+
+        <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="5">
+            <TextBlock Text="Crisp Image Size Slider" HorizontalAlignment="Center" />
+            <Slider  x:Name="SizeSlider" Minimum="16" Maximum="128" TickFrequency="8" IsSnapToTickEnabled="True" TickPlacement="Both" />
+            <imaging:CrispImage Width="{Binding Value, ElementName=SizeSlider}" Height="{Binding Value, ElementName=SizeSlider}" Moniker="{x:Static catalog:KnownMonikers.Refresh}" 
+                                theming:ImageThemingUtilities.ImageBackgroundColor="{Binding Background, ElementName=Toolwindow, Converter={StaticResource BrushToColorConverter}}" />
+        </StackPanel>
+    </Grid>
+</UserControl>
+
