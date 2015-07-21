@@ -4,13 +4,13 @@
 
 **Abstract:** Provides tool windows which host Windows Forms controls and WPF
 controls.
- [ View this sample online ](https://github.com/Microsoft/VSSDK-Extensibility-Samples)
+[ View this sample online ](https://github.com/Microsoft/VSSDK-Extensibility-Samples)
 
-Technologies: Visual Studio 2015 SDK
-Topics: Visual Studio Shell, VSX
-Last Updated: 05/21/2015
+* Technologies: Visual Studio 2015 SDK
+* Topics: Visual Studio Shell, VSX
+* Last Updated: 05/21/2015
 
-** Description **
+**Description**
 
 This sample demonstrates how to create a package that provides tool windows
 which host Windows Forms controls and WPF controls.
