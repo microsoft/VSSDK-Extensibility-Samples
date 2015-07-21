@@ -57,7 +57,7 @@ us/try/default.mspx#download)
 
  * **AssemblyInfo.cs**  
  
- This file contains assembly custom attributes.
+This file contains assembly custom attributes.
 
  * **VsTemplateDesignerPackage.cs** 
  
