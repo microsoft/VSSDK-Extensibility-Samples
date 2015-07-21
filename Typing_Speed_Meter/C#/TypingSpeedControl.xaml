@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="TypingSpeed.TypingSpeedControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="150">
+    <Border Background="#FF1B5277" BorderBrush="Black" BorderThickness="1" CornerRadius="0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" ></ColumnDefinition>
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <RotateTransform x:Key="trans" Angle="270" />
+            </Grid.Resources>
+
+            <Label Name="val" Content="0" Grid.Row="0"  HorizontalAlignment="Center" Grid.Column="1" Foreground="#FFDFDFDF" />
+            <Border Name="bar" Background="#333333" Width="30" Height="100" BorderThickness="1" BorderBrush="#555555" Grid.Row="1" Grid.Column="1" CornerRadius="0">
+                <Border Name="fill" Height="0" VerticalAlignment="Bottom" Background="Lime"  BorderThickness="1" CornerRadius="0" />
+            </Border>
+            <Label Name="meterName" Content="Typing Speed" FontFamily="Arial" FontSize="14" Grid.Row="1" Padding="0,1" LayoutTransform="{StaticResource trans}" VerticalAlignment="Bottom"  Grid.Column="0" Foreground="#FFDDDCDC" />
+            <Label Name="MaxVal" Content="Max: 0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Center" Foreground="#FFD2CFCF" />
+        </Grid>
+    </Border>
+</UserControl>
