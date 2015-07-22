@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="XMLClassGeneratorSchema" targetNamespace="http://microsoft.com/XMLClassGeneratorSchema.xsd" elementFormDefault="qualified" xmlns="http://microsoft.com/XMLClassGeneratorSchema.xsd" xmlns:mstns="http://microsoft.com/XMLClassGeneratorSchema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="access"> 
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="public" />
+      <xs:enumeration value="private" />
+      <xs:enumeration value="protected" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="FieldData">
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="type" type="xs:string" />
+  </xs:attributeGroup>
+  <xs:attributeGroup name="ClassData">
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="partial" type="xs:boolean" />
+    <xs:attribute name="access" type="typeAccess" />
+  </xs:attributeGroup>
+  <xs:element name="Types">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Class" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="Variable" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attributeGroup ref="FieldData" />
+                  <xs:attribute name="access" type="access" />
+                  <xs:attribute name="static" type="xs:boolean" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Constant" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attributeGroup ref="FieldData" />
+                  <xs:attribute name="value" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" />
+            <xs:attribute name="partial" type="xs:boolean" />
+            <xs:attribute name="access" type="typeAccess" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Enum" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EnumMember" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                  </xs:sequence>
+                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="value" type="xs:int" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" />
+            <xs:attribute name="access" type="typeAccess" />
+            <xs:attribute name="flagsAttribute" type="xs:boolean" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="namespace" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="typeAccess">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="public" />
+      <xs:enumeration value="internal" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

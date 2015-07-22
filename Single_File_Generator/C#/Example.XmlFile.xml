@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Types namespace="SingleFileGenerator.Sample.Namespace" xmlns="http://microsoft.com/XMLClassGeneratorSchema" >
+ 
+  <Class name="MyPublicClass" access="public">
+    <Constant name="ConstString" access="protected" type="System.String" value="A constant string"/>
+    <Constant name="ConstInt" type="System.Int32" value="3"/>
+    <Variable name="IntMember" access="private" type="System.Int32" />
+    <Variable name="StaticIntMember" access="private" type="System.Int32" static="true"/>
+  </Class>
+  
+  <Class name="MyPartialClass" access="internal" partial="true"/>
+
+  <Enum name="Placement">
+    <EnumMember name="First" value="1"/>
+    <EnumMember name="Second" value="2"/>
+    <EnumMember name="Third" value="3"/>
+  </Enum>
+  
+  <Enum name="WeekDays" access="internal" flagsAttribute="true">
+    <EnumMember name="None" value="0"/>
+    <EnumMember name="Sunday" value="1"/>
+    <EnumMember name="Monday" value="2"/>
+    <EnumMember name="Tuesday" value="4"/>
+    <EnumMember name="Wednesday" value="8"/>
+    <EnumMember name="Thursday" value="16"/>
+    <EnumMember name="Friday" value="32"/>
+    <EnumMember name="Saturday" value="64"/>
+  </Enum>
+</Types>
