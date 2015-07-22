@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ 
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Include href="KnownImageIds.vsct"/>
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+
+  <Commands package="guidSccProviderPkg">
+    <Menus>
+      <!-- Menu for source control commands under File/SourceControl -->
+      <Menu guid="guidSccProviderCmdSet" id="imnuFileSourceControlMenu" priority="0x0000" type="Menu">
+        <Parent guid="guidSccProviderCmdSet" id="igrpFileSourceControl" />
+        <Strings>
+          <ButtonText>Sou&amp;rce Control Provider</ButtonText>
+        </Strings>
+      </Menu>
+      <!--  Menu for commands in toolwindow's toolbar -->
+      <Menu guid="guidSccProviderCmdSet" id="imnuToolWindowToolbarMenu" priority="0x0000" type="ToolWindowToolbar">
+        <Parent guid="guidSccProviderCmdSet" id="imnuToolWindowToolbarMenu" />
+        <Strings>
+          <ButtonText>WindowBar</ButtonText>
+        </Strings>
+      </Menu>
+      <!--  Create a top-level toolbar for source control commands -->
+      <Menu guid="guidSccProviderCmdSet" id="itbrSccToolbar" priority="0x0000" type="Toolbar">
+        <Parent guid="guidSccProviderCmdSet" id="igrpSccNowhere" />
+        <CommandFlag>DefaultDocked</CommandFlag>
+        <Strings>
+          <ButtonText>Sample Source Control Toolbar</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+    <Groups>
+      <!-- 	Group for scci commands in the File main menu -->
+      <Group guid="guidSccProviderCmdSet" id="igrpFileSourceControl" priority="0x0800">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_FILE" />
+      </Group>
+      <!-- 	Group for scci buttons in the File/SourceControl menu -->
+      <Group guid="guidSccProviderCmdSet" id="igrpSourceControlCommands" priority="0x0000">
+        <Parent guid="guidSccProviderCmdSet" id="imnuFileSourceControlMenu" />
+      </Group>
+      <!-- 	Group for commands under View main menu -->
+      <Group guid="guidSccProviderCmdSet" id="igrpViewToolWindowGroup" priority="0x0100">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_VIEW" />
+      </Group>
+      <!-- 	Group for buttons in toolwindow's toolbar -->
+      <Group guid="guidSccProviderCmdSet" id="igrpToolWindowToolbarGroup" priority="0x0100">
+        <Parent guid="guidSccProviderCmdSet" id="imnuToolWindowToolbarMenu" />
+      </Group>
+    </Groups>
+    <Buttons>
+      <!-- 	View > ToolWindow command defined -->
+      <Button guid="guidSccProviderCmdSet" id="icmdViewToolWindow" priority="0x0100" type="Button">
+        <Parent guid="guidSccProviderCmdSet" id="igrpViewToolWindowGroup" />
+        <Icon guid="ImageCatalogGuid" id="FlipHorizontal" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Source control provider toolwindow</ButtonText>
+        </Strings>
+      </Button>
+      <!-- 	Buttons in the toolwindow's toolbar -->
+      <Button guid="guidSccProviderCmdSet" id="icmdToolWindowToolbarCommand" priority="0x0100" type="Button">
+        <Parent guid="guidSccProviderCmdSet" id="igrpToolWindowToolbarGroup" />
+        <Icon guid="ImageCatalogGuid" id="FlipHorizontal" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>ToolButton</ButtonText>
+        </Strings>
+      </Button>
+      <!-- 	Scc commands in context menus for SolutionExplorer -->
+      <Button guid="guidSccProviderCmdSet" id="icmdAddToSourceControl" priority="0x0000" type="Button">
+        <Parent guid="guidSccProviderCmdSet" id="igrpSourceControlCommands" />
+        <Icon guid="ImageCatalogGuid" id="Add" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Add to Source Code Control</ButtonText>
+          <MenuText>&amp;Add to Source Code Control</MenuText>
+          <CommandName>Add to Source Code Control (SccProvider)</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="guidSccProviderCmdSet" id="icmdCheckout" priority="0x0000" type="Button">
+        <Parent guid="guidSccProviderCmdSet" id="igrpSourceControlCommands" />
+        <Icon guid="ImageCatalogGuid" id="CheckOutForEdit" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Checkout File</ButtonText>
+          <MenuText>Check&amp;out</MenuText>
+          <CommandName>Checkout File (SccProvider)</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="guidSccProviderCmdSet" id="icmdCheckin" priority="0x0000" type="Button">
+        <Parent guid="guidSccProviderCmdSet" id="igrpSourceControlCommands" />
+        <Icon guid="ImageCatalogGuid" id="CheckIn" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Checkin File</ButtonText>
+          <MenuText>Check&amp;in</MenuText>
+          <CommandName>Checkin (SccProvider)</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="guidSccProviderCmdSet" id="icmdUseSccOffline" priority="0x0000" type="Button">
+        <Parent guid="guidSccProviderCmdSet" id="igrpSourceControlCommands" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Project uses Scc Offline</ButtonText>
+          <MenuText>Project uses Scc O&amp;ffline</MenuText>
+          <CommandName>Use Scc Offline (SccProvider)</CommandName>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <CommandPlacements>
+    <!--Context menu group for SolutionExplorer -->
+    <!--To add commands in context menus, a new group can be defined and placed into existing menus, -->
+    <!--in which case you'll have to add it to context menus for nodes of interest (solution, project, -->
+    <!--folder, item, solution folder, web reference node, properties node, etc),  -->
+    <!--A better approach though is to use one of the existing groups created for source control commands, -->
+    <!--like IDG_VS_CTXT_ITEM_SCC, IDG_VS_CTXT_PROJECT_SCC, IDG_VS_CTXT_SOLUTION_SCC. -->
+
+    <!--Place the source control commands defined in context menu for Solution Explorer also under File/SourceControl menu -->
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdAddToSourceControl" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdAddToSourceControl" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdAddToSourceControl" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_SOLUTION_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdCheckout" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdCheckout" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdCheckout" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_SOLUTION_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdCheckin" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdCheckin" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdCheckin" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_SOLUTION_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdUseSccOffline" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdUseSccOffline" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_SCC" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidSccProviderCmdSet" id="icmdUseSccOffline" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_SOLUTION_SCC" />
+    </CommandPlacement>
+    <!-- Also place the scc commands in the toolbar -->
+    <CommandPlacement guid="guidSccProviderCmdSet" id="igrpSourceControlCommands" priority="0x0000">
+      <Parent guid="guidSccProviderCmdSet" id="itbrSccToolbar" />
+    </CommandPlacement>
+  </CommandPlacements>
+
+  <Symbols>
+    <GuidSymbol name="guidSccProviderPkg" value="{B0BAC05D-2000-41D1-A6C3-704E6C1A3DE2}" />
+    <GuidSymbol name="guidSccProviderCmdSet" value="{B0BAC05D-5743-4FEB-A929-2938249CBA26}">
+
+      <IDSymbol name="icmdAddToSourceControl" value="0x100" />
+      <IDSymbol name="icmdCheckout" value="0x101" />
+      <IDSymbol name="icmdCheckin" value="0x102" />
+      <IDSymbol name="icmdViewToolWindow" value="0x103" />
+      <IDSymbol name="icmdToolWindowToolbarCommand" value="0x104" />
+      <IDSymbol name="icmdUseSccOffline" value="0x105" />
+
+      <IDSymbol name="imnuFileSourceControlMenu" value="0x200" />
+      <IDSymbol name="imnuToolWindowToolbarMenu" value="0x201" />
+
+      <IDSymbol name="igrpFileSourceControl" value="0x300" />
+      <IDSymbol name="igrpSourceControlCommands" value="0x301" />
+      <IDSymbol name="igrpViewToolWindowGroup" value="0x302" />
+      <IDSymbol name="igrpToolWindowToolbarGroup" value="0x303" />
+      <IDSymbol name="igrpSccNowhere" value="0x304" />
+      <IDSymbol name="itbrSccToolbar" value="0x400" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
