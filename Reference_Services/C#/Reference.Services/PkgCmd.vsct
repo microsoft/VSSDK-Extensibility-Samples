@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- 
+  ***************************************************************************
+    Copyright (c) Microsoft Corporation. All rights reserved. 
+    This code is licensed under the Visual Studio SDK license terms.
+    THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+  ***************************************************************************
+  -->
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidClientPkg">
+    <!--Definition of the menu groups defined by this package. -->
+    <Groups>
+      <Group guid="guidClientCmdSet" id="MyClientGroup" priority="0x600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+    <!-- Buttons (commands) defined by the package. 
+     This section defines the elements the user can interact with, like a menu command or a button  
+     or combo box in a toolbar. -->
+    <Buttons>
+      <!--An element inside this section is defined by its ID and must specify a parent group, a display  -->
+      <!--priority, an image, a type, some visibility flags (optional) and a default text. -->
+      <Button guid="guidClientCmdSet" id="cmdidClientGetGlobalService" priority="0x100" type="Button">
+        <Parent guid="guidClientCmdSet" id="MyClientGroup"/>
+        <Strings>
+          <ButtonText>Get C# Global Service</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidClientCmdSet" id="cmdidClientGetLocalService" priority="0x101" type="Button">
+        <Parent guid="guidClientCmdSet" id="MyClientGroup"/>
+        <Strings>
+          <ButtonText>Get C# Local Service</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidClientCmdSet" id="cmdidClientGetLocalUsingGlobal" priority="0x102" type="Button">
+        <Parent guid="guidClientCmdSet" id="MyClientGroup"/>
+        <Strings>
+          <ButtonText>Get C# Local using Global Service</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidClientPkg" value="{DF3ED918-375F-45B2-BAC0-2C31A0A8DA57}" />
+    <GuidSymbol name="guidClientCmdSet" value="{36A0B180-F23F-4D96-A1A0-5928B6F7497D}">
+      <IDSymbol name="MyClientGroup" value="0x1010"/>
+      <IDSymbol name="cmdidClientGetGlobalService" value="0x2001"/>
+      <IDSymbol name="cmdidClientGetLocalService" value="0x2002"/>
+      <IDSymbol name="cmdidClientGetLocalUsingGlobal" value="0x2003"/>
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

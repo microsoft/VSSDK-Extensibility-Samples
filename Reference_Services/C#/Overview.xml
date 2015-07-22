@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ 
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+
+<?xml-stylesheet href="../../../../Common/Overview.xsl" type="text/xsl"?>
+<VSSDKSample>
+  <ImagePath>../../../../Common</ImagePath>
+  <Status>
+    <Accessibility>true</Accessibility>
+    <Comments>true</Comments>
+    <Documentation>true</Documentation>
+    <ErrorHandling>true</ErrorHandling>
+    <FollowSDKCodingStandards>true</FollowSDKCodingStandards>
+    <Localizable>true</Localizable>
+    <Overview>true</Overview>
+    <ScenarioTests>true</ScenarioTests>
+    <Supported>true</Supported>
+    <Style>Reference</Style>
+  </Status>
+  <Overview>
+    <ShortName>C# Reference.Services</ShortName>
+    <LongName>C# Services Reference Sample</LongName>
+    <Phrase>Creating, exposing, and consuming services in Visual Studio using C#.</Phrase>
+  </Overview>
+  <Introduction>
+    <Summary>
+      This sample demonstrates how to create and consume services from a VSPackage.
+    </Summary>
+    <Goal>Creating and Proffering services in Visual Studio</Goal>
+    <Goal>Consuming services in Visual Studio </Goal>
+    <Goal>Local versus Global services</Goal>
+    <Image width="400" height="400">Services.jpg</Image>
+  </Introduction>
+  <SampleInfo>
+    <State>
+    </State>
+    <Type>Reference</Type>
+    <Complexity>1</Complexity>
+    <Screenshot>Services.jpg</Screenshot>
+    <Area>IDE</Area>
+    <Language>C#</Language>
+    <Folder>VisualStudioIntegration\Samples\IDE\CSharp\Reference.Services\</Folder>
+    <SampleSolution>Reference.Services.sln</SampleSolution>
+    <Doc />
+    <Keywords>
+      <Keyword>Local service</Keyword>
+      <Keyword>Global service</Keyword>
+      <Keyword>Consuming</Keyword>
+      <Keyword>Service</Keyword>
+      <Keyword>Services</Keyword>
+      <Keyword>Creating</Keyword>
+      <Keyword>Proffering</Keyword>
+    </Keywords>
+  </SampleInfo>
+  <GettingStarted>
+    <Paragraph>
+	This sample shows how to create and expose services inside Visual Studio. It creates two services with two 
+	different levels of visibility. The service with global visibility is available for any of Visual Studio's other components. The service with 
+	local visibility is available only from within the package itself or when the IServiceProvider interface 
+	implemented by the package is inside the chain of active providers.
+    </Paragraph>
+    <Paragraph>
+	The sample creates two assemblies, one with the definition of the interfaces used and one with the actual 
+	implementation of the packages and services. The assembly with the implementation, created by the Reference.Services 
+	project, defines two packages. One package exposes the services and a second package uses them. The services are 
+	implemented with two helper classes.
+    </Paragraph>
+    <Paragraph>
+      	The part of interest about how to proffer services is the code inside the ServicesPackage class. Specifically:
+    </Paragraph>
+    <Paragraph>
+	1. In the declaration of the class we use the ProvideServiceAttribute registration attribute defined in the 
+	Managed Package Framework to add the information about the global service proffered 
+	by the package to the registry.
+    </Paragraph>
+    <Paragraph>
+	2. In the constructor of the package we add the types of the proffered services to the list of the services
+	provided by the package. Notice that at this point we donâ€™t create any instance of the service, but we 
+	provide a callback function that will be called the first time a client queries for a specific service. 
+	We do this to optimize performance. We donâ€™t want to construct something that might never 
+	be used.
+    </Paragraph>
+    <Paragraph>
+	3. The callback function used to create a new instance of the services.
+    </Paragraph>
+  </GettingStarted>
+  <BuildingTheSample>
+    <Step>
+      Open the Reference.Services.sln solution.
+    </Step>
+    <Step>
+      Press F5 to build the sample, register it in the experimental instance, and launch Visual Studio from the experimental instance.
+    </Step>
+  </BuildingTheSample>
+  <RunningTheSample>
+    <SampleTask>
+      <Description>
+        To see the sample's functionality...
+      </Description>
+      <Step>
+        On the <bold>Tools</bold> menu, click <bold>Get C# Global Service</bold>.
+        A message is displayed in the <bold>Output</bold> window indicating that the global service was consumed.
+        <bold>NOTE:</bold> You might find it useful to set breakpoints in the ServicesPackage.CreateService method 
+        in ServicesPackage.cs to demonstrate that the event handlers in the ClientPackage class are consuming services.
+      </Step>
+      <Step>
+        On the <bold>Tools</bold> menu, click <bold>Get C# Local Service</bold>.
+        A message is displayed in the <bold>Output</bold> window indicating that a test succeeded. The test guarantees that the 
+        client VSPackage failed to consume a local service on another VSPackage. This illustrates that the service provider 
+        passed to a VSPackage by Visual Studio cannot be used to consume local services.
+      </Step>
+      <Step>
+        On the Tools menu, click <bold>Get C# Local using Global Service</bold>.
+        A message is displayed in the <bold>Output</bold> window indicating that the local service was consumed by a method on the global service.
+      </Step>
+    </SampleTask>
+  </RunningTheSample>
+  <AdditionalResources>
+    <Resource>
+      <Title>Visual Studio SDK Website</Title>
+      <URL>http://msdn.microsoft.com/vstudio/extend</URL>
+    </Resource>
+  </AdditionalResources>
+  <FunctionalTests>
+    <Test>
+      Sample builds without any errors and warnings in both Debug and Release configurations.
+    </Test>
+    <Test>
+      Registration is appropriately entered under the experimental instance.
+    </Test>
+    <Test>
+      After registration in the experimental Visual Studio hive by 
+      calling 'Devenv /rootsuffix Exp', execute all 3 of the commands on the Tools menu and validate the outputs in the Output window.
+    </Test>
+  </FunctionalTests>
+  <ProjectFiles>
+    <File>
+      <Name>
+      </Name>
+      <Description>
+      </Description>
+    </File>
+  </ProjectFiles>
+</VSSDKSample>
