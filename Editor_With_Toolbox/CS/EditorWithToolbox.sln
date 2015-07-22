@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22723.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F1DE222E-1380-4DFC-B6E3-814BBEF512DB}"
+	ProjectSection(SolutionItems) = preProject
+		Example.EditorWithToolbox.jpg = Example.EditorWithToolbox.jpg
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorWithToolbox", "EditorWithToolbox.csproj", "{A96C6F84-A591-4AA4-92AD-F1FA4955C835}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A96C6F84-A591-4AA4-92AD-F1FA4955C835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A96C6F84-A591-4AA4-92AD-F1FA4955C835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A96C6F84-A591-4AA4-92AD-F1FA4955C835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A96C6F84-A591-4AA4-92AD-F1FA4955C835}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+		DebugSamples100.Connect = 0;Configure Debugging for VSIP Experimental Instance;ConfigVSIPDebug
+	EndGlobalSection
+EndGlobal

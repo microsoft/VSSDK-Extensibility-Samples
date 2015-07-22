@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="EditorwithToolbox.Microsoft Corporation.B8BA92FE-2BE2-4EC3-A913-1A2EC3277756" Version="1.0" Language="en-US" Publisher="Microsoft" />
+    <DisplayName>Custom Editor with Toolbox (C#)</DisplayName>
+    <Description>This sample demonstrates how to create a package that provides an Editor type extended with Toolbox support. In this sample we implement an editor for a .tbx file and construct toolbox items that are available for the document.</Description>
+    <Icon>Resources\Package.ico</Icon>
+    <PreviewImage>Example.EditorWithToolbox.jpg</PreviewImage>
+  </Metadata>
+  <Installation InstalledByMsi="false">
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="14.0" />
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.5" />
+    <Dependency Id="Microsoft.VisualStudio.MPF.14.0" DisplayName="Visual Studio MPF 14.0" d:Source="Installed" Version="[14.0,15.0)" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Templates\EditorWithToolbox.vsdir" d:VsixSubPath="Templates" />
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Templates\tbx.tbx" d:VsixSubPath="Templates" />
+  </Assets>
+</PackageManifest>
