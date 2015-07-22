@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+Copyright (c) Microsoft Corporation. All rights reserved. 
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!--This is the file that defines the actual layout and type of the commands. 
+  It is divided in different sections (e.g. command definition, command 
+  placement, ...), with each defining a specific set of properties. 
+  See the comment before each section for more details about how to 
+  use it. -->
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h"/>
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidComboBoxPkg">
+    <!--Inside this section we can have different sub-sections: one for the menus, another  
+    for the menu groups, one for the buttons (the actual commands), one for the combos 
+    and the last one for the bitmaps used. Each element is identified by a command id that  
+    is a unique pair of guid and numeric identifier; the guid part of the identifier is usually  
+    called "command set" and is used to group different command inside a logically related  
+    group; your package should define its own command set in order to avoid collisions  
+    with command ids defined by other packages. -->
+    <Menus>
+
+      <!--In this section you can define new menus. A menu in VS is the generic way of
+      refering to both menus (all types, including context menus and MenuControllers)
+      and toolbars (both toolwindow and top-level). A menu is a container for groups. -->
+      <Menu guid="guidComboBoxCmdSet" id="MyToolbar" priority="0x0000" type="Toolbar">
+        <Strings>
+          <ButtonText>Combo Box Sample</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+
+    <!--In this section you can define new groups. A group is a container for menus 
+      or buttons (commands); from a visual point of view you can see the group as the 
+      part of a menu or toolbar contained between seperators. The parent of a group 
+      must be a menu. -->
+    <Groups>
+      <!--NOTE: we deliberately define our group with a main menu location as our parent (in this case Tools menu). 
+      This makes sure that our commands will have a programatic name (Canonical Name) generated for them that begins 
+      with "Tools."; also our commands will be organized into this "Tools" category in the Add Command dialog which
+      can be accessed in the Tools->Customize dialog. Our combo box commands are defined with the CommandWellOnly 
+      flag which will make sure our combo box commands don't actually ever get created/shown on the main menu,
+      they will exist there only so canonical names can be generated for them. If the user customizes our commands 
+      to be placed onto the main menu, then they will be visible regardless of the CommandWellOnly flag. 
+      We add Placement tags in a section further down to also place our combo boxes on our Toolbar. -->
+      <Group guid="guidComboBoxCmdSet" id="MyToolbarGroup" priority="0xFF45">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+
+    <Combos>
+      <!-- NOTE: An important thing to know about combos is that if they are placed on a toolbar that is visible, and they are not marked
+                 with the CommandFlag DefaultDisabled the shell will load your package in order to determine the item to display in the
+                 display area (this is because it is done via IOleCommandTarget::Exec, and there is no special case logic to realize the
+                 Exec request is really a 'query' in disguise. This sample has all combos as being enabled out of the box; if the ComboBox 
+                 toolbar is set as visible, your package will be force loaded next time you start Visual Studio. But in general practice you 
+                 need to consider if you want your combos to be enabled (which is the default) and if so if you are fine with your package 
+                 being loaded almost immediately on rendering of the UI.
+      
+            The following types of combo boxes are supported: 
+
+            DropDownCombo 
+              a DropDownCombo does not let the user type into the combo box; they can only pick from the list of
+              items in the drop down. The string value of the element selected is given as a parameter when the 
+              command is executed (which happens automatically when the user chooses an item).
+
+              This type of combo could be used for something like the "Solution Configurations" combo on the "Standard" toolbar. 
+
+            IndexCombo 
+              An IndexCombo is the same as a DropDownCombo in that it is a "pick from the list" only combo. 
+              The difference is an IndexCombo returns the selected value as an index into the list (0 based). 
+
+              This type of combo could be used for something like the "Solution Configurations" combo on the "Standard" toolbar. 
+
+            MRUCombo 
+              An MRUCombo allows the user to type into the edit box. The history of strings entered 
+              is automatically persisted by the IDE on a per-user/per-machine basis.  
+
+              This type of combo could be used for something like the "Find" combo that was on the standard toolbar in previous
+              versions. It has been moved to the overflow area of the standard toolbar on more recent versions as part of the 
+              toolbar reduction effort.
+
+            DynamicCombo 
+              A DynamicCombo allows the user to type into the edit box or pick from the list. The  
+              list of choices is usually fixed and is managed by the command handler for the command.
+
+              This type of combo could be used for something like the "Zoom" combo on the "Class Designer" toolbar.
+
+          The following flags can be applied to Combo boxes: 
+            NoKeyCustomize      (rarely used) 
+            NoButtonCustomize   (rarely used) 
+            NoCustomize         (rarely used) 
+            DefaultInvisible    (often used: Exec is used to fetch info about combos, calling Exec on an unloaded package causes that package to load. If you place a combo on a visible 
+                                 toolbar without setting DefaultInvisible, you will force load your package upon IDE startup) 
+            DefaultDisabled     (often used) 
+            DynamicVisibility   (often used) 
+            CommandWellOnly     (used for commands that may have placements on the main menu for purposes of canonnical name generation but should not be actually created on main menu visually.) 
+            IconAndText         (sometimes used) 
+            FilterKeys          (rarely used ** used to hook window messages on commandbar controls) 
+            StretchHorizontally (only used with combos on Toolwindow toolbars. This tells the shell, when laying out the toolbar, to stretch the combo to fill all horizontal space
+                                 not taken by other controls. This is only honored for the first combo on the toolbar with this flag. An example of a toolbar that uses this is the
+                                 Task List Window's toolbar.) 
+
+          The following strings can be supplied with a command: 
+            Button Text (required) ** displayed as label of the command on a toolbar if IconAndText flag is specified.
+
+            If any of the following optional strings are missing then Button Text is used for their values. 
+
+            Menu Text (optional) ** displayed as label of the command on a menu if IconAndText flag is specified. 
+
+            Tooltip Text (optional) ** displayed when mouse hovers on command.
+
+            Command Well Name (optional) ** displayed as name of command in the Add Command dialog.
+
+            Canonical Name (optional) ** English programmatic name of command used in Command Window and DTE.ExecuteCommand. This name is used in
+                                         place of the ButtonText for purposes of canonical name formation. The value of this tag is appended to the 
+                                         value of the CanonicalName of the root of your placement. So if your command specifies a CanonicalName of 
+                                         Foo and is placed anywhere (at any nesting level) under the File menu, its runtime canonical name would be File.Foo.
+
+                                         In localized command/menu (CTO) resources, always provide the English canonical name in this tag so macros can be language independent. 
+
+            Localized Canonical Name (optional) ** Localized programmatic name of command used in Command Window, DTE.ExecuteCommand, and Tools.Options 
+                                                   "Environment/Keyboard" page. If you provide a CanonicalName you should *always* also provide a LocalizedCanonicalName
+                                                   tag, even if they are identical text (as they would be in English since the value of the CanonicalName tag should
+                                                   always be in English). Otherwise, for LocalizedCanonicalName the shell will use your ButtonText, if that is different 
+                                                   than your CanonicalName it means that on non-English versions of Visual Studio your programmatic access name will be 
+                                                   different than it would be on the English version.-->
+      <Combo guid="guidComboBoxCmdSet" id="cmdidMyDropDownCombo" priority="0x0010" type="DropDownCombo" defaultWidth="70" idCommandList="cmdidMyDropDownComboGetList">
+        <Parent guid="guidComboBoxCmdSet" id="MyToolbarGroup"/>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <Strings>
+          <MenuText>DropDown Combo: </MenuText>
+          <ButtonText>DropDown: </ButtonText>
+          <ToolTipText>Select String</ToolTipText>
+          <CanonicalName>DropDown Combo</CanonicalName>
+          <LocCanonicalName>DropDown Combo</LocCanonicalName>
+          <CommandName>DropDown Combo</CommandName>
+        </Strings>
+      </Combo>
+
+      <Combo guid="guidComboBoxCmdSet" id="cmdidMyIndexCombo" priority="0x0050" type="IndexCombo" defaultWidth="60" idCommandList="cmdidMyIndexComboGetList">
+        <Parent guid="guidComboBoxCmdSet" id="MyToolbarGroup"/>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <Strings>
+          <ButtonText>Index: </ButtonText>
+          <MenuText>Index Combo: </MenuText>
+          <ToolTipText>Select Index</ToolTipText>
+          <CommandName>Index Combo</CommandName>
+          <LocCanonicalName>Index Combo</LocCanonicalName>
+          <CanonicalName>Index Combo</CanonicalName>
+        </Strings>
+      </Combo>
+
+      <Combo guid="guidComboBoxCmdSet" id="cmdidMyMRUCombo" priority="0x0200" type="MRUCombo" defaultWidth="185" idCommandList="0">
+        <Parent guid="guidComboBoxCmdSet" id="MyToolbarGroup"/>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <Strings>
+          <ButtonText>MRU: </ButtonText>
+          <MenuText>MRU Combo: </MenuText>
+          <ToolTipText>Enter String</ToolTipText>
+          <CanonicalName>MRU Combo</CanonicalName>
+          <LocCanonicalName>MRU Combo</LocCanonicalName>
+          <CommandName>MRU Combo</CommandName>
+        </Strings>
+      </Combo>
+
+      <Combo guid="guidComboBoxCmdSet" id="cmdidMyDynamicCombo" priority="0x0500" type="DynamicCombo" defaultWidth="90" idCommandList="cmdidMyDynamicComboGetList">
+        <Parent guid="guidComboBoxCmdSet" id="MyToolbarGroup"/>
+        <CommandFlag>IconAndText</CommandFlag>
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <Strings>
+          <ButtonText>Dynamic: </ButtonText>
+          <MenuText>Dynamic Combo: </MenuText>
+          <ToolTipText>Enter Zoom Level</ToolTipText>
+          <CanonicalName>Dynamic Combo</CanonicalName>
+          <LocCanonicalName>Dynamic Combo</LocCanonicalName>
+          <CommandName>Dynamic Combo</CommandName>
+        </Strings>
+      </Combo>
+    </Combos>
+  </Commands>
+
+  <!--Inside this section, we have the ability to place groups inside menus or menus / commands inside
+  groups. For instance, it is possible to place one of VisualStudio's menus or commands inside one of our  
+  groups or one of our groups inside a menu defined somewhere else. -->
+  <CommandPlacements>
+    <!-- Place our group (MyToolbarGroup) onto our toolbar (MyToolbar)-->
+    <CommandPlacement guid="guidComboBoxCmdSet" id="MyToolbarGroup" priority="0x0100">
+      <Parent guid="guidComboBoxCmdSet" id="MyToolbar"/>
+    </CommandPlacement>
+  </CommandPlacements>
+
+  <Symbols>
+    <GuidSymbol name="guidComboBoxPkg" value="{40d9f297-25fb-4264-99ed-7785f8331c94}" />
+
+    <GuidSymbol name="guidComboBoxCmdSet" value="{B2C8E135-0E7A-4696-963E-BD3280F8578C}">
+      <IDSymbol name="MyToolbar" value="0x1000"/>
+      <IDSymbol name="MyToolbarGroup" value="0x1030"/>
+      <IDSymbol name="cmdidMyDropDownCombo" value="0x101"/>
+      <IDSymbol name="cmdidMyDropDownComboGetList" value="0x102"/>
+      <IDSymbol name="cmdidMyIndexCombo" value="0x103"/>
+      <IDSymbol name="cmdidMyIndexComboGetList" value="0x104"/>
+      <IDSymbol name="cmdidMyMRUCombo" value="0x105"/>
+      <IDSymbol name="cmdidMyDynamicCombo" value="0x107"/>
+      <IDSymbol name="cmdidMyDynamicComboGetList" value="0x108"/>
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
