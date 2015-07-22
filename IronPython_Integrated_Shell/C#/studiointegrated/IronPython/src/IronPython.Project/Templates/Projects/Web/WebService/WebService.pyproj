@@ -1,0 +1,68 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>$guid1$</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{af48b115-53db-4e4f-a04c-cf2b83c29ee3}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <AssemblyName>$safeprojectname$</AssemblyName>
+    <MainFile>Service1.asmx.py</MainFile>
+    <UseIPExperimentalCompiler>true</UseIPExperimentalCompiler>
+    <TargetFrameworkVersion>v$targetframeworkversion$</TargetFrameworkVersion>
+    <TargetPlatform>v4</TargetPlatform>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Set the IronPythonPath property by proving in different locations where Iron Python could be installed -->
+    <!-- Regular LocalAppData -->
+    <IronPythonPath Condition=" '$(IronPythonPath)' == '' AND Exists('$(LocalAppData)\Microsoft\VisualStudio\12.0\Extensions\Microsoft\IronPython\1.0\IronPython.targets')">$(LocalAppData)\Microsoft\VisualStudio\12.0\Extensions\Microsoft\IronPython\1.0</IronPythonPath>
+    <!-- Experimental LocalAppData -->
+    <IronPythonPath Condition=" '$(IronPythonPath)' == '' AND Exists('$(LocalAppData)\Microsoft\VisualStudio\12.0Exp\Extensions\Microsoft\IronPython\1.0\IronPython.targets')">$(LocalAppData)\Microsoft\VisualStudio\12.0Exp\Extensions\Microsoft\IronPython\1.0</IronPythonPath>
+    <!-- Integrated Shell -->
+    <IronPythonPath Condition=" '$(IronPythonPath)' == '' AND Exists('$(MSBuildExtensionsPath)\Microsoft\IronPython Studio 2013\1.0\IronPython.targets')">$(MSBuildExtensionsPath)\Microsoft\IronPython Studio 2013\1.0</IronPythonPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="IronPython">
+      <HintPath>$(IronPythonPath)\IronPython.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Service1.asmx"/>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Service1.asmx.py">
+      <DependentUpon>Service1.asmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(IronPythonPath)\IronPython.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v12.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

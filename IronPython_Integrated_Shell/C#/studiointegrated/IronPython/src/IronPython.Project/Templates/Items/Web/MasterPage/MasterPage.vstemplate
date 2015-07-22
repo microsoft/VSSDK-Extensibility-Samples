@@ -1,0 +1,42 @@
+<VSTemplate Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+  <TemplateData>
+    <Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3171"/>
+    <Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3172"/>
+    <Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4709"/>
+    <TemplateID>MasterPage</TemplateID>
+    <TemplateGroupID>Web</TemplateGroupID>
+    <ProjectType>IronPython</ProjectType>
+    <ProjectSubType>Web</ProjectSubType>
+    <ShowByDefault>false</ShowByDefault>
+    <SortOrder>3</SortOrder>
+    <DefaultName>Site.Master</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System.Web</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System.Data</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System.Drawing</Assembly>
+      </Reference>      
+      <Reference>
+        <Assembly>System.Xml</Assembly>
+      </Reference>      
+    </References>
+    <CustomParameters>
+      <CustomParameter Name="$ParentExtension$" Value=".master"/>
+      <CustomParameter Name="$ChildExtension$" Value=".py"/>
+    </CustomParameters>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.$fileinputextension$">Site.Master</ProjectItem>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Microsoft.VisualStudio.Web.Application, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>Microsoft.VisualStudio.Web.Application.WATemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

@@ -1,0 +1,21 @@
+When building an IronPython WPF Application, you may receive the following error message: 
+
+	Unknown build error, 'Object reference not set to an instance of an object'. 
+
+In order for XAML compilation to succeed, a valid CodeDomProvider is required to be registered on the machine for the language being compiled. 
+Because this is a global machine configuration setting, the IronPython sample does not attempt to register the IronPython CodeDomProvider automatically. 
+In order to register the IronPython CodeDomProvider manually and build IronPython/WPF projects with Visual Studio or MSBuild, you can do the following:
+ 
+	Open %SystemRoot%\Microsoft.NET\Framework\v4.0.30319\CONFIG\machine.config in a text editor (such as Notepad)
+
+	Add the following to register the IronPython CodeDomProvider as a direct child of the root <configuration> node: 
+
+	<system.codedom>
+	  <compilers>
+		<compiler language="py;IronPython" extension=".py" type="IronPython.CodeDom.PythonProvider, IronPython, Version=1.1.0.0, Culture=neutral, PublicKeyToken=4afbdc4d950a9602" />
+	  </compilers>
+	</system.codedom> 
+
+	Close & Save machine.config 
+
+You can learn more about this issue at http://blogs.msdn.com/b/aaronmar/archive/2007/08/01/ironpython-integration-sample-and-the-wpf-designer.aspx

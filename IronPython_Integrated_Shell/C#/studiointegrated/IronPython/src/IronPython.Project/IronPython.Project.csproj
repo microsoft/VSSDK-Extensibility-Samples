@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20820</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AE1B99B4-9E64-4124-B139-9B5DC5E3695B}</ProjectGuid>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Samples.VisualStudio.IronPython.Project</RootNamespace>
+    <AssemblyName>Microsoft.Samples.VisualStudio.IronPython.Project</AssemblyName>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <RegisterOutputPackage>true</RegisterOutputPackage>
+    <RegisterWithCodebase>true</RegisterWithCodebase>
+    <ProjectBasePath>..\..\..\MPFProj</ProjectBasePath>
+    <CopyVsixExtensionFiles>true</CopyVsixExtensionFiles>
+    <CopyVsixExtensionLocation>$(SolutionDir)$(Configuration)\Extensions\Application\IronPython</CopyVsixExtensionLocation>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <PlatformTarget>x86</PlatformTarget>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(ProgramFiles)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="..\..\..\MPFProj\ProjectBase.Files" />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EnvDTE" />
+    <Reference Include="EnvDTE80" />
+    <Reference Include="IronMath, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IronPython\IronMath.dll</HintPath>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IronPython, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IronPython\IronPython.dll</HintPath>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Engine" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="microsoft.msxml" />
+    <Reference Include="Microsoft.VisualStudio.CommonIDE" />
+    <Reference Include="Microsoft.VisualStudio.Designer.Interfaces" />
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop" />
+    <Reference Include="Microsoft.VisualStudio.Package.LanguageService.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.ProjectAggregator" />
+    <Reference Include="Microsoft.VisualStudio.Shell.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Design" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.12.0">
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.11.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.12.0" />
+    <Reference Include="Microsoft.VisualStudio.ExtensibilityHosting" />
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop" />
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop.10.0" />
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0" />
+    <Reference Include="Microsoft.VisualStudio.VSHelp" />
+    <Reference Include="Microsoft.Windows.Design.Extensibility" />
+    <Reference Include="Microsoft.Windows.Design.Host">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\PrivateAssemblies\Microsoft.Windows.Design.Host.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Design.Interaction" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VSLangProj" />
+    <Reference Include="VSLangProj80" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Automation.cs" />
+    <Compile Include="ConfigurationPropertyPages.cs" />
+    <Compile Include="EditorFactory.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeAttribute.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeClass.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeDelegate.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeElement.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeElements.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeEnum.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeFunction.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeInterface.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeNamespace.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeParameter.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeProperty.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeStruct.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeType.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeTypeRef.cs" />
+    <Compile Include="FileCodeModel\CodeDomCodeVariable.cs" />
+    <Compile Include="FileCodeModel\FileCodeMerger.cs" />
+    <Compile Include="FileCodeModel\FileCodeModel.cs" />
+    <Compile Include="FileCodeModel\PythonCodeModel.cs" />
+    <Compile Include="FileCodeModel\PythonCodeModelFactory.cs" />
+    <Compile Include="FileCodeModel\SimpleCodeElement.cs" />
+    <Compile Include="FileCodeModel\StringMerger.cs" />
+    <Compile Include="FileCodeModel\TextBufferMerger.cs" />
+    <Compile Include="FileCodeModel\TextPoint.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="HierarchyListener.cs" />
+    <Compile Include="Library\Library.cs" />
+    <Compile Include="Library\LibraryNode.cs" />
+    <Compile Include="Library\PythonLibraryManager.cs" />
+    <Compile Include="Library\PythonLibraryNode.cs" />
+    <Compile Include="Library\PythonModuleId.cs" />
+    <Compile Include="ProjectDocumentsListenerForMainFileUpdates.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyPages.cs" />
+    <Compile Include="PythonConfigProvider.cs" />
+    <Compile Include="PythonFileNode.cs" />
+    <Compile Include="PythonFileNodeProperties.cs" />
+    <Compile Include="PythonMenus.cs" />
+    <Compile Include="PythonProjectFactory.cs" />
+    <Compile Include="PythonProjectFileConstants.cs" />
+    <Compile Include="PythonProjectNode.cs" />
+    <Compile Include="PythonProjectNodeProperties.cs" />
+    <Compile Include="PythonProjectPackage.cs" />
+    <Compile Include="PythonProjectReferenceNode.cs" />
+    <Compile Include="PythonReferenceContainerNode.cs" />
+    <Compile Include="RegistrationAttributes\RegisterSnippetsAttribute.cs" />
+    <Compile Include="SelectionElementValueChangedListener.cs" />
+    <Compile Include="TextLineEventListener.cs" />
+    <Compile Include="VSMDPythonProvider.cs" />
+    <Compile Include="WPFProviders\PythonEventBindingProvider.cs" />
+    <Compile Include="WPFProviders\PythonWPFFlavor.cs" />
+    <Compile Include="WPFProviders\PythonWPFProjectFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <VSCTCompile Include="PkgCmd.vsct">
+      <ResourceName>1000</ResourceName>
+    </VSCTCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\IronPython.CompilerTask\IronPython.targets">
+      <Link>IronPython.targets</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="CodeSnippets\SnippetsIndex.xml">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="CodeSnippets\Snippets\class.snippet">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="CodeSnippets\Snippets\ctor.snippet">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="CodeSnippets\Snippets\else.snippet">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="CodeSnippets\Snippets\for.snippet">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="CodeSnippets\Snippets\if.snippet">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="CodeSnippets\Snippets\while.snippet">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="key.snk" />
+    <None Include="Templates\Projects\ClassLibrary\__TemplateIcon.ico" />
+    <None Include="Templates\Projects\Web\WebApplication\__TemplateIcon.ico" />
+    <None Include="Templates\Projects\ConsoleApp\__TemplateIcon.ico" />
+    <None Include="Templates\Projects\Web\WebService\__TemplateIcon.ico" />
+    <None Include="Templates\Projects\WinformApp\__TemplateIcon.ico" />
+    <None Include="Templates\Projects\WPFApp\WPFApp.ico" />
+    <None Include="Templates\Projects\WPFApp\WPFApplication.pyproj" />
+    <None Include="Templates\Projects\WPFApp\Window1.py" />
+    <None Include="Templates\Projects\WPFApp\Program.py" />
+    <None Include="Templates\Projects\WinformApp\Program.py" />
+    <None Include="Templates\Projects\WinformApp\IronPythonWinApp.pyproj" />
+    <None Include="Templates\Projects\WinformApp\Form1.py" />
+    <None Include="Templates\Projects\Web\WebService\WebService.pyproj" />
+    <None Include="Templates\Projects\Web\WebService\Web.config" />
+    <None Include="Templates\Projects\Web\WebService\Service1.asmx.py" />
+    <None Include="Templates\Projects\ConsoleApp\Program.py" />
+    <None Include="Templates\Projects\ConsoleApp\IronPythonApp.pyproj" />
+    <None Include="Templates\Projects\ClassLibrary\IronPythonDll.pyproj" />
+    <None Include="Templates\Projects\ClassLibrary\Class.py" />
+    <None Include="Templates\Projects\WPFApp\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Templates\Items\WPFWindow\Window.py" />
+    <None Include="Templates\Items\Web\WebConfig\Web.Config" />
+    <None Include="Templates\Items\Web\WebClass\Class.py" />
+    <None Include="Templates\Items\Web\SkinFile\SkinFile.skin" />
+    <None Include="Templates\Items\Web\SiteMap\Web.sitemap" />
+    <None Include="Templates\Items\Web\NestedWebConfig\Web.Config" />
+    <None Include="Templates\Items\Web\MasterPage\Site.Master" />
+    <None Include="Templates\Items\Web\Handler\Handler.ashx" />
+    <None Include="Templates\Items\Web\BrowserFile\BrowserFile.Browser" />
+    <None Include="Templates\Items\Form\Form.py" />
+    <None Include="Templates\Items\Class\Class.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IronPython_large.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="IronPython_small.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="Templates\Projects\Web\WebApplication\IronMath.dll" />
+    <None Include="Templates\Projects\Web\WebApplication\IronPython.dll" />
+    <VSTemplate Include="Templates\Projects\WPFApp\pyWPFApplication.vstemplate" />
+    <VSTemplate Include="Templates\Projects\WinformApp\IPWinformApp.vstemplate" />
+    <VSTemplate Include="Templates\Projects\Web\WebService\WebService.vstemplate" />
+    <None Include="Templates\Projects\Web\WebService\Service1.asmx" />
+    <VSTemplate Include="Templates\Projects\Web\WebApplication\WebApplication.vstemplate" />
+    <None Include="Templates\Projects\Web\WebApplication\Default.aspx" />
+    <None Include="Templates\Projects\Web\WebApplication\Web.config" />
+    <None Include="Templates\Projects\Web\WebApplication\WebApplication.pyproj" />
+    <VSTemplate Include="Templates\Projects\ConsoleApp\IPConsoleApp.vstemplate" />
+    <VSTemplate Include="Templates\Projects\ClassLibrary\IPClassLib.vstemplate" />
+    <None Include="Templates\Items\WPFWindow\WPFWindow.ico" />
+    <VSTemplate Include="Templates\Items\WPFWindow\pyWPFWindow.vstemplate" />
+    <VSTemplate Include="Templates\Items\Web\WebUserControl\WebuserControl.vstemplate" />
+    <None Include="Templates\Items\Web\WebUserControl\WebUserControl.ascx" />
+    <VSTemplate Include="Templates\Items\Web\WebServiceItem\WebService.vstemplate" />
+    <None Include="Templates\Items\Web\WebServiceItem\WebService.asmx" />
+    <VSTemplate Include="Templates\Items\Web\WebHtmlPage\WebHtmlPage.vstemplate" />
+    <None Include="Templates\Items\Web\WebHtmlPage\HtmlPage.htm" />
+    <VSTemplate Include="Templates\Items\Web\WebForm\WebForm.vstemplate" />
+    <None Include="Templates\Items\Web\WebForm\Default.aspx" />
+    <VSTemplate Include="Templates\Items\Web\WebConfig\WebConfig.vstemplate" />
+    <VSTemplate Include="Templates\Items\Web\WebClass\WebClass.vstemplate" />
+    <None Include="Templates\Items\Web\WebClass\__TemplateIcon.ico" />
+    <VSTemplate Include="Templates\Items\Web\StyleSheet\StyleSheet.vstemplate" />
+    <None Include="Templates\Items\Web\StyleSheet\StyleSheet.css" />
+    <VSTemplate Include="Templates\Items\Web\SkinFile\SkinFile.vstemplate" />
+    <VSTemplate Include="Templates\Items\Web\SiteMap\SiteMap.vstemplate" />
+    <VSTemplate Include="Templates\Items\Web\NestedWebConfig\NestedWebConfig.vstemplate" />
+    <VSTemplate Include="Templates\Items\Web\MasterPage\MasterPage.vstemplate" />
+    <VSTemplate Include="Templates\Items\Web\JScript\JScript.vstemplate" />
+    <None Include="Templates\Items\Web\JScript\JScript.js" />
+    <VSTemplate Include="Templates\Items\Web\Handler\Handler.vstemplate" />
+    <VSTemplate Include="Templates\Items\Web\GlobalAsax\GlobalAsax.vstemplate" />
+    <None Include="Templates\Items\Web\GlobalAsax\Global.asax" />
+    <VSTemplate Include="Templates\Items\Web\ContentPage\ContentPage.vstemplate" />
+    <None Include="Templates\Items\Web\ContentPage\ContentPage.aspx" />
+    <VSTemplate Include="Templates\Items\Web\BrowserFile\BrowserFile.vstemplate" />
+    <VSTemplate Include="Templates\Items\Text\TextFile.vstemplate" />
+    <None Include="Templates\Items\Text\TextFile.txt" />
+    <None Include="Templates\Items\Text\Text.ico" />
+    <None Include="Templates\Items\ResX\Resource_Resx.ico" />
+    <VSTemplate Include="Templates\Items\ResX\Resource.vstemplate" />
+    <None Include="Templates\Items\ResX\Resource.resX" />
+    <VSTemplate Include="Templates\Items\Form\WindowsForm.vstemplate" />
+    <None Include="Templates\Items\Form\UI_WinForm.ico" />
+    <VSTemplate Include="Templates\Items\Class\Class.vstemplate">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </VSTemplate>
+    <None Include="Templates\Items\Class\__TemplateIcon.ico" />
+    <Content Include="Resources\Package.ico" />
+    <Content Include="Resources\PythonAboutBox.ico" />
+    <EmbeddedResource Include="Resources\PythonImageList.bmp" />
+    <Content Include="Resources\PythonSplashScreenIcon.bmp" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VSSDKCSharpIncPath>$(ProgramFiles)\Microsoft Visual Studio 12.0\VSSDK\VisualStudioIntegration\Common\Source\CSharp</VSSDKCSharpIncPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Resources.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Resources.resx">
+      <MergeWithCTO>true</MergeWithCTO>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IronPython.CompilerTask\IronPython.CompilerTask.csproj">
+      <Project>{64796904-EF67-433F-81BB-B6864473236C}</Project>
+      <Name>IronPython.CompilerTask</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\IronPython.Console\IronPython.Console.csproj">
+      <Project>{2AEA2177-08B0-4492-B911-CCEA5B4C33A0}</Project>
+      <Name>IronPython.Console</Name>
+      <IncludeOutputGroupsInVSIX>
+        BuiltProjectOutputGroup;
+        PkgdefProjectOutputGroup;
+      </IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\IronPython.Interfaces\IronPython.Interfaces.csproj">
+      <Project>{5453C71D-F7AA-482D-994B-0E5656F3F3C6}</Project>
+      <Name>IronPython.Interfaces</Name>
+      <IncludeOutputGroupsInVSIX>
+        BuiltProjectOutputGroup;
+      </IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\IronPython.EditorExtensions\IronPython.EditorExtensions.csproj">
+      <Project>{6004EB71-76F9-41EA-9355-A273B61FBF3E}</Project>
+      <Name>IronPython.EditorExtensions</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Templates\Items\WPFWindow\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <GetVsixSourceItemsDependsOn>$(GetVsixSourceItemsDependsOn);GetVsixTemplateItems</GetVsixSourceItemsDependsOn>
+  </PropertyGroup>
+  <Target Name="GetVsixTemplateItems" DependsOnTargets="ZipProjects;ZipItems">
+    <ItemGroup>
+      <VSIXSourceItem Include="@(IntermediateZipItem)">
+        <VSIXSubPath>ItemTemplates\%(IntermediateZipItem.Language)\%(IntermediateZipItem.OutputSubPath)\%(IntermediateZipItem.Culture)</VSIXSubPath>
+      </VSIXSourceItem>
+      <VSIXSourceItem Include="@(IntermediateZipProject)">
+        <VSIXSubPath>ProjectTemplates\%(IntermediateZipProject.Language)\%(IntermediateZipProject.OutputSubPath)\%(IntermediateZipProject.Culture)</VSIXSubPath>
+      </VSIXSourceItem>
+    </ItemGroup>
+  </Target>
+</Project>

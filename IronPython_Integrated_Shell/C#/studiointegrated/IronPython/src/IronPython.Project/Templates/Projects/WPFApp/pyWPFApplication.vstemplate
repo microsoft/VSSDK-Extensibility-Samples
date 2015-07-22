@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>WPF Application</Name>
+    <Description>Windows Presentation Foundation client application</Description>
+    <Icon>WPFApp.ico</Icon>
+    <TemplateID>Microsoft.IronPython.WPFApplication</TemplateID>
+    <ProjectType>IronPython</ProjectType>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <SortOrder>50</SortOrder>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>WpfApplication</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <PromptForSaveOnCreation>false</PromptForSaveOnCreation>
+    <EnableEditOfLocationField>true</EnableEditOfLocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>   
+  </TemplateData>
+  <TemplateContent>
+    <Project File="WPFApplication.pyproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Window1.xaml</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Window1.py</ProjectItem>
+      <ProjectItem ReplaceParameters="true">Program.py</ProjectItem>
+      <ProjectItem>UnknownBuildError.txt</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

@@ -1,0 +1,46 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>$guid1$</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <AssemblyName>$safeprojectname$</AssemblyName>
+    <MainFile>Program.py</MainFile>
+    <TargetFrameworkVersion>v$targetframeworkversion$</TargetFrameworkVersion>
+    <TargetPlatform>v4</TargetPlatform>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Set the IronPythonPath property by proving in different locations where Iron Python could be installed -->
+    <!-- Regular LocalAppData -->
+    <IronPythonPath Condition=" '$(IronPythonPath)' == '' AND Exists('$(LocalAppData)\Microsoft\VisualStudio\12.0\Extensions\Microsoft\IronPython\1.0\IronPython.targets')">$(LocalAppData)\Microsoft\VisualStudio\12.0\Extensions\Microsoft\IronPython\1.0</IronPythonPath>
+    <!-- Experimental LocalAppData -->
+    <IronPythonPath Condition=" '$(IronPythonPath)' == '' AND Exists('$(LocalAppData)\Microsoft\VisualStudio\12.0Exp\Extensions\Microsoft\IronPython\1.0\IronPython.targets')">$(LocalAppData)\Microsoft\VisualStudio\12.0Exp\Extensions\Microsoft\IronPython\1.0</IronPythonPath>
+    <!-- Integrated Shell -->
+    <IronPythonPath Condition=" '$(IronPythonPath)' == '' AND Exists('$(MSBuildExtensionsPath)\Microsoft\IronPython Studio 2013\1.0\IronPython.targets')">$(MSBuildExtensionsPath)\Microsoft\IronPython Studio 2013\1.0</IronPythonPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="IronPython">
+      <HintPath>$(IronPythonPath)\IronPython.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.py" />
+  </ItemGroup>
+  <Import Project="$(IronPythonPath)\IronPython.targets" />
+</Project>

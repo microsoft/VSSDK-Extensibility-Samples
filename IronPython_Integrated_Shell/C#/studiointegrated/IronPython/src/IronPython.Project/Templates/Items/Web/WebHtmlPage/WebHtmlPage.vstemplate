@@ -1,0 +1,17 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+	<Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3070"/>
+	<Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3071"/>
+	<Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4537"/>
+        <TemplateID>WebConfig</TemplateID>
+        <TemplateGroupID>Web</TemplateGroupID>
+        <ProjectType>IronPython</ProjectType>
+        <ProjectSubType>Web</ProjectSubType>
+        <SortOrder>100</SortOrder>
+        <DefaultName>HTMLPage.htm</DefaultName>
+      <ShowByDefault>false</ShowByDefault>
+    </TemplateData>
+    <TemplateContent>
+		<ProjectItem>HTMLPage.htm</ProjectItem>
+	</TemplateContent>
+</VSTemplate>

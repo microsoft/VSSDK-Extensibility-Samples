@@ -1,0 +1,31 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Windows Form</Name>
+    <Description>A blank Windows Form</Description>
+    <Icon>UI_WinForm.ico</Icon>
+    <ProjectType>IronPython</ProjectType>
+    <SortOrder>40</SortOrder>
+    <DefaultName>Form.py</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Data</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Drawing</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Windows.Forms</Assembly>
+			</Reference>
+			<Reference>
+				<Assembly>System.Xml</Assembly>
+			</Reference>
+		</References>
+
+    <ProjectItem ReplaceParameters="true" SubType="Form">Form.py</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

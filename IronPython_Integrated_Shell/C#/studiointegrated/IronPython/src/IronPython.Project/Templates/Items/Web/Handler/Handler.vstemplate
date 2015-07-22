@@ -1,0 +1,42 @@
+﻿<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3320"/>
+    <Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3321"/>
+    <Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4722"/>
+    <TemplateID>Handler</TemplateID>
+    <TemplateGroupID>Web</TemplateGroupID>
+    <ProjectType>IronPython</ProjectType>
+    <ProjectSubType>Web</ProjectSubType>
+    <ShowByDefault>false</ShowByDefault>
+    <SortOrder>26</SortOrder>
+    <DefaultName>Handler.ashx</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>       
+      <Reference>
+        <Assembly>System.Web</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System.Web.Services</Assembly>
+      </Reference>       
+      <Reference>
+        <Assembly>System.Data</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System.Xml</Assembly>
+      </Reference>
+    </References>
+    <CustomParameters>
+      <CustomParameter Name="$ParentExtension$" Value=".ashx"/>
+      <CustomParameter Name="$ChildExtension$" Value=".py"/>
+    </CustomParameters>
+    <ProjectItem ReplaceParameters="true" OpenInEditor="false" TargetFileName="$fileinputname$.ashx">Handler.ashx</ProjectItem>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>Microsoft.VisualStudio.Web.Application, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+    <FullClassName>Microsoft.VisualStudio.Web.Application.WATemplateWizard</FullClassName>
+  </WizardExtension>
+</VSTemplate>

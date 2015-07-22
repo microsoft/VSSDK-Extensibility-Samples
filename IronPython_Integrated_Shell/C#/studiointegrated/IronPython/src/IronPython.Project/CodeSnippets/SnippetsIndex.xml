@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SnippetCollection>
+    <Language Lang="IronPython" Guid="{ae8ce01a-b3ff-4c19-8c80-54669c197f2c}">
+        <SnippetDir>
+            <OnOff>On</OnOff>
+            <Installed>true</Installed>
+            <Locale>1033</Locale>
+            <DirPath>.\Snippets\</DirPath>	
+            <LocalizedName>Iron Python</LocalizedName>
+        </SnippetDir>
+    </Language>
+</SnippetCollection>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Window (WPF)</Name>
+    <Description>Windows Presentation Foundation window</Description>
+    <Icon>WPFWindow.ico</Icon>
+    <TemplateID>Microsoft.IronPython.WPFWindow</TemplateID>
+    <ProjectType>IronPython</ProjectType>
+    <RequiredFrameworkVersion>3.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>Window.xaml</DefaultName>
+    <TemplateGroupID>WPF</TemplateGroupID>
+    <ShowByDefault>false</ShowByDefault>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>WindowsBase</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>PresentationCore</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>PresentationFramework</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" CustomTool="MSBuild:Compile">Window.xaml</ProjectItem>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.py">Window.py</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

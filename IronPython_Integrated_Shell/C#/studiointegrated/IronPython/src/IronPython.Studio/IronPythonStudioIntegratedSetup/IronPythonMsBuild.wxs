@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include Defines.wxi ?>
+  <Fragment Id="FragmentIronPythonMsBuild">
+    <DirectoryRef Id="MSBuildMSIronPython10" FileSource="$(var.IronPythonExtensionDir)">      
+      <Component Id="BuildIronMathAssembly" Guid="*">
+        <File Id="BuildIronMathAssembly" Name='IronMath.dll' KeyPath='yes' />
+      </Component>
+      <Component Id="BuildIronPythonAssembly" Guid="*">
+        <File Id="BuildIronPythonAssembly" Name='IronPython.dll' KeyPath='yes' />
+      </Component>
+      <Component Id="BuildCompilerTasksAssembly" Guid="*">
+        <File Id="BuildCompilerTasks" Name='Microsoft.Samples.VisualStudio.IronPython.CompilerTasks.dll' KeyPath='yes' />
+      </Component>
+      <Component Id="BuildMsBuildTargets" Guid="*">
+        <File Id="BuildMsBuildTargets" Name='IronPython.targets' KeyPath='yes' />
+      </Component>
+    </DirectoryRef>
+    
+    <ComponentGroup Id="IronPythonMsBuild">
+      <ComponentRef Id="BuildIronMathAssembly" />
+      <ComponentRef Id="BuildIronPythonAssembly" />
+      <ComponentRef Id="BuildCompilerTasksAssembly" />
+      <ComponentRef Id="BuildMsBuildTargets" />
+    </ComponentGroup>
+
+  </Fragment>
+</Wix>

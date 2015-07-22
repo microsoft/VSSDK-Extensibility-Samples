@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="../../../Common/Overview.xsl" type="text/xsl"?>
+<VSSDKSample>
+  <ImagePath>../../../Common</ImagePath>
+  <Status>
+    <Accessibility>true</Accessibility>
+    <Comments>true</Comments>
+    <Documentation>true</Documentation>
+    <ErrorHandling>true</ErrorHandling>
+    <FollowSDKCodingStandards>true</FollowSDKCodingStandards>
+    <Localizable>true</Localizable>
+    <Overview>true</Overview>
+    <ScenarioTests>false</ScenarioTests>
+    <Supported>true</Supported>
+    <Style>Example</Style>
+  </Status>
+  <Overview>
+    <ShortName>C# Example.IronPythonConsoleWindow</ShortName>
+    <LongName>IronPython Console Window Integration</LongName>
+    <Phrase>Integrating in Visual Studio a console window for IronPython.</Phrase>
+  </Overview>
+  <Introduction>
+    <Summary>
+      This sample is a component of IronPython integration inside Visual Studio.
+      This sample defines a Visual Studio Package (VSPackage) that is responsible for the direct interaction with the IronPython engine. This 
+      interaction can be expressed in two ways: handling the instances of the engine and running interactive commands against a 
+      specific instance of the engine. The main goals of this sample are:
+    </Summary>
+    <Goal>Creating a Visual Studio service to generate new instances of the IronPython engine or get a reference to the instance of the engine used by the interactive console.</Goal>
+    <Goal>Creating a tool window that implements the IronPython interactive console.</Goal>
+    <Goal>Enabling statement completion inside the console window.</Goal>
+    <Image width="400" height="400">ConsoleWindow.jpg</Image>
+  </Introduction>
+  <SampleInfo>
+    <State>
+    </State>
+    <Type>Example</Type>
+    <Complexity>2</Complexity>
+    <Screenshot>ConsoleWindow.jpg</Screenshot>
+    <Area>Iron Python</Area>
+    <Language>C#</Language>
+    <Folder>VisualStudioIntegration\Samples\IronPythonIntegration\</Folder>
+    <SampleSolution>ConsoleWindow\ConsoleWindow.sln</SampleSolution>
+    <Doc />
+    <Keywords>
+      <Keyword>Iron Python</Keyword>
+      <Keyword>Console Window</Keyword>
+      <Keyword>MSBuild Tasks</Keyword>
+      <Keyword>engine</Keyword>
+      <Keyword>Python</Keyword>
+      <Keyword>interactive</Keyword>
+      <Keyword>command</Keyword>
+      <Keyword>console</Keyword>
+    </Keywords>
+  </SampleInfo>
+  <GettingStarted>
+    <Paragraph>
+      The current version of this sample implements the Visual Studio service that exposes instances of
+      the engine and a console window that allows the user to enter some text and execute it using the
+      IronPython engine. This console also hosts the IronPython language service so that colorization
+      and statement completion are available when typing commands.
+    </Paragraph>
+    <Paragraph>
+      To expose the IronPython engine, we use two interfaces. The first interface is called
+      IPythonEngineProvider and is used to create and register the service with the shell. The second
+      interface is called IEngine and is an abstraction over the functionalities exposed by the engine.
+      The IEngine interface is not required, but having its abstraction layer makes testing the package easier
+      and help to isolate the console's code from changes in the engine.
+    </Paragraph>
+    <Paragraph>
+      The definitions of these interfaces are contained in the IronPythonInterface.Dll assembly that is
+      built from the Interfaces project.
+    </Paragraph>
+    <Paragraph>
+      The console window is a tool window that creates a TextBuffer object and hosts a TextView
+      control that is initialized to use the text buffer. This tool window derives from WindowPane
+      to allow the base classes provided by the Managed Package Framework (MPF) to handle its creation and persistence,
+      but it overrides the implementation of IVsWindowPane in order to use the one provided by the
+      TextView object.
+    </Paragraph>
+    <Paragraph>
+      The interaction between the console window and the IronPython engine is handled by the CommandBuffer
+      class defined in file CommandBuffer.cs. This class handle aspects of the interaction like find out
+      when the text entered by the user is ready to be executed, its execution or building the full text
+      to execute in case of multi-line statement. The console window is responsible to intercept the ENTER
+      key and add the text to the command buffer (see the OnReturn event handler in ConsoleWindow.cs).
+    </Paragraph>
+    <Paragraph>
+      The console window also needs to check context when the user presses a key. For instance, the ENTER key should execute the command entered by
+      the user, not add a new line to the buffer. Similarly, the UP ARROW and DOWN ARROW keys should show the previous
+      and next commands in the command history, not move the cursor up and down.
+      All these special keys are handled as specific commands by the shell, so the console window registers
+      itself as a command filter with the text view and intercepts the commands that it needs to handle. You
+      can see how the command filter is initialized by looking at the OnToolWindowCreated method in
+      ConsoleWindow.cs.
+    </Paragraph>
+    <Paragraph>
+      The history is implemented using a class called HistoryBuffer that stores the list of
+      commands executed inside the console, sorted by execution order. When the user presses the UP ARROW or
+      DOWN ARROW key, the console asks the history buffer for the previous or next element in the history and
+      shows it in the text view.
+    </Paragraph>
+    <Paragraph>
+      Statement completion and colorization are implemented using the same IronPython language service
+      that is used inside the standard editor when editing a py file. Nevertheless, inside the console window,
+      the language service will use a different way to build the list of methods used for the completion functionalities.
+      The main difference between the behavior of the language service inside the console window and
+      inside an editor window is that in the editor it will use static analysis of the text to
+      build the list of the method in a class (the window that you can see when you type the dot key),
+      while in the console it will use the engine to evaluate the current value of the variable.
+    </Paragraph>
+    <Paragraph>
+      The different behavior of the language service in the editor window and console window is implemented
+      using one functionality exposed by the IronPython language service through its version of the Source class.
+      This object, defined in the MPF, is an abstraction on top of the text buffer and text view. The IronPython version
+      of this class derives from the one provided by the framework and adds to it the ability to provide
+      a custom AuthoringScope so that it will be used during the parsing of the text inside a specific
+      view.
+      The code that creates the text view inside ConsoleWindow.cs creates a PythonSource object for the
+      language service associated to this view, sets the callback to create a custom AuthoringScope
+      (called ConsoleAuthoringScope and implemented in ConsoleAuthoringScope.cs), and adds this to
+      the list of special views for the language. At this point, everything is set to let the language
+      service use two different kinds of scope during the parsing of the text.
+    </Paragraph>
+  </GettingStarted>
+  <BuildingTheSample>
+    <Step>
+      Open the ConsoleWindow.sln solution.
+    </Step>
+    <Step>
+      Press F5 to build the sample, register it in the experimental hive, and launch Visual Studio from the experimental hive.
+    </Step>
+  </BuildingTheSample>
+  <RunningTheSample>
+    <SampleTask>
+      <Description>
+        To see the sample's functionality...
+      </Description>
+      <Step>
+        On the <bold>View</bold> menu, click <bold>Other Windows</bold>, and then click <bold>IronPython Console</bold>
+        to display the console window.
+      </Step>
+      <Step>
+        Type <bold>2+2</bold> and then press ENTER to see the sum.
+      </Step>
+      <Step>
+        Type <bold>print "Hello"</bold> and press ENTER to see "Hello". 
+        Notice that the keyword <bold>print</bold> and the string "Hello" are both colorized.
+      </Step>
+      <Step>
+        Press the UP ARROW and DOWN ARROW keys to run through the command history.
+      </Step>
+    </SampleTask>
+  </RunningTheSample>
+  <AdditionalResources>
+    <Resource>
+      <Title>Visual Studio SDK Website</Title>
+      <URL>http://msdn.microsoft.com/vstudio/extend</URL>
+    </Resource>
+  </AdditionalResources>
+  <FunctionalTests>
+  </FunctionalTests>
+  <ProjectFiles>
+    <File>
+      <Name>IronPythonConsolePackage.cs</Name>
+      <Description>
+        This file contains the definition of the package. Inside this file is the code to register
+        the service with the shell, with a registration attribute to update the registry and with a call
+        to the base class's implementation of IServiceContainer to add the service to the list of the
+        proffered services.
+      </Description>
+    </File>
+    <File>
+      <Name>IronPythonEngineProvider.cs</Name>
+      <Description>
+        This file contains the definition of the interface used to expose the service and the definition
+        of the class that implements this interface in order to provide the actual implementation of the
+        service.
+      </Description>
+    </File>
+    <File>
+      <Name>CommandBuffer.cs</Name>
+      <Description>
+        This file contains the implementation of the CommandBuffer class. This is the class that interacts
+        with the IronPython engine to execute the text entered by the user.
+      </Description>
+    </File>
+    <File>
+      <Name>ConsoleWindow.cs</Name>
+      <Description>
+        This file contains the implementation of the console tool window. Here is where the text buffer,
+        the text view, and the window frame are created, where the IronPython engine is initialized, and
+        where the command handlers for the console are defined.
+      </Description>
+    </File>
+    <File>
+      <Name>ConsoleAuthoringScope.cs</Name>
+      <Description>
+        This file contains the implementation of the AuthoringScope used by the IronPython language 
+        service when running inside the console window. The AuthoringScope is the object responsible
+        for the creation of the list of methods shown by the statement completion window.
+      </Description>
+    </File>
+    <File>
+      <Name>HistoryBuffer.cs</Name>
+      <Description>
+        This is the implementation of a buffer specialized to store the history of the commands executed
+        in the console window.
+      </Description>
+    </File>
+    <File>
+      <Name>TextBufferStream.cs</Name>
+      <Description>
+        Implementation of a class derived from System.IO.Stream that creates a stream on top
+        of a text buffer. This is used by the console window to set the standard input and standard
+        output streams of the IronPython engine.
+      </Description>
+    </File>
+  </ProjectFiles>
+</VSSDKSample>

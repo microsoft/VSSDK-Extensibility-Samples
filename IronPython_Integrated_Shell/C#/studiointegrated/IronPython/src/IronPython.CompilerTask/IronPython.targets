@@ -1,0 +1,119 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Add properties required for WPF -->
+  <PropertyGroup>
+    <MSBuildAllProjects>
+      $(MSBuildAllProjects);$(IronPythonPath)\IronPython.targets
+    </MSBuildAllProjects>
+    <DefaultLanguageSourceExtension>.py</DefaultLanguageSourceExtension>
+    <Language>IronPython</Language>
+  </PropertyGroup>
+
+  <!--Import the standards targets-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+
+  <!--Reference the assembly where our tasks are defined-->
+  <UsingTask TaskName="Microsoft.Samples.VisualStudio.IronPython.CompilerTasks.IronPythonCompilerTask" AssemblyFile="Microsoft.Samples.VisualStudio.IronPython.CompilerTasks.dll" />
+  <UsingTask TaskName="CreateCSharpManifestResourceName"
+           AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" />
+
+  <!--Compile target (this is the target that calls the compiler task)-->
+  <Target Name="IronPythonCompilerTarget"
+          Inputs="@(Compile);@(ReferencePath);@(ManifestResourceWithNoCulture);@(ManifestNonResxWithNoCultureOnDisk);@(CompiledLicenseFile)"
+          Outputs="@(IntermediateAssembly)">
+    <Message Text="Building: @(IntermediateAssembly)" />
+    <IronPythonCompilerTask
+      SourceFiles="@(Compile)"
+      OutputAssembly="@(IntermediateAssembly)"
+      ReferencedAssemblies="@(ReferencePath)"
+      ResourceFiles="@(ManifestResourceWithNoCulture);@(ManifestNonResxWithNoCultureOnDisk);@(CompiledLicenseFile)"
+      MainFile="$(MainFile)"
+      TargetKind="$(OutputType)"
+      DebugSymbols="$(DebugSymbols)"
+      ProjectPath="$(MSBuildProjectDirectory)"
+      UseExperimentalCompiler="$(UseIPExperimentalCompiler)"
+      />
+  </Target>
+
+  <!--This is an override of CoreCompile to have our IronPythonCompilerTarget be called at compile time-->
+  <Target
+      Name="CoreCompile"
+      Inputs="@(Compile);
+              @(ReferencePath)"
+      Outputs="@(IntermediateAssembly)"
+      DependsOnTargets="$(CoreCompileDependsOn);IronPythonCompilerTarget"
+    >
+  </Target>
+
+  <!--
+    The CreateManifestResourceNames target create the manifest resource names from the .RESX
+    files.
+
+        [IN]
+        @(ResxWithNoCulture) - The names the non-culture .RESX files.
+        @(ResxWithCulture) - The names the culture .RESX files.
+        @(NonResxWithNoCulture) - The names of the non-culture non-RESX files (like bitmaps, etc).
+        @(NonResxWithCulture) - The names of the culture non-RESX files (like bitmaps, etc).
+
+        [OUT]
+        @(ManifestResourceWithNoCultureName) - The corresponding manifest resource name (.RESOURCE)
+        @(ManifestResourceWithCultureName) - The corresponding manifest resource name (.RESOURCE)
+        @(ManifestNonResxWithNoCulture) - The corresponding manifest resource name.
+        @(ManifestNonResxWithCulture) - The corresponding manifest resource name.
+
+    For IronPython applications the transformation is like:
+
+        Resources1.resx => RootNamespace.Resources1 => Build into main assembly
+        SubFolder\Resources1.resx => RootNamespace.SubFolder.Resources1 => Build into main assembly
+        Resources1.fr.resx => RootNamespace.Resources1.fr => Build into satellite assembly
+        Resources1.notaculture.resx => RootNamespace.Resources1.notaculture => Build into main assembly
+
+    For other project systems, this transformation may be different.
+    -->
+  <PropertyGroup>
+    <CreateManifestResourceNamesDependsOn></CreateManifestResourceNamesDependsOn>
+  </PropertyGroup>
+  <Target
+      Name="CreateManifestResourceNames"
+      Condition="'@(ResxWithNoCulture)@(ResxWithCulture)@(NonResxWithNoCulture)@(NonResxWithCulture)'!=''"
+      DependsOnTargets="$(CreateManifestResourceNamesDependsOn)"
+        >
+
+    <!-- Create the target resource names for non-culture resx files. -->
+    <CreateCSharpManifestResourceName Condition="'@(ResxWithNoCulture)'!=''"
+          ResourceFiles="@(ResxWithNoCulture)"
+          RootNamespace="$(RootNamespace)">
+
+      <Output TaskParameter="ManifestResourceNames" ItemName="ManifestResourceWithNoCultureName"/>
+
+    </CreateCSharpManifestResourceName>
+
+    <!-- Create the target resource names for culture resx files. -->
+    <CreateCSharpManifestResourceName Condition="'@(ResxWithCulture)'!=''"
+          ResourceFiles="@(ResxWithCulture)"
+          RootNamespace="$(RootNamespace)">
+
+      <Output TaskParameter="ManifestResourceNames" ItemName="ManifestResourceWithCultureName"/>
+
+    </CreateCSharpManifestResourceName>
+
+    <!-- Create the target resource names for non-culture non-resx files. -->
+    <CreateCSharpManifestResourceName Condition="'@(NonResxWithNoCulture)'!=''"
+          ResourceFiles="@(NonResxWithNoCulture)"
+          RootNamespace="$(RootNamespace)">
+
+      <Output TaskParameter="ManifestResourceNames" ItemName="ManifestNonResxWithNoCulture"/>
+
+    </CreateCSharpManifestResourceName>
+
+    <!-- Create the target resource names for culture non-resx files. -->
+    <CreateCSharpManifestResourceName Condition="'@(NonResxWithCulture)'!=''"
+          ResourceFiles="@(NonResxWithCulture)"
+          RootNamespace="$(RootNamespace)">
+
+      <Output TaskParameter="ManifestResourceNames" ItemName="ManifestNonResxWithCulture"/>
+
+    </CreateCSharpManifestResourceName>
+  </Target>
+
+</Project>

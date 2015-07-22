@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>for</Title>
+			<Shortcut>for</Shortcut>
+			<Description>Code snippet for 'for' loop</Description>
+			<Author>Microsoft Corporation</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>index</ID>
+					<Default>i</Default>
+					<ToolTip>Index</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>max</ID>
+					<Default>length</Default>
+					<ToolTip>Max length</ToolTip>
+				</Literal>
+			</Declarations>
+
+			<Code Language="IronPython">
+<![CDATA[for $index$ in range(0,$max$):
+	$selected$$end$
+]]>
+    			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

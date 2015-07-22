@@ -1,0 +1,26 @@
+<!--
+    You can find existing browser definitions at
+    <windir>\Microsoft.NET\Framework\<ver>\CONFIG\Browsers
+-->
+<browsers>
+    <browser id="NewBrowser" parentID="Mozilla">
+        <identification>
+            <userAgent match="Unique User Agent Regular Expression" />
+        </identification>
+
+        <capture>
+            <userAgent match="NewBrowser (?'version'\d+\.\d+)" />
+        </capture>
+
+        <capabilities>
+            <capability name="browser" value="My New Browser" />
+            <capability name="version" value="${version}" />
+        </capabilities>
+    </browser>
+
+    <browser refID="Mozilla">
+        <capabilities>
+            <capability name="xml" value="true" />
+        </capabilities>
+    </browser>
+</browsers>

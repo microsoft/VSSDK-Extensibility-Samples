@@ -1,0 +1,20 @@
+<VSTemplate Version="2.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Windows Application</Name>
+    <Description>A project for creating an application with a Windows user interface</Description>
+    <Icon>__TemplateIcon.ico</Icon>
+    <ProjectType>IronPython</ProjectType>
+    <SortOrder>30</SortOrder>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>WindowsApplication</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="IronPythonWinApp.pyproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Form1.py</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Program.py</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

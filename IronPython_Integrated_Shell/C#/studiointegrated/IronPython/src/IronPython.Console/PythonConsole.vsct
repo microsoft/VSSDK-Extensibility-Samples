@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!--This is the file that defines the actual layout and type of the commands. 
+  It is divided in different sections (e.g. command definition, command 
+  placement, ...), with each defining a specific set of properties. 
+  See the comment before each section for more details about how to 
+  use it. -->
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+
+    <!--The Commands section is where we the commands, menus and menu groups are defined.  
+  This section uses a Guid to identify the package that provides the command defined  
+  inside it. -->
+  <Commands package="guidPythonConsolePkg">
+    <!--Inside this section we have different sub-sections: one for the menus, another  
+    for the menu groups, one for the buttons (the actual commands), one for the combos 
+    and the last one for the bitmaps used. Each element is identified by a command id that  
+    is a unique pair of guid and numeric identifier; the guid part of the identifier is usually  
+    called "command set" and is used to group different command inside a logically related  
+    group; your package should define its own command set in order to avoid collisions  
+    with command ids defined by other packages. -->
+    <!--This is the sub-section that defines the menus and toolbars. -->
+    <Menus>
+      <!--To define an element in this group you need an ID, a parent group, a display priority, 
+      a menu type, a name and a default text. -->
+      <!-- Create a context menu to use inside the console window. -->
+      <Menu guid="guidPythonConsoleCmdSet" id="IPConsoleCtx" priority="0x0000" type="Context">
+        <Parent guid="guidPythonConsoleCmdSet" id="0" />
+        <Strings>
+          <ButtonText>IronPython Console Context</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+    <!--In this section you can define new menu groups. A menu group is a container for 
+    other menus or buttons (commands); from a visual point of view you can see the 
+    group as the part of a menu contained between two lines. The parent of a group 
+    must be a menu. -->
+    <Groups>
+      <!-- Define a group inside our context menu for the standard edit commands -->
+      <Group guid="guidPythonConsoleCmdSet" id="IPConsoleEditGrp" priority="0x100">
+        <Parent guid="guidPythonConsoleCmdSet" id="IPConsoleCtx" />
+      </Group>
+      <!-- Define a group inside the our context menu. -->
+      <Group guid="guidPythonConsoleCmdSet" id="IPConsoleClearGrp" priority="0x200">
+        <Parent guid="guidPythonConsoleCmdSet" id="IPConsoleCtx" />
+      </Group>
+    </Groups>
+    
+    <!--This section defines the elements the user can interact with, like a menu command or a button  
+        or combo box in a toolbar. -->
+    <Buttons>
+      <!-- Command that is used to show the console window -->
+      <Button guid="guidPythonConsoleCmdSet" id="cmdidPythonConsole" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Icon guid="guidPythonConsoleBmp" id="bmpConsole" />
+        <Strings>
+          <ButtonText>IronPython Console</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <!-- The bitmaps section is used to define the bitmaps that are used for the commands. -->
+    <Bitmaps>
+      <Bitmap guid="guidPythonConsoleBmp" href="PythonConsoleIcon_32Bit.bmp" usedList="bmpConsole" />
+    </Bitmaps>
+  </Commands>
+ 
+  <!--Inside this section, we have the ability to place menu groups inside some other menu or 
+      menu / commands inside other groups. 
+      For instance, it is possible to place one of VisualStudio's menus or commands inside one of our  
+      groups or one of our groups inside a menu defined somewhere else. -->
+  <CommandPlacements>
+    <CommandPlacement guid="guidVSStd97" id="cmdidCut" priority="0x0100">
+      <Parent guid="guidPythonConsoleCmdSet" id="IPConsoleEditGrp" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidVSStd97" id="cmdidCopy" priority="0x0300">
+      <Parent guid="guidPythonConsoleCmdSet" id="IPConsoleEditGrp" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidVSStd97" id="cmdidPaste" priority="0x0500">
+      <Parent guid="guidPythonConsoleCmdSet" id="IPConsoleEditGrp" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidVSStd97" id="cmdidClearPane" priority="0x100">
+      <Parent guid="guidPythonConsoleCmdSet" id="IPConsoleClearGrp" />
+    </CommandPlacement>
+  </CommandPlacements>
+
+  <!--Within this section you can specify the set of commands defined somewhere else that your  
+      packages uses; for instance if your package uses the standard ‘Copy’ command, you don’t  
+      need to define it, because it is defined by the shell, but you have to use this section  
+      of the CTC file to notify the shell that your package uses it using this section. -->
+  <UsedCommands>
+    <UsedCommand guid="guidVSStd97" id="cmdidCut" />
+    <UsedCommand guid="guidVSStd97" id="cmdidCopy" />
+    <UsedCommand guid="guidVSStd97" id="cmdidPaste" />
+    <UsedCommand guid="guidVSStd97" id="cmdidClearPane" />
+  </UsedCommands>
+
+  <Symbols>
+    <GuidSymbol name="guidPythonConsolePkg" value="{068980a2-def8-4422-adc4-76af7a935e7e}" />
+    <GuidSymbol name="guidPythonConsoleCmdSet" value="{aba8cb4c-73e3-4a11-8cde-9501d0a2ab9e}">
+      <IDSymbol name="IPConsoleCtx" value="0x2100" />
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="IPConsoleEditGrp" value="0x1030" />
+      <IDSymbol name="IPConsoleClearGrp" value="0x1040" />
+      <IDSymbol name="cmdidPythonConsole" value="0x101" />
+    </GuidSymbol>
+    <GuidSymbol name="guidPythonConsoleBmp" value="{AAFB4F49-EEB2-4011-B8F7-FC374D69BDF3}">
+      <IDSymbol name="bmpConsole" value="0x01" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Include>
+  <?define ShellName = "Microsoft Visual Studio Shell 2015 (Integrated)"?>
+  <?define ShellVersion = "14.0"?>
+    
+  <?define CompanyName = "Microsoft" ?>
+  <?define ShortProductName = "IronPythonStudio" ?>
+  <?define FullProductName = "IronPython Studio 2015" ?>
+  <?define ProductVersion = "1.0" ?>
+  <?define ProductDescription = "IronPython Studio for Visual Studio 2015 Shell Integrated"?>
+  <?define ProductLanguage = "1033" ?>
+
+  <!-- Registry key used to determine if your application is installed.-->
+  <?define ProductRegKey = "Software\$(var.CompanyName)\$(var.ShortProductName)\$(var.ProductVersion)" ?>
+
+  <?define IdeFolder = "Common7\IDE" ?>
+  <?define ExtensionsFolder = "$(var.IdeFolder)\Extensions" ?>
+
+  <?define DteClsidRegKey = "CLSID\{d958827b-a373-4e20-979e-cf860abc4b8c}" ?>
+  <?define SolutionClsidRegKey = "CLSID\{81d9c4f5-cf62-410e-8343-0b9b6a4e73fc}" ?>
+
+  <?define BuildOutputDir = "$(var.SolutionDir)$(var.Configuration)\"?>
+  <?define IronPythonExtensionDir = "$(var.BuildOutputDir)Extensions\Application\IronPython\" ?>
+</Include>

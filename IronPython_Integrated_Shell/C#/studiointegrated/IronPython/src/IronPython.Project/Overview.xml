@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="../../../Common/Overview.xsl" type="text/xsl"?>
+<VSSDKSample>
+  <ImagePath>../../../Common</ImagePath>
+  <Status>
+    <Accessibility>true</Accessibility>
+    <Comments>true</Comments>
+    <Documentation>true</Documentation>
+    <ErrorHandling>true</ErrorHandling>
+    <FollowSDKCodingStandards>true</FollowSDKCodingStandards>
+    <Localizable>true</Localizable>
+    <Overview>true</Overview>
+    <ScenarioTests>true</ScenarioTests>
+    <Supported>true</Supported>
+    <Style>Example</Style>
+  </Status>
+  <Overview>
+    <ShortName>C# Example.IronPythonProject</ShortName>
+    <LongName>IronPython Project</LongName>
+    <Phrase>Integrating a project type for IronPython.</Phrase>
+  </Overview>
+  <Introduction>
+    <Summary>
+      This sample is a component of IronPython integration inside Visual Studio and it demostrates how to create a project type and a winforms designer.
+      The sample is based on the Project Framework and references the source code installed with the VSSDK.
+      Support is also included for the WPF designer.
+      The main goals of this sample are:
+    </Summary>
+    <Goal>Creating a Visual Studio project type for building Windows Forms applications using Iron Python</Goal>
+    <Goal>Creating a Visual Studio project type for building Web Application Projects using Iron Python</Goal>
+    <Goal>Creating a Visual Studio project type for building Web Site Projects using Iron Python</Goal>
+    <Goal>Creating a Visual Studio project type for building WPF Applications using Iron Python</Goal>
+    <Image width="400" height="400">Project.jpg</Image>
+  </Introduction>
+  <SampleInfo>
+    <State>
+    </State>
+    <Type>Example</Type>
+    <Complexity>3</Complexity>
+    <Screenshot>Project.jpg</Screenshot>
+    <Area>Iron Python</Area>
+    <Language>C#</Language>
+    <Folder>VisualStudioIntegration\Samples\IronPythonIntegration\</Folder>
+    <SampleSolution>Project\PythonProject.sln</SampleSolution>
+    <Doc />
+    <Keywords>
+      <Keyword>Iron Python</Keyword>
+      <Keyword>Project</Keyword>
+    </Keywords>
+  </SampleInfo>
+  <BuildingTheSample>
+    <Step>
+      Open the PythonProject.sln solution.
+    </Step>
+    <Step>
+      Press F5 to build the sample, register it in the experimental hive, and launch Visual Studio from the experimental hive.
+    </Step>
+  </BuildingTheSample>
+  <RunningTheSample>
+    <SampleTask>
+      <Description>
+        To see the sample's functionality...
+      </Description>
+      <Step>
+        On the <bold>File</bold> menu, click <bold>New Project</bold> to display the <bold>New Project</bold> dialog box.
+      </Step>
+      <Step>
+        Create a new <bold>PythonProject Console Application</bold>.
+        The new solution appears in <bold>Solution Explorer</bold>, the file Program.py appears in the code editor, and the project 
+        properties appear in the <bold>Properties Browser</bold>.
+      </Step>
+      <Step>
+        Right-click the project node and click <bold>Properties</bold>.
+      </Step>
+      <Step>
+        The <bold>Property Pages</bold> dialog box appears and displays the common and configuration properties.
+      </Step>
+      <Step>
+        Close the dialog box. Press F5 to build and run the IronPython program Program.py.
+        A console window opens, displays "Hello VSIP!", and closes.
+      </Step>
+    </SampleTask>
+  </RunningTheSample>
+  <AdditionalResources>
+    <Resource>
+      <Title>Visual Studio SDK Website</Title>
+      <URL>http://msdn.microsoft.com/vstudio/extend</URL>
+    </Resource>
+  </AdditionalResources>
+  <FunctionalTests>
+    <Test>
+	    Make sure that the project can add new IronPython items.
+    </Test>
+    <Test>
+	    Make sure that the project can add a reference.
+    </Test>
+  </FunctionalTests>
+  <ProjectFiles>
+    <File>
+      <Name>Automation.cs</Name>
+      <Description>
+        Contains a number of classes that enables automation of the IronPython project and py files in the Iron Python Project. Especially the project object enables the CodeModel
+      </Description>
+    </File>
+    <File>
+      <Name>ConfigurationPropertyPages.cs</Name>
+      <Description>
+        Contains a definition for the build property page in the Project Designer.
+      </Description>
+    </File>
+    <File>
+      <Name>EditorFactory.cs</Name>
+      <Description>
+        Contains a definition for the editor factory that creates the editor for editting iron python code files in code/design view
+      </Description>
+    </File>
+    <File>
+      <Name>Enums.cs</Name>
+      <Description>
+        Contains enumerations defined for the Iron Python Project.
+      </Description>
+    </File>
+    <File>
+      <Name>Guids.cs</Name>
+      <Description>
+        Defines the Package and Project guids.
+      </Description>
+    </File>
+    <File>
+      <Name>PkgCmd.vsct</Name>
+      <Description>
+        Defines the layout for Iron Python specific commands.
+      </Description>
+    </File>
+    <File>
+      <Name>ProjectDocumentsListenerForMainFileUpdates.cs</Name>
+      <Description>Implements a project listener that updates the mainfile project property in the iron python project whenever files are renamed/added/deleted</Description>
+    </File>
+    <File>
+      <Name>PropertyPages.cs</Name>
+      <Description>Contains the implementation for the General Tab in the Projct Designer</Description>
+    </File>
+    <File>
+      <Name>PythonConfigProvider.cs</Name>
+      <Description>Enables the Any CPU Platform name for Iron Python Projects</Description>
+    </File>
+    <File>
+      <Name>PythonFileNode.cs</Name>
+      <Description>Contains Iron Python specific implementation details of FileNode</Description>
+    </File>
+    <File>
+      <Name>PythonFileNodeProperties.cs</Name>
+      <Description>Contains a definition of the Iron Python specific Node properties. The class derives from SingleFileNodeProperties which means that a Custom Tool can be associated with a py file.</Description>
+    </File>
+    <File>
+      <Name>PythonMenus.cs</Name>
+      <Description>
+        Defines CommandIDs matching the commands defined symbols in PkgCmd.vsct.
+      </Description>
+    </File>
+    <File>
+      <Name>PythonProjectFactory.cs</Name>
+      <Description>
+        Defines the Iron Python project factory.
+      </Description>
+    </File>
+    <File>
+      <Name>PythonProjectFileConstants.cs</Name>
+      <Description>
+        Defines constants used by the Iron Python project file.
+      </Description>
+    </File>
+    <File>
+      <Name>PythonProjectNode.cs</Name>
+      <Description>
+        Contains the implementation for the project node in the Iron Python Project.
+      </Description>
+    </File>
+    <File>
+      <Name>PythonProjectNodeProperties.cs</Name>
+      <Description>Defines Iron Python specific Node Properties for the ProjectNode object</Description>
+    </File>
+    <File>
+      <Name>PythonPrjectPackage.cs</Name>
+      <Description>
+        Defines the package object for Iron Python project package.
+      </Description>
+    </File>
+    <File>
+      <Name>PythonProjectReferenceNode.cs</Name>
+      <Description>
+        Defines Iron Python Project specific requirements for project to project references.
+      </Description>
+    </File>
+    <File>
+      <Name>PythonReferenceContainerNode.cs</Name>
+      <Description>
+        Defines the reference container node for Iron Python projects.
+      </Description>
+    </File>
+    <File>
+      <Name>SelectionElementValueChangedListener.cs</Name>
+      <Description>Defines a Selection changed listener that enables the RunGenerator on a python file node to be triggered when focus is removed from an active iron python document window</Description>
+    </File>
+    <File>
+      <Name>VSMDPythonProvider.cs</Name>
+      <Description>Contains the definition of the IronPython CodeDOM Provider. The provider listen for reference event in order to stay in sync with list of references in the IronPython project</Description>
+    </File>
+    <File>
+      <Name>WPFProviders\PythonEventBindingProvider.cs</Name>
+      <Description>Contains the PythonEventBindingProvider which provides the communication between the WPF designer and the associated code file for adding and navigating to event handlers.</Description>
+    </File>
+    <File>
+      <Name>WPFProviders\PythonRuntimeNameProvider.cs</Name>
+      <Description>Contains the PythonRuntimeNameFactory which contains logic to generate uniquely named code fields for WPF designer scenarios.</Description>
+    </File>
+    <File>
+      <Name>WPFProviders\PythonWPFFlavor.cs</Name>
+      <Description>
+        Contains the definition of the Iron Python project flavor of the WPFFlavor.
+      </Description>
+    </File>
+    <File>
+      <Name>WPFProviders\PythonWPFProjectFactory.cs</Name>
+      <Description>
+        Defines the factory object for the Iron Python project flavor of the WPFFlavor.
+      </Description>
+    </File>
+  </ProjectFiles>
+</VSSDKSample>

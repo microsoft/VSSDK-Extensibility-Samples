@@ -1,0 +1,18 @@
+<VSTemplate Version="2.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3324"/>
+    <Description Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="3325"/>
+    <Icon Package="{39c9c826-8ef8-4079-8c95-428f5b1c323f}" ID="4724"/>
+    <TemplateID>SiteMap</TemplateID>
+    <TemplateGroupID>Web</TemplateGroupID>
+    <ProjectType>IronPython</ProjectType>
+    <ProjectSubType>Web</ProjectSubType>
+    <ShowByDefault>false</ShowByDefault>
+    <SortOrder>27</SortOrder>
+    <DefaultName>Web.sitemap</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectItem>Web.sitemap</ProjectItem>
+  </TemplateContent>
+</VSTemplate>
