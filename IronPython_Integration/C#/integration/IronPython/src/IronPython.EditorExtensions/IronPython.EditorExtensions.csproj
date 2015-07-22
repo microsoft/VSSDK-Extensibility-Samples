@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20820</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6004EB71-76F9-41EA-9355-A273B61FBF3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IronPython.EditorExtensions</RootNamespace>
+    <AssemblyName>Microsoft.Samples.VisualStudio.IronPython.EditorExtensions</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <PlatformTarget>x86</PlatformTarget>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(ProgramFiles)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeployExtension>false</DeployExtension>
+    <CopyVsixExtensionFiles>true</CopyVsixExtensionFiles>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IronMath, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\lib\IronPython\IronMath.dll</HintPath>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Reference>
+    <Reference Include="IronPython, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>..\..\lib\IronPython\IronPython.dll</HintPath>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Reference>
+    <Reference Include="microsoft.msxml" />
+    <Reference Include="Microsoft.VisualStudio.CoreUtility" />
+    <Reference Include="Microsoft.VisualStudio.Editor" />
+    <Reference Include="Microsoft.VisualStudio.ExtensibilityHosting" />
+    <Reference Include="Microsoft.VisualStudio.Language.Intellisense" />
+    <Reference Include="Microsoft.VisualStudio.Language.NavigateTo.Interfaces" />
+    <Reference Include="Microsoft.VisualStudio.Language.StandardClassification" />
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop" />
+    <Reference Include="Microsoft.VisualStudio.Package.LanguageService.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.14.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.11.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.12.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.12.0">
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.Data" />
+    <Reference Include="Microsoft.VisualStudio.Text.Logic" />
+    <Reference Include="Microsoft.VisualStudio.Text.UI" />
+    <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf" />
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop" />
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BraceMatching\BraceMatchingPresenter.cs" />
+    <Compile Include="BraceMatching\BraceMatchingFactory.cs" />
+    <Compile Include="BraceMatching\PyBraceMatchProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BraceMatching\PyBraceMatchCompilerSink.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classification\PyClassificationTypes.cs" />
+    <Compile Include="Classification\PyClassificationDefinitions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classification\PyClassificationProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classification\PyClassifier.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Completion\CompletionCommandFilterProvider.cs" />
+    <Compile Include="Completion\CompletionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Completion\CompletionControllerProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Completion\CompletionSetExtensions.cs" />
+    <Compile Include="Completion\CompletionSource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Completion\CompletionSourceProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Completion\PyCompletion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Completion\SnippetsEnumerator.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Engine\Analyzer.cs" />
+    <Compile Include="Engine\Definitions.cs" />
+    <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Engine\Inferred.cs" />
+    <Compile Include="Engine\Locator.cs" />
+    <Compile Include="Engine\Modules.cs" />
+    <Compile Include="Engine\Scope.cs" />
+    <Compile Include="Engine\ScopeWalker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PyContentTypeDefinition.cs" />
+    <Compile Include="TextBufferExtension.cs" />
+    <Compile Include="Validation\ErrorListPresenter.cs" />
+    <Compile Include="Validation\ErrorListFactory.cs" />
+    <Compile Include="Validation\PyErrorListProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validation\PyErrorListCompilerSink.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validation\ValidationError.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IronPython.Interfaces\IronPython.Interfaces.csproj">
+      <Project>{5453C71D-F7AA-482D-994B-0E5656F3F3C6}</Project>
+      <Name>IronPython.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
