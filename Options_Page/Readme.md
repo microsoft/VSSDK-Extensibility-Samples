@@ -1,6 +1,6 @@
 
 # Title: Options Page Sample
-** Abstract:** Add custom pages to the Visual Studio Options dialog.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+**Abstract:** Add custom pages to the Visual Studio Options dialog.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, VSX
