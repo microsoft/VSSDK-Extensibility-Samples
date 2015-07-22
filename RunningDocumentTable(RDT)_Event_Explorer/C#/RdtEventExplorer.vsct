@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- 
+  ***************************************************************************
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    This code is licensed under the Visual Studio SDK license terms.
+    THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+  ***************************************************************************
+  -->
+
+  <!--This is the file that defines the actual layout and type of the commands. 
+  It is divided in different sections (e.g. command definition, command 
+  placement, ...), with each defining a specific set of properties. 
+  See the comment before each section for more details about how to 
+  use it. -->
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio.-->
+  <Extern href="stdidcmd.h"/>
+  <!--This header contains the command ids for the menus provided by the shell.-->
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidRdtEventExplorerPkg">
+    <!--Inside this section we have different sub-sections: one for the menus, another  
+        for the menu groups, one for the buttons (the actual commands), one for the combos 
+        and the last one for the bitmaps used. Each element is identified by a command id that  
+        is a unique pair of guid and numeric identifier; the guid part of the identifier is usually  
+        called "command set" and is used to group different command inside a logically related  
+        group; your package should define its own command set in order to avoid collisions  
+        with command ids defined by other packages. -->
+    <Menus>
+      <!--A toolbar is a menu with itself as the "Relative to Group" and a "Type" of "ToolWindowToolbar" -->
+      <Menu guid="guidRdtEventExplorerCmdSet" id="IDM_MyToolbar" priority="0x0000" type="ToolWindowToolbar">
+        <Parent guid="guidRdtEventExplorerCmdSet" id="IDM_MyToolbar"/>
+        <Strings>
+          <ButtonText>Window ToolBar</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+    <!-- In this section you can define new menu groups. A menu group is a container for 
+         other menus or buttons (commands); from a visual point of view you can see the 
+         group as the part of a menu contained between two lines. The parent of a group 
+         must be a menu. -->
+    <Groups>
+      <!--To define a menu group you have to specify its ID, the parent menu and its display priority. -->
+      <Group guid="guidRdtEventExplorerCmdSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+      <!-- On the toolbar (menu) we can have 1 or more group that will contain the buttons -->
+      <Group guid="guidRdtEventExplorerCmdSet" id="IDG_MyToolbarGroup" priority="0x0500">
+        <Parent guid="guidRdtEventExplorerCmdSet" id="IDM_MyToolbar"/>
+      </Group>
+    </Groups>
+    <!--This section defines the elements the user can interact with, like a menu command or a button  
+        or combo box in a toolbar. -->
+    <Buttons>
+      <Button guid="guidRdtEventExplorerCmdSet" id="cmdidMyTool" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+        <Icon guid="guidRdtEventExplorerImages" id="bmpMyToolwindow"/>
+        <Strings>
+          <ButtonText>RDT Event Explorer</ButtonText>
+        </Strings>
+      </Button>
+      <!-- The following commands will appear on the tool window toolbar -->
+      <Button guid="guidRdtEventExplorerCmdSet" id="cmdidRefreshWindowsList" priority="0x100" type="Button">
+        <Parent guid="guidRdtEventExplorerCmdSet" id="IDG_MyToolbarGroup"/>
+        <Icon guid="guidRdtEventExplorerImages" id="bmpRefresh"/>
+        <Strings>
+          <ButtonText>Refresh</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidRdtEventExplorerCmdSet" id="cmdidClearWindowsList" priority="0x100" type="Button">
+        <Parent guid="guidRdtEventExplorerCmdSet" id="IDG_MyToolbarGroup"/>
+        <Icon guid="guidRdtEventExplorerImages" id="bmpClear"/>
+        <Strings>
+          <ButtonText>Clear</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <!-- The bitmaps section is used to define the bitmaps that are used for the commands. -->
+    <Bitmaps>
+      <!-- The bitmap id is defined in a way that is a little bit different from the others: 
+       the declaration starts with a guid for the bitmap strip, then there is the resource id of the 
+       bitmap strip containing the bitmaps and then there are the numeric ids of the elements used 
+       inside a button definition. An important aspect of this declaration is that the element id 
+       must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
+      <Bitmap guid="guidRdtEventExplorerImages" href="Resources\Images.png" usedList="bmpMyToolwindow, bmpClear, bmpRefresh"/>
+    </Bitmaps>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidRdtEventExplorerPkg" value="{4881b54b-664b-4d84-91f3-494292e21010}" />
+    <GuidSymbol name="guidRdtEventExplorerCmdSet" value="{f520383c-4ee3-4155-a499-2fe423f5e9e6}">
+      <IDSymbol name="IDM_MyToolbar" value="0x0101"/>
+      <IDSymbol name="MyMenuGroup" value="0x1020"/>
+      <IDSymbol name="IDG_MyToolbarGroup" value="0x1001"/>
+
+      <IDSymbol name="cmdidMyTool" value="0x2001"/>
+      <IDSymbol name="cmdidClearWindowsList" value="0x2002"/>
+      <IDSymbol name="cmdidRefreshWindowsList" value="0x2003"/>
+    </GuidSymbol>
+    
+    <GuidSymbol name="guidRdtEventExplorerImages" value="{78C22100-63B4-4bb8-85F5-BB8EFD0924AC}" >
+      <IDSymbol name="bmpMyToolwindow" value="0x1"/>
+      <IDSymbol name="bmpClear" value="0x2"/>
+      <IDSymbol name="bmpRefresh" value="0x3"/>
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22723.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D373772E-6B4C-448D-B7D7-578E1F0E129A}"
+	ProjectSection(SolutionItems) = preProject
+		RdtEventExplorer.jpg = RdtEventExplorer.jpg
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RdtEventExplorer", "RdtEventExplorer.csproj", "{9831A7AE-9980-45DB-9C9C-AAAD60C3EC4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9831A7AE-9980-45DB-9C9C-AAAD60C3EC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9831A7AE-9980-45DB-9C9C-AAAD60C3EC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9831A7AE-9980-45DB-9C9C-AAAD60C3EC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9831A7AE-9980-45DB-9C9C-AAAD60C3EC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+		DebugSamples100.Connect = 0;Configure Debugging for VSIP Experimental Instance;ConfigVSIPDebug
+	EndGlobalSection
+EndGlobal
