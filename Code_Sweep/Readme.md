@@ -1,4 +1,4 @@
-# Title: Reference Package Sample
+# Title: Code Sweep Sample
 **Abstract:** Sweep a solution looking for any words that match search terms
 in an XML Schema. Display any matches on the Task List.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
 
