@@ -1,0 +1,78 @@
+﻿<?xml version="1.0"?>
+
+<!--
+ 
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+
+<xmldata>
+  <PLCKTT>
+    <Lang>
+
+      <!--Term tag specifies term and related attributes-->
+      <!--Term attribute = the term to scan for (required)-->
+      <!--Severity attribute = the priority or severity of this term from 1 to 3 (required)-->
+      <!--TermClass attribute = the category of the term (required)-->
+      <Term 
+        Term="darn"   
+        Severity="2"  
+        TermClass="Profanity"> 
+
+
+        <!--recommended replacement term/phrase-->
+        <!--can have 0 or 1 RecommendedTerm tags for each term-->
+        <RecommendedTerm>dang</RecommendedTerm>
+
+        <!--relevant comment displayed for that term-->
+        <!--each Term tag must contain exactly one Comment tag-->
+        <Comment>Some cultures consider this taboo</Comment>
+
+        <!--an exclusion is a phrase (containing the Term) which should be considered an exception and always skipped over (comparison is case-insensitive)-->
+        <!--you can have as many Exclusion tags in each Term tag as you wish-->
+        <Exclusion>gosh darn it all</Exclusion>
+        <Exclusion>darn some socks</Exclusion>
+      </Term>
+
+
+      <Term Term="hack" Severity="1" TermClass="Tech Jargon">
+        <Comment>Referring to a part of your code as a hack might send the wrong message :)</Comment>
+        <Exclusion>don’t hack down that tree</Exclusion>
+      </Term>
+
+      <Term Term="carney" Severity="2" TermClass="Slang">
+        <RecommendedTerm>carnival worker</RecommendedTerm>
+        <Comment>circus workers allegedly don’t like this</Comment>
+      </Term>
+
+      <Term Term="fool" Severity="1" TermClass="Slang">
+        <Comment>Only OK if used jokingly</Comment>
+        <Exclusion>I pity the fool who still compiles punch cards</Exclusion>
+      </Term>
+
+      <Term Term="french fries" Severity="2" TermClass="Geopolitical">
+        <RecommendedTerm>Freedom Fries</RecommendedTerm>
+        <Comment>Visit http://www.congress.org/ for more info</Comment>
+      </Term>
+
+      <Term Term="shoot" Severity="3" TermClass="Profanity">
+        <Comment>Watch that language!</Comment>
+        <Exclusion>”did you shoot the sheriff?”</Exclusion>
+        <Exclusion>I did not shoot the deputy</Exclusion>
+        <Exclusion>an old-fashioned shoot em up</Exclusion>
+      </Term>
+
+      <Term Term="bug" Severity="3" TermClass="Tech Jargon">
+        <RecommendedTerm>feature</RecommendedTerm>
+        <Comment>It’s by design, dang it!</Comment>
+        <Exclusion>lady bug</Exclusion>
+        <Exclusion>Go bug that lady</Exclusion>
+      </Term>
+
+    </Lang>
+  </PLCKTT>
+</xmldata>

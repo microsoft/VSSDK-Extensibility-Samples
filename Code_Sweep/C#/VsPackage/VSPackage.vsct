@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ 
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+
+  <!--  The VSCT compiler (the tool that translates this file into the binary 
+        format that VisualStudio will consume) has the ability to run a preprocessor 
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so 
+        it is possible to define includes and macros with the same syntax used 
+        in C++ files. Using this ability of the compiler here, we include some files 
+        defining some of the constants that we will use inside the file. -->
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h"/>
+
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h"/>
+
+
+
+
+  <!--The Commands section is where we the commands, menus and menu groups are defined.
+      This section uses a Guid to identify the package that provides the command defined inside it. -->
+  <Commands package="guidVSPackagePkg">
+    <!-- Inside this section we have different sub-sections: one for the menus, another  
+    for the menu groups, one for the buttons (the actual commands), one for the combos 
+    and the last one for the bitmaps used. Each element is identified by a command id that  
+    is a unique pair of guid and numeric identifier; the guid part of the identifier is usually  
+    called "command set" and is used to group different command inside a logically related  
+    group; your package should define its own command set in order to avoid collisions  
+    with command ids defined by other packages. -->
+
+    <Menus>
+      <Menu guid="guidVSPackageCmdSet" id="IDM_CODESWEEP_TASKLIST" priority="0x0000" type="ToolWindowToolbar">
+        <Strings>
+          <ButtonText>CodeSweep Task List</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+
+    <!-- In this section you can define new menu groups. A menu group is a container for 
+         other menus or buttons (commands); from a visual point of view you can see the 
+         group as the part of a menu contained between two lines. The parent of a group 
+         must be a menu. -->
+    <Groups>
+      <Group guid="guidVSPackageCmdSet" id="IDG_CODESWEEP_CONFIG" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_PROJECT"/>
+      </Group>
+      <Group guid="guidVSPackageCmdSet" id="IDG_CODESWEEP_CONFIG" priority="0x0500">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+      </Group>
+      <Group guid="guidVSPackageCmdSet" id="IDG_CODESWEEP_CONFIG" priority="0x0300">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_MULTIPROJ"/>
+      </Group>
+      <Group guid="guidSHLMainMenu" id="IDG_VS_TASKLIST_PROVIDERLIST" priority="0x0100">
+        <Parent guid="guidVSPackageCmdSet" id="IDM_CODESWEEP_TASKLIST"/>
+      </Group>
+      <Group guid="guidVSPackageCmdSet" id="IDG_CODESWEEP_TASKLIST" priority="0x0200">
+        <Parent guid="guidVSPackageCmdSet" id="IDM_CODESWEEP_TASKLIST"/>
+      </Group>
+    </Groups>
+    
+    <!--Buttons section. -->
+    <!--This section defines the elements the user can interact with, like a menu command or a button 
+        or combo box in a toolbar. -->
+    <Buttons>
+      <!--To define a menu group you have to specify its ID, the parent menu and its display priority. 
+          The command is visible and enabled by default. If you need to change the visibility, status, etc, you can use
+          the CommandFlag node.
+          You can add more than one CommandFlag node e.g.:
+              <CommandFlag>DefaultInvisible</CommandFlag>
+              <CommandFlag>DynamicVisibility</CommandFlag>
+          If you do not want an image next to your command, remove the Icon node /> -->
+
+      <Button guid="guidVSPackageCmdSet" id="cmdidConfig" priority="0x0100" type="Button">
+        <Parent guid="guidVSPackageCmdSet" id="IDG_CODESWEEP_CONFIG"/>
+        <Icon guid="guidVSPackageCmdSet" id="bmpCodeSweep"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>C&amp;odeSweep...</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidVSPackageCmdSet" id="cmdidStopScan" priority="0x0000" type="Button">
+        <Icon guid="guidVSPackageCmdSet" id="bmpStop"/>
+        <Strings>
+          <ButtonText>&amp;Stop Scan</ButtonText>
+          <CanonicalName>Stop Scan</CanonicalName>
+          <LocCanonicalName>Stop Scan</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="guidVSPackageCmdSet" id="cmdidRepeatLastScan" priority="0x0000" type="Button">
+        <Icon guid="guidVSPackageCmdSet" id="bmpRepeat"/>
+        <Strings>
+          <ButtonText>&amp;Repeat Last Scan</ButtonText>
+          <CanonicalName>Repeat Last Scan</CanonicalName>
+          <LocCanonicalName>Repeat Last Scan</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="guidVSPackageCmdSet" id="cmdidIgnore" priority="0x0000" type="Button">
+        <Icon guid="guidVSPackageCmdSet" id="bmpIgnore"/>
+        <Strings>
+          <ButtonText>&amp;Ignore</ButtonText>
+          <CanonicalName>Ignore</CanonicalName>
+          <LocCanonicalName>Ignore</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="guidVSPackageCmdSet" id="cmdidDoNotIgnore" priority="0x0000" type="Button">
+        <Strings>
+          <ButtonText>&amp;Do Not Ignore</ButtonText>
+          <CanonicalName>Do Not Ignore</CanonicalName>
+          <LocCanonicalName>Do Not Ignore</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="guidVSPackageCmdSet" id="cmdidShowIgnoredInstances" priority="0x0000" type="Button">
+        <Icon guid="guidVSPackageCmdSet" id="bmpShowIgnored"/>
+        <CommandFlag>CommandWellOnly</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Show Ignored Instances</ButtonText>
+          <CanonicalName>Show Ignored Instances</CanonicalName>
+          <LocCanonicalName>Show Ignored Instances</LocCanonicalName>
+        </Strings>
+      </Button>
+    </Buttons>
+   
+    <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+    <Bitmaps>
+      <!--  The bitmap id is defined in a way that is a little bit different from the others: 
+            the declaration starts with a guid for the bitmap strip, then there is the resource id of the 
+            bitmap strip containing the bitmaps and then there are the numeric ids of the elements used 
+            inside a button definition. An important aspect of this declaration is that the element id 
+            must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
+      <Bitmap guid="guidVSPackageCmdSet" href="Images_32bit.bmp" usedList="1,2,3,4,5"/>
+    </Bitmaps>
+ 
+  </Commands>
+
+  <CommandPlacements>
+    <CommandPlacement guid="guidVSPackageCmdSet" id="cmdidStopScan" priority="0x0100">
+      <Parent guid="guidVSPackageCmdSet" id="IDG_CODESWEEP_TASKLIST"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidVSPackageCmdSet" id="cmdidRepeatLastScan" priority="0x0200">
+      <Parent guid="guidVSPackageCmdSet" id="IDG_CODESWEEP_TASKLIST"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidVSPackageCmdSet" id="cmdidIgnore" priority="0x0300">
+      <Parent guid="guidVSPackageCmdSet" id="IDG_CODESWEEP_TASKLIST"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidVSPackageCmdSet" id="cmdidShowIgnoredInstances" priority="0x0400">
+      <Parent guid="guidVSPackageCmdSet" id="IDG_CODESWEEP_TASKLIST"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidVSPackageCmdSet" id="cmdidIgnore" priority="0x0100">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_TASKLIST_CLIENT"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidVSPackageCmdSet" id="cmdidDoNotIgnore" priority="0x0200">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_TASKLIST_CLIENT"/>
+    </CommandPlacement>
+  </CommandPlacements>
+
+
+
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidVSPackagePkg" value="{2b621c1e-60a3-48c5-a07d-0ad6d3dd3417}" />
+    
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidVSPackageCmdSet" value="{d0882566-3d01-4578-b4f2-0aff36119700}">
+
+      <IDSymbol name="IDM_CODESWEEP_TASKLIST" value="0x2020"/>
+      <IDSymbol name="IDG_CODESWEEP_CONFIG" value="0x1020" />
+      <IDSymbol name="IDG_CODESWEEP_TASKLIST" value="0x2021" />
+
+      <IDSymbol name="cmdidConfig" value="0x100" />
+      <IDSymbol name="cmdidStopScan" value="0x101" />
+      <IDSymbol name="cmdidRepeatLastScan" value="0x102" />
+      <IDSymbol name="cmdidIgnore" value="0x103" />
+      <IDSymbol name="cmdidDoNotIgnore" value="0x104" />
+      <IDSymbol name="cmdidShowIgnoredInstances" value="0x105" />
+
+      <IDSymbol name="bmpCodeSweep" value="1" />
+      <IDSymbol name="bmpStop" value="2" />
+      <IDSymbol name="bmpRepeat" value="3" />
+      <IDSymbol name="bmpIgnore" value="4" />
+      <IDSymbol name="bmpShowIgnored" value="5" />
+    </GuidSymbol>
+  </Symbols>
+
+</CommandTable>
