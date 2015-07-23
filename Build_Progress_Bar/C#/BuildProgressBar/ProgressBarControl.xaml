@@ -1,0 +1,29 @@
+﻿<!--
+
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+-->
+
+<UserControl x:Class="Microsoft.BuildProgressBar.ProgressBarControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vsfx="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.14.0"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="300"
+             Name="ProgressToolWindow"
+             Background="{DynamicResource {x:Static vsfx:VsBrushes.ToolWindowBackgroundKey}}" 
+             SizeChanged="ProgressToolWindow_SizeChanged" Loaded="ProgressToolWindow_Loaded">
+    <Grid>
+        <ProgressBar Height="50" Name="progressBar" Width="250" Minimum="0" Maximum="1" 
+                     Value="0.0" VerticalAlignment="Center" />
+        <Viewbox Name="viewbox" Width="250" Stretch="None">
+            <TextBlock Name="barText" FontSize="12"></TextBlock>
+        </Viewbox>
+    </Grid>
+</UserControl>
