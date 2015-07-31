@@ -1,7 +1,7 @@
 
 
 # Title: Highlight Word Sample
-**Abstract:**Highlight any words that match the word currently under the text
+**Abstract:** Highlight any words that match the word currently under the text
 caret. 
 [ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
 
