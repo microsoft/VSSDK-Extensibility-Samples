@@ -1,6 +1,6 @@
 
 # Title: Caret Fish Eye Provider Sample
-##  Abstract: Demonstrate how to implement the Line Transformation API. [ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+**Abstract:** Demonstrate how to implement the Line Transformation API. [ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Editor, VSX
