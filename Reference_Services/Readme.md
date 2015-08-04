@@ -1,4 +1,4 @@
-
+﻿
 
 # Title: Reference Services Sample
 **Abstract:** Demonstrates how to be a Visual Studio service provider and
@@ -33,11 +33,9 @@ The ServicesPackage class demonstrates how to proffer services. Specifically:
 
 **Requirements**
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-
-us/try/default.mspx#download)
+[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads
-/visual-studio-2015-downloads-vs.aspx)
+[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
 
 
@@ -59,11 +57,9 @@ us/try/default.mspx#download)
 
 **Related topics**
 
-* [ Menu Documentation ](https://msdn.microsoft.com/en-
-us/library/bb165937(v=vs.140).aspx)
+* [ Menu Documentation ](https://msdn.microsoft.com/en-us/library/bb165937(v=vs.140).aspx)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-
-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
 
 
 

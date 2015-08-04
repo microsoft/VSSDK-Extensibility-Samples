@@ -14,11 +14,9 @@ properties' persistence.
 
 **Requirements**
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-
-us/try/default.mspx#download)
+[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads
-/visual-studio-2015-downloads-vs.aspx)
+[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
 
 
@@ -66,14 +64,11 @@ persistence for each property of the options page.
 
 **Related topics**
 
-* [ Creating an Options Page ](https://msdn.microsoft.com/en-
-us/library/bb166195%28v=vs.140%29.aspx)
+* [ Creating an Options Page ](https://msdn.microsoft.com/en-us/library/bb166195%28v=vs.140%29.aspx)
 
-* [ Extending User Settings and Options ](https://msdn.microsoft.com/en-
-us/library/bb165657%28v=vs.140%29.aspx)
+* [ Extending User Settings and Options ](https://msdn.microsoft.com/en-us/library/bb165657%28v=vs.140%29.aspx)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-
-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
 
 
 

@@ -15,11 +15,9 @@ the current solution build.
 
 **Requirements**
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-
-us/try/default.mspx#download)
+[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads
-/visual-studio-2015-downloads-vs.aspx)
+[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
 
 
@@ -99,11 +97,9 @@ Implements the Visual Studio Package, where we monitor events
 
 **Related topics **
 
-* [ Tool Window Documentation ](https://msdn.microsoft.com/en-
-us/library/bb165390(v=vs.140).aspx)
+* [ Tool Window Documentation ](https://msdn.microsoft.com/en-us/library/bb165390(v=vs.140).aspx)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-
-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
 
 
 

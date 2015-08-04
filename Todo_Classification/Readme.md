@@ -24,11 +24,9 @@ highlighted and a glyph will be displayed on that line.
 
 **Requirements** 
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-
-us/try/default.mspx#download)
+[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads
-/visual-studio-2015-downloads-vs.aspx)
+[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
 
 ** Build the sample** 
@@ -50,9 +48,7 @@ us/try/default.mspx#download)
 
 **Related topics** 
 
-* [ Editor Documentation ](https://msdn.microsoft.com/en-
-us/library/dd885118(v=vs.140).aspx)
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-
-us/library/bb166441(v=vs.140).aspx)
+* [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885118(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
 
 
