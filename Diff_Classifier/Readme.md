@@ -17,11 +17,9 @@ with .diff or .patch filename extensions. Uses the classification API.
 
 **Requirements**
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-
-us/try/default.mspx#download)
+[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads
-/visual-studio-2015-downloads-vs.aspx)
+[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
 
 
