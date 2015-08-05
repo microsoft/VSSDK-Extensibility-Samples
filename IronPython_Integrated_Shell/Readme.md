@@ -26,24 +26,19 @@ Create a Visual Studio project type for:
 
 ** Requirements **
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-
-us/try/default.mspx#download)
+[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads
-/visual-studio-2015-downloads-vs.aspx)
+[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
-[ Visual Studio 2015 Integrated Shell ](https://www.microsoft.com/en-
-us/download/details.aspx?id=46886)
+[ Visual Studio 2015 Integrated Shell ](https://www.microsoft.com/en-us/download/details.aspx?id=46886)
 
-[ Visual Studio 2015 Isolated Shell ](https://www.microsoft.com/en-
-us/download/details.aspx?id=46884)
+[ Visual Studio 2015 Isolated Shell ](https://www.microsoft.com/en-us/download/details.aspx?id=46884)
 
 [ Wix 3.x toolset ](http://wixtoolset.org/) You will need version 3.10 or
 newer in order to be compatible with VS2015
 
 [ Python Tools for VS2015
-](https://visualstudiogallery.msdn.microsoft.com/9ea113de-a009-46cd-
-99f5-65ef0595f937) Current version is 2.2
+](https://visualstudiogallery.msdn.microsoft.com/9ea113de-a009-46cd-99f5-65ef0595f937) Current version is 2.2
 
 &nbsp;_place_holder;
 
@@ -193,6 +188,5 @@ Flavor.
 
 **Related topics**
 
-[ Integrated and Isolated Shell Documentation ](https://msdn.microsoft.com/en-
-us/library/bb685612.aspx)
+[ Integrated and Isolated Shell Documentation ](https://msdn.microsoft.com/en-us/library/bb685612.aspx)
 

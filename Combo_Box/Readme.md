@@ -33,11 +33,9 @@ There are four styles of Combo Boxes:
 
 **Requirements**
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-
-us/try/default.mspx#download)
+[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads
-/visual-studio-2015-downloads-vs.aspx)
+[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
 
 
@@ -110,11 +108,9 @@ Command Window)**
 
 **Related topics**
 
-* [ Menu and Commands Documentation ](https://msdn.microsoft.com/en-
-us/library/bb165937(v=vs.140).aspx)
+* [ Menu and Commands Documentation ](https://msdn.microsoft.com/en-us/library/bb165937(v=vs.140).aspx)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-
-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
 
 
 
