@@ -185,21 +185,23 @@ namespace Microsoft.Samples.VisualStudio.CodeSweep
                 {
                     // The result string should end with a directory separator at this point.  We
                     // want to search for the one previous to that, which is why we subtract 2.
-                    int previousSeparator = result.ToString().LastIndexOf(Path.DirectorySeparatorChar, result.Length - 2);
-                    if (previousSeparator == -1)
+                    int previousSeparator;
+                    if (result.Length < 2 || (previousSeparator = result.ToString().LastIndexOf(Path.DirectorySeparatorChar, result.Length - 2)) == -1)
                     {
                         throw new ArgumentException(Resources.BackTooFar);
                     }
-                    result.Remove(previousSeparator, result.Length - previousSeparator);
+                    result.Remove(previousSeparator + 1, result.Length - previousSeparator - 1);
                 }
                 else if (span != ".")
                 {
+                    // Ignore "." because it means the current direcotry
                     result.Append(span);
-                }
 
-                if (spanStop < relativePath.Length)
-                {
-                    result.Append(Path.DirectorySeparatorChar);
+                    if (spanStop < relativePath.Length)
+                    {
+                        result.Append(Path.DirectorySeparatorChar);
+                    }
+
                 }
 
                 spanStart = spanStop + 1;
@@ -277,7 +279,10 @@ namespace Microsoft.Samples.VisualStudio.CodeSweep
                 throw new ArgumentException(Resources.BothMustHaveSameRoot);
             }
 
-            string commonBase = FindCommonSubstring(pathToRelativize, basePath, true);
+            // remove the ending "\" to simplify the algorithm below
+            basePath = basePath.TrimEnd(Path.DirectorySeparatorChar);
+
+            string commonBase = FindCommonBasePath(pathToRelativize, basePath, true);
 
             if (commonBase.Length == basePath.Length)
             {
@@ -291,8 +296,8 @@ namespace Microsoft.Samples.VisualStudio.CodeSweep
             }
             else
             {
-                int backOutCount = CountInstances(basePath.Substring(commonBase.Length), Path.DirectorySeparatorChar) + 1;
-                string result = Duplicate(".." + Path.DirectorySeparatorChar, backOutCount) + pathToRelativize.Substring(commonBase.Length);
+                int backOutCount = CountInstances(basePath.Substring(commonBase.Length), Path.DirectorySeparatorChar);
+                string result = Duplicate(".." + Path.DirectorySeparatorChar, backOutCount) + pathToRelativize.Substring(commonBase.Length + 1);
                 return result;
             }
         }
@@ -343,7 +348,7 @@ namespace Microsoft.Samples.VisualStudio.CodeSweep
         /// <summary>
         /// Returns the longest string <c>first</c> and <c>second</c> have in common beginning at index 0.
         /// </summary>
-        public static string FindCommonSubstring(string first, string second, bool ignoreCase)
+        public static string FindCommonBasePath(string first, string second, bool ignoreCase)
         {
             if (first == null)
             {
@@ -354,27 +359,36 @@ namespace Microsoft.Samples.VisualStudio.CodeSweep
                 throw new ArgumentNullException("second");
             }
 
+            string[] parts1 = first.Split(new char[] { Path.DirectorySeparatorChar });
+            string[] parts2 = second.Split(new char[] { Path.DirectorySeparatorChar });
+
             int length = 0;
 
-            for (; length < first.Length && length < second.Length; ++length)
+            for (; length < parts1.Length && length < parts2.Length; ++length)
             {
                 if (ignoreCase)
                 {
-                    if (char.ToLowerInvariant(first[length]) != char.ToLowerInvariant(second[length]))
+                    if (string.Compare(parts1[length], parts2[length], StringComparison.OrdinalIgnoreCase) != 0)
                     {
                         break;
                     }
                 }
                 else
                 {
-                    if (first[length] != second[length])
+                    if (string.Compare(parts1[length], parts2[length], StringComparison.Ordinal) != 0)
                     {
                         break;
                     }
                 }
             }
 
-            return first.Substring(0, length);
+            if (length == 0)
+            {
+                // nothing in common
+                return string.Empty;
+            }
+
+            return string.Join(char.ToString(Path.DirectorySeparatorChar), parts1, startIndex: 0, count: length);
         }
 
         public static bool UnorderedCollectionsAreEqual<T>(ICollection<T> first, ICollection<T> second)

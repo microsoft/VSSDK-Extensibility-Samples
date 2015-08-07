@@ -29,6 +29,8 @@ namespace Microsoft.Samples.VisualStudio.CodeSweep.VSPackage
     [ProvideBindingPath()]
     public sealed class VSPackage : Package
     {
+        private readonly IChannel _tcpChannel = new TcpChannel(Utilities.RemotingChannel);
+
         public VSPackage()
         {
             Factory.ServiceProvider = this;
@@ -75,7 +77,11 @@ namespace Microsoft.Samples.VisualStudio.CodeSweep.VSPackage
             Factory.GetBackgroundScanner().Started += new EventHandler(BackgroundScanner_Started);
             Factory.GetBackgroundScanner().Stopped += new EventHandler(BackgroundScanner_Stopped);
 
-            ChannelServices.RegisterChannel(new TcpChannel(Utilities.RemotingChannel), ensureSecurity: false);
+            if (ChannelServices.GetChannel(_tcpChannel.ChannelName) == null)
+            {
+                ChannelServices.RegisterChannel(_tcpChannel, ensureSecurity: false);
+            }
+            
             RemotingConfiguration.RegisterWellKnownServiceType(
                 typeof(ScannerHost),
                 Utilities.GetRemotingUri(System.Diagnostics.Process.GetCurrentProcess().Id, includeLocalHostPrefix: false),
@@ -91,6 +97,8 @@ namespace Microsoft.Samples.VisualStudio.CodeSweep.VSPackage
                 {
                     Factory.GetBuildManager().IsListeningToBuildEvents = false;
                     Factory.CleanupFactory();
+                    ChannelServices.UnregisterChannel(_tcpChannel);
+
                     GC.SuppressFinalize(this);
                 }
             }
