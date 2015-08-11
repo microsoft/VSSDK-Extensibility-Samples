@@ -26,9 +26,7 @@ A quick summary of the samples included here:
 |                      Editor_With_Toolbox | Creates a custom toolbox associated with a specific file extension          |
 |                           Highlight_Word | Highlight any words that match the word currently under the text cursor     |
 |                     Intra-text_Adornment | Text adornment that replaces hexadecimal color values with color swatches   |
-<!|              IronPython_Integrated_Shell | Demonstrates how to create an integrated shell for IronPython  |>
-<!|              IronPython_Integration | Demonstrates a custom project type and WinForms designer for IronPython|>
-<!|              IronPython_Studio_VS_Shell_Isolated | Example of using the isolated shell to host a language service |>
+
 |                                Lightbulb | Creates a custom lightbulb to set text case in text files                   |
 |                               MSDNSearch | Implements MSDN search functionality directly into Quick Search             |
 |                        Menu_And_Commands | Demonstrates how to add commands to various places in the IDE               |
@@ -44,6 +42,10 @@ A quick summary of the samples included here:
 |                          WPFDesigner_XML | WPF-based visual designer for editing .vstemplate XML files                 |
 |                           WPF_Toolwindow | Provides a sample toolwindow that can host a WPF or WinForms control        |
 |         Windows_Forms_Controls_Installer | Loads custom Windows Forms controls inside the toolbox                      |
+
+<!           IronPython_Integrated_Shell Demonstrates how to create an integrated shell for IronPython  >
+<!           IronPython_Integration | Demonstrates a custom project type and WinForms designer for IronPython>
+<!|              IronPython_Studio_VS_Shell_Isolated | Example of using the isolated shell to host a language service |>
 
 Some other useful resources:
 
