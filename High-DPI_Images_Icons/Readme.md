@@ -4,7 +4,7 @@
 
 * Technologies: Visual Studio 2013
 * Topics: Visual Studio Shell, VSX
-* Last Updated: 08/28/2015
+* Last Updated: 09/04/2015
 
 **Description**
 
@@ -14,7 +14,7 @@ you with the unmanaged helper libraries needed to enable high-DPI images and ico
 The managed DPI helper classes can be found in the Visual Studio 2013 SDK.
 
 When building UI for Visual Studio 2015, you should use the Image Library/Catalog which is part of the 
-Visual Studio 2015 SDK.
+Visual Studio 2015 SDK. Some of the samples in this repo have examples on how to utilize the Image Service/Catalog.
 
 **Requirements**
 
@@ -28,29 +28,11 @@ Visual Studio 2015 SDK.
   * Make your images/icons scale on high dense displays
 
 
+**How to incorporate these helpers into your code**
 
-The _OptionsPage_ sample contains classes that provide a Visual Studio Package
-and custom Options Pages integrated into the Visual Studio IDE. The
-OptionsPagePackage class provides custom options pages via the
-**ProvideOptionsPages** attribute.
-
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Open the individual sample files to inspect them
-
-
-
-**Run the sample**
-
-  1. To run the sample, hit F5 or choose the **Debug &gt; Start Debugging** menu command. A new instance of Visual Studio will launch under the experimental hive. 
-  2. Once loaded, open the Options dialog window: **Tools &gt; Options**
-  3. A new category is available, titled: **My Managed Options (C#)**
-  4. The new category contains two new pages: My Options, and Custom 
-
+  * Clone the samples from the High-DPI_Images_Icons folder
+  * Browse to the SDK documentation to understand how to incorporate these helpers into your extension/UI
+    https://msdn.microsoft.com/en-us/library/bb166441.aspx 
 
 
 **Related topics**
