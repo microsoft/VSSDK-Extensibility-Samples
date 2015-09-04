@@ -25,12 +25,12 @@ Visual Studio 2015 SDK. Some of the samples in this repo have examples on how to
 
 **Goals**
 
-  * Make your images/icons scale on high dense displays
+  * Make your images/icons scale properly on high dense displays
 
 
 **How to incorporate these helpers into your code**
 
-  * Clone the samples from the High-DPI_Images_Icons folder
+  * Clone the samples from the [ High-DPI_Images_Icons folder] (https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/High-DPI_Images_Icons)
   * Browse to the SDK documentation to understand how to incorporate these helpers into your extension/UI
     https://msdn.microsoft.com/en-us/library/bb166441.aspx 
 
