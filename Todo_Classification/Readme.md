@@ -3,7 +3,6 @@
 # Title: ToDo Classification Sample
 **Abstract:** Highlight any instances of the text 'ToDo' in the Visual Studio
 Editor and display a glyph in the corresponding line.
-[ View this sample online ](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
 
 * Technologies: Visual Studio 2015 SDK
 
@@ -29,15 +28,7 @@ highlighted and a glyph will be displayed on that line.
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
 
-** Build the sample** 
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
-
-
-
-** Run the sample** 
+**Run the sample** 
 
   1. To run the sample, hit F5 or choose the ** Debug &gt; Start Debugging** menu command. A new instance of Visual Studio will launch under the experimental hive. 
   2. Once loaded, open any file in the Text Editor. 

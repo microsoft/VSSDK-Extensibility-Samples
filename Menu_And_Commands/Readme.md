@@ -2,7 +2,7 @@
 
 # Title: Menu and Commands Sample
 **Abstract:** Create menu and command items and visualize them inside Visual
-Studio’s menus and toolbars. [ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+Studio’s menus and toolbars.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, VSX, Menu
@@ -27,14 +27,6 @@ Goals:
 [ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
-
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 
 

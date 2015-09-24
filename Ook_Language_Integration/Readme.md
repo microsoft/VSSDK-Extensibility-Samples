@@ -1,6 +1,6 @@
 # Title: Ook Language Integration Sample
 **Abstract:** Implement custom language support into Visual Studio for the
-esoteric language 'Ook!'.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+esoteric language 'Ook!'.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Editor, VSX
@@ -23,14 +23,6 @@ The _Ook!_ language supports the following features:
 [ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
-
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 
 

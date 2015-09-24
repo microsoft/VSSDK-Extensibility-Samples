@@ -1,6 +1,6 @@
 
 # Title: Build Progress Bar Sample
-**Abstract:** Display a Progress Bar inside a Toolwindow.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+**Abstract:** Display a Progress Bar inside a Toolwindow.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, VSX
@@ -20,18 +20,9 @@ the current solution build.
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
 
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
-
-
-
 **Run the sample**
 
-  1. To run the sample, hit F5 or choose the **Debug &gt; Start Debugging** menu command. A new instance of Visual Studio will launch under the experimental hive. 
+  1. To build and execute the sample, open the .sln file, press **F5** after the sample is loaded   
   2. Once loaded, choose the **View &gt; Other Windows &gt; Build Progress** menu command.
   3. A new tool window called "Build Progress" will open, displaying a WPF ProgressBar control. You can move, resize, or dock this tool window however you like. 
   4. Open an existing buildable solution or create a new one using the **File &gt; New &gt; Project** menu command. 

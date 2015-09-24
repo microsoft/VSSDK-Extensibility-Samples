@@ -1,6 +1,6 @@
 
 # Title: High-DPI Images and Icons
-**Abstract:** Use these helpers to make your images/icons in *VS 2013 only* scale on high dense displays.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+**Abstract:** Use these helpers to make your images/icons in *VS 2013 only* scale on high dense displays.
 
 * Technologies: Visual Studio 2013
 * Topics: Visual Studio Shell, VSX
@@ -9,7 +9,7 @@
 **Description**
 
 Visual Studio 2013 does not have built-in support for selecting different images for different DPI settings. 
-Images are generally “scaled-up” at runtime to match the DPI scaling of the system. This sample provides 
+Images are generally ï¿½scaled-upï¿½ at runtime to match the DPI scaling of the system. This sample provides 
 you with the unmanaged helper libraries needed to enable high-DPI images and icons in your Visual Studio 2013 UI.
 The managed DPI helper classes can be found in the Visual Studio 2013 SDK.
 

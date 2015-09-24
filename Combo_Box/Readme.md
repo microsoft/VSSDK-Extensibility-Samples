@@ -1,6 +1,6 @@
 # Title: Combo Box Sample
 **Abstract:** Add a toolbar to Visual Studio that has four different kinds of
-dropdown combo boxes.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+dropdown combo boxes.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Editor, VSX
@@ -36,14 +36,6 @@ There are four styles of Combo Boxes:
 [ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
-
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 
 
