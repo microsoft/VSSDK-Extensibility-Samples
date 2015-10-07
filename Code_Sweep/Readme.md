@@ -1,6 +1,6 @@
 # Title: Code Sweep Sample
 **Abstract:** Sweep a solution looking for any words that match search terms
-in an XML Schema. Display any matches on the Task List.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+in an XML Schema. Display any matches on the Task List.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: MSBuild, VSX
@@ -30,13 +30,6 @@ task list.
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 
 

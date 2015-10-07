@@ -4,7 +4,7 @@
 
 **Abstract**: Display an adornment with a typing speed meter in the Text
 Editor
- [ View this sample online ](https://github.com/Microsoft/VSSDK-Extensibility-Samples)
+ 
 
 
 * Technologies: Visual Studio 2015 SDK
@@ -30,12 +30,6 @@ The binaries for this sample can also be installed via the extension manager.
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 **Run the sample**
 

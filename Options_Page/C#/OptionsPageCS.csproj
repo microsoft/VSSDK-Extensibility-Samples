@@ -176,9 +176,6 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="OptionsCompositeControl.resx">
-      <DependentUpon>OptionsCompositeControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -200,7 +197,8 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     <Resource Include="Resources\400.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Example.OptionsPages.png" />
+    <Resource Include="Example.OptionsPage1.png" />
+    <Resource Include="Example.OptionsPage2.png" />
   </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>

@@ -1,7 +1,7 @@
 ﻿
 
 # Title: Windows Forms Controls Installer Sample
-**Abstract:** Load custom Windows Forms controls into the Toolbox.  [View this sample online ](https://github.com/Microsoft/VSSDK-Extensibility-Samples)
+**Abstract:** Load custom Windows Forms controls into the Toolbox.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, VSX
@@ -22,13 +22,6 @@ new items when a Windows Form is open in the Editor:
 * [ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
 * [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 
 **Run the sample**

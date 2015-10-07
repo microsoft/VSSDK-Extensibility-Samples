@@ -2,7 +2,7 @@
 
 # Title: Basic Source Control Provider Sample
 **Abstract:** Provides the basic requirements to implement a Source Control
-Provider.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+Provider.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: MSBuild, VSX
@@ -30,18 +30,9 @@ framework necessary to implement one.
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
 
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
-
-
-
 **Run the sample**
 
-  1. To run the sample, hit **F5** or choose the **Debug &gt; Start Debugging** menu command. A new experimental instance of Visual Studio will launch. 
+  1. To build and execute the sample, open the .sln file, press **F5** after the sample is loaded  
   2. Once loaded, navigate to **Tools &gt; Options &gt; Source Control &gt; Plug-In Selection** and set _Managed Source Control Sample Basic Provider_ as the active source control provider. 
   3. Once the active source control provider has been selected, several changes will be automatically applied to Visual Studio: 
   4. The _Source control provider toolwindow_ automatically launches. The toolwindow can now be launched at any time by pressing **View &gt; **_Source Control Provider Toolwindow_

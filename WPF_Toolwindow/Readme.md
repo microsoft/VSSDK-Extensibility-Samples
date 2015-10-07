@@ -4,7 +4,7 @@
 
 **Abstract:** Provides tool windows which host Windows Forms controls and WPF
 controls.
-[ View this sample online ](https://github.com/Microsoft/VSSDK-Extensibility-Samples)
+
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, VSX
@@ -46,13 +46,6 @@ These include events such as moved, resized, shown, hidden, and so on.
 [ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 
 **Run the sample**

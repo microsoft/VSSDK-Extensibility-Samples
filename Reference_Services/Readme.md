@@ -2,7 +2,7 @@
 
 # Title: Reference Services Sample
 **Abstract:** Demonstrates how to be a Visual Studio service provider and
-consume Visual Studio services.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+consume Visual Studio services.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, VSX
@@ -37,13 +37,6 @@ The ServicesPackage class demonstrates how to proffer services. Specifically:
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 
 

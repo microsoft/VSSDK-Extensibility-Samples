@@ -1,6 +1,6 @@
 
 # Title: Options Page Sample
-**Abstract:** Add custom pages to the Visual Studio Options dialog.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+**Abstract:** Add custom pages to the Visual Studio Options dialog.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, VSX
@@ -42,14 +42,6 @@ editor control for presentation. _OptionsPageCustom_ uses a custom control
 The **ProvideProfile** attribute is used to provide persistence for the
 package. The **DesignerSerializationVisibility** attribute is used to allow
 persistence for each property of the options page.
-
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 
 

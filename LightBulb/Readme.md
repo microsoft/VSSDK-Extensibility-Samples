@@ -1,6 +1,6 @@
 # Title: LightBulb API Sample
 **Abstract:** This sample provides custom LightBulb functionality for txt
-files.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+files.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Editor, VSX
@@ -19,13 +19,6 @@ can choose to make the word entirely uppercase or entirely lowercase.
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
 
 
 

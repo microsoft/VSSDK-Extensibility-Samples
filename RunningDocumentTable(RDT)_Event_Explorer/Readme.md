@@ -2,7 +2,7 @@
 
 # Title: Running Document Table (RDT) Event Explorer Sample
 **Abstract:** Create an explorer that logs Running Document Table (RDT)
-events.[ View this sample online](https://github.com/Microsoft/VSSDK-Extensibility-Samples).
+events.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, VSX
@@ -42,15 +42,6 @@ a grid. Selecting an event in the grid displays its properties in the
 [ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
-
-
-
-**Build the sample**
-
-  * Download the zip file associated with the sample 
-  * Unzip the sample to your machine 
-  * Double click on the .sln file to launch the solution 
-
 
 
 **Run the sample**
