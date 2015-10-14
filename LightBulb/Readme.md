@@ -4,7 +4,6 @@ files.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Editor, VSX
-* Last Updated: 06/24/2015
 
 **Description**
 
@@ -12,6 +11,8 @@ This sample for Visual Studio 2015 modifies the LightBulb API to provide
 custom content for .txt files. Whenever the text caret is placed over a word,
 the lightbulb adornment appears. The lightbulb will provide to options, you
 can choose to make the word entirely uppercase or entirely lowercase.
+
+![image](TestLightBulb/Resources/Example_LightBulb.png)
 
 **Requirements**
 

@@ -12,7 +12,7 @@ This sample extension for Visual Studio 2015 modifies the text editor using
 the Line Transformation API. The extension visually scales lines so that they
 gradually appear smaller as they get farther away from the text caret.
 
-
+![image](C#/bin/Debug/Example.CaretFishEye.png)
 
 **Requirements**
 
