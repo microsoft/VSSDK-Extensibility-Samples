@@ -18,6 +18,8 @@ The _Ook!_ language supports the following features:
   * A QuickInfo source and controller 
   * A completion source and controller 
 
+![image](Example.OokLanguage.png)
+
 **Requirements**
 
 [ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)

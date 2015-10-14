@@ -21,7 +21,7 @@ XML document against a schema and communicate errors through the Error List.
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
-
+![image](C%23/Example.SingleFileGenerator.jpg)
 
 **Run the sample**
 

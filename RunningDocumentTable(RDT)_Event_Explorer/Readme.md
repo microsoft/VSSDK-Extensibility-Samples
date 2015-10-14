@@ -14,6 +14,8 @@ This sample demonstrates how to create an explorer that logs Running Document
 Table (RDT) events. Selecting an event from the grid displays its properties
 in the **Properties** window.
 
+![image](C%23/RdtEventExplorer.jpg)
+
 Goals:
 
   * Provide a tool to explore the RDT that follows recommended design patterns 

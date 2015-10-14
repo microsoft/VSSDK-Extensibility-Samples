@@ -15,6 +15,8 @@ controls.
 This sample demonstrates how to create a package that provides tool windows
 which host Windows Forms controls and WPF controls.
 
+![image](C%23/ToolWindow.jpg)
+
 Goals:
 
   * Exposing properties in the Properties window based on the selected item 

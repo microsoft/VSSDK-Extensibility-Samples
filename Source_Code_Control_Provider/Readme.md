@@ -24,6 +24,7 @@ Studio that can be selected as active source control provider.
   * Demonstrate how to implement IVsTrackProjectDocumentsEvents2 functions 
   * Provide basic source control functionality, such as add to source control, check in, check out, and work offline 
 
+![image](C%23/Resources/Example.SccProvider.png)
 
 **Requirements**
 

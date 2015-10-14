@@ -14,7 +14,7 @@ This sample demonstrates how to add an entry into the Visual Studio Help
 dialog. This is the bare minimum requirement for a functional Visual Studio
 Package.
 
-
+![image](C%23/Package.jpg)
 
 **Requirements**
 
