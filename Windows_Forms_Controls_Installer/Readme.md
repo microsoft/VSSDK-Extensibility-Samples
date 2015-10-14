@@ -16,6 +16,7 @@ new items when a Windows Form is open in the Editor:
   * **MyCustomTextBox**: A normal Windows Forms control that adds a blank text field 
   * **MyCustomTextBoxWithPopup**: A custom ToolboxItem that adds a text box and pops up a dialogue box when added. 
 
+![image](C%23/WinformsControlsInstaller/screenshot.png)
 
 **Requirements**
 

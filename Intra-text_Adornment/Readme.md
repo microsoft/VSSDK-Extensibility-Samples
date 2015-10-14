@@ -16,7 +16,8 @@ corresponds to the color of the swatch.
   * Red = 0xff0000 
   * Green = 0x00ff00 
   * Blue = 0x0000ff 
-
+  
+![image](C%23/Example.IntraTextAdornment.png)
 
 **Requirements**
 

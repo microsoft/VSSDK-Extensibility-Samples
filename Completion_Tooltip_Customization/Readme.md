@@ -11,7 +11,7 @@
 This is a sample extension for the Visual Studio 2013 editor that replaces the
 completion tooltip UI.
 
-
+![image](C%23/bin/Debug/Example.CompletionTooltipCustomization.png)
 
 **Requirements**
 

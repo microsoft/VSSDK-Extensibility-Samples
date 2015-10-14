@@ -13,7 +13,7 @@ with .diff or .patch extensions.
 This Visual Studio 2015 sample classifier provides color formatting for files
 with .diff or .patch filename extensions. Uses the classification API.
 
-
+![image](C%23/DiffClassifier_Screenshot.png)
 
 **Requirements**
 

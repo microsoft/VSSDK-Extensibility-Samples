@@ -12,7 +12,7 @@ This Visual Studio Package provides a multi-instance tool window called Red
 Green Blue. The window contains a toolbar with three buttons that change the
 background color and move the toolbar within the frame.
 
-
+![image](C%23/Example.CommandTargetRGB.png)
 
 **Requirements**
 

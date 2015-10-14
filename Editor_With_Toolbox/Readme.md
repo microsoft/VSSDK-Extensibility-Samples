@@ -20,7 +20,7 @@ Goals:
   * Toolbox integration 
   * Handle source-controlled and read-only files. 
 
-
+![image](CS/Example.EditorWithToolbox.jpg)
 
 **Requirements**
 

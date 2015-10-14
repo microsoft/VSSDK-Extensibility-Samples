@@ -13,7 +13,7 @@ caret.
 This Visual Studio 2015 sample extension uses tagging and adornments to
 highlight all occurences of the word currently under the caret.
 
-
+![image](C%23/Example.HighlightWord.png)
 
 **Requirements**
 
