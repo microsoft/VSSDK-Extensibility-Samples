@@ -21,7 +21,7 @@ framework necessary to implement one.
   * Expose a tool window visible only when the provider is active 
   * Display menu items only when the provider is active 
 
-
+![image](C%23/Example.BasicSccProvider.jpg)
 
 **Requirements**
 

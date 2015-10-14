@@ -13,6 +13,8 @@ This Visual Studio Package provides a new tool window called "Build Progress".
 The window displays a WPF ProgressBar that indicates percentage completion of
 the current solution build.
 
+![image](C%23/BuildProgressBar/Example.BuildProgressBar.png)
+
 **Requirements**
 
 [ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
