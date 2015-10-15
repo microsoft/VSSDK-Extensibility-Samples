@@ -21,33 +21,33 @@ A quick summary of the samples included here:
 
 |                              Sample Name | Description                                                                                |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-|           Basic_Source_Control_Provider* | Shows how to add hooks for a simple source code provider                                   |  
-|                      Build_Progress_Bar* | Displays a tool window written in WPF showing build progress                               |
-|                           Caret_Fish_Eye | Uses line transformation API to zoom lines in proportion to cursor distance                |
-|                               Code_Sweep | Searches for words matching terms in an XML schema across a solution                       |
-|                                Combo_Box | Place combo boxes in a Visual Studio toolbar                                               |
-|                         CommandTargetRGB | Shows how to create a multi-instance tool window                                           |
-|         Completion_Tooltip_Customization | Replaces the completion tooltip UI                                                         |
-|                          Diff_Classifier | Classifier with color highlighting                                                         |
-|                      Editor_With_Toolbox | Creates a custom toolbox associated with a specific file extension                         |
-|                    High-DPI_Images_Icons | Use these helpers to make your images/icons in *VS 2013 only* scale on high dense displays |
-|                           Highlight_Word | Highlight any words that match the word currently under the text cursor                    |
-|                     Intra-text_Adornment | Text adornment that replaces hexadecimal color values with color swatches                  |
-|                               Lightbulb* | Creates a custom lightbulb to set text case in text files                                  |
-|                               MSDNSearch | Implements MSDN search functionality directly into Quick Search                            |
-|                       Menu_And_Commands* | Demonstrates how to add commands to various places in the IDE                              |
-|                 Ook_Language_Integration | Implements language support for a simple programming language                              |
-|                            Options_Page* | Shows how to add custom pages to the Tools / Options dialog                                |
-|                        Reference_Package | Boilerplate containing minimum requirements for a functional extension                     |
-|                       Reference_Services | Shows how to create and consume services as a service provider                             |
-| RunningDocumentTable(RDT)_Event_Explorer | Creates an explorer grid to log events in a tool window                                    |
-|                    Single_File_Generator | Creates a file generator that uses XML as basis for creating a new C# file                 |
-|            Source_Code_Control_Provider* | More complex example of a source code provider                                             |
-|                      Todo_Classification | Classifier that highlights TODO comments and displays a matching glyph                     |
-|                       Typing_Speed_Meter | Displays an adornment with a typing speed indicator in the Text Editor                     |
-|                          WPFDesigner_XML | WPF-based visual designer for editing .vstemplate XML files                                |
-|                          WPF_Toolwindow* | Provides a sample toolwindow that can host a WPF or WinForms control                       |
-|         Windows_Forms_Controls_Installer | Loads custom Windows Forms controls inside the toolbox                                     |
+|           [Basic_Source_Control_Provider*](Basic_Source_Control_Provider/) | Shows how to add hooks for a simple source code provider                                   |  
+|                      [Build_Progress_Bar*](Build_Progress_Bar/) | Displays a tool window written in WPF showing build progress                               |
+|                           [Caret_Fish_Eye](Caret_Fish_Eye/) | Uses line transformation API to zoom lines in proportion to cursor distance                |
+|                               [Code_Sweep](Code_Sweep/) | Searches for words matching terms in an XML schema across a solution                       |
+|                                [Combo_Box](Combo_Box/) | Place combo boxes in a Visual Studio toolbar                                               |
+|                         [CommandTargetRGB](CommandTargetRGB/) | Shows how to create a multi-instance tool window                                           |
+|         [Completion_Tooltip_Customization](Completion_Tooltip_Customization/) | Replaces the completion tooltip UI                                                         |
+|                          [Diff_Classifier](Diff_Classifier/) | Classifier with color highlighting                                                         |
+|                      [Editor_With_Toolbox](Editor_With_Toolbox/) | Creates a custom toolbox associated with a specific file extension                         |
+|                    [High-DPI_Images_Icons](High-DPI_Images_Icons/) | Use these helpers to make your images/icons in *VS 2013 only* scale on high dense displays |
+|                           [Highlight_Word](Highlight_Word/) | Highlight any words that match the word currently under the text cursor                    |
+|                     [Intra-text_Adornment](Intra-text_Adornment/) | Text adornment that replaces hexadecimal color values with color swatches                  |
+|                               [LightBulb*](LightBulb/) | Creates a custom lightbulb to set text case in text files                                  |
+|                               [MSDNSearch](MSDNSearch/) | Implements MSDN search functionality directly into Quick Search                            |
+|                       [Menu_And_Commands*](Menu_And_Commands/) | Demonstrates how to add commands to various places in the IDE                              |
+|                 [Ook_Language_Integration](Ook_Language_Integration/) | Implements language support for a simple programming language                              |
+|                            [Options_Page*](Options_Page/) | Shows how to add custom pages to the Tools / Options dialog                                |
+|                        [Reference_Package](Reference_Package/) | Boilerplate containing minimum requirements for a functional extension                     |
+|                       [Reference_Services](Reference_Services/) | Shows how to create and consume services as a service provider                             |
+| [RunningDocumentTable(RDT)_Event_Explorer](RunningDocumentTable%28RDT%29_Event_Explorer/) | Creates an explorer grid to log events in a tool window                                    |
+|                    [Single_File_Generator](Single_File_Generator/) | Creates a file generator that uses XML as basis for creating a new C# file                 |
+|            [Source_Code_Control_Provider*](Source_Code_Control_Provider/) | More complex example of a source code provider                                             |
+|                      [Todo_Classification](Todo_Classification/) | Classifier that highlights TODO comments and displays a matching glyph                     |
+|                       [Typing_Speed_Meter](Typing_Speed_Meter/) | Displays an adornment with a typing speed indicator in the Text Editor                     |
+|                          [WPFDesigner_XML](WPFDesigner_XML/) | WPF-based visual designer for editing .vstemplate XML files                                |
+|                          [WPF_Toolwindow*](WPF_Toolwindow/) | Provides a sample toolwindow that can host a WPF or WinForms control                       |
+|         [Windows_Forms_Controls_Installer](Windows_Forms_Controls_Installer/) | Loads custom Windows Forms controls inside the toolbox                                     |
 
 <!-- |          IronPython_Integrated_Shell |Demonstrates how to create an integrated shell for IronPython  
     |   IronPython_Integration | Demonstrates a custom project type and WinForms designer for IronPython
