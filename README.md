@@ -57,21 +57,18 @@ Some other useful resources:
 
 * If you've never written a Visual Studio extension before, you can find more 
 information about developing features at: 
-[Starting to Develop Visual Studio Extensions](https://msdn.microsoft.com/en-us/library/bb166030.aspx).
+[Starting to Develop Visual Studio Extensions](http://aka.ms/pyigr3).
 * For details on how to create user experiences that are seamless and consistent within the IDE, visit
- the [Visual Studio User Experience Guidelines](http://aka.ms/VSUXGuidelines). You will also find information
+ the [Visual Studio User Experience Guidelines](http://aka.ms/o111mv). You will also find information
  about the common user models and interaction patterns that are used and how you can utilize them as well.
 
 * Writing an extension for Visual Studio Online? Check out the 
-[VSO extension samples](https://github.com/Microsoft/vso-extension-samples) at 
+[VSO extension samples](http://aka.ms/ph0rr5) at 
 the dedicated repository.
 
-* In addition to these samples, many completed extensions have been published to 
-GitHub or other repositories. Here's a [list of other community Visual Studio 
-extensions](http://microsoft.github.io/extendvs/).
 * You can publish your completed extension to the 
-[Visual Studio Gallery](http://visualstudiogallery.com), where you can also get
-more information about joining the [Visual Studio Partner Program](https://vsipprogram.com/).  
+[Visual Studio Gallery](http://aka.ms/g4brw3), where you can also get
+more information about joining the [Visual Studio Partner Program](http://aka.ms/t16c1i).  
 
 Thank you for your support for Visual Studio - we're excited to see what extensions
 *you* build!
