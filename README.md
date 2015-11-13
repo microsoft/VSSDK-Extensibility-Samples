@@ -1,9 +1,9 @@
 # Visual Studio Extensibility Samples
 
-[![Join the chat at https://gitter.im/Microsoft/extendvs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Microsoft/extendvs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/Microsoft/extendvs](https://badges.gitter.im/Join%20Chat.svg)](http://aka.ms/dyofat)
 
 These samples demonstrate how to customize the appearance and behavior of the 
-Visual Studio IDE and editor using the [Visual Studio SDK](https://msdn.microsoft.com/en-us/library/bb166441.aspx). 
+Visual Studio IDE and editor using the [Visual Studio SDK](http://aka.ms/v8wgap). 
 The following are some of the ways in which you can extend Visual Studio: 
 
 * Add commands, buttons, menus, and other UI elements to the IDE
