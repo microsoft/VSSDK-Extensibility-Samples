@@ -11,10 +11,10 @@ The following are some of the ways in which you can extend Visual Studio:
 * Add support in Visual Studio for new programming languages
 * Add refactoring or language analyzers to fix and improve code
 * Add a custom project type or new project or item templates
-* Enable high-DPI, theme-aware, and high contrast images and icons in your UI
+* Enable high-DPI/high resolutuion, theme-aware, and high contrast images and icons in your UI
   * For Visual Studio 2013, only high-DPI images/icons are supported; use the below sample High-DPI_Images_Icons
   * For Visual Studio 2015, samples that demonstrate using the Image Service/Catalog (for high-DPI, theme-aware, 
-    and high contrast support) are denoted below with *
+    and high contrast support) are denoted below with * and docs can be found [here] (http://aka.ms/VSImageService)
 * Reach millions of developers via the Visual Studio Gallery
 
 A quick summary of the samples included here:
