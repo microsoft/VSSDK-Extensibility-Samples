@@ -1,10 +1,9 @@
 
-# Title: High-DPI Images and Icons
-**Abstract:** Use these helpers to make your images/icons in *VS 2013 only* scale on high dense displays.
+# High-DPI Images and Icons
+Use these helpers to make your images/icons in *VS 2013 only* scale on high dense displays.
 
 * Technologies: Visual Studio 2013
 * Topics: Visual Studio Shell, VSX
-* Last Updated: 09/04/2015
 
 **Description**
 

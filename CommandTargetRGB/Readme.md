@@ -1,10 +1,9 @@
 
-# Title: RGB Toolwindow Sample
-**Abstract:** Provides a multi-instance toolwindow with a toolbar.
+# RGB Toolwindow Sample
+Provides a multi-instance toolwindow with a toolbar in Visual Studio.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, VSX
-* Last Updated: 05/15/2015
 
 **Description**
 
@@ -20,7 +19,11 @@ background color and move the toolbar within the frame.
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
+**Get all samples**
 
+Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository)):
+
+`git clone https://github.com/Microsoft/VSSDK-Extensibility-Samples.git`
 
 **Run the sample**
 

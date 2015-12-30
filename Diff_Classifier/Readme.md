@@ -1,10 +1,9 @@
-# Title: Diff Classifier Sample
-**Abstract:** Provides a classifier with color highlighting that affects files
+# Diff Classifier Sample
+Provides a classifier with color highlighting that affects files
 with .diff or .patch extensions.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Editor, VSX
-* Last Updated: 05/18/2015
 
 
 
@@ -21,7 +20,11 @@ with .diff or .patch filename extensions. Uses the classification API.
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
+**Get all samples**
 
+Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository)):
+
+`git clone https://github.com/Microsoft/VSSDK-Extensibility-Samples.git`
 
 **Run the sample**
 

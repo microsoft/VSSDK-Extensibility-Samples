@@ -1,10 +1,9 @@
 
-# Title: Caret Fish Eye Provider Sample
-**Abstract:** Demonstrate how to implement the Line Transformation API.
+# Caret Fish Eye Provider Sample
+Demonstrate how to implement the Line Transformation API in Visual Studio.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Editor, VSX
-* Last Updated: 05/15/2015
 
 **Description**
 
@@ -20,7 +19,11 @@ gradually appear smaller as they get farther away from the text caret.
 
 [ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
+**Get all samples**
 
+Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository)):
+
+`git clone https://github.com/Microsoft/VSSDK-Extensibility-Samples.git`
 
 **Run the sample**
 
