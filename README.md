@@ -17,14 +17,16 @@ The following are some of the ways in which you can extend Visual Studio:
     and high contrast support) are denoted below with * and docs can be found [here] (http://aka.ms/VSImageService)
 * Reach millions of developers via the Visual Studio Gallery
 
-## How to use this repo
+## Getting started
 
-1. **Clone the repo to download all samples** ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository))
+1. Clone the repo to download all samples ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository))
 
     `git clone https://github.com/Microsoft/VSSDK-Extensibility-Samples.git`
-2. **Find samples in the table below**
-3. **Read the readme included with each sample and try it in Visual Studio**
+2. Find samples in the table below
+3. Read the readme included with each sample and try it in Visual Studio
 
+## Samples Overview
+For more details see the readme included with each sample.
 
 |                              Sample Name | Description                                                                                |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------ |
