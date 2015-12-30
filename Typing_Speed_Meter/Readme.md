@@ -25,9 +25,9 @@ The binaries for this sample can also be installed via the extension manager.
 
 **Requirements**
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
+[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
+
 
 **Get all samples**
 

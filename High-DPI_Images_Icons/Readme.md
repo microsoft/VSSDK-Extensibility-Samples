@@ -17,7 +17,7 @@ Visual Studio 2015 SDK. Some of the samples in this repo have examples on how to
 
 **Requirements**
 
-[ Visual Studio 2013 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
+[ Visual Studio 2013 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 [ Visual Studio 2013 SDK ](http://www.microsoft.com/en-us/download/details.aspx?id=40758)
 
