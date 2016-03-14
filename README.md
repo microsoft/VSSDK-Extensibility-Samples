@@ -3,7 +3,7 @@
 [![Join the chat at https://gitter.im/Microsoft/extendvs](https://badges.gitter.im/Join%20Chat.svg)](http://aka.ms/dyofat)
 
 These samples demonstrate how to customize the appearance and behavior of the 
-Visual Studio IDE and editor using the [Visual Studio SDK](http://aka.ms/v8wgap). 
+Visual Studio IDE and editor. 
 The following are some of the ways in which you can extend Visual Studio: 
 
 * Add commands, buttons, menus, and other UI elements to the IDE
@@ -15,7 +15,8 @@ The following are some of the ways in which you can extend Visual Studio:
   * For Visual Studio 2013, only high-DPI images/icons are supported; use the below sample High-DPI_Images_Icons
   * For Visual Studio 2015, samples that demonstrate using the Image Service/Catalog (for high-DPI, theme-aware, 
     and high contrast support) are denoted below with * and docs can be found [here] (http://aka.ms/VSImageService)
-* Reach millions of developers via the Visual Studio Gallery
+
+If you've never written a Visual Studio extension before, you can find out how to get started at [VisualStudio.com/integrate](http://aka.ms/pyigr3).
 
 ## Getting started
 
@@ -64,9 +65,6 @@ For more details see the readme included with each sample.
 
 ## Other useful resources
 
-* If you've never written a Visual Studio extension before, you can find more 
-information about developing features at: 
-[Starting to Develop Visual Studio Extensions](http://aka.ms/pyigr3).
 * For details on how to create user experiences that are seamless and consistent within the IDE, visit
  the [Visual Studio User Experience Guidelines](http://aka.ms/o111mv). You will also find information
  about the common user models and interaction patterns that are used and how you can utilize them as well.
