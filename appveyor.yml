@@ -1,0 +1,12 @@
+version: 1.0.{build}
+image: Visual Studio 2015
+environment:
+  DeployExtension: false
+build_script:
+- ps: >-
+    Get-ChildItem *.sln -rec |% {
+        Write-Output "Restoring packages for $($_.Name)"
+        nuget restore $_ -Verbosity quiet
+        Write-Output "Building $($_.Name)"
+        msbuild $_ /nologo /m /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+    }
