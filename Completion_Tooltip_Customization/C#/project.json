@@ -1,0 +1,14 @@
+﻿{
+  "frameworks": {
+    "net45": { }
+  },
+  "dependencies": {
+    "Microsoft.VisualStudio.SDK.EmbedInteropTypes": "14.1.2",
+    "Microsoft.VisualStudio.Text.UI.Wpf": "14.0.23205",
+    "Microsoft.VisualStudio.Language.Intellisense": "14.0.23205",
+    "Microsoft.VSSDK.BuildTools": "14.0.23205"
+  },
+  "runtimes": {
+    "win": { }
+  }
+}
