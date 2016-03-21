@@ -53,6 +53,7 @@ For more details see the readme included with each sample.
 | [RunningDocumentTable(RDT)_Event_Explorer](RunningDocumentTable%28RDT%29_Event_Explorer/) | Creates an explorer grid to log events in a tool window                                    |
 |                    [Single_File_Generator](Single_File_Generator/) | Creates a file generator that uses XML as basis for creating a new C# file                 |
 |            [Source_Code_Control_Provider*](Source_Code_Control_Provider/) | More complex example of a source code provider                                             |
+|            [Source_Control_Provider_Status_Bar_Integration](Source_Control_Provider_Status_Bar_Integration/) | Display source control information in the Status Bar.                                             |
 |                      [Todo_Classification](Todo_Classification/) | Classifier that highlights TODO comments and displays a matching glyph                     |
 |                       [Typing_Speed_Meter](Typing_Speed_Meter/) | Displays an adornment with a typing speed indicator in the Text Editor                     |
 |                          [WPFDesigner_XML](WPFDesigner_XML/) | WPF-based visual designer for editing .vstemplate XML files                                |
