@@ -23,7 +23,9 @@ namespace TestLightBulb
             _textView = textView;
         }
 
+        #pragma warning disable 0169
         public event EventHandler<EventArgs> SuggestedActionsChanged;
+        #pragma warning restore 0169
 
         public void Dispose()
         {
