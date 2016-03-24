@@ -1,11 +1,10 @@
 
-# Title: Single File Generator Sample
-**Abstract:** Create a Single File Generator that uses an XML source file to
-generate a new C# file.
+# Single File Generator Sample
+Create a Single File Generator that uses an XML source file to
+generate a new C# file in Visual Studio.
 
 * Technologies: Visual Studio 2015 SDK
 * Topics: Visual Studio Shell, MSDBuild, VSX
-* Last Updated: 05/12/2015
 
 **Description**
 
@@ -17,11 +16,17 @@ XML document against a schema and communicate errors through the Error List.
 
 **Requirements**
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
+[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
+
 
 ![image](C%23/Example.SingleFileGenerator.jpg)
+
+**Get all samples**
+
+Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository)):
+
+`git clone https://github.com/Microsoft/VSSDK-Extensibility-Samples.git`
 
 **Run the sample**
 

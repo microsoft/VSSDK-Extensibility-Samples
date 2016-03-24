@@ -1,0 +1,13 @@
+﻿{
+  "frameworks": {
+    "net45": { }
+  },
+  "dependencies": {
+    "Microsoft.VisualStudio.SDK.EmbedInteropTypes": "14.1.2",
+    "Microsoft.VisualStudio.SDK.VsixSuppression": "14.0.50420-pre",
+    "Microsoft.VSSDK.BuildTools": "14.0.23205"
+  },
+  "runtimes": {
+    "win": { }
+  }
+}

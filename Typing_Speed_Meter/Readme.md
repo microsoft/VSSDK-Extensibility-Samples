@@ -1,8 +1,8 @@
 ﻿
 
-# Title: Typing Speed Meter Sample
+# Typing Speed Meter Sample
 
-**Abstract**: Display an adornment with a typing speed meter in the Text
+Display an adornment with a typing speed meter in the Text
 Editor
  
 
@@ -11,7 +11,6 @@ Editor
 
 * Topics: Visual Studio Shell, VSX, Editor, Adornment
 
-* Last Updated: 05/21/2015
 
 
 **Description**
@@ -26,10 +25,15 @@ The binaries for this sample can also be installed via the extension manager.
 
 **Requirements**
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
+[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
+
+**Get all samples**
+
+Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository)):
+
+`git clone https://github.com/Microsoft/VSSDK-Extensibility-Samples.git`
 
 **Run the sample**
 

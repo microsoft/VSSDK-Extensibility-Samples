@@ -1,14 +1,12 @@
 ﻿
 
-# Title: ToDo Classification Sample
-**Abstract:** Highlight any instances of the text 'ToDo' in the Visual Studio
+# ToDo Classification Sample
+Highlight any instances of the text 'ToDo' in the Visual Studio
 Editor and display a glyph in the corresponding line.
 
 * Technologies: Visual Studio 2015 SDK
 
 * Topics: Visual Studio Shell, VSX
-
-* Last Updated: 05/21/2015
  
 
 ** Description**
@@ -24,10 +22,15 @@ highlighted and a glyph will be displayed on that line.
 
 **Requirements** 
 
-[ Visual Studio 2015 ](http://www.microsoft.com/visualstudio/en-us/try/default.mspx#download)
+[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
-[ Visual Studio 2015 SDK ](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx)
 
+
+**Get all samples**
+
+Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository)):
+
+`git clone https://github.com/Microsoft/VSSDK-Extensibility-Samples.git`
 
 **Run the sample** 
 
