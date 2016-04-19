@@ -41,7 +41,7 @@ namespace IntraTextAdornmentSample
         {
             Color color = ParseColor(match.ToString());
 
-            if(match.Length == 6 || match.Length == 8);
+            if(match.Length == 6 || match.Length == 8)
             {
                 return new ColorTag(color);
             }
