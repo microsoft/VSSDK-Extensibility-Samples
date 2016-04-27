@@ -20,4 +20,6 @@ build_script:
         }
     }
 
-    exit $failed.length
+    if ($failed.length -gt 0) {
+        exit $failed.length
+    }
