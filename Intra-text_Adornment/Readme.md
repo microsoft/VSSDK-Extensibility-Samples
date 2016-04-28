@@ -32,7 +32,7 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 **Run the sample**
 
-  1. To run the sample, hit **F5or choose the **Debug &gt; Start Debuggingmenu command. A new experimental instance of Visual Studio will launch. 
+  1. To run the sample, hit **F5** or choose the **Debug &gt; Start Debugging** menu command. A new experimental instance of Visual Studio will launch. 
   2. Once loaded, open any file in the text editor. 
   3. Type a six-digit hexidecimal number. 
   4. An adornment is displayed that displays the color value of the hexadecimal number 
@@ -40,8 +40,8 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 
 If you want the color swatch to appear next to the hexadecimal number instead
-of replace it, comment out the line**#define HIDING_TEXTin
-_ColorAdornmentTagger.cs_.
+of replace it, comment out the line `#define HIDING_TEXT` in
+`ColorAdornmentTagger.cs`.
 
 
 
