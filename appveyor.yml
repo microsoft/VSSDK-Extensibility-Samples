@@ -2,6 +2,8 @@ version: 1.0.{build}
 image: Visual Studio 2015
 environment:
   DeployExtension: false
+cache:
+ - '%USERPROFILE%\.nuget\packages -> **\project.json'
 build_script:
 - ps: >-
     $failed = @()
