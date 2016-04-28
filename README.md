@@ -1,6 +1,7 @@
 # Visual Studio Extensibility Samples
 
 [![Join the chat at https://gitter.im/Microsoft/extendvs](https://badges.gitter.im/Join%20Chat.svg)](http://aka.ms/dyofat)
+[![Build status](https://ci.appveyor.com/api/projects/status/7gjewm7eiwoa2ees?svg=true)](https://ci.appveyor.com/project/AlexEyler/vssdk-extensibility-samples)
 
 These samples demonstrate how to customize the appearance and behavior of the 
 Visual Studio IDE and editor. 
