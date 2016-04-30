@@ -47,7 +47,7 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 This example was used during the Visual Studio Ecosystem Summit Presentation
 "Getting Linguistic: Integrating a Language into Visual Studio" by Chris
-Granger.
+Granger. The video can be found [here](https://channel9.msdn.com/blogs/vsipmarketing/vsx212-adding-a-language-service-into-visual-studio-2010).
 
 
 
