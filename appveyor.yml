@@ -6,22 +6,4 @@ cache:
  - '%USERPROFILE%\.nuget\packages -> **\project.json'
 build_script:
 - ps: >-
-    $failed = @()
-
-    Get-ChildItem *.sln -rec |% {
-        Write-Output "Restoring packages for $($_.Name)"
-        nuget restore $_ -Verbosity quiet
-        if ($LASTEXITCODE -ne 0) {
-            $failed += $_
-        } else {
-            Write-Output "Building $($_.Name)"
-            msbuild $_ /nologo /m /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
-            if ($LASTEXITCODE -ne 0) {
-                $failed += $_
-            }
-        }
-    }
-
-    if ($failed.length -gt 0) {
-        exit $failed.length
-    }
+    .\build.ps1
