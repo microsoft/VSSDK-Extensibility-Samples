@@ -78,5 +78,7 @@ For more details see the readme included with each sample.
 [VSO extension samples](http://aka.ms/ph0rr5) at 
 the dedicated repository.
 
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
 Thank you for your support for Visual Studio - we're excited to see what extensions
 *you* build!
