@@ -198,3 +198,4 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+/Editor_Commands/C#/.idea/.idea.EditorCommands
