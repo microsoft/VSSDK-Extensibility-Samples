@@ -7,7 +7,7 @@
     "Microsoft.VisualStudio.Text.UI.Wpf": "14.0.23205",
     "Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime": "14.0.23205",
     "Microsoft.VisualStudio.Language.Intellisense": "14.0.23205",
-    "Microsoft.VSSDK.BuildTools": "14.0.23205"
+    "Microsoft.VSSDK.BuildTools": "15.0.25901-RC"
   },
   "runtimes": {
     "win": { }

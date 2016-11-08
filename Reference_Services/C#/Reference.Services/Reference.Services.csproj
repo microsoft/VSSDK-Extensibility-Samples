@@ -28,7 +28,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     <RootNamespace>Microsoft.Samples.VisualStudio.Services</RootNamespace>
     <AssemblyName>Reference.CSharp.Services</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
