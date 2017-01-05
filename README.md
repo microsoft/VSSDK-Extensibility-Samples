@@ -17,7 +17,7 @@ The following are some of the ways in which you can extend Visual Studio:
   * For Visual Studio 2015, samples that demonstrate using the Image Service/Catalog (for high-DPI, theme-aware, 
     and high contrast support) are denoted below with * and docs can be found [here] (http://aka.ms/VSImageService)
 
-If you've never written a Visual Studio extension before, you can find out how to get started at [VisualStudio.com/integrate](http://aka.ms/pyigr3).
+If you've never written a Visual Studio extension before, you can find out how to get started at [VisualStudio.com/integrate](https://aka.ms/vvnr38).
 
 ## Getting started
 
