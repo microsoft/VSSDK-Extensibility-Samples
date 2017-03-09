@@ -41,7 +41,7 @@ For more details see the readme included with each sample.
 |         [Completion_Tooltip_Customization](Completion_Tooltip_Customization/) | Replaces the completion tooltip UI                                                         |
 |                          [Diff_Classifier](Diff_Classifier/) | Classifier with color highlighting                                                         |
 |                      [Editor_With_Toolbox](Editor_With_Toolbox/) | Creates a custom toolbox associated with a specific file extension
-|                               [ErrorList*](SpellChecker) | Generates errors in ErrorList when user makes somen spelling error
+|                               [ErrorList*](ErrorList) | Generates errors in ErrorList when user makes somen spelling error
 |                    [High-DPI_Images_Icons](High-DPI_Images_Icons/) | Use these helpers to make your images/icons in *VS 2013 only* scale on high dense displays |
 |                           [Highlight_Word](Highlight_Word/) | Highlight any words that match the word currently under the text cursor                    |
 |                     [Intra-text_Adornment](Intra-text_Adornment/) | Text adornment that replaces hexadecimal color values with color swatches                  |
