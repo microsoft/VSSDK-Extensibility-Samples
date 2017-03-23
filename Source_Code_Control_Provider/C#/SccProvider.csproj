@@ -10,7 +10,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 -->
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <NuGetPackageImportStamp>
@@ -36,7 +36,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <StartAction>Program</StartAction>
-    <StartProgram>$(ProgramFiles)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe</StartProgram>
+    <StartProgram>$(ProgramFiles)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\devenv.exe</StartProgram>
     <StartArguments>/rootsuffix Exp</StartArguments>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -48,7 +48,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <StartAction>Program</StartAction>
-    <StartProgram>$(ProgramFiles)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe</StartProgram>
+    <StartProgram>$(ProgramFiles)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\devenv.exe</StartProgram>
     <StartArguments>/rootsuffix Exp</StartArguments>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>

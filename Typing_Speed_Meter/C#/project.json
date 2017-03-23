@@ -7,7 +7,7 @@
     "Microsoft.VisualStudio.Shell.14.0": "14.0.23205",
     "Microsoft.VisualStudio.Editor": "14.0.23205",
     "Microsoft.VisualStudio.Shell.Interop.12.0": "12.0.30110",
-    "Microsoft.VSSDK.BuildTools": "14.0.23205"
+    "Microsoft.VSSDK.BuildTools": "15.0.25901-RC"
   },
   "runtimes": {
     "win": { }

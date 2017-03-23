@@ -6,7 +6,7 @@
     "Microsoft.VisualStudio.SDK.EmbedInteropTypes": "14.1.2",
     "Microsoft.VisualStudio.Shell.14.0": "14.0.23205",
     "Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime": "14.0.23205",
-    "Microsoft.VSSDK.BuildTools": "14.0.23205"
+    "Microsoft.VSSDK.BuildTools": "15.0.25901-RC"
   },
   "runtimes": {
     "win": { }

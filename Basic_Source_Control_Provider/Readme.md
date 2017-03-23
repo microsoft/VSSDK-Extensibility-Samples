@@ -4,7 +4,7 @@
 Provides the basic requirements to implement a Source Control
 Provider in Visual Studio.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: MSBuild, VSX
 
 **Description**
@@ -23,7 +23,7 @@ framework necessary to implement one.
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
