@@ -124,8 +124,8 @@ Resource strings (localizable).
 
 **Related topics**
 
-  * [SCC Provider Integration](https://msdn.microsoft.com/en-us/library/bb166434(v=vs.140).aspx)
-  * [Visual Studio SDK Documentation](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+  * [SCC Provider Integration](https://docs.microsoft.com/en-us/visualstudio/extensibility/internals/creating-a-source-control-vspackage)
+  * [Visual Studio SDK Documentation](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 
