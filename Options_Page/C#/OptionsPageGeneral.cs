@@ -76,12 +76,7 @@ namespace Microsoft.Samples.VisualStudio.IDE.OptionsPage
         /// <remarks>If this handler sets e.Cancel to true, the activation will not occur.</remarks>
         protected override void OnActivate(CancelEventArgs e)
         {
-            int result = VsShellUtilities.ShowMessageBox(Site, Resources.MessageOnActivateEntered, null /*title*/, OLEMSGICON.OLEMSGICON_QUERY, OLEMSGBUTTON.OLEMSGBUTTON_OKCANCEL, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-
-            if (result == (int)VSConstants.MessageBoxResult.IDCANCEL)
-            {
-                e.Cancel = true;
-            }
+            VsShellUtilities.ShowMessageBox(Site, Resources.MessageOnActivateEntered, null /*title*/, OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 
             base.OnActivate(e);
         }
@@ -110,12 +105,7 @@ namespace Microsoft.Samples.VisualStudio.IDE.OptionsPage
         /// </remarks>
         protected override void OnDeactivate(CancelEventArgs e)
         {
-            int result = VsShellUtilities.ShowMessageBox(Site, Resources.MessageOnDeactivateEntered, null /*title*/, OLEMSGICON.OLEMSGICON_QUERY, OLEMSGBUTTON.OLEMSGBUTTON_OKCANCEL, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-
-            if (result == (int)VSConstants.MessageBoxResult.IDCANCEL)
-            {
-                e.Cancel = true;
-            }
+            VsShellUtilities.ShowMessageBox(Site, Resources.MessageOnDeactivateEntered, null /*title*/, OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
 
         /// <summary>

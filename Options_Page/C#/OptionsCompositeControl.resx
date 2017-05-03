@@ -117,28 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ButtonClearImageText" xml:space="preserve">
-    <value>&amp;Clear Image</value>
-  </data>
-  <data name="ChooseImageButtonText" xml:space="preserve">
-    <value>Choose &amp;Image</value>
-  </data>
-  <data name="MessageCaption" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="MessageOnActivateEntered" xml:space="preserve">
-    <value>In OnActivated</value>
-  </data>
-  <data name="MessageOnApply" xml:space="preserve">
-    <value>In OnApply</value>
-  </data>
-  <data name="MessageOnApplyEntered" xml:space="preserve">
-    <value>Press Cancel to cancel this OnApply.  OK to continue</value>
-  </data>
-  <data name="MessageOnClosed" xml:space="preserve">
-    <value>OnClosed</value>
-  </data>
-  <data name="MessageOnDeactivateEntered" xml:space="preserve">
-    <value>In OnDeactivated</value>
-  </data>
 </root>
