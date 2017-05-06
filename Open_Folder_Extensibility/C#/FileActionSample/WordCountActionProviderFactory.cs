@@ -67,6 +67,10 @@ namespace OpenFolderExtensibility.FileActionSample
                                 WordCountSettings.WordCountType.WordCount : 
                                 WordCountSettings.WordCountType.LineCount;
                             WordCountSettings.StoreSettings(workspaceContext, settings);
+                                                            
+                            await OutputWindowPaneAsync(
+                                settings.CountType == WordCountSettings.WordCountType.WordCount ?
+                                    "Counting Words\n" : "Counting Lines\n");
                         }),
                 });
             }

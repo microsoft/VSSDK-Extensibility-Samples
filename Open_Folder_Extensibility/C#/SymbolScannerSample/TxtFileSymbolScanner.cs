@@ -26,7 +26,7 @@ namespace OpenFolderExtensibility.SymbolScannerSample
             return this;
         }
 
-        public Task<T> ScanContentAsync<T>(string filePath, CancellationToken cancellationToken)
+        public async Task<T> ScanContentAsync<T>(string filePath, CancellationToken cancellationToken)
             where T : class
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -41,7 +41,7 @@ namespace OpenFolderExtensibility.SymbolScannerSample
                 string line;
                 int lineNo = 1;
                 var results = new List<SymbolDefinition>();
-                while ((line = rdr.ReadLine()) != null)
+                while ((line = await rdr.ReadLineAsync()) != null)
                 {
                     // Extract any line that starts with ` as a symbol and add it to the symbol database for that file.
                     if (line.StartsWith("`"))
@@ -50,7 +50,7 @@ namespace OpenFolderExtensibility.SymbolScannerSample
                     }
                     ++lineNo;
                 }
-                return Task.FromResult((T)(IReadOnlyCollection<SymbolDefinition>)results);
+                return (T)(IReadOnlyCollection<SymbolDefinition>)results;
             }
         }
     }

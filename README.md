@@ -60,6 +60,7 @@ For more details see the readme included with each sample.
 |                          [WPFDesigner_XML](WPFDesigner_XML/) | WPF-based visual designer for editing .vstemplate XML files                                |
 |                          [WPF_Toolwindow*](WPF_Toolwindow/) | Provides a sample toolwindow that can host a WPF or WinForms control                       |
 |         [Windows_Forms_Controls_Installer](Windows_Forms_Controls_Installer/) | Loads custom Windows Forms controls inside the toolbox                                     |
+|                                [ErrorList](ErrorList/) | generates errors in error list when the user spelling errors in the editor                       |
 
 <!-- |          IronPython_Integrated_Shell |Demonstrates how to create an integrated shell for IronPython  
     |   IronPython_Integration | Demonstrates a custom project type and WinForms designer for IronPython

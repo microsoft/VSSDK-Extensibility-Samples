@@ -4,7 +4,7 @@
     <Identity Id="OpenFolderExtensibility.Microsoft Corporation.8427861c-7a27-4867-85a5-01cfefae648b" Version="1.0" Language="en-US" Publisher="Microsoft Corporation" />
     <DisplayName>Open Folder Extensibility Samples (C#)</DisplayName>
     <Description xml:space="preserve">This sample demonstrates how to extend "Open Folder" in Visual Studio 2017.  This sample contains a number of sub-samples.  Check out the project’s Readme.md file for more info about these samples and the architecture of the "Open Folder" feture as a whole.</Description>
-    <Icon>VSPackage\Resources\VSPackage.ico</Icon>
+    <Icon>VSIX\Resources\VSPackage.ico</Icon>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0]" />
