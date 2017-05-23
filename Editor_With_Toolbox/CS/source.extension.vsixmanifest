@@ -18,7 +18,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     <PreviewImage>Example.EditorWithToolbox.jpg</PreviewImage>
   </Metadata>
   <Installation InstalledByMsi="false">
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="14.0" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0,16.0)" />
   </Installation>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.5" />
@@ -29,4 +29,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Templates\EditorWithToolbox.vsdir" d:VsixSubPath="Templates" />
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Templates\tbx.tbx" d:VsixSubPath="Templates" />
   </Assets>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
 </PackageManifest>
