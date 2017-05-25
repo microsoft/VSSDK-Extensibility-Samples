@@ -26,7 +26,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     <ProjectGuid>{F3E3199F-C005-4A14-B96B-974896986EDC}</ProjectGuid>
     <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-	<VsixType>v3</VsixType>
+    <VsixType>v3</VsixType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Samples.VisualStudio.MenuCommands</RootNamespace>
     <AssemblyName>Microsoft.Samples.VisualStudio.MenuAndCommands</AssemblyName>
