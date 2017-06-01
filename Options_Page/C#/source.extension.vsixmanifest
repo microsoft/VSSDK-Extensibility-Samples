@@ -12,7 +12,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="OptionsPage.CS" Version="1.0" Language="en-US" Publisher="Microsoft" />
+    <Identity Id="OptionsPage.CS" Version="1.1" Language="en-US" Publisher="Microsoft" />
     <DisplayName>C# Options Page sample</DisplayName>
     <Description>
       This sample demonstrates how to add custom options pages into the standard Visual Studio Options dialog.
@@ -29,4 +29,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
   <Assets>
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
   </Assets>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[14.3.25407,16.0)" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
 </PackageManifest>

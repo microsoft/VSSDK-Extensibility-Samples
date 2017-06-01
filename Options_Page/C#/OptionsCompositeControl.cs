@@ -27,15 +27,13 @@ namespace Microsoft.Samples.VisualStudio.IDE.OptionsPage
     /// </summary>
     public class OptionsCompositeControl : UserControl
     {
-        #region Fields
-
-        private PictureBox pictureBox;
-        private Button buttonChooseImage;
+        private GroupBox groupBox1;
         private Button buttonClearImage;
-        private OptionsPageCustom customOptionsPage;
-
-        // ImageMoniker data
+        private Button buttonChooseImage;
+        private PictureBox pictureBox;
         private PictureBox bitmapPictureBox;
+        #region Fields
+        private OptionsPageCustom customOptionsPage;
 
         #endregion
 
@@ -58,61 +56,73 @@ namespace Microsoft.Samples.VisualStudio.IDE.OptionsPage
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.buttonChooseImage = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonClearImage = new System.Windows.Forms.Button();
+            this.buttonChooseImage = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.bitmapPictureBox = new System.Windows.Forms.PictureBox();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bitmapPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox
+            // groupBox1
             // 
-            this.pictureBox.Location = new System.Drawing.Point(16, 16);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(264, 120);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
-            // 
-            // buttonChooseImage
-            // 
-            this.buttonChooseImage.Location = new System.Drawing.Point(16, 152);
-            this.buttonChooseImage.Name = "buttonChooseImage";
-            this.buttonChooseImage.Size = new System.Drawing.Size(112, 23);
-            this.buttonChooseImage.TabIndex = 1;
-            this.buttonChooseImage.Text = global::Microsoft.Samples.VisualStudio.IDE.OptionsPage.Resources.ChooseImageButtonText;
-            this.buttonChooseImage.Click += new System.EventHandler(this.OnChooseImage);
+            this.groupBox1.Controls.Add(this.buttonClearImage);
+            this.groupBox1.Controls.Add(this.buttonChooseImage);
+            this.groupBox1.Controls.Add(this.pictureBox);
+            this.groupBox1.Controls.Add(this.bitmapPictureBox);
+            this.groupBox1.Location = new System.Drawing.Point(17, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(298, 325);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Selected Image";
             // 
             // buttonClearImage
             // 
-            this.buttonClearImage.Location = new System.Drawing.Point(160, 152);
+            this.buttonClearImage.Location = new System.Drawing.Point(182, 272);
             this.buttonClearImage.Name = "buttonClearImage";
-            this.buttonClearImage.Size = new System.Drawing.Size(96, 23);
-            this.buttonClearImage.TabIndex = 2;
+            this.buttonClearImage.Size = new System.Drawing.Size(96, 30);
+            this.buttonClearImage.TabIndex = 6;
             this.buttonClearImage.Text = global::Microsoft.Samples.VisualStudio.IDE.OptionsPage.Resources.ButtonClearImageText;
             this.buttonClearImage.Click += new System.EventHandler(this.OnClearImage);
             // 
+            // buttonChooseImage
+            // 
+            this.buttonChooseImage.Location = new System.Drawing.Point(14, 272);
+            this.buttonChooseImage.Name = "buttonChooseImage";
+            this.buttonChooseImage.Size = new System.Drawing.Size(112, 30);
+            this.buttonChooseImage.TabIndex = 5;
+            this.buttonChooseImage.Text = global::Microsoft.Samples.VisualStudio.IDE.OptionsPage.Resources.ChooseImageButtonText;
+            this.buttonChooseImage.Click += new System.EventHandler(this.OnChooseImage);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(14, 21);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(264, 234);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox.TabIndex = 4;
+            this.pictureBox.TabStop = false;
+            // 
             // bitmapPictureBox
             // 
-            this.bitmapPictureBox.Location = new System.Drawing.Point(290, 16);
+            this.bitmapPictureBox.Location = new System.Drawing.Point(132, 261);
             this.bitmapPictureBox.Name = "bitmapPictureBox";
-            this.bitmapPictureBox.Size = new System.Drawing.Size(32, 32);
+            this.bitmapPictureBox.Size = new System.Drawing.Size(44, 41);
             this.bitmapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.bitmapPictureBox.TabIndex = 3;
+            this.bitmapPictureBox.TabIndex = 7;
             this.bitmapPictureBox.TabStop = false;
             // 
             // OptionsCompositeControl
             // 
             this.AllowDrop = true;
-            this.Controls.Add(this.buttonClearImage);
-            this.Controls.Add(this.buttonChooseImage);
-            this.Controls.Add(this.pictureBox);
-            this.Controls.Add(this.bitmapPictureBox);
+            this.Controls.Add(this.groupBox1);
             this.Name = "OptionsCompositeControl";
-            this.Size = new System.Drawing.Size(355, 195);
-            // 
+            this.Size = new System.Drawing.Size(333, 348);
             this.Load += new System.EventHandler(this.LoadMoniker);
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bitmapPictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -127,7 +137,7 @@ namespace Microsoft.Samples.VisualStudio.IDE.OptionsPage
         /// </summary>
         private void OnChooseImage(object sender, EventArgs e)
         {
-            var openImageFileDialog = new OpenFileDialog();
+            var openImageFileDialog = new OpenFileDialog() { Filter= "Image Files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*" };
 
             if (openImageFileDialog.ShowDialog() == DialogResult.OK)
             {
