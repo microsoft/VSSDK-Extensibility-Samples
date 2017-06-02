@@ -10,7 +10,7 @@ Adjust the appearance of Completion Tooltips in Visual Studio.
 This is a sample extension for the Visual Studio 2013 editor that replaces the
 completion tooltip UI.
 
-![image](C%23/bin/Debug/Example.CompletionTooltipCustomization.png)
+![image](C%23/Example.CompletionTooltipCustomization.png)
 
 **Requirements**
 
