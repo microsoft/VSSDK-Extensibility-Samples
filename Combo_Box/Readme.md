@@ -19,7 +19,7 @@ four different kinds of combo boxes; **DropDownCombo**, **IndexCombo**,
   * Add a Dynamic Combo to Visual Studio toolbar
   * Control the programmatic name of the combo box commands by placing them within the **Tools** submenu of the main menu bar
 
-![image](C%23/Example.ComboBox.jpg)
+![image](C%23/Example.ComboBox.png)
 
 There are four styles of Combo Boxes:
 
