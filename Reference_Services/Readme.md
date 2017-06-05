@@ -28,7 +28,7 @@ The ServicesPackage class demonstrates how to proffer services. Specifically:
   2. The constructor adds the proffered service types to the services list provided by the package. At this point we don’t create any instance of the service, we provide a callback function to call the first time a client queries for a specific service. This optimizes performance, we don’t want to construct something that might never be used. 
   3. The callback function used to create a new instance of the services. 
 
-![image](C%23/Example.ReferenceServices.png)
+![image](C%23/Example.ReferenceService.png)
 
 **Requirements**
 
