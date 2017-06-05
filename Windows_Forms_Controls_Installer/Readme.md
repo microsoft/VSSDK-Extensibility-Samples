@@ -21,8 +21,6 @@ new items when a Windows Form is open in the Editor:
 
 * [ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
-* 
-
 **Get all samples**
 
 Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository)):
