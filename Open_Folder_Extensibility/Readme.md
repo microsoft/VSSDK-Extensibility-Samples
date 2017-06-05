@@ -54,6 +54,4 @@ This sample is organized into four folders:
 
 **Related topics**
 
-* [ Open Folder API Documentation ](https://msdn.microsoft.com/library/mt793860(v=vs.150).aspx)
-
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
