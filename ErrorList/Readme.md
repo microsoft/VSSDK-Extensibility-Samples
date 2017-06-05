@@ -10,7 +10,7 @@ A sample of a VSIX that generates errors in error list when you make spelling er
 This sample generates the Messages in error list when you make spelling errors in the text that you type in the editor
 
 
-![image](CS/Example.SpellingError.png)
+![image](C%23/Example.SpellingError.png)
 
 **Requirements**
 
