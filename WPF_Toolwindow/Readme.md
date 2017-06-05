@@ -14,7 +14,7 @@ controls in Visual Studio.
 This sample demonstrates how to create a package that provides tool windows
 which host Windows Forms controls and WPF controls.
 
-![image](C%23/Example.ToolWindow.jpg)
+![image](C%23/Example.ToolWindow.png)
 
 Goals:
 
