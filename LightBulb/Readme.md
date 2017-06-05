@@ -2,21 +2,21 @@
 This sample provides custom LightBulb functionality for txt
 files in Visual Studio.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Editor, VSX
 
 **Description**
 
-This sample for Visual Studio 2015 modifies the LightBulb API to provide
+This sample for Visual Studio 2017 modifies the LightBulb API to provide
 custom content for .txt files. Whenever the text caret is placed over a word,
 the lightbulb adornment appears. The lightbulb will provide to options, you
 can choose to make the word entirely uppercase or entirely lowercase.
 
-![image](TestLightBulb/Resources/Example_LightBulb.png)
+![image](TestLightBulb/Resources/Example.LightBulb.png)
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -40,10 +40,8 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 **Related topics**
 
-* [ Light Bulb Documentation ](https://msdn.microsoft.com/en-us/library/dn872466(v=vs.140).aspx)
-
-* [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885242(v=vs.140).aspx)
-
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Light Bulb Documentation ](https://docs.microsoft.com/en-us/visualstudio/ide/quick-actions)
+* [ Editor Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/editor-and-language-service-extensions)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
