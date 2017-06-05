@@ -16,7 +16,7 @@ This sample builds upon the Source Control Provider sample. Apart from the funct
   * Display the number of unpublished commits in the repository (Note: Only for Distributed Source Control Systems like Git) 
   * Begin Publish of a solution not under source control into a supported Source Control system 
 
-![image](C%23/Resources/Example.SourceControlStatus)
+![image](C%23/Resources/Example.SourceControlStatus.png)
 
 **Requirements**
 
