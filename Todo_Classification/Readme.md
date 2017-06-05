@@ -18,7 +18,7 @@ highlighted and a glyph will be displayed on that line.
   * The binaries for this sample can also be installed via the extension manager. 
   * This is the sample code written during the Visual Studio Ecosystem Summit presentation ** I Want Coloring: A scenario based look at the new editor**
 
-![image](C%23/Example.TodoClassification.png)
+![image](C%23/Example.ToDoClassification.png)
 
 **Requirements** 
 
