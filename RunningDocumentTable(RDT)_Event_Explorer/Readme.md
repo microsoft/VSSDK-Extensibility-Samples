@@ -13,7 +13,7 @@ This sample demonstrates how to create an explorer that logs Running Document
 Table (RDT) events. Selecting an event from the grid displays its properties
 in the **Properties** window.
 
-![image](C%23/RdtEvent.png)
+![image](C%23/Example.RdtEvent.png)
 
 Goals:
 
