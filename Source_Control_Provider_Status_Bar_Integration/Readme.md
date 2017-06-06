@@ -3,7 +3,7 @@
 Provides a sample which allows Source Control Providers to display information in the Visual Studio Status Bar.
 
 
-* Technologies: Visual Studio 2015 Update 2 SDK
+* Technologies: Visual Studio 2017 Update 2 SDK
 * Topics: MSBuild, VSX
 
 **Description**
@@ -16,13 +16,11 @@ This sample builds upon the Source Control Provider sample. Apart from the funct
   * Display the number of unpublished commits in the repository (Note: Only for Distributed Source Control Systems like Git) 
   * Begin Publish of a solution not under source control into a supported Source Control system 
 
-![image](C%23/Resources/Example.StatusBarPublish.png)
-
-![image](C%23/Resources/Example.StatusBarRepo.png)
+![image](C%23/Resources/Example.SourceControlStatus.png)
 
 **Requirements**
 
-[ Visual Studio 2015 Update 2](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 Update 2](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 **Get all samples**
 
@@ -35,10 +33,10 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 1. To build and execute the sample, open the .sln file, press F5 after the sample is loaded
 2. Once loaded, create a new solution that is not under Source Control
 3. Click the Publish button
-4. Select ìManaged Source Control Sample Provider (C#)î
+4. Select ‚ÄúManaged Source Control Sample Provider (C#)‚Äù
 5. This adds the solution to the sample Source Control.
-6. Clicking on ìSample Branchî on the status bar will display a menu with a list of sample branches and sample actions
-7. Clicking on ìSample Repositoryî on the status bar will display a dialog with the coordinates of the repository button.
+6. Clicking on ‚ÄúSample Branch‚Äù on the status bar will display a menu with a list of sample branches and sample actions
+7. Clicking on ‚ÄúSample Repository‚Äù on the status bar will display a dialog with the coordinates of the repository button.
 8. Clicking on the Pending Changes button (the button with a pencil icon) will display a dialog with the coordinates of the button.
 9. Clicking on the Unpublished Commits button (the button with an arrow icon) will display a dialog with the coordinates of the button.
 
@@ -120,12 +118,12 @@ Implementation of the interface which enables a solution not under Source Contro
 * Verify the sample builds in all configurations
 * Verify that the sample was registered. The About box should list the product as installed
 * Verify that the Source Control System name is available for selection on the Publish menu when the solution is not under Source Control
-* Verify that after clicking the Publish menu item, the solution is added to Source Control and glyphs are seen next to files in Solution Explorer and the following buttons are displayed on the Status Bar - ìSample Repositoryî, ìSample Branchî, ì0î with a pencil icon, ì0î with a up arrow.
+* Verify that after clicking the Publish menu item, the solution is added to Source Control and glyphs are seen next to files in Solution Explorer and the following buttons are displayed on the Status Bar - ‚ÄúSample Repository‚Äù, ‚ÄúSample Branch‚Äù, ‚Äú0‚Äù with a pencil icon, ‚Äú0‚Äù with a up arrow.
 
 **Related topics**
 
-  * [ SCC Provider Integration ](https://msdn.microsoft.com/en-us/library/bb166434(v=vs.140).aspx)
-  * [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+  * [ SCC Provider Integration ](https://docs.microsoft.com/en-us/visualstudio/extensibility/internals/creating-a-source-control-vspackage)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

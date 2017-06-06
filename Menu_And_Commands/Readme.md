@@ -1,10 +1,10 @@
-﻿
+
 
 # Menu and Commands Sample
 Create menu and command items and visualize them inside Visual
 Studio’s menus and toolbars.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Shell, VSX, Menu
 
 **Description**
@@ -19,11 +19,11 @@ Goals:
   * Dynamic text in menu items 
   * Associating a keybinding (keyboard shortcut) to a menu item 
 
-![image](C%23/Example.MenuAndCommands.png)
+![image](C%23/Example.MenusAndCommands.png)
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -81,9 +81,9 @@ commands and keyboard accelerators.
 
 **Related topics**
 
-* [ Menu and Command Documentation ](https://msdn.microsoft.com/en-us/library/bb165937(v=vs.140).aspx)
+* [ Menu and Command Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-menus-and-commands)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

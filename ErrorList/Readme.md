@@ -10,11 +10,11 @@ A sample of a VSIX that generates errors in error list when you make spelling er
 This sample generates the Messages in error list when you make spelling errors in the text that you type in the editor
 
 
-![image](CS/Example_Spellingerror.png)
+![image](C%23/Example.SpellingError.png)
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -35,11 +35,11 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 **Related topics**
 
-* [ Toolbox Documentation ](https://msdn.microsoft.com/en-us/library/ee712574(v=vs.140).aspx)
+* [ Toolbox Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/creating-a-wpf-toolbox-control)
 
-* [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885242(v=vs.140).aspx)
+* [ Editor Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/editor-and-language-service-extensions)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

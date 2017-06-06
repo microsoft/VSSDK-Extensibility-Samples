@@ -3,7 +3,7 @@
 Demonstrate how to extend Quick Launch with custom search
 providers in Visual Studio.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: MSBuild, VSX
 
 **Description**
@@ -19,7 +19,7 @@ Launch**
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -74,11 +74,10 @@ registration
 
 **Related topics**
 
-* [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885242(v=vs.140).aspx)
+ * [ Editor Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/editor-and-language-service-extensions)
+* [ User Settings and Options ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-user-settings-and-options)
 
-* [ User Settings and Options ](https://msdn.microsoft.com/en-us/library/bb165657(v=vs.140).aspx)
-
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+ * [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

@@ -1,9 +1,9 @@
-﻿
+
 
 # Windows Forms Controls Installer Sample
 Load custom Windows Forms controls into the Toolbox in Visual Studio.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Shell, VSX
 
 **Description**
@@ -15,13 +15,11 @@ new items when a Windows Form is open in the Editor:
   * **MyCustomTextBox**: A normal Windows Forms control that adds a blank text field 
   * **MyCustomTextBoxWithPopup**: A custom ToolboxItem that adds a text box and pops up a dialogue box when added. 
 
-![image](C%23/WinformsControlsInstaller/screenshot.png)
+![image](C%23/WinformsControlsInstaller/Example.WindowsFormsControlsInstaller.png)
 
 **Requirements**
 
-* [ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
-
-* 
+* [ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 **Get all samples**
 
@@ -42,11 +40,11 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 **Related topics**
 
-* [ Tool Window Documentation ](https://msdn.microsoft.com/en-us/library/bb165390(v=vs.140).aspx)
+* [ Tool Window Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-and-customizing-tool-windows)
 
-* [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885118(v=vs.140).aspx)
+* [ Editor Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/editor-and-language-service-extensions)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

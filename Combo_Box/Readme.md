@@ -2,7 +2,7 @@
 Add a toolbar to Visual Studio that has four different kinds of
 dropdown combo boxes.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Editor, VSX
 
 
@@ -19,7 +19,7 @@ four different kinds of combo boxes; **DropDownCombo**, **IndexCombo**,
   * Add a Dynamic Combo to Visual Studio toolbar
   * Control the programmatic name of the combo box commands by placing them within the **Tools** submenu of the main menu bar
 
-![image](C%23/ComboBox.jpg)
+![image](C%23/Example.ComboBox.png)
 
 There are four styles of Combo Boxes:
 
@@ -32,7 +32,7 @@ There are four styles of Combo Boxes:
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -103,6 +103,6 @@ Command Window)**
 
 **Related topics**
 
-* [ Menu and Commands Documentation ](https://msdn.microsoft.com/en-us/library/bb165937(v=vs.140).aspx)
+* [ Menu and Commands Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-menus-and-commands)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)

@@ -1,10 +1,10 @@
-﻿
+
 
 # ToDo Classification Sample
 Highlight any instances of the text 'ToDo' in the Visual Studio
 Editor and display a glyph in the corresponding line.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 
 * Topics: Visual Studio Shell, VSX
  
@@ -18,11 +18,11 @@ highlighted and a glyph will be displayed on that line.
   * The binaries for this sample can also be installed via the extension manager. 
   * This is the sample code written during the Visual Studio Ecosystem Summit presentation ** I Want Coloring: A scenario based look at the new editor**
 
-![image](C%23/Example.Todo_Classification.png)
+![image](C%23/Example.ToDoClassification.png)
 
 **Requirements** 
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -43,7 +43,8 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 **Related topics** 
 
-* [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885118(v=vs.140).aspx)
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Editor Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/editor-and-language-service-extensions)
+
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 

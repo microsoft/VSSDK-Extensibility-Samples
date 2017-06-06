@@ -1,10 +1,10 @@
-﻿
+
 
 # Reference Services Sample
 Demonstrates how to be a Visual Studio service provider and
 consume Visual Studio services.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Shell, VSX
 
 **Description**
@@ -28,11 +28,11 @@ The ServicesPackage class demonstrates how to proffer services. Specifically:
   2. The constructor adds the proffered service types to the services list provided by the package. At this point we don’t create any instance of the service, we provide a callback function to call the first time a client queries for a specific service. This optimizes performance, we don’t want to construct something that might never be used. 
   3. The callback function used to create a new instance of the services. 
 
-![image](C%23/Services.jpg)
+![image](C%23/Example.ReferenceService.png)
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -53,9 +53,9 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 **Related topics**
 
-* [ Menu Documentation ](https://msdn.microsoft.com/en-us/library/bb165937(v=vs.140).aspx)
+* [ Menu Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-menus-and-commands)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

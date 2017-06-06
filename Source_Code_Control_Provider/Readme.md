@@ -3,7 +3,7 @@
 Provides a Source Code Control Provider in Visual Studio.
 
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: MSBuild, VSX
 
 **Description**
@@ -27,7 +27,7 @@ Studio that can be selected as active source control provider.
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -198,8 +198,8 @@ Resource strings (localizable).
 
 **Related topics**
 
-  * [ SCC Provider Integration ](https://msdn.microsoft.com/en-us/library/bb166434(v=vs.140).aspx)
-  * [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+  * [ SCC Provider Integration ](https://docs.microsoft.com/en-us/visualstudio/extensibility/internals/creating-a-source-control-vspackage)
+ * [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

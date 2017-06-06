@@ -1,4 +1,4 @@
-﻿
+
 
 # WPF Toolwindow Sample
 
@@ -6,7 +6,7 @@ Provides tool windows which host Windows Forms controls and WPF
 controls in Visual Studio.
 
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Shell, VSX
 
 **Description**
@@ -14,7 +14,7 @@ controls in Visual Studio.
 This sample demonstrates how to create a package that provides tool windows
 which host Windows Forms controls and WPF controls.
 
-![image](C%23/ToolWindow.jpg)
+![image](C%23/Example.ToolWindow.png)
 
 Goals:
 
@@ -44,7 +44,7 @@ These include events such as moved, resized, shown, hidden, and so on.
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -74,8 +74,8 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 **Related topics**
 
-[ Tool Window Documentation ](https://msdn.microsoft.com/en-us/library/bb165390(v=vs.140).aspx)
+* [ Tool Window Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-and-customizing-tool-windows)
 
-[ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
