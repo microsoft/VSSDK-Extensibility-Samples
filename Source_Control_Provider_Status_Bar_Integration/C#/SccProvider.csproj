@@ -296,7 +296,6 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     <Resource Include="Resources\Product.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Example.SccProvider.jpg" />
     <VSCTCompile Include="PkgCmd.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
@@ -312,6 +311,12 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Example.SourceControlStatus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>

@@ -130,7 +130,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Example.Todo_Classification.png">
+    <Content Include="Example.ToDoClassification.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

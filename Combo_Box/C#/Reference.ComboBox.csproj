@@ -213,7 +213,12 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Package.ico" />
-    <Resource Include="ComboBox.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Example.ComboBox.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
