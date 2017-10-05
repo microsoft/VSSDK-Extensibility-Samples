@@ -155,6 +155,10 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Example.Package.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="GenericPackage.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +166,6 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Package.jpg" />
   </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>

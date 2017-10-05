@@ -99,7 +99,7 @@
     <None Include="Test.patch" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DiffClassifier_Screenshot.png">
+    <Content Include="Example.DiffClassifier.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

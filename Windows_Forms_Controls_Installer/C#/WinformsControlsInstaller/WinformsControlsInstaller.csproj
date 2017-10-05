@@ -180,8 +180,11 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
     <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Example.WindowsFormsControlsInstaller.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\Package.ico" />
-    <Resource Include="screenshot.png" />
   </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>

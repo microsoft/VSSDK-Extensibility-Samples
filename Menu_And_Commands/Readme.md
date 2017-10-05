@@ -19,7 +19,7 @@ Goals:
   * Dynamic text in menu items 
   * Associating a keybinding (keyboard shortcut) to a menu item 
 
-![image](C%23/Example.MenusAndCommands.png)
+![image](C%23/Example.MenuAndCommands.png)
 
 **Requirements**
 

@@ -199,7 +199,6 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Example.OptionsPage1.png" />
-    <Resource Include="Example.OptionsPage2.png" />
   </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
