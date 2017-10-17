@@ -370,7 +370,8 @@ namespace Microsoft.VsTemplateDesigner
             }
             finally
             {
-                langsvc.IsParsing = false;
+                if (langsvc != null)
+                    langsvc.IsParsing = false;
                 _synchronizing = false;
             }
         }
