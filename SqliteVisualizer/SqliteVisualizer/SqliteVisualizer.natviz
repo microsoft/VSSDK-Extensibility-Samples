@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+    <UIVisualizer ServiceId="{84755E07-6276-4969-84BB-CB62563AE95E}" Id="1" MenuName="Sqlite Visualizer"/>
+
+    <Type Name="sqlite3 *">
+        <UIVisualizer ServiceId="{84755E07-6276-4969-84BB-CB62563AE95E}" Id="1" />
+    </Type>
+</AutoVisualizer>
