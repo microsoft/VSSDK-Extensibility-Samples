@@ -1,11 +1,9 @@
-
-
-# Sqlite native Debugger Visualizer Sample
-Visualize a Sqlite instance while native debugging in Visual Studio.
+# SQLite native Debugger Visualizer Sample
+Visualize a SQLite instance while native debugging in Visual Studio.
 
 * Technologies: Visual Studio 2017 SDK
 
-* Topics: Visual Studio Debugger, Sqlite
+* Topics: Visual Studio Debugger, SQLite
  
 
 **Description**
@@ -27,7 +25,7 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 **Run the sample** 
 
   1. To run the sample, hit F5 or choose the **Debug &gt; Start Debugging** menu command. A new instance of Visual Studio will launch under the experimental hive. 
-  2. Once loaded, open a native project in the newly launched Visual Studio that uses [sqlite](https://sqlite.org/). 
+  2. Once loaded, open a native project in the newly launched Visual Studio that uses [SQLite](https://sqlite.org/).
   3. Set a breakpoint near a variable of type ```sqlite3 *```.
   4. Hit F5 or choose the **Debug &gt; Start Debugging** menu command in the newly launched Visual Studio to launch the loaded project.
   5. When the breakpoint set above is hit, press the small magnifying glass in the [Locals window](https://docs.microsoft.com/en-us/visualstudio/debugger/autos-and-locals-windows). 

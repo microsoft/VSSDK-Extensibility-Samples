@@ -1,6 +1,12 @@
-﻿// -----------------------------------------------------------------------------
-// Copyright (c) Microsoft Corporation.  All rights reserved.
-// -----------------------------------------------------------------------------
+﻿/***************************************************************************
+ 
+Copyright (c) Microsoft Corporation. All rights reserved.
+THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+
+***************************************************************************/
 
 namespace SqliteVisualizer
 {
@@ -51,7 +57,7 @@ namespace SqliteVisualizer
                 if (_enabled != value)
                 {
                     _enabled = value;
-                    CommandManager.InvalidateRequerySuggested();
+                    RaiseCanExecuteChanged();
                 }
             }
         }
@@ -64,11 +70,7 @@ namespace SqliteVisualizer
             return _canExecute == null ? _enabled : _canExecute(parameter);
         }
 
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
+        public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
         {
@@ -76,5 +78,14 @@ namespace SqliteVisualizer
         }
 
         #endregion // ICommand Members
+
+        private void RaiseCanExecuteChanged()
+        {
+            var h = CanExecuteChanged;
+            if (h != null)
+            {
+                h(this, EventArgs.Empty);
+            }
+        }
     }
 }

@@ -9,10 +9,8 @@
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -71,11 +69,9 @@
     <Compile Include="VisualizerWindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Key.snk" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="version.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\SqliteVisualizer.ico">
@@ -130,11 +126,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers.15.4.4\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.CoreUtility">
-      <Version>15.4.27004</Version>
+      <Version>15.0.26201</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Debugger.Engine">
       <Version>15.0.26606</Version>
@@ -146,7 +139,7 @@
       <Version>9.0.21022</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Imaging">
-      <Version>15.4.27004</Version>
+      <Version>15.0.26201</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.OLE.Interop">
       <Version>7.10.6071</Version>
@@ -158,10 +151,10 @@
       <Version>14.1.33</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0">
-      <Version>15.4.27004</Version>
+      <Version>15.0.26201</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Shell.Framework">
-      <Version>15.4.27004</Version>
+      <Version>15.0.26201</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Shell.Interop">
       <Version>7.10.6071</Version>
@@ -170,34 +163,19 @@
       <Version>11.0.61030</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Threading">
-      <Version>15.4.4</Version>
+      <Version>15.3.83</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers">
-      <Version>15.4.4</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Validation">
-      <Version>15.3.32</Version>
-    </PackageReference>
-    <PackageReference Include="Nerdbank.GitVersioning">
-      <Version>2.0.41</Version>
+      <Version>15.0.240</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="..\packages\Microsoft.VisualStudio.SDK.EmbedInteropTypes.15.0.9\build\Microsoft.VisualStudio.SDK.EmbedInteropTypes.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.SDK.EmbedInteropTypes.15.0.9\build\Microsoft.VisualStudio.SDK.EmbedInteropTypes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.SDK.EmbedInteropTypes.15.0.9\build\Microsoft.VisualStudio.SDK.EmbedInteropTypes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.SDK.EmbedInteropTypes.15.0.9\build\Microsoft.VisualStudio.SDK.EmbedInteropTypes.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.VSSDK.BuildTools.15.1.192\build\Microsoft.VSSDK.BuildTools.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VSSDK.BuildTools.15.1.192\build\Microsoft.VSSDK.BuildTools.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.VSSDK.BuildTools.15.1.192\build\Microsoft.VSSDK.BuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VSSDK.BuildTools.15.1.192\build\Microsoft.VSSDK.BuildTools.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.SDK.VsixSuppression.14.1.33\build\Microsoft.VisualStudio.SDK.VsixSuppression.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.SDK.VsixSuppression.14.1.33\build\Microsoft.VisualStudio.SDK.VsixSuppression.targets'))" />
-    <Error Condition="!Exists('..\packages\Nerdbank.GitVersioning.2.0.41\build\Nerdbank.GitVersioning.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Nerdbank.GitVersioning.2.0.41\build\Nerdbank.GitVersioning.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.VSSDK.BuildTools.15.1.192\build\Microsoft.VSSDK.BuildTools.targets" Condition="Exists('..\packages\Microsoft.VSSDK.BuildTools.15.1.192\build\Microsoft.VSSDK.BuildTools.targets')" />
-  <Import Project="..\packages\Microsoft.VisualStudio.SDK.VsixSuppression.14.1.33\build\Microsoft.VisualStudio.SDK.VsixSuppression.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.SDK.VsixSuppression.14.1.33\build\Microsoft.VisualStudio.SDK.VsixSuppression.targets')" />
-  <Import Project="..\packages\Nerdbank.GitVersioning.2.0.41\build\Nerdbank.GitVersioning.targets" Condition="Exists('..\packages\Nerdbank.GitVersioning.2.0.41\build\Nerdbank.GitVersioning.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
