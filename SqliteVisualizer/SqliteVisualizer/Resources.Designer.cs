@@ -61,6 +61,15 @@ namespace SqliteVisualizer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Visualizer does not support DMP debugging.
+        /// </summary>
+        internal static string ErrMsg_DmpDebuggingNotSupported {
+            get {
+                return ResourceManager.GetString("ErrMsg_DmpDebuggingNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failure getting tables: {0}.
         /// </summary>
         internal static string ErrMsg_FailureGettingTables {

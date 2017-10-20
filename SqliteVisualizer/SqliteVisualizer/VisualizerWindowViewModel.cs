@@ -228,49 +228,57 @@ namespace SqliteVisualizer
             Debug.Assert(result != null && !String.IsNullOrEmpty(result.FullName), "Arguments should not be null");
 
             this.sqliteInstanceName = result.FullName;
-
-            // Create a new inspection context for all subsequent func-evals in this visualizer
-            this.inspectionContext = DkmInspectionContext.Create(
-                result.InspectionSession,
-                result.RuntimeInstance,
-                result.InspectionContext.Thread,
-                1000,
-                DkmEvaluationFlags.None,
-                DkmFuncEvalFlags.None,
-                10,
-                result.InspectionContext.Language,
-                null);
-
-            this.OverlayMessage = Resources.Msg_LoadingTables;
             this.ShowOverlay = true;
             this.LoadNextCommand.Enable = false;
             this.CancelCommand.Enable = false;
 
-            // Get available tables
-            ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
+            bool dmpDebugging = result.InspectionContext.Thread.Process.LivePart == null;
+            if (dmpDebugging)
             {
-                IList<string> tables;
-                try
+                this.OverlayMessage = Resources.ErrMsg_DmpDebuggingNotSupported;
+            }
+            else
+            {
+                this.OverlayMessage = Resources.Msg_LoadingTables;
+
+                // Create a new inspection context for all subsequent func-evals in this visualizer
+                this.inspectionContext = DkmInspectionContext.Create(
+                    result.InspectionSession,
+                    result.RuntimeInstance,
+                    result.InspectionContext.Thread,
+                    1000,
+                    DkmEvaluationFlags.None,
+                    DkmFuncEvalFlags.None,
+                    10,
+                    result.InspectionContext.Language,
+                    null);
+
+                // Get available tables
+                ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
                 {
-                    tables = await LoadTablesAsync();
-                }
-                catch (Exception e)
-                {
-                    this.OverlayMessage = String.Format(CultureInfo.CurrentCulture, Resources.ErrMsg_FailureGettingTables, e.Message);
-                    return;
-                }
+                    IList<string> tables;
+                    try
+                    {
+                        tables = await LoadTablesAsync();
+                    }
+                    catch (Exception e)
+                    {
+                        this.OverlayMessage = String.Format(CultureInfo.CurrentCulture, Resources.ErrMsg_FailureGettingTables, e.Message);
+                        return;
+                    }
 
                 // If tables do exist, prepare the table query
                 if (tables.Count == 0)
-                {
-                    this.OverlayMessage = Resources.ErrMsg_NoTablesFound;
-                }
-                else
-                {
-                    this.AvailableTables = tables;
-                    this.SelectedTable = tables[0];
-                }
-            });
+                    {
+                        this.OverlayMessage = Resources.ErrMsg_NoTablesFound;
+                    }
+                    else
+                    {
+                        this.AvailableTables = tables;
+                        this.SelectedTable = tables[0];
+                    }
+                });
+            }
 
             var window = new VisualizerWindow()
             {
