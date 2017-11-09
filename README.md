@@ -40,8 +40,8 @@ For more details see the readme included with each sample.
 |                                [ErrorList](ErrorList/) | generates errors in error list when the user spelling errors in the editor             |
 |                    [High-DPI_Images_Icons](High-DPI_Images_Icons/) | Use these helpers to make your images/icons in *VS 2013 only* scale on high dense displays |
 |                           [Highlight_Word](Highlight_Word/) | Highlight any words that match the word currently under the text cursor                    |
-|                   [LanguageServerProtocol](LanguageServerProtocol) | Uses the common language server protocol to create a mock language server and hook it up to VS to handle *.foo files |
 |                     [Intra-text_Adornment](Intra-text_Adornment/) | Text adornment that replaces hexadecimal color values with color swatches                  |
+|                   [LanguageServerProtocol](LanguageServerProtocol) | Uses the common language server protocol to create a mock language server and hook it up to VS to handle *.foo files |
 |                               [LightBulb*](LightBulb/) | Creates a custom lightbulb to set text case in text files                                  |
 |                               [MSDNSearch](MSDNSearch/) | Implements MSDN search functionality directly into Quick Search                            |
 |                       [Menu_And_Commands*](Menu_And_Commands/) | Demonstrates how to add commands to various places in the IDE                              |
