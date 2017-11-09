@@ -1,0 +1,104 @@
+﻿<Window x:Class="LanguageServerWithUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LanguageServerWithUI"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:protocol="clr-namespace:Microsoft.VisualStudio.LanguageServer.Protocol;assembly=Microsoft.VisualStudio.LanguageServer.Protocol.Preview"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="Width" Height="350">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="diagnosticSeverityEnums" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="protocol:DiagnosticSeverity"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="messageTypeEnums" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="protocol:MessageType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <TabControl Width="500">
+        <TabItem Header="Diagnostics">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="45" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <ListBox Grid.Column="0" Width="375" ItemsSource="{Binding Tags}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Margin="2">Text:</Label>
+                                    <TextBox Grid.Column="1" Margin="2" Width="200" Text="{Binding Text}" VerticalContentAlignment="Center"/>
+                                    <ComboBox Grid.Column="2" Margin="2" Width="100" SelectedItem="{Binding Severity}" ItemsSource="{Binding Source={StaticResource diagnosticSeverityEnums}}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <DockPanel Grid.Column="1" VerticalAlignment="Center">
+                        <Button DockPanel.Dock="Top" Height="25" Width="75" Content="Add" Click="OnAddButtonClick" Margin="0,0,0,5" />
+                        <Button DockPanel.Dock="Bottom" Height="25" Width="75" Content="Clear" Click="OnClearButtonClick" />
+                    </DockPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Button Height="25" Width="150" Content="Send Diagnostics" Grid.Column="0" Click="OnSendDiagnosticsButtonClick" />
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Messaging">
+            <Grid  Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Enter message text here:" Grid.Row="0" Grid.Column="0"/>
+                    <TextBox Text="{Binding LogMessage}" Grid.Row="1" Grid.Column="0"/>
+                    <TextBlock Text="Message type:" Grid.Row="0" Grid.Column="1"/>
+                    <ComboBox SelectedItem="{Binding MessageType}" ItemsSource="{Binding Source={StaticResource messageTypeEnums}}" Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+                <StackPanel Orientation="Vertical" Grid.Row="1">
+                    <Button Content="Show message" Click="OnShowMessageButtonClick" />
+                    <Button Content="Show message request" Click="OnShowMessageRequestButtonClick" />
+                    <Button Content="Log message" Click="OnLogMessageButtonClick" />
+                    <TextBlock Text="Response from show message request: " />
+                    <TextBlock Text="{Binding ResponseText}" Grid.Row="1" />
+                </StackPanel>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Settings">
+            <Grid Margin="5">
+                <TextBlock Text="{Binding CurrentSettings}" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Custom">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label VerticalAlignment="Top">Custom Text:</Label>
+                <TextBox Width="250" VerticalAlignment="Top" Height="25" Text="{Binding CustomText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+        </TabItem>
+    </TabControl>
+</Window>
