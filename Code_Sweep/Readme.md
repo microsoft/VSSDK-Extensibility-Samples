@@ -2,7 +2,7 @@
 Sweep a solution looking for any words that match search terms
 in an XML Schema. Display any matches on the Task List in Visual Studio.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: MSBuild, VSX
 
 **Description**
@@ -25,7 +25,7 @@ task list.
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -93,6 +93,6 @@ The CodeSweep Task List toolbar contains four buttons:
 
 **Related topics**
 
-  * [ Toolwindow Documentation ](https://msdn.microsoft.com/en-us/library/bb165390(v=vs.140).aspx)
-  * [ Menu Documentation ](https://msdn.microsoft.com/en-us/library/bb165937(v=vs.140).aspx)
-  * [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+  * [ Toolwindow Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-and-customizing-tool-windows)
+  * [ Menu Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-menus-and-commands)
+  * [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)

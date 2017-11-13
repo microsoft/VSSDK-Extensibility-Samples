@@ -2,7 +2,7 @@
 # Build Progress Bar Sample
 Display a Progress Bar inside a Toolwindow in Visual Studio.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Shell, VSX
 
 
@@ -16,7 +16,7 @@ the current solution build.
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -94,9 +94,9 @@ Implements the Visual Studio Package, where we monitor events
 
 **Related topics **
 
-* [ Tool Window Documentation ](https://msdn.microsoft.com/en-us/library/bb165390(v=vs.140).aspx)
+* [ Tool Window Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-and-customizing-tool-windows)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

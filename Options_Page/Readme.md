@@ -2,7 +2,7 @@
 # Options Page Sample
 Add custom pages to the Visual Studio Options dialog.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Shell, VSX
 
 **Description**
@@ -15,7 +15,7 @@ properties' persistence.
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -59,11 +59,11 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 **Related topics**
 
-* [ Creating an Options Page ](https://msdn.microsoft.com/en-us/library/bb166195%28v=vs.140%29.aspx)
+* [ Creating an Options Page ](https://docs.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page)
 
-* [ Extending User Settings and Options ](https://msdn.microsoft.com/en-us/library/bb165657%28v=vs.140%29.aspx)
+* [ Extending User Settings and Options ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-user-settings-and-options)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

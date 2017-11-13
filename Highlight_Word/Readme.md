@@ -4,19 +4,19 @@
 Highlight any words that match the word currently under the text
 caret in Visual Studio. 
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Editor, VSX
 
 **Description**
 
-This Visual Studio 2015 sample extension uses tagging and adornments to
+This Visual Studio 2017 sample extension uses tagging and adornments to
 highlight all occurences of the word currently under the caret.
 
 ![image](C%23/Example.HighlightWord.png)
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -61,8 +61,8 @@ This file is called by Visual Studio to generate the tagger
 
 **Related topics**
 
-  * [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885242(v=vs.140).aspx)
-  * [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+  * [ Editor Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/editor-and-language-service-extensions)
+  * [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

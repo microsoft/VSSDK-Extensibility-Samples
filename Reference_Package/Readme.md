@@ -4,7 +4,7 @@
 Provides the minimum requirements that a package needs to work
 as an extension in Visual Studio.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Shell, VSX
 
 ** Description**
@@ -13,11 +13,11 @@ This sample demonstrates how to add an entry into the Visual Studio Help
 dialog. This is the bare minimum requirement for a functional Visual Studio
 Package.
 
-![image](C%23/Package.jpg)
+![image](C%23/Example.Package.png)
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -58,9 +58,9 @@ Help&gt;About dialog.
 
 **Related topics**
 
-  * [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885242(v=vs.140).aspx)
-  * [ Menu Documentation ](https://msdn.microsoft.com/en-us/library/bb165937(v=vs.140).aspx)
-  * [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Editor Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/editor-and-language-service-extensions)
+* [ Menu Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-menus-and-commands)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

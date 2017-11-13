@@ -1,10 +1,10 @@
-﻿
+
 
 # Designer View Over XML Editor Sample
 
 Provides a WPF Editor when editing XML files that have the '.vstemplate' file extension in Visual Studio.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Shell
 
 **Description**
@@ -17,7 +17,7 @@ for .vstemplate files.
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -80,8 +80,7 @@ XML schema file generated via xsd.exe vstemplate.xsd /classes /e
 
 **Related topics**
 
-  * [ WPF Designer Overview ](https://msdn.microsoft.com/en-us/library/bb514528(v=vs.90).aspx)
-  * [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

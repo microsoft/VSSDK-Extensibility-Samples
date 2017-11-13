@@ -2,7 +2,7 @@
 Provides a classifier with color highlighting that affects files
 with .diff or .patch extensions.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Editor, VSX
 
 
@@ -12,11 +12,11 @@ with .diff or .patch extensions.
 This Visual Studio 2015 sample classifier provides color formatting for files
 with .diff or .patch filename extensions. Uses the classification API.
 
-![image](C%23/DiffClassifier_Screenshot.png)
+![image](C%23/Example.DiffClassifier.png)
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -72,8 +72,8 @@ these files will display in color
 
 **Related topics**
 
-  * [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885118(v=vs.140).aspx)
-  * [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+  * [ Editor Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/editor-and-language-service-extensions)
+  * [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 
