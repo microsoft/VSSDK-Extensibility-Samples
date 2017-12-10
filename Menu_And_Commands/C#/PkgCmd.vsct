@@ -212,7 +212,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
       </Button>
 
       <!--
-      Note the arrow icon is not shown when 'D# Dynamic Visibility 2' is displayed.
+      Note the arrow icon is not shown when 'C# Dynamic Visibility 2' is displayed.
       -->
       <Button guid="guidMenuAndCommandsCmdSet" id="cmdidDynVisibility2" priority="0x300" type="Button">
         <Parent guid="guidMenuAndCommandsCmdSet" id="MyMenuGroup"/>
