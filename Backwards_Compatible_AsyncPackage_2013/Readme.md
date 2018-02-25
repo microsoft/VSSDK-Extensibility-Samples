@@ -35,5 +35,7 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 **Related topics**
 
  * [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
+ * [ AsyncPackage Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/how-to-use-asyncpackage-to-load-vspackages-in-the-background)
+ * [ Visual Studio Threading ](https://github.com/Microsoft/vs-threading/blob/master/doc/threading_rules.md)
 
 
