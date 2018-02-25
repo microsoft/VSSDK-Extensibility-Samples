@@ -16,8 +16,7 @@ allowed by default.
 
 **Requirements**
 
-Visual Studio 2013
-Visual Studio 2013 VS SDK
+Visual Studio 2013, Visual Studio 2013 VS SDK
 
 **Get all samples**
 
