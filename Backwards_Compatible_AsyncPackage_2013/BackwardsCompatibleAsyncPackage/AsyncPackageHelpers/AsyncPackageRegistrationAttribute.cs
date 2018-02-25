@@ -20,7 +20,7 @@ namespace Microsoft.VisualStudio.AsyncPackageHelpers {
     ///     implicit just by having a package in the assembly.
     /// </devdoc>
     [AttributeUsage(AttributeTargets.Class, Inherited=true, AllowMultiple=false)]
-    public sealed class PackageRegistrationAttribute : RegistrationAttribute
+    public sealed class AsyncPackageRegistrationAttribute : RegistrationAttribute
     {
         private RegistrationMethod registrationMethod = RegistrationMethod.Default;
         private bool useManagedResources = false;

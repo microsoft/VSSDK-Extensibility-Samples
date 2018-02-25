@@ -165,37 +165,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncPackageHelpers\ExtensionMethods.cs" />
-    <Compile Include="AsyncPackageHelpers\PackageRegistrationAttribute.cs" />
+    <Compile Include="AsyncPackageHelpers\AsyncPackageRegistrationAttribute.cs" />
     <Compile Include="AsyncPackageHelpers\ProvideAutoLoadAttribute.cs" />
     <Compile Include="Guids.cs" />
-    <Compile Include="Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="BackwardsCompatibleAsyncPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VSPackage.resx">
-      <MergeWithCTO>true</MergeWithCTO>
-      <ManifestResourceName>VSPackage</ManifestResourceName>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Package.ico" />

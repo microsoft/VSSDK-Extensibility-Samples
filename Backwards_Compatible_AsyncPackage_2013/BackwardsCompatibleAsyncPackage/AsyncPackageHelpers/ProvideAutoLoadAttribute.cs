@@ -27,7 +27,7 @@ namespace Microsoft.VisualStudio.AsyncPackageHelpers
         SkipWhenUIContextRulesActive = 0x1,
 
         /// <summary>
-        /// When set, if the associated package is marked as allowing background loads (via the <see cref="PackageRegistrationAttribute"/>),
+        /// When set, if the associated package is marked as allowing background loads (via the <see cref="AsyncPackageRegistrationAttribute"/>),
         /// then the package will be loaded asynchronously, in the background, when the associated UI context is triggered.
         /// </summary>
         BackgroundLoad = 0x2

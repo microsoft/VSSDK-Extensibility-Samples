@@ -10,25 +10,29 @@ using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.AsyncPackageHelpers;
 
-namespace Company.AsyncPackageTest
+namespace BackwardsCompatibleAsyncPackage
 {
-    // This attribute is used to register the information needed to show this package
-    // in the Help/About dialog of Visual Studio.
-    [Guid(GuidList.guidAsyncPackageTestPkgString)]
-    [Microsoft.VisualStudio.AsyncPackageHelpers.PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+    [Guid(GuidList.guidBackwardsCompatibleAsyncPkgString)]
+    [Microsoft.VisualStudio.AsyncPackageHelpers.AsyncPackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Microsoft.VisualStudio.AsyncPackageHelpers.ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
-    public sealed class AsyncPackageTestPackage : Package, IAsyncLoadablePackageInitialize
+    public sealed class BackwardsCompatibleAsyncPackage : Package, IAsyncLoadablePackageInitialize
     {
+        private bool isAsyncLoadSupported;
+
         /// <summary>
-        /// Initialization of the package; this method is called right after the package is sited, so this is the place
-        /// where you can put all the initialization code that rely on services provided by VisualStudio.
+        /// Initialization of the package; this method is always called right after the package is sited on main UI thread of Visual Studio.
+        /// 
+        /// Both asynchronuos package and synchronous package loading will call this method initially so it is important to skip any initialization
+        /// meant for async load phase based on AsyncPackage support in IDE.
         /// </summary>
         protected override void Initialize()
         {
             base.Initialize();
 
-            // If async package is not supported, do synchronous initialization
-            if (!this.IsAsyncPackageSupported())
+            isAsyncLoadSupported = this.IsAsyncPackageSupported();
+
+            // Only perform initialization if async package framework is not supported
+            if (!isAsyncLoadSupported)
             {
                 this.BackgroundThreadInitialization();
                 IVsShell shellService = this.GetService(typeof(SVsShell)) as IVsShell;
@@ -44,11 +48,16 @@ namespace Company.AsyncPackageTest
 
         private void MainThreadInitialization(IVsShell shellService)
         {
-            // Do operations requiring main thread
+            // Do operations requiring main thread utilizing passed in services
         }
 
         public IVsTask Initialize(IAsyncServiceProvider pServiceProvider, IProfferAsyncService pProfferService, IAsyncProgressCallback pProgressCallback)
         {
+            if (!isAsyncLoadSupported)
+            {
+                throw new InvalidOperationException("Async Initialize method should not be called when async load is not supported.");
+            }
+
             return ThreadHelper.JoinableTaskFactory.RunAsync<object>(async () =>
             {
                 this.BackgroundThreadInitialization();

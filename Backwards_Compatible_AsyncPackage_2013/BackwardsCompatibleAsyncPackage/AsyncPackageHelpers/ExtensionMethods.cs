@@ -11,9 +11,9 @@ namespace Microsoft.VisualStudio.AsyncPackageHelpers
         /// <summary>
         /// Helper method to use async/await with IAsyncServiceProvider implementation
         /// </summary>
-        /// <param name="asyncServiceProvider"></param>
-        /// <param name="serviceType"></param>
-        /// <returns></returns>
+        /// <param name="asyncServiceProvider">IAsyncServciceProvider instance</param>
+        /// <param name="serviceType">Type of the Visual Studio service requested</param>
+        /// <returns>Service object as type of T</returns>
         public static async Task<T> GetServiceAsync<T>(this IAsyncServiceProvider asyncServiceProvider, Type serviceType) where T : class
         {
             T returnValue = null;
