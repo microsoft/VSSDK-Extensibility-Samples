@@ -35,20 +35,33 @@ namespace BackwardsCompatibleAsyncPackage
             if (!isAsyncLoadSupported)
             {
                 this.BackgroundThreadInitialization();
-                IVsShell shellService = this.GetService(typeof(SVsShell)) as IVsShell;
-                this.MainThreadInitialization(shellService);
+                IVsUIShell shellService = this.GetService(typeof(SVsUIShell)) as IVsUIShell;
+                this.MainThreadInitialization(shellService, isAsyncPath: false);
             }
         }
 
         private void BackgroundThreadInitialization()
         {
             // simulate expensive IO operation
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(1000);
         }
 
-        private void MainThreadInitialization(IVsShell shellService)
+        private void MainThreadInitialization(IVsUIShell shellService, bool isAsyncPath)
         {
             // Do operations requiring main thread utilizing passed in services
+            int result = 0;
+            shellService.ShowMessageBox(
+                   0,
+                   Guid.Empty,
+                   "BackwardsCompatibleAsyncPackage",
+                   "Package initialization is completed using " + (isAsyncPath ? "asynchronous" : "synchronous") + " code path.",
+                   string.Empty,
+                   0,
+                   OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                   OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
+                   OLEMSGICON.OLEMSGICON_INFO,
+                   0,        // false
+                   out result);
         }
 
         public IVsTask Initialize(IAsyncServiceProvider pServiceProvider, IProfferAsyncService pProfferService, IAsyncProgressCallback pProgressCallback)
@@ -62,8 +75,8 @@ namespace BackwardsCompatibleAsyncPackage
             {
                 this.BackgroundThreadInitialization();
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                IVsShell shellService = await pServiceProvider.GetServiceAsync<IVsShell>(typeof(SVsShell));
-                this.MainThreadInitialization(shellService);
+                IVsUIShell shellService = await pServiceProvider.GetServiceAsync<IVsUIShell>(typeof(SVsUIShell));
+                this.MainThreadInitialization(shellService, isAsyncPath: true);
                 return null;
             }).AsVsTask();
         }

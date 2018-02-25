@@ -6,7 +6,7 @@
     <Description xml:space="preserve">An example of a package that auto loads synchronously in Visual Studio 2013 and asynchronously in later versions</Description>
   </Metadata>
   <Installation InstalledByMsi="false">
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0,]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.IntegratedShell" Version="[12.0,17.0]" />
   </Installation>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
