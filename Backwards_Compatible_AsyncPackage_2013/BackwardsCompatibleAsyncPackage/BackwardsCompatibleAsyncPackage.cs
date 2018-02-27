@@ -40,6 +40,32 @@ namespace BackwardsCompatibleAsyncPackage
             }
         }
 
+
+        /// <summary>
+        /// Performs the asynchronous initialization for the package in cases where IDE supports AsyncPackage.
+        /// 
+        /// This method is always called from background thread initially.
+        /// </summary>
+        /// <param name="asyncServiceProvider">Async service provider instance to query services asynchronously</param>
+        /// <param name="pProfferService">Async service proffer instance</param>
+        /// <param name="IAsyncProgressCallback">Progress callback instance</param>
+        /// <returns></returns>
+        public IVsTask Initialize(IAsyncServiceProvider asyncServiceProvider, IProfferAsyncService pProfferService, IAsyncProgressCallback pProgressCallback)
+        {
+            if (!isAsyncLoadSupported)
+            {
+                throw new InvalidOperationException("Async Initialize method should not be called when async load is not supported.");
+            }
+
+            return ThreadHelper.JoinableTaskFactory.RunAsync<object>(async () =>
+            {
+                this.BackgroundThreadInitialization();
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                IVsUIShell shellService = await asyncServiceProvider.GetServiceAsync<IVsUIShell>(typeof(SVsUIShell));
+                this.MainThreadInitialization(shellService, isAsyncPath: true);
+                return null;
+            }).AsVsTask();
+        }
         private void BackgroundThreadInitialization()
         {
             // simulate expensive IO operation
@@ -49,7 +75,6 @@ namespace BackwardsCompatibleAsyncPackage
         private void MainThreadInitialization(IVsUIShell shellService, bool isAsyncPath)
         {
             // Do operations requiring main thread utilizing passed in services
-            int result = 0;
             shellService.ShowMessageBox(
                    0,
                    Guid.Empty,
@@ -61,24 +86,7 @@ namespace BackwardsCompatibleAsyncPackage
                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
                    OLEMSGICON.OLEMSGICON_INFO,
                    0,        // false
-                   out result);
-        }
-
-        public IVsTask Initialize(IAsyncServiceProvider pServiceProvider, IProfferAsyncService pProfferService, IAsyncProgressCallback pProgressCallback)
-        {
-            if (!isAsyncLoadSupported)
-            {
-                throw new InvalidOperationException("Async Initialize method should not be called when async load is not supported.");
-            }
-
-            return ThreadHelper.JoinableTaskFactory.RunAsync<object>(async () =>
-            {
-                this.BackgroundThreadInitialization();
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                IVsUIShell shellService = await pServiceProvider.GetServiceAsync<IVsUIShell>(typeof(SVsUIShell));
-                this.MainThreadInitialization(shellService, isAsyncPath: true);
-                return null;
-            }).AsVsTask();
+                   out int result);
         }
     }
 }

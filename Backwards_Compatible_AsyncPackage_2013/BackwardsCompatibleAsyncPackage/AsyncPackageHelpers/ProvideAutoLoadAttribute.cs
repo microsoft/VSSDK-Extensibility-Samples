@@ -46,7 +46,7 @@ namespace Microsoft.VisualStudio.AsyncPackageHelpers
         private Guid loadGuid = Guid.Empty;
 
         /// <summary>
-        ///     Specify that the package should get loaded when this context is active.
+        /// Specify that the package should get loaded when this context is active.
         /// </summary>
         /// <param name="cmdUiContextGuid">Context which should trigger the loading of your package.</param>
         public ProvideAutoLoadAttribute(string cmdUiContextGuid) : this(cmdUiContextGuid, PackageAutoLoadFlags.None)
@@ -54,7 +54,7 @@ namespace Microsoft.VisualStudio.AsyncPackageHelpers
         }
 
         /// <summary>
-        ///     Specify that the package should get loaded when this context is active.
+        /// Specify that the package should get loaded when this context is active.
         /// </summary>
         /// <param name="cmdUiContextGuid">Context which should trigger the loading of your package.</param>
         public ProvideAutoLoadAttribute(string cmdUiContextGuid, PackageAutoLoadFlags flags = PackageAutoLoadFlags.None)
@@ -84,7 +84,7 @@ namespace Microsoft.VisualStudio.AsyncPackageHelpers
         }
 
         /// <summary>
-        ///		The reg key name of this AutoLoad.
+        /// The reg key name of this AutoLoad.
         /// </summary>
         private string RegKeyName
         {
@@ -95,9 +95,9 @@ namespace Microsoft.VisualStudio.AsyncPackageHelpers
         }
 
         /// <summary>
-        ///     Called to register this attribute with the given context.  The context
-        ///     contains the location where the registration information should be placed.
-        ///     it also contains such as the type being registered, and path information.
+        /// Called to register this attribute with the given context.  The context
+        /// contains the location where the registration information should be placed.
+        /// it also contains such as the type being registered, and path information.
         /// </summary>
         public override void Register(RegistrationContext context)
         {

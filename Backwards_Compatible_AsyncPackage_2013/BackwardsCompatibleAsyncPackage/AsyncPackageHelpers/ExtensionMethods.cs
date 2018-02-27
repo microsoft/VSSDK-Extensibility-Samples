@@ -22,9 +22,11 @@ namespace Microsoft.VisualStudio.AsyncPackageHelpers
             {
                 object serviceInstance = null;
                 Guid serviceTypeGuid = serviceType.GUID;
-                IVsTask task = asyncServiceProvider.QueryServiceAsync(ref serviceTypeGuid);
-                await task;
-                serviceInstance = task.GetResult();
+                serviceInstance = await asyncServiceProvider.QueryServiceAsync(ref serviceTypeGuid);
+              
+                // We have to make sure we are on main UI thread before trying to cast as underlying implementation
+                // can be an STA COM object and doing a cast would require calling QueryInterface/AddRef marshaling 
+                // to main thread via COM.
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
                 returnValue = serviceInstance as T;
             });
