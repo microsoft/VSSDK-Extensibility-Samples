@@ -46,10 +46,6 @@ namespace Microsoft.Samples.VisualStudio.IDE.OptionsPage
                 IVsPackage package;
                 Guid guid = new Guid(GuidStrings.GuidPackage);
                 
-                if (ErrorHandler.Succeeded(shell.IsPackageLoaded(ref guid, out package)))
-                {
-                    return package as OptionsPagePackageCS;
-                }
                 if (ErrorHandler.Succeeded(shell.LoadPackage(ref guid, out package)))
                 {
                     return package as OptionsPagePackageCS;
