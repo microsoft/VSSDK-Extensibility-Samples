@@ -38,13 +38,14 @@ namespace Microsoft.Samples.VisualStudio.IDE.OptionsPage
             // TODO: add initialization code here
         }
 
-        public static OptionsPagePackageCS EnsurceOptionsPagePackageCs()
+        public static OptionsPagePackageCS EnsurePackageIsLoaded()
         {
             IVsShell shell = Package.GetGlobalService(typeof(SVsShell)) as IVsShell;
             if (shell != null)
             {
                 IVsPackage package;
                 Guid guid = new Guid(GuidStrings.GuidPackage);
+                
                 if (ErrorHandler.Succeeded(shell.IsPackageLoaded(ref guid, out package)))
                 {
                     return package as OptionsPagePackageCS;
@@ -63,7 +64,7 @@ namespace Microsoft.Samples.VisualStudio.IDE.OptionsPage
         /// <returns></returns>
         public static OptionsPageGeneral OptionsPageGeneral()
         {
-            OptionsPagePackageCS package = EnsurceOptionsPagePackageCs();
+            OptionsPagePackageCS package = EnsurePackageIsLoaded();
             return package?.GetDialogPage(typeof(OptionsPageGeneral)) as OptionsPageGeneral;
         }
 
@@ -73,7 +74,7 @@ namespace Microsoft.Samples.VisualStudio.IDE.OptionsPage
         /// <returns></returns>
         public static OptionsPageCustom OptionsPageCustom()
         {
-            OptionsPagePackageCS package = EnsurceOptionsPagePackageCs();
+            OptionsPagePackageCS package = EnsurePackageIsLoaded();
             return package?.GetDialogPage(typeof(OptionsPageCustom)) as OptionsPageCustom;
         }
     }
