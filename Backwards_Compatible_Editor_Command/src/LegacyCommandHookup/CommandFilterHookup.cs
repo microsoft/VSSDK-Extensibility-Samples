@@ -10,6 +10,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Text.Editor;
+using Microsoft.VisualStudio.Text.Operations;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
@@ -25,12 +26,15 @@ namespace LegacyCommandHandler
         [Import]
         internal IVsEditorAdaptersFactoryService AdapterService = null;
 
+        [Import]
+        internal IEditorOperations EditorOperations = null;
+
         public void VsTextViewCreated(IVsTextView textViewAdapter)
         {
             ITextView textView = AdapterService.GetWpfTextView(textViewAdapter);
 
             textView.Properties.GetOrCreateSingletonProperty(typeof(CommandFilter),
-                () => new CommandFilter(textViewAdapter, textView));
+                () => new CommandFilter(textViewAdapter, textView, this));
         }
     }
 }

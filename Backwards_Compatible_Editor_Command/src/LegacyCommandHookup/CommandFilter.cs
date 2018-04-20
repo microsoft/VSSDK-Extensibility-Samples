@@ -20,10 +20,12 @@ namespace LegacyCommandHandler
     internal class CommandFilter : IOleCommandTarget
     {
         private readonly ITextView textView;
+        private readonly CommandFilterHookup contextProvider;
 
-        public CommandFilter(IVsTextView textViewAdapter, ITextView textView)
+        public CommandFilter(IVsTextView textViewAdapter, ITextView textView, CommandFilterHookup contextProvider)
         {
             this.textView = textView;
+            this.contextProvider = contextProvider;
             textViewAdapter.AddCommandFilter(this, out var nextFilter);
             this.NextTarget = nextFilter;
         }
@@ -56,7 +58,7 @@ namespace LegacyCommandHandler
             if (pguidCmdGroup == JoinLinesCommandSet && nCmdID == JoinLinesCommandId)
             {
                 this.textView.TextBuffer.Insert(0, "// Invoked from legacy command filter\r\n");
-                JoinLine.JoinSelectedLines(this.textView);
+                JoinLine.JoinSelectedLines(this.textView, contextProvider.EditorOperations);
                 return VSConstants.S_OK;
             }
 

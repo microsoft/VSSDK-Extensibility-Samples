@@ -10,6 +10,7 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 
 using JoinLineCommandImplementation;
 using Microsoft.VisualStudio.Commanding;
+using Microsoft.VisualStudio.Text.Operations;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
@@ -22,6 +23,9 @@ namespace ModernCommandHandler
     {
         public string DisplayName => "Join Selected Lines";
 
+        [Import]
+        private IEditorOperations EditorOperations = null;
+
         public CommandState GetCommandState(JoinLinesCommandArgs args)
         {
             return args.TextView.Selection.IsEmpty ? CommandState.Unavailable : CommandState.Available;
@@ -32,7 +36,7 @@ namespace ModernCommandHandler
             using (context.OperationContext.AddScope(allowCancellation: false, description: "Joining selected lines"))
             {
                 args.TextView.TextBuffer.Insert(0, "// Invoked from modern command handler\r\n");
-                JoinLine.JoinSelectedLines(args.TextView);
+                JoinLine.JoinSelectedLines(args.TextView, EditorOperations);
             }
 
             return true;
