@@ -27,7 +27,7 @@ namespace LegacyCommandHandler
         internal IVsEditorAdaptersFactoryService AdapterService = null;
 
         [Import]
-        internal IEditorOperations EditorOperations = null;
+        internal IEditorOperationsFactoryService EditorOperations = null;
 
         public void VsTextViewCreated(IVsTextView textViewAdapter)
         {

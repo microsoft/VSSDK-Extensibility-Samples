@@ -24,7 +24,7 @@ namespace ModernCommandHandler
         public string DisplayName => "Join Selected Lines";
 
         [Import]
-        private IEditorOperations EditorOperations = null;
+        private IEditorOperationsFactoryService EditorOperations = null;
 
         public CommandState GetCommandState(JoinLinesCommandArgs args)
         {
@@ -36,7 +36,7 @@ namespace ModernCommandHandler
             using (context.OperationContext.AddScope(allowCancellation: false, description: "Joining selected lines"))
             {
                 args.TextView.TextBuffer.Insert(0, "// Invoked from modern command handler\r\n");
-                JoinLine.JoinSelectedLines(args.TextView, EditorOperations);
+                JoinLine.JoinSelectedLines(args.TextView, EditorOperations.GetEditorOperations(args.TextView));
             }
 
             return true;

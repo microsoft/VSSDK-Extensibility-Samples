@@ -58,7 +58,7 @@ namespace LegacyCommandHandler
             if (pguidCmdGroup == JoinLinesCommandSet && nCmdID == JoinLinesCommandId)
             {
                 this.textView.TextBuffer.Insert(0, "// Invoked from legacy command filter\r\n");
-                JoinLine.JoinSelectedLines(this.textView, contextProvider.EditorOperations);
+                JoinLine.JoinSelectedLines(this.textView, contextProvider.EditorOperations.GetEditorOperations(this.textView));
                 return VSConstants.S_OK;
             }
 
