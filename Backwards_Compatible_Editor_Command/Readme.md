@@ -34,4 +34,4 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 **Related topics**
 
  * [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
- * [ Walkthrough: Using a Shortcut Key with an Editor Extension ] (https://docs.microsoft.com/en-us/visualstudio/extensibility/walkthrough-using-a-shortcut-key-with-an-editor-extension)
+ * [ Walkthrough: Using a Shortcut Key with an Editor Extension ](https://docs.microsoft.com/en-us/visualstudio/extensibility/walkthrough-using-a-shortcut-key-with-an-editor-extension)
