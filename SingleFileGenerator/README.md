@@ -1,7 +1,5 @@
 # Single File Generator sample
 
-[![Build status](https://ci.appveyor.com/api/projects/status/khf234gs5mg2xp72?svg=true)](https://ci.appveyor.com/project/madskristensen/singlefilegeneratorsample)
-
 **Applies to Visual Studio 2017 and newer**
 
 This example shows how to write a Single File Generator in a Visual Studio extension that will output a nested file when the parent file is modified.

@@ -1,7 +1,5 @@
 # Async Tool Window example
 
-[![Build status](https://ci.appveyor.com/api/projects/status/eo79i4hqbn4jahqx?svg=true)](https://ci.appveyor.com/project/madskristensen/asynctoolwindowsample)
-
 **Applies to Visual Studio 2017.6 and newer**
 
 This sample shows how to provide an Async Tool Window in a Visual Studio extension.

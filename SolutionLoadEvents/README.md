@@ -1,7 +1,5 @@
 # Solution Load sample
 
-[![Build status](https://ci.appveyor.com/api/projects/status/s0wahy0lg80gaggm?svg=true)](https://ci.appveyor.com/project/madskristensen/solutionloadsample)
-
 **Applies to Visual Studio 2015 and newer**
 
 This example shows how to listen to solution events when the package might not be initialized until after the solution has loaded.

@@ -1,7 +1,5 @@
 # VisibilityConstraints example
 
-[![Build status](https://ci.appveyor.com/api/projects/status/k9x55sgxjyjsay0a?svg=true)](https://ci.appveyor.com/project/madskristensen/visibilityconstraintssample)
-
 **Applies to Visual Studio 2015 and newer**
 
 This sample shows how to use the `<VisibilityConstraints>` element in a Visual Studio extension to remove the need to use the `ProvideAutoload` attribute on a package class.

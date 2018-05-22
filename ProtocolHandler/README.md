@@ -1,7 +1,5 @@
 # Protocol handler sample
 
-[![Build status](https://ci.appveyor.com/api/projects/status/qq6vg6wi2ixshcr2?svg=true)](https://ci.appveyor.com/project/madskristensen/protocolhandlersample)
-
 **Applies to Visual Studio 2017.6 and newer**
 
 This sample shows how to associate a URI protocol with Visual Studio and handle the passed in URI. For instance, a link with a custom protocol (*such as vsph://anything/I/want*) will open Visual Studio and pass the URI to the extension.

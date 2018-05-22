@@ -1,7 +1,5 @@
 # Custom commands example
 
-[![Build status](https://ci.appveyor.com/api/projects/status/89s5yj3ya9e1jitg?svg=true)](https://ci.appveyor.com/project/madskristensen/customcommandsample)
-
 **Applies to Visual Studio 2015 and newer**
 
 This sample shows how to add your own menu button to Visual Studio.
