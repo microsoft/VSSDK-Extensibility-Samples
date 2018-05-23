@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json.schemastore.org/vsix-manifestinjection",
+  "urlAssociations": [
+    {
+      "protocol": "vsph",
+      "displayName": "Visual Studio Protocol Handler Sample",
+      "progId": "VisualStudio.vsph.[InstanceId]",
+      "defaultProgramRegistrationPath": "Software\\Microsoft\\VisualStudio_[InstanceId]\\Capabilities"
+    }
+  ],
+  "progIds": [
+    {
+      "id": "VisualStudio.vsph.[InstanceId]",
+      "displayName": "Visual Studio Protocol Handler Sample",
+      "path": "[InstallDir]\\Common7\\IDE\\devenv.exe",
+      "arguments": "/MySwitch",
+      "defaultIconPath": "[InstallDir]\\Common7\\IDE\\devenv.exe"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  
+  <!-- Adds a reference to the KnownMonikers in the ImageCatalog for use in the <button> elements -->
+  <Include href="KnownImageIds.vsct"/>
+
+  <Commands package="guidPackage">
+    <Groups>
+      <Group guid="guidMyCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+        <!-- Use the Command Explorer extension to find all location to place your group in
+             Get it here https://marketplace.visualstudio.com/items?itemName=MadsKristensen.commandexplorer -->
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidMyCommandPackageCmdSet" id="MyCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidMyCommandPackageCmdSet" id="MyMenuGroup" />
+        <!-- Use a KnownMoniker as icon. 
+             See more here https://marketplace.visualstudio.com/items?itemName=MadsKristensen.KnownMonikersExplorer -->
+        <Icon guid="ImageCatalogGuid" id="ButtonClick" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>My Command</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <KeyBindings>
+    <KeyBinding guid="guidMyCommandPackageCmdSet" id="MyCommandId" editor="guidVSStd97" key1="K" mod1="Control" key2="0" mod2="Control" />
+  </KeyBindings>
+
+  <Symbols>
+    <GuidSymbol name="guidPackage" value="{fa24d542-0b4d-4f6b-ac03-24ff47c11b76}" />
+
+    <GuidSymbol name="guidMyCommandPackageCmdSet" value="{2b40859b-27f8-4dc6-85b1-f253386aa5f6}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="MyCommandId" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
