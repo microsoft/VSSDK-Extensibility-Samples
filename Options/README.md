@@ -1,6 +1,6 @@
 # Options example
 
-**Applies to Visual Studio 2015 and newer**
+**Applies to Visual Studio 2017 and newer**
 
 This sample shows how to correctly specify and consume options for a Visual Studio extension that is both thread-safe and performant.
 
