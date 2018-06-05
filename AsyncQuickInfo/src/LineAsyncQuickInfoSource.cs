@@ -21,10 +21,11 @@ namespace AsyncQuickInfo
             _textBuffer = textBuffer;
         }
 
+        // This is called on a background thread.
         public Task<QuickInfoItem> GetQuickInfoItemAsync(IAsyncQuickInfoSession session, CancellationToken cancellationToken)
         {
             var triggerPoint = session.GetTriggerPoint(_textBuffer.CurrentSnapshot);
-
+            
             if (triggerPoint != null)
             {
                 var line = triggerPoint.Value.GetContainingLine();

@@ -1,4 +1,4 @@
-# Async Tool Window example
+# Async QuickInfo example
 
 **Applies to Visual Studio 2017.6 and newer**
 
