@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="AsyncQuickInfo.07dd4989-0842-476c-8f6f-c00bf6435dca" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
+        <DisplayName>Async QuickInfo Demo</DisplayName>
+        <Description xml:space="preserve">A demo of how to implement async QuickInfo</Description>
+        <License>Resources\LICENSE</License>
+        <Icon>Resources\AbstractCube.png</Icon>
+        <PreviewImage>Resources\AbstractCube.png</PreviewImage>
+        <Tags>QuickInfo, Async</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0, 16.0)" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+    </Assets>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+</PackageManifest>

@@ -9,7 +9,7 @@ Clone the repo to test out the sample in Visual Studio 2017 yourself.
 ![Tool Window](art/tool-window.png)
 
 ## Specify minimum supported version
-Since protocol handler support is new in Visual Studio 2017 Update 6, we need to specify that our extension requires that version or newer. We do that in the .vsixmanifest file like so:
+Since Async Tool Window support is new in Visual Studio 2017 Update 6, we need to specify that our extension requires that version or newer. We do that in the .vsixmanifest file like so:
 
 ```xml
 <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0.27413, 16.0)" />
