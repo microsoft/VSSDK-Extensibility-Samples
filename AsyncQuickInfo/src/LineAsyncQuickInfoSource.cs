@@ -12,8 +12,7 @@ namespace AsyncQuickInfo
 {
     internal sealed class LineAsyncQuickInfoSource : IAsyncQuickInfoSource
     {
-        // Copied from KnownMonikers, because Mono doesn't support ImageMoniker type.
-        private static readonly ImageId _icon = new ImageId(KnownMonikers.AbstractCube.Guid, KnownMonikers.AbstractCube.Id);
+        private static readonly ImageId _icon = KnownMonikers.AbstractCube.ToImageId();
         
         private ITextBuffer _textBuffer;
 
@@ -32,7 +31,7 @@ namespace AsyncQuickInfo
                 var lineNumber = triggerPoint.Value.GetContainingLine().LineNumber;
                 var lineSpan = _textBuffer.CurrentSnapshot.CreateTrackingSpan(line.Extent, SpanTrackingMode.EdgeInclusive);
 
-                var lineElm = new ContainerElement(
+                var lineNumberElm = new ContainerElement(
                     ContainerElementStyle.Wrapped,
                     new ImageElement(_icon),
                     new ClassifiedTextElement(
@@ -42,7 +41,7 @@ namespace AsyncQuickInfo
 
                 var dateElm = new ContainerElement(
                     ContainerElementStyle.Stacked,
-                    lineElm,
+                    lineNumberElm,
                     new ClassifiedTextElement(
                         new ClassifiedTextRun(PredefinedClassificationTypeNames.SymbolDefinition, "The current date: "),
                         new ClassifiedTextRun(PredefinedClassificationTypeNames.Comment, DateTime.Now.ToShortDateString())

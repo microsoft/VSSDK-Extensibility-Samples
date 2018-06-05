@@ -13,6 +13,7 @@ namespace AsyncQuickInfo
     {
         public IAsyncQuickInfoSource TryCreateQuickInfoSource(ITextBuffer textBuffer)
         {
+            // This ensures only one instance per textbuffer is created
             return textBuffer.Properties.GetOrCreateSingletonProperty(() => new LineAsyncQuickInfoSource(textBuffer));
         }
     }
