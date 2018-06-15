@@ -18,13 +18,19 @@ namespace AsyncCompletionSample.CompletionSource
     {
         private ElementCatalog catalog;
 
+        // ImageElements may be shared by CompletionFilters and CompletionItems. The automationName parameter should be localized.
         static ImageElement MetalIcon = new ImageElement(new ImageId(new Guid("ae27a6b0-e345-4288-96df-5eaf394ee369"), 2708), "Metal");
         static ImageElement NonMetalIcon = new ImageElement(new ImageId(new Guid("ae27a6b0-e345-4288-96df-5eaf394ee369"), 2709), "Non metal");
         static ImageElement MetalloidIcon = new ImageElement(new ImageId(new Guid("ae27a6b0-e345-4288-96df-5eaf394ee369"), 2716), "Metalloid");
         static ImageElement UnknownIcon = new ImageElement(new ImageId(new Guid("ae27a6b0-e345-4288-96df-5eaf394ee369"), 3533), "Unknown");
+
+        // CompletionFilters are rendered in the UI as buttons
+        // The displayText should be localized. Pressing Alt + Access Key acts as clicking on the button.
         static CompletionFilter MetalFilter = new CompletionFilter("Metal", "M", MetalIcon);
         static CompletionFilter NonMetalFilter = new CompletionFilter("Non metal", "N", NonMetalIcon);
         static CompletionFilter UnknownFilter = new CompletionFilter("Unknown", "U", UnknownIcon);
+
+        // CompletionItem takes array of CompletionFilters. In this example, Metalloids use two filters, that is, they are visible in the list if user selects either filter.
         static ImmutableArray<CompletionFilter> MetalFilters = ImmutableArray.Create(MetalFilter);
         static ImmutableArray<CompletionFilter> NonMetalFilters = ImmutableArray.Create(NonMetalFilter);
         static ImmutableArray<CompletionFilter> MetalloidFilters = ImmutableArray.Create(MetalFilter, NonMetalFilter);
