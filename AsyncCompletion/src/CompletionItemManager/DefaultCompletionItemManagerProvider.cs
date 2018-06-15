@@ -7,8 +7,9 @@ using System.ComponentModel.Composition;
 namespace AsyncCompletionSample.CompletionItemManager
 {
     [Export(typeof(IAsyncCompletionItemManagerProvider))]
-    [Name(PredefinedCompletionNames.DefaultCompletionItemManager)]
+    [Name("Default completion item manager")]
     [ContentType("text")]
+    [Order(Before = PredefinedCompletionNames.DefaultCompletionItemManager)] // override the default item manager so that we can step through this code
     internal sealed class DefaultCompletionItemManagerProvider : IAsyncCompletionItemManagerProvider
     {
         [Import]

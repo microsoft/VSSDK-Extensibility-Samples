@@ -23,6 +23,7 @@ namespace AsyncCompletionSample.CompletionItemManager
         Task<FilteredCompletionModel> IAsyncCompletionItemManager.UpdateCompletionListAsync
             (IAsyncCompletionSession session, AsyncCompletionSessionDataSnapshot data, CancellationToken token)
         {
+            var view = session.TextView;
             // Filter by text
             var filterText = session.ApplicableToSpan.GetText(data.Snapshot);
             if (string.IsNullOrWhiteSpace(filterText))

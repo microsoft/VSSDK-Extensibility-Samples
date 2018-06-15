@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace AsyncCompletionSample.CompletionSource
 {
     [Export(typeof(IAsyncCompletionSourceProvider))]
-    [Name("Json dictionary completion provider"))]
-    [ContentType("json")]
+    [Name("Json dictionary completion provider")]
+    [ContentType("JSON")]
     class JsonCompletionSourceProvider : IAsyncCompletionSourceProvider
     {
         IDictionary<ITextView, IAsyncCompletionSource> cache = new Dictionary<ITextView, IAsyncCompletionSource>();

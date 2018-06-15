@@ -18,10 +18,10 @@ namespace AsyncCompletionSample.CompletionSource
     {
         private ElementCatalog catalog;
 
-        static ImageElement MetalIcon = new ImageElement(new ImageId(), "Metal");
-        static ImageElement NonMetalIcon = new ImageElement(new ImageId(), "Non metal");
-        static ImageElement MetalloidIcon = new ImageElement(new ImageId(), "Metalloid");
-        static ImageElement UnknownIcon = new ImageElement(new ImageId(), "Unknown");
+        static ImageElement MetalIcon = new ImageElement(new ImageId(new Guid("ae27a6b0-e345-4288-96df-5eaf394ee369"), 2708), "Metal");
+        static ImageElement NonMetalIcon = new ImageElement(new ImageId(new Guid("ae27a6b0-e345-4288-96df-5eaf394ee369"), 2709), "Non metal");
+        static ImageElement MetalloidIcon = new ImageElement(new ImageId(new Guid("ae27a6b0-e345-4288-96df-5eaf394ee369"), 2716), "Metalloid");
+        static ImageElement UnknownIcon = new ImageElement(new ImageId(new Guid("ae27a6b0-e345-4288-96df-5eaf394ee369"), 3533), "Unknown");
         static CompletionFilter MetalFilter = new CompletionFilter("Metal", "M", MetalIcon);
         static CompletionFilter NonMetalFilter = new CompletionFilter("Non metal", "N", NonMetalIcon);
         static CompletionFilter UnknownFilter = new CompletionFilter("Unknown", "U", UnknownIcon);
@@ -37,8 +37,9 @@ namespace AsyncCompletionSample.CompletionSource
 
         public async Task<CompletionContext> GetCompletionContextAsync(InitialTrigger trigger, SnapshotPoint triggerLocation, SnapshotSpan applicableToSpan, CancellationToken token)
         {
+            // ----- Very simple parsing
             var lineStart = triggerLocation.GetContainingLine().Start;
-            var lineEnd = triggerLocation.GetContainingLine().Start;
+            var lineEnd = triggerLocation.GetContainingLine().End;
             var spanBeforeCaret = new SnapshotSpan(lineStart, triggerLocation);
             var spanAfterCaret = new SnapshotSpan(triggerLocation, lineEnd);
 
@@ -48,14 +49,39 @@ namespace AsyncCompletionSample.CompletionSource
             if (token.IsCancellationRequested)
                 return CompletionContext.Empty;
 
-            switch (GetPosition(textBeforeCaret))
+            int quoteIndex = -1;
+            int colonIndex = -1;
+            int numberOfQuotes = 0;
+            for (int i = 0; i < textBeforeCaret.Length; i++)
+            {
+                if (textBeforeCaret[i] == '"')
+                {
+                    quoteIndex = i;
+                    numberOfQuotes++;
+                }
+                if (textBeforeCaret[i] == ':')
+                {
+                    colonIndex = i;
+                }
+            }
+            if (numberOfQuotes % 2 == 0)
+            {
+                // Don't complete when there is an even number of quotes before
+                return CompletionContext.Empty;
+            }
+
+            PositionInLine position = quoteIndex == -1 ? PositionInLine.Neither : colonIndex == -1 ? PositionInLine.Key : PositionInLine.Value;
+            // -----
+
+            switch (position)
             {
                 case PositionInLine.Key:
                     return GetContextForKey();
                 case PositionInLine.Value:
-                    var KeyExtractingRegex = new Regex(@"\s*""(\w +)""\s*:");
+                    var KeyExtractingRegex = new Regex(@"\s*""(\w+)""\s*:");
                     var key = KeyExtractingRegex.Match(textBeforeCaret);
-                    return GetContextForValue(key.Value);
+                    var candidateName = key.Success ? key.Groups.Count > 0 && key.Groups[1].Success ? key.Groups[1].Value : string.Empty : string.Empty;
+                     return GetContextForValue(candidateName);
                 default:
                     return CompletionContext.Empty;
             }
@@ -64,20 +90,19 @@ namespace AsyncCompletionSample.CompletionSource
         private CompletionContext GetContextForValue(string key)
         {
             // Provide a few items based on the key
-            ImmutableArray<CompletionItem> itemsBasedOnKey;
-            var matchingElement = catalog.Elements.FirstOrDefault(n => n.Name == key);
-            if (matchingElement == null)
+            ImmutableArray<CompletionItem> itemsBasedOnKey = ImmutableArray<CompletionItem>.Empty;
+            if (!string.IsNullOrEmpty(key))
             {
-                itemsBasedOnKey = ImmutableArray<CompletionItem>.Empty;
-            }
-            else
-            {
-                var itemsBuilder = ImmutableArray.CreateBuilder<CompletionItem>();
-                itemsBasedOnKey.Add(new CompletionItem(matchingElement.Name, this));
-                itemsBasedOnKey.Add(new CompletionItem(matchingElement.Symbol, this));
-                itemsBasedOnKey.Add(new CompletionItem(matchingElement.AtomicNumber.ToString(), this));
-                itemsBasedOnKey.Add(new CompletionItem(matchingElement.AtomicWeight.ToString(), this));
-                itemsBasedOnKey = itemsBuilder.ToImmutable();
+                var matchingElement = catalog.Elements.FirstOrDefault(n => n.Name == key);
+                if (matchingElement != null)
+                {
+                    var itemsBuilder = ImmutableArray.CreateBuilder<CompletionItem>();
+                    itemsBuilder.Add(new CompletionItem(matchingElement.Name, this));
+                    itemsBuilder.Add(new CompletionItem(matchingElement.Symbol, this));
+                    itemsBuilder.Add(new CompletionItem(matchingElement.AtomicNumber.ToString(), this));
+                    itemsBuilder.Add(new CompletionItem(matchingElement.AtomicWeight.ToString(), this));
+                    itemsBasedOnKey = itemsBuilder.ToImmutable();
+                }
             }
             // We would like to allow user to type anything, so we create SuggestionItemOptions
             var suggestionOptions = new SuggestionItemOptions("Value of your choice", $"Please enter value for key {key}");
@@ -87,7 +112,8 @@ namespace AsyncCompletionSample.CompletionSource
 
         private CompletionContext GetContextForKey()
         {
-            return new CompletionContext(catalog.Elements.Select(n => makeItemFromElement(n)).ToImmutableArray());
+            var context = new CompletionContext(catalog.Elements.Select(n => makeItemFromElement(n)).ToImmutableArray());
+            return context;
 
             CompletionItem makeItemFromElement(ElementCatalog.Element element)
             {
@@ -108,7 +134,7 @@ namespace AsyncCompletionSample.CompletionSource
                         icon = NonMetalIcon;
                         filters = NonMetalFilters;
                         break;
-                    case ElementCatalog.Element.Categories.Unknown:
+                    case ElementCatalog.Element.Categories.Uncategorized:
                         icon = UnknownIcon;
                         filters = UnknownFilters;
                         break;
@@ -120,7 +146,7 @@ namespace AsyncCompletionSample.CompletionSource
                     filters: filters,
                     suffix: string.Empty,
                     insertText: element.Name,
-                    sortText: $"Element {element.AtomicNumber}",
+                    sortText: $"Element {element.AtomicNumber,3}",
                     filterText: $"{element.Name} {element.Symbol}",
                     attributeIcons: ImmutableArray<ImageElement>.Empty);
 
@@ -135,28 +161,20 @@ namespace AsyncCompletionSample.CompletionSource
         {
             if (item.Properties.TryGetProperty<ElementCatalog.Element>(nameof(ElementCatalog.Element), out var matchingElement))
             {
-                return $"{matchingElement.Name} [{matchingElement.AtomicNumber}, {matchingElement.Symbol}] with atomic weight {matchingElement.AtomicWeight}";
+                return $"{matchingElement.Name} [{matchingElement.AtomicNumber}, {matchingElement.Symbol}] is {getCategoryName(matchingElement.Category)} with atomic weight {matchingElement.AtomicWeight}";
             }
             return null;
         }
 
-        private PositionInLine GetPosition(string textBeforeCaret)
+        private object getCategoryName(ElementCatalog.Element.Categories category)
         {
-            var quoteIndex = textBeforeCaret.LastIndexOf('"');
-            if (quoteIndex == -1)
+            switch(category)
             {
-                return PositionInLine.Neither;
+                case ElementCatalog.Element.Categories.Metal: return "a metal";
+                case ElementCatalog.Element.Categories.Metalloid: return "a metalloid";
+                case ElementCatalog.Element.Categories.NonMetal: return "a non metal";
+                default:  return "an uncategorized element";
             }
-
-            var colonIndex = textBeforeCaret.LastIndexOf(':');
-            return colonIndex == -1 ? PositionInLine.Value : PositionInLine.Key;
-        }
-
-        enum PositionInLine
-        {
-            Key,
-            Value,
-            Neither
         }
 
         public bool TryGetApplicableToSpan(char typeChar, SnapshotPoint triggerLocation, out SnapshotSpan applicableToSpan, CancellationToken token)
@@ -167,35 +185,81 @@ namespace AsyncCompletionSample.CompletionSource
                 applicableToSpan = default;
                 return false;
             }
+            // Note that triggerLocation.Position is before the quote
+            // We want applicableToSpan to start after the quote, hence we add 1
 
+            // ----- Very simple parsing:
             var lineStart = triggerLocation.GetContainingLine().Start;
-            var lineEnd = triggerLocation.GetContainingLine().Start;
+            var lineEnd = triggerLocation.GetContainingLine().End;
             var spanBeforeCaret = new SnapshotSpan(lineStart, triggerLocation);
             var spanAfterCaret = new SnapshotSpan(triggerLocation, lineEnd);
 
             var textBeforeCaret = triggerLocation.Snapshot.GetText(spanBeforeCaret);
             var textAfterCaret = triggerLocation.Snapshot.GetText(spanAfterCaret);
-            var quoteIndex = textBeforeCaret.LastIndexOf('"');
 
-            switch (GetPosition(textBeforeCaret))
+            int quoteIndex = -1;
+            int colonIndex = -1;
+            int numberOfQuotes = 0;
+            for (int i = 0; i < textBeforeCaret.Length; i++)
+            {
+                if (textBeforeCaret[i] == '"')
+                {
+                    quoteIndex = i;
+                    numberOfQuotes++;
+                }
+                if (textBeforeCaret[i] == ':')
+                {
+                    colonIndex = i;
+                }
+            }
+            if (numberOfQuotes % 2 == 0)
+            {
+                // Don't complete when there is an even number of quotes before
+                applicableToSpan = default;
+                return false;
+            }
+            PositionInLine position = quoteIndex == -1 ? PositionInLine.Neither : colonIndex == -1 ? PositionInLine.Key : PositionInLine.Value;
+            // -----
+
+            switch (position)
             {
                 case PositionInLine.Value:
                     {
                         var endIndex = textAfterCaret.IndexOfAny(new char[] { '"', ';', ',', ' ' });
+                        int length = 0;
                         if (endIndex == -1)
-                            endIndex = spanAfterCaret.End;
+                        {
+                            length = spanAfterCaret.End.Position - triggerLocation.Position - 1;
+                        }
+                        else
+                        {
+                            length = endIndex;
+                        }
 
-                        applicableToSpan = new SnapshotSpan(triggerLocation.Snapshot, quoteIndex, endIndex);
+                        if (length < 0)
+                            length = 0;
+
+                        applicableToSpan = new SnapshotSpan(triggerLocation.Snapshot, lineStart.Position + quoteIndex + 1, length);
                         return true;
                     }
 
                 case PositionInLine.Key:
                     {
                         var endIndex = textAfterCaret.IndexOfAny(new char[] { '"', ':', ' ', ';', ',' });
+                        int length = 0;
                         if (endIndex == -1)
-                            endIndex = spanAfterCaret.End;
+                        {
+                            length = spanAfterCaret.End.Position - triggerLocation.Position - 1;
+                        }
+                        else
+                        {
+                            length = endIndex;
+                        }
 
-                        applicableToSpan = new SnapshotSpan(triggerLocation.Snapshot, quoteIndex, endIndex);
+                        if (length < 0)
+                            length = 0;
+
+                        applicableToSpan = new SnapshotSpan(triggerLocation.Snapshot, lineStart.Position + quoteIndex + 1, length);
                         return true;
                     }
 
@@ -203,6 +267,13 @@ namespace AsyncCompletionSample.CompletionSource
                     applicableToSpan = default;
                     return false;
             }
+        }
+
+        enum PositionInLine
+        {
+            Key,
+            Value,
+            Neither
         }
     }
 }
