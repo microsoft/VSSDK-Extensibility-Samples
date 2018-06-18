@@ -8,6 +8,9 @@ using Microsoft.VisualStudio.Text.Editor;
 
 namespace AsyncCompletionSample.JsonElementCompletion
 {
+    /// <summary>
+    /// The simplest implementation of IAsyncCompletionCommitManager that provides Commit Characters and uses default behavior otherwise
+    /// </summary>
     internal class JsonCompletionCommitManager : IAsyncCompletionCommitManager
     {
         public JsonCompletionCommitManager()
@@ -18,14 +21,16 @@ namespace AsyncCompletionSample.JsonElementCompletion
 
         public IEnumerable<char> PotentialCommitCharacters => commitChars;
 
-        public bool ShouldCommitCompletion(char typeChar, SnapshotPoint location, CancellationToken token)
+        public bool ShouldCommitCompletion(char typedChar, SnapshotPoint location, CancellationToken token)
         {
+            // This method is called only when typedChar is among PotentialCommitCharacters
+            // in this simple example, all PotentialCommitCharacters do commit, so we always return true.
             return true;
         }
 
         public CommitResult TryCommit(ITextView view, ITextBuffer buffer, CompletionItem item, ITrackingSpan applicableToSpan, char typedChar, CancellationToken token)
         {
-            return CommitResult.Unhandled; // use default commit
+            return CommitResult.Unhandled; // use default commit mechanism.
         }
     }
 }
