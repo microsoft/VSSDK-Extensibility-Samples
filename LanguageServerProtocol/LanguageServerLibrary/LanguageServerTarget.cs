@@ -17,7 +17,7 @@ namespace LanguageServer
 
         public event EventHandler Initialized;
 
-        [JsonRpcMethod(Methods.Initialize)]
+        [JsonRpcMethod(Methods.InitializeName)]
         public object Initialize(JToken arg)
         {
             var capabilities = new ServerCapabilities();
@@ -36,21 +36,21 @@ namespace LanguageServer
             return result;
         }
 
-        [JsonRpcMethod(Methods.TextDocumentDidOpen)]
+        [JsonRpcMethod(Methods.TextDocumentDidOpenName)]
         public void OnTextDocumentOpened(JToken arg)
         {
             var parameter = arg.ToObject<DidOpenTextDocumentParams>();
             server.OnTextDocumentOpened(parameter);
         }
 
-        [JsonRpcMethod(Methods.TextDocumentDidChange)]
+        [JsonRpcMethod(Methods.TextDocumentDidChangeName)]
         public void OnTextDocumentChanged(JToken arg)
         {
             var parameter = arg.ToObject<DidChangeTextDocumentParams>();
-            server.SendDiagnostics(parameter.TextDocument.Uri, parameter.ContentChanges[0].Text);
+            server.SendDiagnostics(parameter.TextDocument.Uri.ToString(), parameter.ContentChanges[0].Text);
         }
 
-        [JsonRpcMethod(Methods.TextDocumentCompletion)]
+        [JsonRpcMethod(Methods.TextDocumentCompletionName)]
         public CompletionItem[] OnTextDocumentCompletion(JToken arg)
         {
             List<CompletionItem> items = new List<CompletionItem>();
@@ -67,20 +67,20 @@ namespace LanguageServer
             return items.ToArray();
         }
 
-        [JsonRpcMethod(Methods.WorkspaceDidChangeConfiguration)]
+        [JsonRpcMethod(Methods.WorkspaceDidChangeConfigurationName)]
         public void OnDidChangeConfiguration(JToken arg)
         {
             var parameter = arg.ToObject<DidChangeConfigurationParams>();
             this.server.SendSettings(parameter);
         }
         
-        [JsonRpcMethod(Methods.Shutdown)]
+        [JsonRpcMethod(Methods.ShutdownName)]
         public object Shutdown()
         {
             return null;
         }
 
-        [JsonRpcMethod(Methods.Exit)]
+        [JsonRpcMethod(Methods.ExitName)]
         public void Exit()
         {
             server.Exit();
