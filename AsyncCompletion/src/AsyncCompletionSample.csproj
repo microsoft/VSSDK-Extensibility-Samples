@@ -49,9 +49,11 @@
   <ItemGroup>
     <Compile Include="CompletionItemManager\DefaultCompletionItemManager.cs" />
     <Compile Include="CompletionItemManager\DefaultCompletionItemManagerProvider.cs" />
-    <Compile Include="CompletionSource\ElementCatalog.cs" />
-    <Compile Include="CompletionSource\JsonCompletionSource.cs" />
-    <Compile Include="CompletionSource\JsonCompletionSourceProvider.cs" />
+    <Compile Include="JsonElementCompletion\ElementCatalog.cs" />
+    <Compile Include="JsonElementCompletion\JsonCompletionCommitManager.cs" />
+    <Compile Include="JsonElementCompletion\JsonCompletionSource.cs" />
+    <Compile Include="JsonElementCompletion\JsonCompletionCommitManagerProvider.cs" />
+    <Compile Include="JsonElementCompletion\JsonCompletionSourceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AsyncCompletionSample.CompletionSource
+namespace AsyncCompletionSample.JsonElementCompletion
 {
     [Export]
     internal class ElementCatalog

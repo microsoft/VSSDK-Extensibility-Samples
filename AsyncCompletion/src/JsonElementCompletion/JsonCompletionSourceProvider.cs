@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AsyncCompletionSample.CompletionSource
+namespace AsyncCompletionSample.JsonElementCompletion
 {
     [Export(typeof(IAsyncCompletionSourceProvider))]
     [Name("Json dictionary completion provider")]
@@ -26,7 +26,7 @@ namespace AsyncCompletionSample.CompletionSource
                 return itemSource;
 
             var source = new JsonCompletionSource(Catalog); // opportunity to pass in MEF parts
-            textView.Closed += (o, e) => cache.Remove(textView); // clean up memory when all CSV files are closed
+            textView.Closed += (o, e) => cache.Remove(textView); // clean up memory as files are closed
             cache.Add(textView, source);
             return source;
         }
