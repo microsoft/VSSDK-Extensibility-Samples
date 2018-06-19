@@ -14,7 +14,7 @@ This example generates a VSIX extension that packs two components:
 
 **Requirements**
 
-The example requires Visual Studio 2017 15.8 Preview 3 and above versions.
+The example requires Visual Studio 2017 15.8 Preview 3 and above versions, Community SKU and above.
 
 **Getting Started**
 
