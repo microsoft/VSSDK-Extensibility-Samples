@@ -186,9 +186,9 @@ namespace AsyncCompletionSample.JsonElementCompletion
         public bool TryGetApplicableToSpan(char typeChar, SnapshotPoint triggerLocation, out SnapshotSpan applicableToSpan, CancellationToken token)
         {
             // We trigger completion on demand (typeChar is default) or after user typed quotes
-            if (typeChar != default && typeChar != '"')
+            if (typeChar != default(char) && typeChar != '"')
             {
-                applicableToSpan = default;
+                applicableToSpan = default(SnapshotSpan);
                 return false;
             }
             // Note that triggerLocation.Position is before the quote
@@ -221,7 +221,7 @@ namespace AsyncCompletionSample.JsonElementCompletion
             if (numberOfQuotes % 2 == 0)
             {
                 // Don't complete when there is an even number of quotes before
-                applicableToSpan = default;
+                applicableToSpan = default(SnapshotSpan);
                 return false;
             }
             PositionInLine position = quoteIndex == -1 ? PositionInLine.Neither : colonIndex == -1 ? PositionInLine.Key : PositionInLine.Value;
@@ -270,7 +270,7 @@ namespace AsyncCompletionSample.JsonElementCompletion
                     }
 
                 default:
-                    applicableToSpan = default;
+                    applicableToSpan = default(SnapshotSpan);
                     return false;
             }
         }
