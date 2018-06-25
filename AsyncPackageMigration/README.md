@@ -2,7 +2,7 @@
 
 Shows the simplest way to migrate a Visual Studio extension from using the [Package](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.package?view=visualstudiosdk-2017) base class to using the [AsyncPackage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.asyncpackage?view=visualstudiosdk-2017) with background load enabled.
 
-This work for Visual Studio extensions targeting **Visual Studio 2015** and newer.
+This works for Visual Studio extensions targeting **Visual Studio 2015** and newer.
 
 ## The *Package* class
 Here is an example of a simple *Package* class that we want to convert to an *AsyncPackage*. It registers a service and a command.
@@ -91,11 +91,11 @@ See the full [MyAsyncPackage.cs](src/MyAsyncPackage.cs) class.
 
 **Secondly** the `ProvideAutoload` attribute has `PackageAutoLoadFlags.BackgroundLoad` set to indicate that the package should be loaded in the background for the specified UI Context.
 
-**And thirdly**, we switch to the UI thread before initializing the *MyCommand* since some service calls still require to run on the UI thread.
+**And thirdly**, we switch to the UI thread before initializing the *MyCommand* since some service calls still require running on the UI thread.
 
 ## Points of interest
 
-1. Even if switching to the main thread is the first thing you do in the `InitializeAsync` method, the package is still loaded in a way that makes VS more responsive.
+1. Even if the first thing you do is switching to the main thread in the `InitializeAsync` method, the package is still loaded in a way that makes VS more responsive.
 
 2. As a rule of thumb, do as much work as possible before switching to the main thread. 
 
