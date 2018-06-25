@@ -23,7 +23,8 @@ namespace AsyncPackageMigration
         // Synchronous initialization
         public static void Initialize(Package package, EnvDTE.DTE dte)
         {
-            var commandService = (IMenuCommandService)Package.GetGlobalService(typeof(IMenuCommandService));
+            var serviceProvider = (IServiceProvider)package;
+            var commandService = (IMenuCommandService)serviceProvider.GetService(typeof(IMenuCommandService));
 
             var cmdId = new CommandID(_commandSet, _commandId);
             var cmd = new MenuCommand((s, e) => Execute(package, dte), cmdId);
