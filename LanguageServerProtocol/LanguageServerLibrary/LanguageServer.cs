@@ -111,7 +111,7 @@ namespace LanguageServer
                 parameter.Diagnostics = parameter.Diagnostics.Take(this.maxProblems).ToArray();
             }
 
-            this.rpc.NotifyWithParameterObjectAsync(Methods.TextDocumentPublishDiagnostics, parameter);
+            this.rpc.NotifyWithParameterObjectAsync(Methods.TextDocumentPublishDiagnosticsName, parameter);
         }
 
         public void SendDiagnostics(string uri, string text)
@@ -154,7 +154,7 @@ namespace LanguageServer
             }
 
             PublishDiagnosticParams parameter = new PublishDiagnosticParams();
-            parameter.Uri = uri;
+            parameter.Uri = new Uri(uri);
             parameter.Diagnostics = diagnostics.ToArray();
 
             if (this.maxProblems > -1)
@@ -162,7 +162,7 @@ namespace LanguageServer
                 parameter.Diagnostics = parameter.Diagnostics.Take(this.maxProblems).ToArray();
             }
 
-            this.rpc.NotifyWithParameterObjectAsync(Methods.TextDocumentPublishDiagnostics, parameter);
+            this.rpc.NotifyWithParameterObjectAsync(Methods.TextDocumentPublishDiagnosticsName, parameter);
         }
 
         public void LogMessage(object arg)
@@ -182,7 +182,7 @@ namespace LanguageServer
                 Message = message,
                 MessageType = messageType
             };
-            this.rpc.NotifyWithParameterObjectAsync(Methods.WindowLogMessage, parameter);
+            this.rpc.NotifyWithParameterObjectAsync(Methods.WindowLogMessageName, parameter);
         }
 
         public void ShowMessage(string message, MessageType messageType)
@@ -192,7 +192,7 @@ namespace LanguageServer
                 Message = message,
                 MessageType = messageType
             };
-            this.rpc.NotifyWithParameterObjectAsync(Methods.WindowShowMessage, parameter);
+            this.rpc.NotifyWithParameterObjectAsync(Methods.WindowShowMessageName, parameter);
         }
 
         public async Task<MessageActionItem> ShowMessageRequestAsync(string message, MessageType messageType, string[] actionItems)
@@ -204,7 +204,7 @@ namespace LanguageServer
                 Actions = actionItems.Select(a => new MessageActionItem { Title = a }).ToArray()
             };
 
-            var response = await this.rpc.InvokeWithParameterObjectAsync<JToken>(Methods.WindowShowMessageRequest, parameter);
+            var response = await this.rpc.InvokeWithParameterObjectAsync<JToken>(Methods.WindowShowMessageRequestName, parameter);
             return response.ToObject<MessageActionItem>();
         }
 
