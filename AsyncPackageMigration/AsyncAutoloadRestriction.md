@@ -31,5 +31,4 @@ Serveral UI contexts are extempted from the async autoload restriction. However,
 2. Source Code Control(SCC) Provider packages providing sync functionality and requiring to load before solution opens, will be exempted from the async autoload restrictions.
 
 3. Packages that participate in Project/Solution upgrade and need to provide information while a project is upgrading, should use UICONTEXT_SolutionOrProjectUpgrading which will be exempted from the async autoload restrictions.
-
 *Note*: If a package is using different UI contexts, e.g., UIContext_SolutionOpening and listens to project upgrade events, then the package should start using UICONTEXT_SolutionOrProjectUpgrading to load.
