@@ -16,7 +16,7 @@ and a glyph factory. Anytime _ToDo_ appears in the text editor, it will be
 highlighted and a glyph will be displayed on that line.
 
   * The binaries for this sample can also be installed via the extension manager. 
-  * This is the sample code written during the Visual Studio Ecosystem Summit presentation ** I Want Coloring: A scenario based look at the new editor**
+  * This is the sample code written during the Visual Studio Ecosystem Summit presentation **I Want Coloring: A scenario based look at the new editor**
 
 ![image](C%23/Example.ToDoClassification.png)
 
@@ -34,7 +34,7 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 **Run the sample** 
 
-  1. To run the sample, hit F5 or choose the ** Debug &gt; Start Debugging** menu command. A new instance of Visual Studio will launch under the experimental hive. 
+  1. To run the sample, hit F5 or choose the **Debug &gt; Start Debugging** menu command. A new instance of Visual Studio will launch under the experimental hive. 
   2. Once loaded, open any file in the Text Editor. 
   3. Type _ToDo_ anywhere in the Text Editor. 
   4. _ToDo_ is highlighted, and a glyph is displayed on that line in the glyph column. 
