@@ -9,7 +9,7 @@ Editor and display a glyph in the corresponding line.
 * Topics: Visual Studio Shell, VSX
  
 
-** Description**
+**Description**
 
 This sample provides a general purpose TodoTagger as well as classification
 and a glyph factory. Anytime _ToDo_ appears in the text editor, it will be
