@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace AsyncCompletionSample.JsonElementCompletion
 {
     [Export(typeof(IAsyncCompletionCommitManagerProvider))]
-    [Name("Json dictionary commit manager provider")]
-    [ContentType("JSON")]
-    class JsonCompletionCommitManagerProvider : IAsyncCompletionCommitManagerProvider
+    [Name("Chemical element commit manager provider")]
+    [ContentType("text")]
+    class SampleCompletionCommitManagerProvider : IAsyncCompletionCommitManagerProvider
     {
         IDictionary<ITextView, IAsyncCompletionCommitManager> cache = new Dictionary<ITextView, IAsyncCompletionCommitManager>();
 
@@ -22,7 +22,7 @@ namespace AsyncCompletionSample.JsonElementCompletion
             if (cache.TryGetValue(textView, out var itemSource))
                 return itemSource;
 
-            var manager = new JsonCompletionCommitManager();
+            var manager = new SampleCompletionCommitManager();
             textView.Closed += (o, e) => cache.Remove(textView); // clean up memory as files are closed
             cache.Add(textView, manager);
             return manager;

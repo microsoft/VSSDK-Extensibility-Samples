@@ -11,13 +11,13 @@ namespace AsyncCompletionSample.JsonElementCompletion
     /// <summary>
     /// The simplest implementation of IAsyncCompletionCommitManager that provides Commit Characters and uses default behavior otherwise
     /// </summary>
-    internal class JsonCompletionCommitManager : IAsyncCompletionCommitManager
+    internal class SampleCompletionCommitManager : IAsyncCompletionCommitManager
     {
-        public JsonCompletionCommitManager()
+        public SampleCompletionCommitManager()
         {
         }
 
-        ImmutableArray<char> commitChars = new char[] { '"', ',', ':' }.ToImmutableArray();
+        ImmutableArray<char> commitChars = new char[] { ' ', '\'', '"', ',', '.', ';', ':' }.ToImmutableArray();
 
         public IEnumerable<char> PotentialCommitCharacters => commitChars;
 

@@ -50,10 +50,10 @@
     <Compile Include="CompletionItemManager\DefaultCompletionItemManager.cs" />
     <Compile Include="CompletionItemManager\DefaultCompletionItemManagerProvider.cs" />
     <Compile Include="JsonElementCompletion\ElementCatalog.cs" />
-    <Compile Include="JsonElementCompletion\JsonCompletionCommitManager.cs" />
-    <Compile Include="JsonElementCompletion\JsonCompletionSource.cs" />
-    <Compile Include="JsonElementCompletion\JsonCompletionCommitManagerProvider.cs" />
-    <Compile Include="JsonElementCompletion\JsonCompletionSourceProvider.cs" />
+    <Compile Include="JsonElementCompletion\SampleCompletionCommitManager.cs" />
+    <Compile Include="JsonElementCompletion\SampleCompletionSource.cs" />
+    <Compile Include="JsonElementCompletion\SampleCompletionCommitManagerProvider.cs" />
+    <Compile Include="JsonElementCompletion\SampleCompletionSourceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

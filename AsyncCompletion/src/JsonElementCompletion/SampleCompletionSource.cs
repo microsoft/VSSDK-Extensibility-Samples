@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace AsyncCompletionSample.JsonElementCompletion
 {
-    class JsonCompletionSource : IAsyncCompletionSource
+    class SampleCompletionSource : IAsyncCompletionSource
     {
         private ElementCatalog Catalog { get; }
         private ITextStructureNavigatorSelectorService StructureNavigatorSelector { get; }
@@ -39,7 +39,7 @@ namespace AsyncCompletionSample.JsonElementCompletion
         static ImmutableArray<CompletionFilter> MetalloidFilters = ImmutableArray.Create(MetalFilter, NonMetalFilter);
         static ImmutableArray<CompletionFilter> UnknownFilters = ImmutableArray.Create(UnknownFilter);
 
-        public JsonCompletionSource(ElementCatalog catalog, ITextStructureNavigatorSelectorService structureNavigatorSelector)
+        public SampleCompletionSource(ElementCatalog catalog, ITextStructureNavigatorSelectorService structureNavigatorSelector)
         {
             Catalog = catalog;
             StructureNavigatorSelector = structureNavigatorSelector;
@@ -47,14 +47,17 @@ namespace AsyncCompletionSample.JsonElementCompletion
 
         public bool TryGetApplicableToSpan(char typeChar, SnapshotPoint triggerLocation, out SnapshotSpan applicableToSpan, CancellationToken token)
         {
-            // We trigger completion on demand (typeChar is default) or after user typed quotes
-            if (typeChar != default(char) && typeChar != '"')
+            // We don't trigger completion when user typed
+            if (char.IsNumber(typeChar)         // a number
+                || char.IsPunctuation(typeChar) // punctuation
+                || typeChar == '\b'             // backspace
+                || typeChar == '\n')            // new line
             {
                 applicableToSpan = default(SnapshotSpan);
                 return false;
             }
-            var snapshot = triggerLocation.Snapshot;
 
+            var snapshot = triggerLocation.Snapshot;
             var tokenSpan = FindTokenSpanAtPosition(triggerLocation);
             var tokenText = tokenSpan.GetText(snapshot);
             if (string.IsNullOrWhiteSpace(tokenText))
@@ -63,6 +66,7 @@ namespace AsyncCompletionSample.JsonElementCompletion
                 return true;
             }
 
+            // Trim quotes and new line characters
             int startOffset = 0;
             int endOffset = 0;
 
@@ -88,6 +92,11 @@ namespace AsyncCompletionSample.JsonElementCompletion
         {
             ITextStructureNavigator navigator = StructureNavigatorSelector.GetTextStructureNavigator(triggerLocation.Snapshot.TextBuffer);
             TextExtent extent = navigator.GetExtentOfWord(triggerLocation);
+            if (!extent.IsSignificant && triggerLocation.Position > 0)
+            {
+                // Improves span detection over the default ITextStructureNavigation result
+                extent = navigator.GetExtentOfWord(triggerLocation - 1);
+            }
             return triggerLocation.Snapshot.CreateTrackingSpan(extent.Span, SpanTrackingMode.EdgeInclusive);
         }
 
@@ -97,14 +106,15 @@ namespace AsyncCompletionSample.JsonElementCompletion
             var lineStart = triggerLocation.GetContainingLine().Start;
             var spanBeforeCaret = new SnapshotSpan(lineStart, triggerLocation);
             var textBeforeCaret = triggerLocation.Snapshot.GetText(spanBeforeCaret);
-            var colonExistsBeforeCaret = textBeforeCaret.IndexOf(':') != -1;
+            var colonIndex = textBeforeCaret.IndexOf(':');
+            var colonExistsBeforeCaret = colonIndex != -1;
 
             // User is likely in the key portion of the pair
             if (!colonExistsBeforeCaret)
                 return GetContextForKey();
 
             // User is likely in the value portion of the pair. Try to provide extra items based on the key.
-            var KeyExtractingRegex = new Regex(@"\s*""(\w+)""\s*:");
+            var KeyExtractingRegex = new Regex(@"\W*(\w+)\W*:");
             var key = KeyExtractingRegex.Match(textBeforeCaret);
             var candidateName = key.Success ? key.Groups.Count > 0 && key.Groups[1].Success ? key.Groups[1].Value : string.Empty : string.Empty;
             return GetContextForValue(candidateName);
