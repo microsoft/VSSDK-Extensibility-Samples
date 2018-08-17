@@ -70,19 +70,24 @@ namespace AsyncCompletionSample.JsonElementCompletion
             int startOffset = 0;
             int endOffset = 0;
 
-            if (tokenText.StartsWith("\""))
-                startOffset = 1;
-
-            if (tokenText.EndsWith("\"\r\n"))
-                endOffset = 3;
-            else if (tokenText.EndsWith("\r\n"))
-                endOffset = 2;
-            else if (tokenText.EndsWith("\"\n"))
-                endOffset = 2;
-            else if (tokenText.EndsWith("\n"))
-                endOffset = 1;
-            else if (tokenText.EndsWith("\""))
-                endOffset = 1;
+            if (tokenText.Length > 0)
+            {
+                if (tokenText.StartsWith("\""))
+                    startOffset = 1;
+            }
+            if (tokenText.Length - startOffset > 0)
+            {
+                if (tokenText.EndsWith("\"\r\n"))
+                    endOffset = 3;
+                else if (tokenText.EndsWith("\r\n"))
+                    endOffset = 2;
+                else if (tokenText.EndsWith("\"\n"))
+                    endOffset = 2;
+                else if (tokenText.EndsWith("\n"))
+                    endOffset = 1;
+                else if (tokenText.EndsWith("\""))
+                    endOffset = 1;
+            }
 
             applicableToSpan = new SnapshotSpan(tokenSpan.GetStartPoint(snapshot) + startOffset, tokenSpan.GetEndPoint(snapshot) - endOffset);
             return true;
@@ -92,7 +97,7 @@ namespace AsyncCompletionSample.JsonElementCompletion
         {
             ITextStructureNavigator navigator = StructureNavigatorSelector.GetTextStructureNavigator(triggerLocation.Snapshot.TextBuffer);
             TextExtent extent = navigator.GetExtentOfWord(triggerLocation);
-            if (!extent.IsSignificant && triggerLocation.Position > 0)
+            if (triggerLocation.Position > 0 && (!extent.IsSignificant || !extent.Span.GetText().Any(c => char.IsLetterOrDigit(c))))
             {
                 // Improves span detection over the default ITextStructureNavigation result
                 extent = navigator.GetExtentOfWord(triggerLocation - 1);
