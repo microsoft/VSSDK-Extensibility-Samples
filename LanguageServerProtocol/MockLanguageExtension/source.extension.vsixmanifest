@@ -10,7 +10,6 @@
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
-        <Dependency d:Source="Manual" Version="[1.0,2.0)" d:InstallSource="Download" Id="Microsoft.VisualStudio.LanguageServer.Client.Preview" DisplayName="Language Server Protocol Client Preview" Location="https://marketplace.visualstudio.com/items?itemName=vsext.LanguageServerClientPreview" />
         <Dependency Id="Microsoft.VisualStudio.MPF.15.0" DisplayName="Visual Studio MPF 15.0" d:Source="Installed" Version="[15.0]" />
     </Dependencies>
     <Assets>
