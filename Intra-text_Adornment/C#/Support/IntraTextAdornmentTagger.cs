@@ -56,7 +56,7 @@ namespace IntraTextAdornmentSample
 
         /// <param name="spans">Spans to provide adornment data for. These spans do not necessarily correspond to text lines.</param>
         /// <remarks>
-        /// If adornments need to be updated, call <see cref="RaiseTagsChanged"/> or <see cref="InavlidateSpans"/>.
+        /// If adornments need to be updated, call <see cref="RaiseTagsChanged"/> or <see cref="InvalidateSpans"/>.
         /// This will, indirectly, cause <see cref="GetAdornmentData"/> to be called.
         /// </remarks>
         /// <returns>
