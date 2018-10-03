@@ -16,7 +16,7 @@ It's easy to create commands in a Visual Studio extension.
 ## Let's get started
 In your VSIX project, add a new item by right-clicking the project and selecting **Add -> New Item...** and then search for and select **Custom Command**. 
 
-This will a bunch of files to your project. The key ones are:
+This will create a bunch of files to your project. The key ones are:
 
 1. The .vsct file
 2. The command Class
