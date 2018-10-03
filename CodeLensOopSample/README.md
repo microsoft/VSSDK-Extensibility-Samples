@@ -59,7 +59,7 @@ The example requires Visual Studio 2017 15.8 Preview 3 and above versions, Commu
 
 4. Handle navigate command invoked from the lens Details popup
 
-   To response user's clicking on the items in the Detail popup, The in-proc VSPacakge needs to implement IOleCommandTarget and handle the navigation command:
+   To response user's clicking on the items in the Detail popup, the in-proc VSPacakge needs to implement IOleCommandTarget and handle the navigation command:
 
    ```c#
    public sealed class CodeLensOopProviderPackage : AsyncPackage, IOleCommandTarget
