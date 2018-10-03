@@ -45,28 +45,59 @@ namespace AsyncCompletionSample.JsonElementCompletion
             StructureNavigatorSelector = structureNavigatorSelector;
         }
 
-        public bool TryGetApplicableToSpan(char typeChar, SnapshotPoint triggerLocation, out SnapshotSpan applicableToSpan, CancellationToken token)
+        public CompletionStartData InitializeCompletion(CompletionTrigger trigger, SnapshotPoint triggerLocation, CancellationToken token)
         {
             // We don't trigger completion when user typed
-            if (char.IsNumber(typeChar)         // a number
-                || char.IsPunctuation(typeChar) // punctuation
-                || typeChar == '\b'             // backspace
-                || typeChar == '\n')            // new line
+            if (char.IsNumber(trigger.Character)         // a number
+                || char.IsPunctuation(trigger.Character) // punctuation
+                || trigger.Character == '\n'             // new line
+                || trigger.Reason == CompletionTriggerReason.Backspace
+                || trigger.Reason == CompletionTriggerReason.Deletion)
             {
-                applicableToSpan = default(SnapshotSpan);
-                return false;
+                return CompletionStartData.DoesNotParticipateInCompletion;
             }
 
-            var snapshot = triggerLocation.Snapshot;
+            // We participate in completion and provide the "applicable to span".
+            // This span is used:
+            // 1. To search (filter) the list of all completion items
+            // 2. To highlight (bold) the matching part of the completion items
+            // 3. In standard cases, it is replaced by content of completion item upon commit.
+
+            // If you want to extend a language which already has completion, don't provide a span, e.g.
+            // return CompletionStartData.ParticipatesInCompletionIfAny
+
+            // If you provide a language, but don't have any items available at this location,
+            // consider providing a span for extenders who can't parse the codem e.g.
+            // return CompletionStartData(CompletionParticipation.DoesNotProvideItems, spanForOtherExtensions);
+
             var tokenSpan = FindTokenSpanAtPosition(triggerLocation);
+            return new CompletionStartData(CompletionParticipation.ProvidesItems, tokenSpan);
+        }
+
+        private SnapshotSpan FindTokenSpanAtPosition(SnapshotPoint triggerLocation)
+        {
+            // This method is not really related to completion,
+            // we mostly work with the default implementation of ITextStructureNavigator 
+            // You will likely use the parser of your language
+            ITextStructureNavigator navigator = StructureNavigatorSelector.GetTextStructureNavigator(triggerLocation.Snapshot.TextBuffer);
+            TextExtent extent = navigator.GetExtentOfWord(triggerLocation);
+            if (triggerLocation.Position > 0 && (!extent.IsSignificant || !extent.Span.GetText().Any(c => char.IsLetterOrDigit(c))))
+            {
+                // Improves span detection over the default ITextStructureNavigation result
+                extent = navigator.GetExtentOfWord(triggerLocation - 1);
+            }
+
+            var tokenSpan = triggerLocation.Snapshot.CreateTrackingSpan(extent.Span, SpanTrackingMode.EdgeInclusive);
+
+            var snapshot = triggerLocation.Snapshot;
             var tokenText = tokenSpan.GetText(snapshot);
             if (string.IsNullOrWhiteSpace(tokenText))
             {
-                applicableToSpan = new SnapshotSpan(triggerLocation, 0);
-                return true;
+                // The token at this location is empty. Return an empty span, which will grow as user types.
+                return new SnapshotSpan(triggerLocation, 0);
             }
 
-            // Trim quotes and new line characters
+            // Trim quotes and new line characters.
             int startOffset = 0;
             int endOffset = 0;
 
@@ -89,23 +120,10 @@ namespace AsyncCompletionSample.JsonElementCompletion
                     endOffset = 1;
             }
 
-            applicableToSpan = new SnapshotSpan(tokenSpan.GetStartPoint(snapshot) + startOffset, tokenSpan.GetEndPoint(snapshot) - endOffset);
-            return true;
+            return new SnapshotSpan(tokenSpan.GetStartPoint(snapshot) + startOffset, tokenSpan.GetEndPoint(snapshot) - endOffset);
         }
 
-        private ITrackingSpan FindTokenSpanAtPosition(SnapshotPoint triggerLocation)
-        {
-            ITextStructureNavigator navigator = StructureNavigatorSelector.GetTextStructureNavigator(triggerLocation.Snapshot.TextBuffer);
-            TextExtent extent = navigator.GetExtentOfWord(triggerLocation);
-            if (triggerLocation.Position > 0 && (!extent.IsSignificant || !extent.Span.GetText().Any(c => char.IsLetterOrDigit(c))))
-            {
-                // Improves span detection over the default ITextStructureNavigation result
-                extent = navigator.GetExtentOfWord(triggerLocation - 1);
-            }
-            return triggerLocation.Snapshot.CreateTrackingSpan(extent.Span, SpanTrackingMode.EdgeInclusive);
-        }
-
-        public async Task<CompletionContext> GetCompletionContextAsync(InitialTrigger trigger, SnapshotPoint triggerLocation, SnapshotSpan applicableToSpan, CancellationToken token)
+        public async Task<CompletionContext> GetCompletionContextAsync(IAsyncCompletionSession session, CompletionTrigger trigger, SnapshotPoint triggerLocation, SnapshotSpan applicableToSpan, CancellationToken token)
         {
             // See whether we are in the key or value portion of the pair
             var lineStart = triggerLocation.GetContainingLine().Start;
@@ -208,7 +226,7 @@ namespace AsyncCompletionSample.JsonElementCompletion
         /// <summary>
         /// Provides detailed element information in the tooltip
         /// </summary>
-        public async Task<object> GetDescriptionAsync(CompletionItem item, CancellationToken token)
+        public async Task<object> GetDescriptionAsync(IAsyncCompletionSession session, CompletionItem item, CancellationToken token)
         {
             if (item.Properties.TryGetProperty<ElementCatalog.Element>(nameof(ElementCatalog.Element), out var matchingElement))
             {
