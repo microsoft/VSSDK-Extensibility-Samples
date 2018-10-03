@@ -48,7 +48,7 @@ public class MyPackage : Package
 See the full [MyPackage.cs](src/MyPackage.cs) class.
 
 ## The *AsyncPackage* class
-The async version of the above class looks very similar with some noticable differences.
+The async version of the above class looks very similar with some noticeable differences.
 
 ```c#
 [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
