@@ -210,7 +210,7 @@ namespace AsyncCompletionSample.JsonElementCompletion
                 source: this,
                 icon: icon,
                 filters: filters,
-                suffix: string.Empty,
+                suffix: element.Symbol,
                 insertText: element.Name,
                 sortText: $"Element {element.AtomicNumber,3}",
                 filterText: $"{element.Name} {element.Symbol}",
