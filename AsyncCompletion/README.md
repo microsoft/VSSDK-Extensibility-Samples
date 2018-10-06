@@ -1,106 +1,67 @@
-# Options example
+# Completion sample
 
-**Applies to Visual Studio 2017 and newer**
+**Applies to Visual Studio 2019 and newer**
 
-This sample shows how to correctly specify and consume options for a Visual Studio extension that is both thread-safe and performant.
+Visual Studio 2019 introduces a new completion infrastructure. Under the new model, the extender does not need to handle user events and manage the lifetime of completion. The extensibility points are scoped to the following scenarios:
 
-The goal is to use best practices to achieve the following:
+## Running the sample
+Build and deploy the `AsyncCompletionSample` project. This will add completion capability to all code editors. Due to interference with other language services, this sample is best run in a .txt file.
 
-* A simple way to provide custom options
-* Expose the options in the **Tools -> Options** dialog
-* Thread-safe way to access and modify the settings
-* Both synchronous and asyncronous support
-* No need to load the package for the settings to initialize
+## IAsyncCompletionSource
 
-## Let's get started
-The source code in this sample adds two options pages to the **Tools -> Options** dialog - *General* and *Other* which is nested under the *My Options* node. 
+Constructed by the MEF part `IAsyncCompletionSourceProvider`, the `IAsyncCompletionSource` is responsible for
+* Providing completion items
+* Establishing location of completion
+You extension does not need to fulfill both roles,
+but both roles need to be fufilled to begin the completion session.
 
-![Options](art/options.png)
+If you are extending an existing language, expect the language service to provide the exact location. 
+You may simply provide additional completion items to include in the session.
 
-To make them show up in that dialog they have to be registered on the package class itself using the `ProvideOptionPage` attribute, like so:
+### In this sample
+`SampleCompletionSource` and `SampleCompletionSourceProvider` demonstrate this interface. 
 
-```c#
-[ProvideOptionPage(typeof(DialogPageProvider.General), "My Options", "General", 0, 0, true)]
-[ProvideOptionPage(typeof(DialogPageProvider.Other), "My Options", "Other", 0, 0, true)]
-public sealed class MyPackage : AsyncPackage
-{
-    ...
-}
-```
+**Suggestion mode**
 
-Both `GeneralOptions` ([source](src/Options/GeneralOptions.cs)) and `OtherOptions` ([source](src/Options/OtherOptions.cs)) are classes containing the settings as regular public properties. They are inheriting from the generic base class `BaseOptionModel` ([source](src/Options/BaseOptionModel.cs)).
+This completion source typically shows the list of chemical elements, but when invoked after a colon (`:`), it shows completion items related to the chemical element named before the colon. After the colon, the suggestion mode is active. In suggestion mode, user may type an expression not present in the completion list, and the expression will not be expanded to the best match upon pressing one of the "commit characters", indicated by `SampleCompletionCommitManager`
 
-```c#
-internal class GeneralOptions : BaseOptionModel<GeneralOptions>
-{
-    [Category("My category")]
-    [DisplayName("Message box text")]
-    [Description("Specifies the text to show in the message box")]
-    [DefaultValue("My message")]
-    public string Message { get; set; } = "My message";
-}
-```
+**Filters**
 
-These classes can be used from anywhere in the extension when options are needed, but we need to provide a way to expose them to VS and for that we're going to create a class called `DialogPageProvider`:
+Also, observe that completion filters are singletons. Each completion item may respond to multiple filters. In this example, _metalloid_ elements are shown by clicking on either _metal_ or _non metal_ filters.
 
-```c#
-internal class DialogPageProvider
-{
-    public class General : BaseOptionPage<GeneralOptions> { }
-    public class Other : BaseOptionPage<OtherOptions> { }
-}
-```
+## IAsyncCompletionCommitManager
 
-The classes specified inside the `DialogPageProvider` class are inheriting from the second generic base class in this sample - `BaseOptionPage` ([source](src/Options/BaseOptionPage.cs)). It's sole responsibility is to function as the entry point for the **Tools -> Options** dialog.
+Constructed by MEF part `IAsyncCompletionCommitManagerProvider`, the `IAsyncCompletionCommitManager` is responsible for
+* Indicating which characters may complete the session (e.g. space, dot, parentheses)
+* Providing custom commit behavior, including, moving the caret, replacing code in other location of the document, modifying the project, etc.
 
-That's it. We have now created custom options pages and registered them on the package. 
+Your extension may, but does not need to provide any of these roles.
+By default, editor inserts the text of the completion item at the location of the completion session.
+Furthermore, Enter, Tab and double click completes the session with the selected item. 
 
-## Using the custom options
-The options are ready to be consumed by our code and there are two ways to go about it:
+### In this sample
+`SampleCompletionCommitManager` and `SampleCompletionCommitManagerProvider` demonstrate this interface.
 
-### 1. From the UI thread
-Whenever our code executes on the UI thread we can easily access the settings like so:
+## IAsyncCompletionItemManager
 
-```c#
-string message = GeneralOptions.Instance.Message;
-```
+Constructed by MEF part `IAsyncCompletionItemManagerProvider`, the `IAsyncCompletionItemManager` is responsible for
+* One time sorting of the aggregated completion items
+* Filtering the list of items when user types and interacts with filter buttons
+Your extension does not need to implement this type, as the editor provides a default implementation.
+This sample contains source code of this implementation.
 
-This will throw when not on the UI thread so you'll catch any misuse during development. 
+### In this sample
+`DefaultCompletionItemManager` and `DefaultCompletionItemManagerProvider` are copies of the default implementation.
 
-### 2. From a background thread
-This is a thread-safe way to obtain the options instance. When in doubt, use it this way.
+## ICompletionPresenter
 
+Constructed by MEF part `ICompletionPresenterProvider`, the `ICompletionPresenter` is responsible for
+* Displaying completion items and completion filters
+* Informing the editor of user interactions such as selecting the item and clicking filter buttons
+Your extension does not need to implement this type, as the editor provides a default implementation. 
 
-```c#
-GeneralOptions options = await GeneralOptions.GetLiveInstanceAsync();
-string message = options.Message;
-```
-
-See how it is being used from the [TextviewCreationListener.cs](src/TextviewCreationListener.cs) MEF component in the source code.
-
-## Modify the options
-You can programmatically modify the options like this:
-
-```c#
-GeneralOptions options = await GeneralOptions.GetLiveInstanceAsync();
-options.Message = "My new message";
-await options.SaveAsync();
-```
-
-The above method can be called in a syncronous way on the UI thread, like so:
-
-```c#
-GeneralOptions.Instance.Message = "My new message";
-GeneralOptions.Instance.Save();
-```
-
-It is recommented to do it async if possible.
-
-There you have it. Custom options using best practices.
 
 ## Futher reading
-Read the docs for all the details surrounding these scenarios, but notice that while they do provide more detailed documentation, they don't follow the best practices outlined in this sample.
+See the comments in the source code of this sample for detailed explanations. The comments also include sample code which might be useful to you, yet is not exercised by this specific extension.
 
-* [Creating an Options Page](https://docs.microsoft.com/en-us/visualstudio/extensibility/creating-an-options-page)
-* [Using the Settings Store](https://docs.microsoft.com/en-us/visualstudio/extensibility/using-the-settings-store)
-* [Writing to the User Settings Store](https://docs.microsoft.com/en-us/visualstudio/extensibility/writing-to-the-user-settings-store)
+* [AsyncCompletion namespace](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.language.intellisense.asynccompletion?view=visualstudiosdk-2017)
