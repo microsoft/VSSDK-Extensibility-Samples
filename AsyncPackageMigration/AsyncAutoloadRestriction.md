@@ -11,7 +11,10 @@ Visual Studio is moving to a new autoload behavior. In a future release, VS will
 [ProvideAutoLoad(UIContextGuid, PackageAutoLoadFlags.BackgroundLoad)] 
 ```
 
-For general guidance on how to move to [AsyncPackage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.asyncpackage?view=visualstudiosdk-2017), please refer to [this page](https://github.com/Microsoft/VSSDK-Extensibility-Samples/edit/master/AsyncPackageMigration/README.md).
+For general guidance on how to move to [AsyncPackage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.asyncpackage?view=visualstudiosdk-2017), please refer to [this page](https://github.com/Microsoft/VSSDK-Extensibility-Samples/blob/master/AsyncPackageMigration/README.md).
+
+For guidance on support of native packages, check [here](https://github.com/Microsoft/VSSDK-Extensibility-Samples/blob/master/AsyncPackageMigration/NativeProjectSupport).
+
 
 ## Testing that your package is async autoloaded
 To check if your package is async autoloaded, you can install [this extension](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.PackageLoadExplorer).
