@@ -3,7 +3,6 @@
 2. In the pkgdef for your package, add the following:
 ```c#
 [$RootKey$\Packages\{YOUR PACKAGE GUID}]
-"InprocServer32"="Path to your package dll"
 @="YOUR PACKAGE NAME"
 "AllowsBackgroundLoad"=dword:00000001
 ```
