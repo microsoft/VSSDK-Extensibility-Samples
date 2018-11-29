@@ -70,7 +70,7 @@ displayed in the combo drop down list. This second command is referred to as a
 The **Command Definition** section defines a new toolbar, a new toolbar group,
 and an example of each type of combo.
 
-**NOTE**: We deliberatly define our toolbar group with a main menu location as its parent (in this case Tools menu -- "guidSHLMainMenu:IDMVSMENU_TOOLS"). This ensures that our commands have a Programatic name that begins with _Tools_. Our commands will be organized into the _Tools_ category of the** Add Command dialog accessible from **Tools &gt; Customize &gt; Commands**. Our combo box commands are defined with the **CommandWellOnly** flag, which will make our combo box commands not actually instantiated in the main menu UI. If the user customizes our commands onto the main menu, then they will be visible.
+**NOTE**: We deliberatly define our toolbar group with a main menu location as its parent (in this case Tools menu -- "guidSHLMainMenu:IDMVSMENU_TOOLS"). This ensures that our commands have a Programatic name that begins with _Tools_. Our commands will be organized into the _Tools_ category of the **Add Command** dialog accessible from **Tools &gt; Customize &gt; Commands**. Our combo box commands are defined with the **CommandWellOnly** flag, which will make our combo box commands not actually instantiated in the main menu UI. If the user customizes our commands onto the main menu, then they will be visible.
 
 The **Command Placement** section, is used to actually place the toolbar group
 with our combo boxes on our Toolbar.
