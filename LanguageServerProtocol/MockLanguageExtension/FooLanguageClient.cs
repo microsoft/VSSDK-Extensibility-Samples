@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Reflection;
+using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -73,7 +74,7 @@ namespace MockLanguageExtension
             var stdInPipeName = @"output";
             var stdOutPipeName = @"input";
 
-            var pipeAccessRule = new PipeAccessRule("Everyone", PipeAccessRights.ReadWrite, System.Security.AccessControl.AccessControlType.Allow);
+            var pipeAccessRule = new PipeAccessRule(new SecurityIdentifier(WellKnownSidType.AuthenticatedUserSid, null), PipeAccessRights.ReadWrite, System.Security.AccessControl.AccessControlType.Allow);
             var pipeSecurity = new PipeSecurity();
             pipeSecurity.AddAccessRule(pipeAccessRule);
 
