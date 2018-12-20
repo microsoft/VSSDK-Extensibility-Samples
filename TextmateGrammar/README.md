@@ -3,7 +3,7 @@
 This is a sample project that demonstrates how to ship Textmate grammars inside Visual Studio extensions.
 
 ## Ship your own Textmate bundle
-Here is how to ship any existing Textmate bundle as a Visual Studio extension.
+Here is how to ship any existing Textmate bundle as a Visual Studio extension. Consider using the [project template](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.TextmateGrammarTemplate) to get going faster, but make sure you finish reading this tutorial first.
 
 ### Step 1 - Clone this project
 Clone or download this project. Find it [on GitHub](https://github.com/madskristensen/TextmateSample).
