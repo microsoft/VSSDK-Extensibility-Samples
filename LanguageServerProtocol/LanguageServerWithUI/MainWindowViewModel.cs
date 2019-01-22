@@ -21,7 +21,6 @@ namespace LanguageServerWithUI
 
         public MainWindowViewModel()
         {
-            Debug.Fail("test");
             var stdInPipeName = @"input";
             var stdOutPipeName = @"output";
 
