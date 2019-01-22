@@ -7,7 +7,7 @@ namespace MockLanguageExtension
     public class FooContentDefinition
     {
         [Export]
-        [Name("foo")]
+        [Name("any")]
         [BaseDefinition(CodeRemoteContentDefinition.CodeRemoteContentTypeName)]
         internal static ContentTypeDefinition FooContentTypeDefinition;
 
