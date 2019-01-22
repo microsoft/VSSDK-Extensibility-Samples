@@ -7,14 +7,29 @@ namespace MockLanguageExtension
     public class FooContentDefinition
     {
         [Export]
-        [Name("any")]
+        [Name("codestream")]
         [BaseDefinition(CodeRemoteContentDefinition.CodeRemoteContentTypeName)]
         internal static ContentTypeDefinition FooContentTypeDefinition;
 
 
         [Export]
         [FileExtension(".foo")]
-        [ContentType("foo")]
+        [ContentType("codestream")]
         internal static FileExtensionToContentTypeDefinition FooFileExtensionDefinition;
+
+        [Export]
+        [FileExtension(".bar")]
+        [ContentType("codestream")]
+        internal static FileExtensionToContentTypeDefinition BarFileExtensionDefinition;
+
+        [Export]
+        [FileExtension(".xml")]
+        [ContentType("codestream")]
+        internal static FileExtensionToContentTypeDefinition XmlFileExtensionDefinition;
+
+        [Export]
+        [FileExtension(".md")]
+        [ContentType("codestream")]
+        internal static FileExtensionToContentTypeDefinition MdFileExtensionDefinition;
     }
 }

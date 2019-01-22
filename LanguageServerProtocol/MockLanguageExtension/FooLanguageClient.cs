@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace MockLanguageExtension
 {
-    [ContentType("any")]
+    [ContentType("codestream")]
     [Export(typeof(ILanguageClient))]
     public class FooLanguageClient : ILanguageClient, ILanguageClientCustomMessage
     {
