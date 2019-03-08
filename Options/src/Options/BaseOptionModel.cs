@@ -27,8 +27,11 @@ namespace OptionsSample.Options
         { }
 
         /// <summary>
-        /// A singleton instance of the options. MUST be called form UI thread only
+        /// A singleton instance of the options. MUST be called from UI thread only.
         /// </summary>
+        /// <remarks>
+        /// Call <see cref="GetLiveInstanceAsync()" /> instead if on a background thread or in an async context on the main thread.
+        /// </remarks>
         public static T Instance
         {
             get
