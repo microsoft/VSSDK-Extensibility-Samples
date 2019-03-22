@@ -35,3 +35,5 @@ Serveral UI contexts are extempted from the async autoload restriction. However,
 
 3. Packages that participate in Project/Solution upgrade and need to provide information while a project is upgrading, should use UICONTEXT_SolutionOrProjectUpgrading which will be exempted from the async autoload restrictions.
 *Note*: If a package is using different UI contexts, e.g., UIContext_SolutionOpening and listens to project upgrade events, then the package should start using UICONTEXT_SolutionOrProjectUpgrading to load.
+
+4. Sometimes packages support the functionality of async loading after solution open, but are required to be loaded before the solution is fully closed. For packages needing such feature, we added a new UI context UIContext_SolutionClosing (coming in VSSDK 2019) and exempted it from the async autoload restriction.
