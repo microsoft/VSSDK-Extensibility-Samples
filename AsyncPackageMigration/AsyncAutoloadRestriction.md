@@ -13,7 +13,7 @@ Visual Studio is moving to a new autoload behavior. In a future release, VS will
 
 For general guidance on how to move to [AsyncPackage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.asyncpackage?view=visualstudiosdk-2017), please refer to [this page](https://github.com/Microsoft/VSSDK-Extensibility-Samples/blob/master/AsyncPackageMigration/README.md).
 
-For guidance on support of native packages, check [here](https://github.com/Microsoft/VSSDK-Extensibility-Samples/blob/master/AsyncPackageMigration/NativeProjectSupport).
+For guidance on support of native packages, check [here](https://github.com/Microsoft/VSSDK-Extensibility-Samples/blob/master/AsyncPackageMigration/NativeProjectSupport.md).
 
 
 ## Testing that your package is async autoloaded
