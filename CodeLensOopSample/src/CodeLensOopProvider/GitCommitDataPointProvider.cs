@@ -1,5 +1,7 @@
-﻿using LibGit2Sharp;
+﻿using CodeLensOopProviderShared;
+using LibGit2Sharp;
 using Microsoft.VisualStudio.Core.Imaging;
+using Microsoft.VisualStudio.Language.CodeLens;
 using Microsoft.VisualStudio.Language.CodeLens.Remoting;
 using Microsoft.VisualStudio.Threading;
 using Microsoft.VisualStudio.Utilities;
@@ -23,14 +25,14 @@ namespace CodeLensOopProvider
     {
         internal const string Id = "GitCommit";
 
-        public Task<bool> CanCreateDataPointAsync(CodeLensDescriptor descriptor, CancellationToken token)
+        public Task<bool> CanCreateDataPointAsync(CodeLensDescriptor descriptor, CodeLensDescriptorContext descriptorContext, CancellationToken token)
         {
             Debug.Assert(descriptor != null);
             var gitRepo = GitUtil.ProbeGitRepository(descriptor.FilePath, out string repoRoot);
             return Task.FromResult<bool>(gitRepo != null);
         }
 
-        public Task<IAsyncCodeLensDataPoint> CreateDataPointAsync(CodeLensDescriptor descriptor, CancellationToken token)
+        public Task<IAsyncCodeLensDataPoint> CreateDataPointAsync(CodeLensDescriptor descriptor, CodeLensDescriptorContext descriptorContext, CancellationToken token)
         {
             return Task.FromResult<IAsyncCodeLensDataPoint>(new GitCommitDataPoint(descriptor));
         }
@@ -51,13 +53,19 @@ namespace CodeLensOopProvider
 
             public CodeLensDescriptor Descriptor => this.descriptor;
 
-            public Task<CodeLensDataPointDescriptor> GetDataAsync(CancellationToken token)
+            public Task<CodeLensDataPointDescriptor> GetDataAsync(CodeLensDescriptorContext descriptorContext, CancellationToken token)
             {
                 // get the most recent commit
                 Commit commit = GitUtil.GetCommits(this.gitRepo, this.descriptor.FilePath, 1).FirstOrDefault();
                 if (commit == null)
                 {
-                    return Task.FromResult<CodeLensDataPointDescriptor>(null);
+                    return Task.FromResult<CodeLensDataPointDescriptor>(new CodeLensDataPointDescriptor()
+                    {
+                        Description = "Author name",
+                        TooltipText = $"Foo",
+                        IntValue = null,    // no int value
+                        ImageId = GetCommitTypeIcon()
+                    });
                 }
 
                 CodeLensDataPointDescriptor response = new CodeLensDataPointDescriptor()
@@ -71,7 +79,7 @@ namespace CodeLensOopProvider
                 return Task.FromResult(response);
             }
 
-            public Task<CodeLensDetailsDescriptor> GetDetailsAsync(CancellationToken token)
+            public Task<CodeLensDetailsDescriptor> GetDetailsAsync(CodeLensDescriptorContext descriptorContext, CancellationToken token)
             {
                 // get the most recent 5 commits
                 var commits = GitUtil.GetCommits(this.gitRepo, this.descriptor.FilePath, 5).AsEnumerable();
@@ -80,7 +88,71 @@ namespace CodeLensOopProvider
                     return Task.FromResult<CodeLensDetailsDescriptor>(null);
                 }
 
-                var headers = new List<CodeLensDetailHeaderDescriptor>()
+                CreateEntries(commits);
+
+                var firstCommit = commits.First();
+                var result = new CodeLensDetailsDescriptor()
+                {
+                    Headers = CreateHeaders(),
+                    Entries = CreateEntries(commits),
+
+                    //Headers = Enumerable.Empty<CodeLensDetailHeaderDescriptor>(),
+                    //Entries = Enumerable.Empty<CodeLensDetailEntryDescriptor>(),
+                    //CustomData = new List<GitCommitCustomDetailsData>()
+                    //{
+                    //    new GitCommitCustomDetailsData() {
+                    //        CommitDescription = firstCommit.Message,
+                    //        CommitAuthor = firstCommit.Author.Name,
+                    //        CommitSha = firstCommit.Sha
+                    //    }
+                    //},
+                };
+
+                return Task.FromResult(result);
+            }
+
+            private static IEnumerable<CodeLensDetailEntryDescriptor> CreateEntries(IEnumerable<Commit> commits)
+            {
+                return commits.Select(
+                                    commit => new CodeLensDetailEntryDescriptor()
+                                    {
+                                        Fields = new List<CodeLensDetailEntryField>()
+                                        {
+                            new CodeLensDetailEntryField()
+                            {
+                                ImageId = GetCommitTypeIcon(commit),
+                            },
+                            new CodeLensDetailEntryField()
+                            {
+                                Text = commit.Id.Sha.Substring(0, 8),
+                            },
+                            new CodeLensDetailEntryField()
+                            {
+                                Text = commit.MessageShort,
+                            },
+                            new CodeLensDetailEntryField()
+                            {
+                                Text = commit.Author.Name,
+                            },
+                            new CodeLensDetailEntryField()
+                            {
+                                Text = commit.Author.When.ToString(@"MM\/dd\/yyyy", CultureInfo.CurrentCulture),
+                            },
+                                        },
+                                        Tooltip = commit.Message,
+                                        NavigationCommand = new CodeLensDetailEntryCommand()
+                                        {
+                                            CommandSet = new Guid("f3cb9f10-281b-444f-a14e-de5de36177cd"),
+                                            CommandId = 0x0100,
+                                            CommandName = "Git.NavigateToCommit",
+                                        },
+                                        NavigationCommandArgs = new List<object>() { commit.Id.Sha },
+                                    });
+            }
+
+            private static List<CodeLensDetailHeaderDescriptor> CreateHeaders()
+            {
+                return new List<CodeLensDetailHeaderDescriptor>()
                 {
                     new CodeLensDetailHeaderDescriptor()
                     {
@@ -112,57 +184,6 @@ namespace CodeLensOopProvider
                         Width = 85, // fixed width
                     }
                 };
-
-                var entries = commits.Select(
-                    commit => new CodeLensDetailEntryDescriptor()
-                    {
-                        Fields = new List<CodeLensDetailEntryField>()
-                        {
-                            new CodeLensDetailEntryField()
-                            {
-                                ImageId = GetCommitTypeIcon(commit),
-                            },
-                            new CodeLensDetailEntryField()
-                            {
-                                Text = commit.Id.Sha.Substring(0, 8),
-                            },
-                            new CodeLensDetailEntryField()
-                            {
-                                Text = commit.MessageShort,
-                            },
-                            new CodeLensDetailEntryField()
-                            {
-                                Text = commit.Author.Name,
-                            },
-                            new CodeLensDetailEntryField()
-                            {
-                                Text = commit.Author.When.ToString(@"MM\/dd\/yyyy", CultureInfo.CurrentCulture),
-                            },
-                        },
-                        Tooltip = commit.Message,
-                        NavigationCommand = new CodeLensDetailEntryCommand()
-                        {
-                            CommandSet = new Guid("f3cb9f10-281b-444f-a14e-de5de36177cd"),
-                            CommandId = 0x0100,
-                            CommandName = "Git.NavigateToCommit",
-                        },
-                        NavigationCommandArgs = new List<object>() {commit.Id.Sha },
-                    });
-
-                var result = new CodeLensDetailsDescriptor()
-                {
-                    Headers = headers,
-                    Entries = entries,
-                    PaneNavigationCommands = new List<CodeLensDetailPaneCommand>()
-                    {
-                        new CodeLensDetailPaneCommand()
-                        {
-                            CommandDisplayName = "Show History",
-                        }
-                    },
-                };
-
-                return Task.FromResult(result);
             }
 
             /// <summary>
@@ -183,6 +204,14 @@ namespace CodeLensOopProvider
                 int merge = 1855;
                 int changeset = 425;
                 int imageId = commit.Parents.Count() > 1 ? merge : changeset;
+
+                return new ImageId(imageCatalog, imageId);
+            }
+            private static ImageId GetCommitTypeIcon()
+            {
+                var imageCatalog = new Guid("{ae27a6b0-e345-4288-96df-5eaf394ee369}");
+                int changeset = 425;
+                int imageId = changeset;
 
                 return new ImageId(imageCatalog, imageId);
             }
