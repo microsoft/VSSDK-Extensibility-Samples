@@ -1,5 +1,6 @@
 ﻿using LibGit2Sharp;
 using Microsoft.VisualStudio.Core.Imaging;
+using Microsoft.VisualStudio.Language.CodeLens;
 using Microsoft.VisualStudio.Language.CodeLens.Remoting;
 using Microsoft.VisualStudio.Threading;
 using Microsoft.VisualStudio.Utilities;
@@ -23,14 +24,14 @@ namespace CodeLensOopProvider
     {
         internal const string Id = "GitCommit";
 
-        public Task<bool> CanCreateDataPointAsync(CodeLensDescriptor descriptor, CancellationToken token)
+        public Task<bool> CanCreateDataPointAsync(CodeLensDescriptor descriptor, CodeLensDescriptorContext descriptorContext, CancellationToken token)
         {
             Debug.Assert(descriptor != null);
             var gitRepo = GitUtil.ProbeGitRepository(descriptor.FilePath, out string repoRoot);
             return Task.FromResult<bool>(gitRepo != null);
         }
 
-        public Task<IAsyncCodeLensDataPoint> CreateDataPointAsync(CodeLensDescriptor descriptor, CancellationToken token)
+        public Task<IAsyncCodeLensDataPoint> CreateDataPointAsync(CodeLensDescriptor descriptor, CodeLensDescriptorContext descriptorContext, CancellationToken token)
         {
             return Task.FromResult<IAsyncCodeLensDataPoint>(new GitCommitDataPoint(descriptor));
         }
@@ -51,7 +52,7 @@ namespace CodeLensOopProvider
 
             public CodeLensDescriptor Descriptor => this.descriptor;
 
-            public Task<CodeLensDataPointDescriptor> GetDataAsync(CancellationToken token)
+            public Task<CodeLensDataPointDescriptor> GetDataAsync(CodeLensDescriptorContext descriptorContext, CancellationToken token)
             {
                 // get the most recent commit
                 Commit commit = GitUtil.GetCommits(this.gitRepo, this.descriptor.FilePath, 1).FirstOrDefault();
@@ -71,7 +72,7 @@ namespace CodeLensOopProvider
                 return Task.FromResult(response);
             }
 
-            public Task<CodeLensDetailsDescriptor> GetDetailsAsync(CancellationToken token)
+            public Task<CodeLensDetailsDescriptor> GetDetailsAsync(CodeLensDescriptorContext descriptorContext, CancellationToken token)
             {
                 // get the most recent 5 commits
                 var commits = GitUtil.GetCommits(this.gitRepo, this.descriptor.FilePath, 5).AsEnumerable();
