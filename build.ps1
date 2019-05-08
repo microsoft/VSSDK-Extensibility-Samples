@@ -19,6 +19,12 @@ if (Test-Path $AppVeyorLogger) {
 }
 
 Get-ChildItem $PSScriptRoot\*.sln -rec |% {
+    if ($_.Name -eq "BackwardsCompatibleAsyncPackage.sln")
+    {
+        Write-Output "Skipping $($_.Name) because it requires Visual Studio 2013 SDK."
+        return;
+    }
+
     Write-Output "Restoring packages for $($_.Name)"
     nuget restore $_ -Verbosity quiet
     if ($LASTEXITCODE -ne 0) {

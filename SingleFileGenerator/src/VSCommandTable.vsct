@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Include href="KnownImageIds.vsct" />
+
+  <Commands package="guidPackage">
+    <Buttons>
+      <Button guid="guidPackageCmdSet" id="ApplyCustomToolId" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
+        <Icon guid="ImageCatalogGuid" id="TriggerScript"/>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Minify File</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <VisibilityConstraints>
+    <VisibilityItem guid="guidPackageCmdSet" id="ApplyCustomToolId"  context="guidUIContext"/>
+  </VisibilityConstraints>
+
+  <Symbols>
+    <GuidSymbol name="guidPackage" value="{2e927fa3-8684-47fc-9674-0046499860d3}" />
+    <GuidSymbol name="guidUIContext" value="{69760bd3-80f0-4901-818d-c4656aaa08e9}" />
+
+    <GuidSymbol name="guidPackageCmdSet" value="{4aaf93c0-70ae-4a4b-9fb6-1ad3997a9adf}">
+      <IDSymbol name="ApplyCustomToolId" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

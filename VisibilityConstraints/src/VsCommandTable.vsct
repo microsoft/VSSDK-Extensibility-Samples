@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidMyButtonPackage">
+    <Groups>
+      <Group guid="guidMyButtonPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+        <!-- IDM_VS_CTXT_ITEMNODE is the Solution Explorer context menu for files -->
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidMyButtonPackageCmdSet" id="MyButtonId" priority="0x0100" type="Button">
+        <Parent guid="guidMyButtonPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <CommandFlag>DynamicVisibility</CommandFlag><!--This must be set for VisibilityConstraints to work (see below) -->
+        <Strings>
+          <ButtonText>Invoke MyButton</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\MyButton.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+    </Bitmaps>
+  </Commands>
+
+  <VisibilityConstraints>
+    <!-- 
+    This will show or hide the button based on the uiContextSupportedFiles which is specified in
+    the ProvideUIContextRule attribute on the package class in MyPackage.cs. 
+    
+    Note, this only applies when the package hasn't been loaded yet. When loaded, the visibility
+    of the button is controlled by the MenuItemQueryStatus method in MyButton.cs.
+    -->
+    <VisibilityItem guid="guidMyButtonPackageCmdSet" id="MyButtonId" context="uiContextSupportedFiles" />
+  </VisibilityConstraints>
+
+  <Symbols>
+    <GuidSymbol name="guidMyButtonPackage" value="{f76ae46c-c4e7-43cf-ac05-f6fd3cd699f1}" />
+
+    <!-- This is the UI Context guid that must match the one in MyPackage.cs -->
+    <GuidSymbol name="uiContextSupportedFiles" value="{24551deb-f034-43e9-a279-0e541241687e}" />
+
+    <GuidSymbol name="guidMyButtonPackageCmdSet" value="{497de1d3-ed31-4519-a864-bbcd992fa57d}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="MyButtonId" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{96af7ade-6609-4989-9938-895f29ca0f25}" >
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

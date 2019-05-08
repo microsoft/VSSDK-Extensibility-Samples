@@ -2,7 +2,7 @@
 Add a toolbar to Visual Studio that has four different kinds of
 dropdown combo boxes.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Editor, VSX
 
 
@@ -19,7 +19,7 @@ four different kinds of combo boxes; **DropDownCombo**, **IndexCombo**,
   * Add a Dynamic Combo to Visual Studio toolbar
   * Control the programmatic name of the combo box commands by placing them within the **Tools** submenu of the main menu bar
 
-![image](C%23/ComboBox.jpg)
+![image](C%23/Example.ComboBox.png)
 
 There are four styles of Combo Boxes:
 
@@ -32,7 +32,7 @@ There are four styles of Combo Boxes:
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -70,7 +70,7 @@ displayed in the combo drop down list. This second command is referred to as a
 The **Command Definition** section defines a new toolbar, a new toolbar group,
 and an example of each type of combo.
 
-**NOTE**: We deliberatly define our toolbar group with a main menu location as its parent (in this case Tools menu -- "guidSHLMainMenu:IDMVSMENU_TOOLS"). This ensures that our commands have a Programatic name that begins with _Tools_. Our commands will be organized into the _Tools_ category of the** Add Command dialog accessible from **Tools &gt; Customize &gt; Commands**. Our combo box commands are defined with the **CommandWellOnly** flag, which will make our combo box commands not actually instantiated in the main menu UI. If the user customizes our commands onto the main menu, then they will be visible.
+**NOTE**: We deliberatly define our toolbar group with a main menu location as its parent (in this case Tools menu -- "guidSHLMainMenu:IDMVSMENU_TOOLS"). This ensures that our commands have a Programatic name that begins with _Tools_. Our commands will be organized into the _Tools_ category of the **Add Command** dialog accessible from **Tools &gt; Customize &gt; Commands**. Our combo box commands are defined with the **CommandWellOnly** flag, which will make our combo box commands not actually instantiated in the main menu UI. If the user customizes our commands onto the main menu, then they will be visible.
 
 The **Command Placement** section, is used to actually place the toolbar group
 with our combo boxes on our Toolbar.
@@ -103,6 +103,6 @@ Command Window)**
 
 **Related topics**
 
-* [ Menu and Commands Documentation ](https://msdn.microsoft.com/en-us/library/bb165937(v=vs.140).aspx)
+* [ Menu and Commands Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/extending-menus-and-commands)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)

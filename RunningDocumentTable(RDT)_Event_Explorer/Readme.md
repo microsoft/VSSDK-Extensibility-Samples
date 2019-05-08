@@ -1,10 +1,10 @@
-﻿
+
 
 # Running Document Table (RDT) Event Explorer Sample
 Create an explorer that logs Running Document Table (RDT)
 events in Visual Studio.
 
-* Technologies: Visual Studio 2015 SDK
+* Technologies: Visual Studio 2017 SDK
 * Topics: Visual Studio Shell, VSX
 
 **Description**
@@ -13,7 +13,7 @@ This sample demonstrates how to create an explorer that logs Running Document
 Table (RDT) events. Selecting an event from the grid displays its properties
 in the **Properties** window.
 
-![image](C%23/RdtEventExplorer.jpg)
+![image](C%23/Example.RDTEvent.png)
 
 Goals:
 
@@ -40,7 +40,7 @@ a grid. Selecting an event in the grid displays its properties in the
 
 **Requirements**
 
-[ Visual Studio 2015 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
 
 
 
@@ -69,9 +69,9 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
 
 * [ Toolwindow Documentation ](https://msdn.microsoft.com/en-us/library/bb165390(v=vs.140).aspx)
 
-* [ Editor Documentation ](https://msdn.microsoft.com/en-us/library/dd885242(v=vs.140).aspx)
+* [ Editor Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/editor-and-language-service-extensions)
 
-* [ Visual Studio SDK Documentation ](https://msdn.microsoft.com/en-us/library/bb166441(v=vs.140).aspx)
+* [ Visual Studio SDK Documentation ](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk)
 
 
 

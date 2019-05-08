@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="VSIXProject2.31cee324-ddb9-4327-b8bf-69656fab7c79" Version="1.0" Language="en-US" Publisher="Microsoft" />
+        <DisplayName>Backwards Compatible Editor Command Sample</DisplayName>
+        <Description xml:space="preserve">This sample demonstrates how to create a Visual Studio 2017 editor command using modern commanding API introduced in Visual Studio 2017 15.6 update, while preserve backwards compatibility with Visual Studio versions prior to 15.6.</Description>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Version="[15.0.26730,16.0)" Id="Microsoft.VisualStudio.Community" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+        <Dependency d:Source="Installed" Id="Microsoft.VisualStudio.MPF.14.0" DisplayName="Visual Studio MPF 14.0" Version="[14.0,15.0)" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="LegacyCommandHanlder" TargetVersion="[15.0,15.0.27131)" Path="|LegacyCommandHanlder|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="ModernCommandHandler" TargetVersion="[15.0.27428,16.0)" Path="|ModernCommandHandler|" />
+        <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="CommandImplementation" Path="|CommandImplementation|" AssemblyName="|CommandImplementation;AssemblyName|" />
+    </Assets>
+</PackageManifest>
