@@ -162,7 +162,7 @@ namespace CodeLensOopProvider
                             {
                                 CommandSet = new Guid("57735D06-C920-4415-A2E0-7D6E6FBDFA99"),
                                 CommandId = 0x1005,
-                                CommandName = "Git.NavigateToCommit",
+                                CommandName = "Git.ShowHistory",
                             },
                             CommandDisplayName = "Show History"
                         }
