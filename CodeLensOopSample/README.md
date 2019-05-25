@@ -1,7 +1,7 @@
 # CodeLensOopProvider example 
 A example for demonstrating how to use the public CodeLens API to create an out-of-proc extesnion that provides a CodeLens indictor showing most recent Git commits made to the source code.
 
-* Technologies: Visual Studio 2017 SDK
+* Technologies: Visual Studio 2019 SDK
 * Topics: CodeLens
 
 **Description**
@@ -14,7 +14,7 @@ This example generates a VSIX extension that packs two components:
 
 **Requirements**
 
-The example requires Visual Studio 2017 15.8 Preview 3 and above versions, Community SKU and above.
+The example requires Visual Studio 2019 16.1 and above versions, Community SKU and above.
 
 **Getting Started**
 
