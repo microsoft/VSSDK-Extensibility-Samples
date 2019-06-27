@@ -164,6 +164,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeLensOopProviderShared\CodeLensOopProviderShared.csproj">
+      <Project>{62d7dd7e-848b-4ad4-b815-bf9dad587381}</Project>
+      <Name>CodeLensOopProviderShared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
