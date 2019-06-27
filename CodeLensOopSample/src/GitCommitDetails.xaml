@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal"  Grid.Row="0">
             <imaging:CrispImage Moniker="{x:Static imagecatalog:KnownMonikers.Git}" />
-            <TextBlock FontSize="15" FontWeight="Bold" Text="Last Commit Details" Padding="5,0,0,0"/>
+            <TextBlock FontSize="14" FontWeight="Bold" Text="Last Commit Details" Padding="5,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <TextBlock Text="{Binding CommitAuthor}"/>
