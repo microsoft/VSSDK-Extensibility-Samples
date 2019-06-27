@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CodeLensOopProviderShared;
+using Microsoft.VisualStudio.Shell;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,9 +27,13 @@ namespace CodeLensOopProviderVsix
             InitializeComponent();
         }
 
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        private void CommitDescription_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            ThreadHelper.ThrowIfNotOnUIThread();
+            if (sender is TextBlock textBlock && textBlock.DataContext is GitCommitCustomDetailsData commitData)
+            {
+                CodeLensOopProviderPackage.NavigateToCommit(commitData.CommitSha, ServiceProvider.GlobalProvider);
+            }
         }
     }
 }

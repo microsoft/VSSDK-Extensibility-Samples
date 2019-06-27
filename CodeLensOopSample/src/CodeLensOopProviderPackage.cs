@@ -124,7 +124,7 @@ namespace CodeLensOopProviderVsix
 
         #endregion
 
-        private static void NavigateToCommit(string commitId, IServiceProvider serviceProvider)
+        internal static void NavigateToCommit(string commitId, IServiceProvider serviceProvider)
         {
             string title = "CodeLens OOP Extension";
             string message = $"Commit Id is: {commitId}";

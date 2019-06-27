@@ -20,7 +20,7 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <TextBlock Text="{Binding CommitAuthor}"/>
-            <TextBlock Text="{Binding CommitDescription}" TextDecorations="Underline" Foreground="Blue" MouseDown="TextBlock_MouseDown" Cursor="Hand"/>
+            <TextBlock Text="{Binding CommitDescription}" TextDecorations="Underline" Foreground="Blue" MouseDown="CommitDescription_MouseDown" Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -95,17 +95,14 @@ namespace CodeLensOopProvider
                 {
                     Headers = CreateHeaders(),
                     Entries = CreateEntries(commits),
-
-                    //Headers = Enumerable.Empty<CodeLensDetailHeaderDescriptor>(),
-                    //Entries = Enumerable.Empty<CodeLensDetailEntryDescriptor>(),
-                    //CustomData = new List<GitCommitCustomDetailsData>()
-                    //{
-                    //    new GitCommitCustomDetailsData() {
-                    //        CommitDescription = firstCommit.Message,
-                    //        CommitAuthor = firstCommit.Author.Name,
-                    //        CommitSha = firstCommit.Sha
-                    //    }
-                    //},
+                    CustomData = new List<GitCommitCustomDetailsData>()
+                    {
+                        new GitCommitCustomDetailsData() {
+                            CommitDescription = firstCommit.Message,
+                            CommitAuthor = firstCommit.Author.Name,
+                            CommitSha = firstCommit.Sha
+                        }
+                    },
                 };
 
                 return Task.FromResult(result);
