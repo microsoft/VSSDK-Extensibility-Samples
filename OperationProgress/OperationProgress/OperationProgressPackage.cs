@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Microsoft.VisualStudio.OperationProgress;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
@@ -34,6 +35,12 @@ namespace OperationProgress
         /// </summary>
         public const string PackageGuidString = "54e9361a-1a6f-41be-8a6e-9b1581a493b1";
 
+        public static OperationProgressPackage Instance { get; private set; }
+
+        public IVsOperationProgress VsOperationProgressService { get; private set; }
+
+        public IVsOperationProgressStatusService VsOperationProgressStatusService { get; private set; }
+
         #region Package Members
 
         /// <summary>
@@ -45,10 +52,19 @@ namespace OperationProgress
         /// <returns>A task representing the async work of package initialization, or an already completed task if there is none. Do not return null from this method.</returns>
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
+            Instance = this;
+
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await OperationProgressToolWindowCommand.InitializeAsync(this);
+
+            this.VsOperationProgressService = await this.GetServiceAsync(typeof(SVsOperationProgress)) as IVsOperationProgress;
+            // Post Visual Studio 2019 Update 2, should use:
+            // this.OperationProgressStatusService = await this.GetServiceAsync(typeof(SVsOperationProgressStatusService)) as IVsOperationProgressStatusService;
+
+            // Version 16.1:
+            this.VsOperationProgressStatusService = this.VsOperationProgressService as IVsOperationProgressStatusService;
         }
 
         #endregion

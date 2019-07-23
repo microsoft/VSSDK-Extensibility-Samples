@@ -11,8 +11,11 @@
              Name="MyToolWindow">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <TextBlock Margin="10" HorizontalAlignment="Center">OperationProgressToolWindow</TextBlock>
-            <Button Content="Click me!" Click="button1_Click" Width="120" Height="80" Name="button1"/>
+            <TextBlock TextWrapping="Wrap" Margin="0, 12, 0, 12">Check the checkbox below to register work with the Operation Progress service. Uncheck it to complete the work.</TextBlock>
+            <CheckBox x:Name="intelliSenseCheckBox" Content="IntelliSense Stage Work" Checked="IntelliSenseCheckBox_Checked" Unchecked="IntelliSenseCheckBox_Unchecked" />
+            <TextBlock Margin="0, 12, 0, 0" Text="IntelliSense Stage Status (data version): " />
+            <TextBlock x:Name="intelliSenseStatusTextBlock"  Text="&lt;not updated&gt;" />
+            <Button x:Name="waitForIntelliSenseStageButton" Content="Wait For IntelliSense Stage" Click="WaitForIntelliSenseStage_Click" Margin="12"/>
         </StackPanel>
     </Grid>
 </UserControl>
