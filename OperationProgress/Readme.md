@@ -34,7 +34,7 @@ _Note: "Operation Progress" is a new feature in Visual Studio 2019 Update 1. Thi
 ### Opening **Operation Progress Tool Window**
  1. To run the sample, hit F5 or choose the **Debug &gt; Start Debugging** menu command. A new instance of Visual Studio will launch under the experimental hive.
  2. In the **Start window** dialog click the **Continue without code ->** link in the bottom right corner of the dialog (alternatively you can also open an existing project or create a new one).
- 3. Select **View &gt; Other Windows &gt; Operation Progress Tool Window** - this opens a new tool window named **Operation Progress Tool Window. Optionally you can dock the window in a convenient location (e.g. bottom right corner under the Solution Explorer)
+ 3. Select **View &gt; Other Windows &gt; Operation Progress Tool Window** - this opens a new tool window named **Operation Progress Tool Window**. Optionally you can dock the window in a convenient location (e.g. bottom right corner under the Solution Explorer)
 ### Simulating operations in progress
  1. Open the **Operation Progress Tool Window** using the instructions above
  2. To simulate operation in progress check the **IntelliSense Stage Work** checkbox. The **IntelliSense Stage Status** field below will switch from **Complete** to **In Progress**
@@ -55,12 +55,12 @@ Notable changes are in the following files:
  * **OperationProgressPackage.cs** - Retrieves IVsOperationProgress and IVsOperationProgressStatusService.
  * **OperationProgressToolWindowControl.xaml** - Defines the UI elements used by the tool window
  * **OperationProgressToolWindowControl.xaml.cs** - Implements the main logic of the sample
-   * OperationProgressToolWindowControl() - initializes IVsOperationProgressStageStatus and subscribes to events from Operation Progress
-   * IntelliSenseCheckBox_Checked - Registers work in progress with Operation Progress service by creating a JoinableTask object.
-   * IntelliSenseCheckBox_Unchecked - Completes the work registered in IntelliSenseCheckBox_Checked
-   * IntelliSenseStatus_InProgressChanged - Receives notifications when the status of the IntelliSense stage has changed and updates the UI. Note that events are received on background threads, so it needs to switch to the UI thread in order to update the UI.
-   * UpdateintelliSenseStatusTextBlock - Helper method that displays the status in the corresponding TextBlock.
-   * WaitForIntelliSenseStage_Click - Simulates awaiting for completion of operation in progress by disabling the button and updating its text. When the operation completes, it switches to the UI thread and reverts the button to the initial state.
+   * **OperationProgressToolWindowControl()** - initializes IVsOperationProgressStageStatus and subscribes to events from Operation Progress
+   * **IntelliSenseCheckBox_Checked** - Registers work in progress with Operation Progress service by creating a JoinableTask object.
+   * **IntelliSenseCheckBox_Unchecked** - Completes the work registered in IntelliSenseCheckBox_Checked
+   * **IntelliSenseStatus_InProgressChanged** - Receives notifications when the status of the IntelliSense stage has changed and updates the UI. Note that events are received on background threads, so it needs to switch to the UI thread in order to update the UI.
+   * **UpdateintelliSenseStatusTextBlock** - Helper method that displays the status in the corresponding TextBlock.
+   * **WaitForIntelliSenseStage_Click** - Simulates awaiting for completion of operation in progress by disabling the button and updating its text. When the operation completes, it switches to the UI thread and reverts the button to the initial state.
 
 **Related topics**
 
