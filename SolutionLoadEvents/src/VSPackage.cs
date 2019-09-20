@@ -29,7 +29,7 @@ namespace SolutionLoadSample
             }
 
             // Listen for subsequent solution events
-            SolutionEvents.OnAfterOpenSolution += HandleOpenSolution;
+            SolutionEvents.OnAfterBackgroundSolutionLoadComplete += HandleOpenSolution;
         }
 
         private async Task<bool> IsSolutionLoadedAsync()
