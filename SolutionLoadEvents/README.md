@@ -37,7 +37,7 @@ public sealed class VSPackage : AsyncPackage
 {
     protected override Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
     {
-        SolutionEvents.OnAfterOpenSolution += HandleOpenSolution;
+        SolutionEvents.OnAfterBackgroundSolutionLoadComplete += HandleOpenSolution;
         return base.InitializeAsync(cancellationToken, progress);
     }
 
@@ -48,7 +48,7 @@ public sealed class VSPackage : AsyncPackage
 }
 ```
 
-The issue in the above sample is that when the `SolutionEvents.OnAfterOpenSolution` event handler is registered, a solution might already be open. So we need to make sure to check that first, like so:
+The issue in the above sample is that when the `SolutionEvents.OnAfterBackgroundSolutionLoadComplete` event handler is registered, a solution might already be open. So we need to make sure to check that first, like so:
 
 ```c#
 [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionOpening_string, PackageAutoLoadFlags.BackgroundLoad)]
@@ -63,7 +63,7 @@ public sealed class VSPackage : AsyncPackage
             HandleOpenSolution();
         }
 
-        SolutionEvents.OnAfterOpenSolution += HandleOpenSolution;
+        SolutionEvents.OnAfterBackgroundSolutionLoadComplete += HandleOpenSolution;
     }
 
     private async Task<bool> IsSolutionLoadedAsync()
