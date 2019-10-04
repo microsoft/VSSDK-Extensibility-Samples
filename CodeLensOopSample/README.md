@@ -130,3 +130,10 @@ The example requires Visual Studio 2019 16.1 and above versions, Community SKU a
         }
     }
    ```
+
+**Notes**
+
+- As of Visual Studio 16.3.2 the version of StreamJsonRPC must be 1.5.x or lower in proc, which means the Microsoft.VisualStudio.Language package version has to be 16.0.467 or lower as a released version.
+- You can check the latest versions of packages supported by Visual Studio IDE in proc by looking at the binding redirects inside devenv.exe.config.
+- The out of proc can use the latest 2.x version of StreamJsonRPC and the latest version of Microsoft.VisualStudio.Language.
+
