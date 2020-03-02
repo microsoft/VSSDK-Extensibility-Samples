@@ -10,6 +10,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>15.0</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -22,7 +23,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AsyncCompletionSample</RootNamespace>
     <AssemblyName>AsyncCompletionSample</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
     <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
@@ -74,22 +75,22 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.CoreUtility">
-      <Version>16.0.127</Version>
+      <Version>16.0.467</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Language">
-      <Version>16.0.127</Version>
+      <Version>16.0.467</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers">
       <Version>15.7.11</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Text.Data">
-      <Version>16.0.127</Version>
+      <Version>16.0.467</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Text.Logic">
-      <Version>16.0.127</Version>
+      <Version>16.0.467</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers">
-      <Version>15.7.21</Version>
+      <Version>15.8.192</Version>
     </PackageReference>
     <PackageReference Include="System.Collections.Immutable">
       <Version>1.3.1</Version>
