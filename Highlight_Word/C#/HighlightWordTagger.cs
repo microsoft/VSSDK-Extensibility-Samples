@@ -16,7 +16,9 @@ namespace HighlightWordSample
     using System.ComponentModel.Composition;
     using System.Linq;
     using System.Threading;
+    using System.Windows.Media;
     using Microsoft.VisualStudio.Text;
+    using Microsoft.VisualStudio.Text.Classification;
     using Microsoft.VisualStudio.Text.Editor;
     using Microsoft.VisualStudio.Text.Operations;
     using Microsoft.VisualStudio.Text.Tagging;
@@ -28,7 +30,24 @@ namespace HighlightWordSample
     /// </summary>
     public class HighlightWordTag : TextMarkerTag 
     { 
-        public HighlightWordTag() : base("blue") { }
+        public HighlightWordTag() : base("MarkerFormatDefinition/HighlightWordFormatDefinition") { }
+    }
+    
+    /// <summary>
+    /// Drive from MarkerFormatDefinition, in case anyone wants to decorate 
+    /// just the HighlightWordTags by themselves
+    /// </summary>
+    [Export(typeof(EditorFormatDefinition))]
+    [Name("MarkerFormatDefinition/HighlightWordFormatDefinition")]
+    [UserVisible(true)]
+    internal class HighlightWordFormatDefinition : MarkerFormatDefinition
+    {
+        public HighlightWordFormatDefinition()
+        {
+            this.ForegroundColor = Colors.Red;
+            this.DisplayName = "Highlight Word";
+            this.ZOrder = 5;
+        }
     }
 
     /// <summary>
