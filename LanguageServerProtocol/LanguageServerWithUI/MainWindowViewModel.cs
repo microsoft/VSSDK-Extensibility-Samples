@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO.Pipes;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
@@ -24,7 +25,7 @@ namespace LanguageServerWithUI
             var stdInPipeName = @"input";
             var stdOutPipeName = @"output";
 
-            var pipeAccessRule = new PipeAccessRule("Everyone", PipeAccessRights.ReadWrite, System.Security.AccessControl.AccessControlType.Allow);
+            var pipeAccessRule = new PipeAccessRule(new SecurityIdentifier(WellKnownSidType.AuthenticatedUserSid, null), PipeAccessRights.ReadWrite, System.Security.AccessControl.AccessControlType.Allow);
             var pipeSecurity = new PipeSecurity();
             pipeSecurity.AddAccessRule(pipeAccessRule);
             
