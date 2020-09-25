@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
@@ -15,13 +16,13 @@ namespace MockLanguageExtension
     /// <summary>
     /// This package only loads when the FooLanguageClient.UiContextGuidString UI context is set.  This ensures that this extension is only loaded when the language server is activated.
     /// </summary>
-    [PackageRegistration(UseManagedResourcesOnly = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideAutoLoad(FooLanguageClient.UiContextGuidString)]
+    [ProvideAutoLoad(FooLanguageClient.UiContextGuidString, PackageAutoLoadFlags.BackgroundLoad)]
     [Guid(CustomCommandPackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
-    public sealed class CustomCommandPackage : Package
+    public sealed class CustomCommandPackage : AsyncPackage
     {
         /// <summary>
         /// CustomCommandPackage GUID string.
@@ -41,10 +42,11 @@ namespace MockLanguageExtension
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
         /// where you can put all the initialization code that rely on services provided by VisualStudio.
         /// </summary>
-        protected override void Initialize()
+        protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
+            await this.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             CustomCommand.Initialize(this);
-            base.Initialize();
         }
 
         #endregion
