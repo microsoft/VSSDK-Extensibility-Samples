@@ -15,7 +15,7 @@ Launch**
 
   * This sample implements **MSDN Search** functionality into **Quick Launch**
 
-![image](Example.MSDNSearch.png)
+![image](Example.MSDN.png)
 
 **Requirements**
 
