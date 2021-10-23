@@ -7,16 +7,16 @@ namespace AsyncPackageMigration
 {
     public class MyService
     {
-        private EnvDTE.DTE _dte;
+        private EnvZTA.ZTA _zta;
 
         public void Initialize(IServiceProvider provider)
         {
-           _dte = provider.GetService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+           _zta = provider.GetService(typeof(EnvZTA.ZTA)) as EnvZTA.ZTA;
         }
 
         public async Task InitializeAsync(IAsyncServiceProvider provider, CancellationToken cancellationToken)
         {
-            _dte = await provider.GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+            _zta = await provider.GetServiceAsync(typeof(EnvZTA.ZTA)) as EnvZTA.ZTA;
         }
     }
 }
