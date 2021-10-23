@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageServerWithUI"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:protocol="clr-namespace:Microsoft.VisualStudio.LanguageServer.Protocol;assembly=Microsoft.VisualStudio.LanguageServer.Protocol.Preview"
+        xmlns:protocol="clr-namespace:Microsoft.VisualStudio.LanguageServer.Protocol;assembly=Microsoft.VisualStudio.LanguageServer.Protocol"
         mc:Ignorable="d"
         Title="MainWindow" SizeToContent="Width" Height="350">
     <Window.Resources>

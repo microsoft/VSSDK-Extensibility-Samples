@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.Workspace.Settings;
 using Microsoft.VisualStudio.Workspace;
+using System.Threading.Tasks;
 
 namespace OpenFolderExtensibility.SettingsSample
 {
@@ -46,7 +47,7 @@ namespace OpenFolderExtensibility.SettingsSample
         /// </summary>
         /// <param name="workspaceContext">The workspace context</param>
         /// <param name="settings">Word count settings structure to store</param>
-        public async static void StoreSettings(IWorkspace workspaceContext, WordCountSettings settings)
+        public async static Task StoreSettingsAsync(IWorkspace workspaceContext, WordCountSettings settings)
         {
             using (var persistance = await workspaceContext.GetSettingsManager().GetPersistanceAsync(true))
             {

@@ -35,7 +35,7 @@ Clone the repo ([How to](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git
   1. To run the sample, hit **F5** or choose the **Debug &gt; Start Debugging** menu command. A new experimental instance of Visual Studio will launch. 
   2. Once loaded, open any file in the text editor. 
   3. Type a six-digit hexidecimal number. 
-  4. An adornment is displayed that displays the color value of the hexadecimal number 
+  4. An adornment is displayed, showing the color value of the hexadecimal number 
 
 
 

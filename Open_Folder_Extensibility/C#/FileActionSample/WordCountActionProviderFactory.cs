@@ -10,20 +10,31 @@ using Microsoft.VisualStudio.Workspace.Extensions.VS;
 using Task = System.Threading.Tasks.Task;
 using OpenFolderExtensibility.VSPackage;
 using OpenFolderExtensibility.SettingsSample;
+using System.ComponentModel.Design;
 
 namespace OpenFolderExtensibility.FileActionSample
 {
-    [ExportFileContextActionProvider(ProviderType, PackageIds.TxtFileContextType)]
-    public class WordCountActionProviderFactory : IWorkspaceProviderFactory<IFileContextActionProvider>
+    [ExportFileContextActionProvider((FileContextActionProviderOptions)VsCommandActionProviderOptions.SupportVsCommands, ProviderType, ProviderPriority.Normal, PackageIds.TxtFileContextType)]
+    public class WordCountActionProviderFactory : IWorkspaceProviderFactory<IFileContextActionProvider>, IVsCommandActionProvider
     {
         // Unique Guid for WordCountActionProvider.
         private const string ProviderType = "0DD39C9C-3DE4-4B9C-BE19-7D011341A65B";
 
         private static readonly Guid ProviderCommandGroup = PackageIds.GuidVsPackageCmdSet;
+        private static readonly IReadOnlyList<CommandID> SupportedCommands = new List<CommandID>
+            {
+                new CommandID(PackageIds.GuidVsPackageCmdSet, PackageIds.WordCountCmdId),
+                new CommandID(PackageIds.GuidVsPackageCmdSet, PackageIds.ToggleWordCountCmdId),
+            };
 
         public IFileContextActionProvider CreateProvider(IWorkspace workspaceContext)
         {
             return new WordCountActionProvider(workspaceContext);
+        }
+
+        public IReadOnlyCollection<CommandID> GetSupportedVsCommands()
+        {
+            return SupportedCommands;
         }
 
         internal class WordCountActionProvider : IFileContextActionProvider
@@ -66,7 +77,7 @@ namespace OpenFolderExtensibility.FileActionSample
                                 settings.CountType == WordCountSettings.WordCountType.LineCount ?
                                 WordCountSettings.WordCountType.WordCount : 
                                 WordCountSettings.WordCountType.LineCount;
-                            WordCountSettings.StoreSettings(workspaceContext, settings);
+                            await WordCountSettings.StoreSettingsAsync(workspaceContext, settings);
                                                             
                             await OutputWindowPaneAsync(
                                 settings.CountType == WordCountSettings.WordCountType.WordCount ?
@@ -85,9 +96,12 @@ namespace OpenFolderExtensibility.FileActionSample
                 {
                     IVsWindowFrame windowFrame;
                     var vsUiShell = ServiceProvider.GlobalProvider.GetService(typeof(SVsUIShell)) as IVsUIShell;
-                    uint flags = (uint)__VSFINDTOOLWIN.FTW_fForceCreate;
-                    vsUiShell.FindToolWindow(flags, VSConstants.StandardToolWindows.Output, out windowFrame);
-                    windowFrame.Show();
+                    if (vsUiShell != null)
+                    {
+                        uint flags = (uint)__VSFINDTOOLWIN.FTW_fForceCreate;
+                        vsUiShell.FindToolWindow(flags, VSConstants.StandardToolWindows.Output, out windowFrame);
+                        windowFrame.Show();
+                    }
 
                     outputWindow.CreatePane(ActionOutputWindowPane, "Actions", 1, 1);
                     outputWindow.GetPane(ActionOutputWindowPane, out outputPane);

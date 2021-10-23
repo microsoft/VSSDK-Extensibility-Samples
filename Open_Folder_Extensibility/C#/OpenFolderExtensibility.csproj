@@ -6,6 +6,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <UseCodebase>true</UseCodebase>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -25,7 +26,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenFolderExtensibility</RootNamespace>
     <AssemblyName>OpenFolderExtensibility</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
     <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
@@ -73,11 +74,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="15.0.26201" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.12.0" Version="12.0.30110" />
-    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="15.3.20" />
-    <PackageReference Include="Microsoft.VisualStudio.Workspace.VSIntegration" Version="15.0.215-pre" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="15.1.192" />
+    <PackageReference Include="Microsoft.Build" Version="16.6.0"/>
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="16.6.30107.105" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.12.0" Version="12.0.30111" />
+    <PackageReference Include="Microsoft.VisualStudio.RemoteControl" Version="16.3.23" />
+    <PackageReference Include="Microsoft.VisualStudio.Telemetry" Version="16.3.58" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="16.6.13" />
+    <PackageReference Include="Microsoft.VisualStudio.Workspace" Version="16.7.47-preview-0001" />
+    <PackageReference Include="Microsoft.VisualStudio.Workspace.VSIntegration" Version="16.7.47-preview-0001" />
+    <PackageReference Include="Microsoft.VisualStudio.Workspace.Extensions.VS" Version="16.7.47-preview-0001" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.11.16" />
+    <PackageReference Include="StreamJsonRpc" Version="2.4.48"/>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
