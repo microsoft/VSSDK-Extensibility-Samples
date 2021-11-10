@@ -22,6 +22,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using MsVsShell = Microsoft.VisualStudio.Shell;
 using IOleServiceProvider = Microsoft.VisualStudio.OLE.Interop.IServiceProvider;
 using EnvDTE;
+using EnvDTE80;
 
 namespace MyCompany.RdtEventExplorer
 {
@@ -67,7 +68,7 @@ namespace MyCompany.RdtEventExplorer
             // Obtain the single instance of the options via automation. 
             try
             {
-                DTE dte = (DTE)Package.GetGlobalService(typeof(DTE));
+                DTE2 dte = (DTE2)Package.GetGlobalService(typeof(DTE));
 
                 Properties props =
                    dte.get_Properties("RDT Event Explorer", "Explorer Options");

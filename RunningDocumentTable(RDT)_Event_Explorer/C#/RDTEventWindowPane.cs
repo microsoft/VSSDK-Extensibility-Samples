@@ -19,6 +19,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Utilities;
 
 namespace MyCompany.RdtEventExplorer
 {
@@ -61,7 +62,6 @@ namespace MyCompany.RdtEventExplorer
             ToolBar = new CommandID(GuidsList.guidRdtEventExplorerCmdSet, PkgCmdIDList.IDM_MyToolbar);
             // Specify that we want the toolbar at the top of the window
             ToolBarLocation = (int)VSTWT_LOCATION.VSTWT_TOP;
-            control = new RdtEventControl();
         }
         /// <summary>
         /// This is called after our control has been created and sited.
@@ -94,6 +94,13 @@ namespace MyCompany.RdtEventExplorer
         {
             get
             {
+                if (control is null)
+                {
+                    using (DpiAwareness.EnterDpiScope(DpiAwarenessContext.SystemAware))
+                    {
+                        control = new RdtEventControl();
+                    }
+                }
                 return control;
             }
         }
