@@ -19,7 +19,6 @@ namespace LanguageServerWithUI
         private ObservableCollection<DiagnosticItem> diagnosticItems = new ObservableCollection<DiagnosticItem>();
         private ObservableCollection<FoldingRangeItem> foldingRanges = new ObservableCollection<FoldingRangeItem>();
         private ObservableCollection<SymbolInformationItem> symbols = new ObservableCollection<SymbolInformationItem>();
-        private ObservableCollection<ProjectContextItem> contexts = new ObservableCollection<ProjectContextItem>();
         private readonly LanguageServer.LanguageServer languageServer;
         private string initializedMessage;
         private string responseText;
@@ -123,11 +122,6 @@ namespace LanguageServerWithUI
         public ObservableCollection<SymbolInformationItem> Symbols
         {
             get { return this.symbols; }
-        }
-
-        public ObservableCollection<ProjectContextItem> Contexts
-        {
-            get { return this.contexts; }
         }
 
         public ObservableCollection<FoldingRangeItem> FoldingRanges
@@ -236,19 +230,6 @@ namespace LanguageServerWithUI
             }
         }
 
-        public bool SuggestionMode
-        {
-            get
-            {
-                return this.languageServer.SuggestionMode;
-            }
-            set
-            {
-                this.languageServer.SuggestionMode = value;
-                this.NotifyPropertyChanged(nameof(SuggestionMode));
-            }
-        }
-
         public bool IsIncomplete
         {
             get
@@ -262,19 +243,6 @@ namespace LanguageServerWithUI
             }
         }
 
-        public bool ContinueCharacterMode
-        {
-            get
-            {
-                return this.languageServer.ContinueCharacterMode;
-            }
-            set
-            {
-                this.languageServer.ContinueCharacterMode = value;
-                this.NotifyPropertyChanged(nameof(ContinueCharacterMode));
-            }
-        }
-
         public bool CompletionServerError
         {
             get
@@ -284,7 +252,7 @@ namespace LanguageServerWithUI
             set
             {
                 this.languageServer.CompletionServerError = value;
-                this.NotifyPropertyChanged(nameof(ContinueCharacterMode));
+                this.NotifyPropertyChanged(nameof(CompletionServerError));
             }
         }
 
@@ -300,7 +268,6 @@ namespace LanguageServerWithUI
                 if (value)
                 {
                     this.languageServer.ItemCommitCharacters = false;
-                    this.languageServer.NoninsertingCommitCharacters = false;
                 }
                 this.NotifyPropertyChanged(nameof(UseServerCommitCharacters));
             }
@@ -318,27 +285,8 @@ namespace LanguageServerWithUI
                 if (value)
                 {
                     this.languageServer.ItemCommitCharacters = true;
-                    this.languageServer.NoninsertingCommitCharacters = false;
                 }
                 this.NotifyPropertyChanged(nameof(UseItemCommitCharacters));
-            }
-        }
-
-        public bool UseNonInsertingCommitCharacters
-        {
-            get
-            {
-                return this.useNonInsertingCommitCharacters;
-            }
-            set
-            {
-                this.useNonInsertingCommitCharacters = value;
-                if (value)
-                {
-                    this.languageServer.ItemCommitCharacters = false;
-                    this.languageServer.NoninsertingCommitCharacters = true;
-                }
-                this.NotifyPropertyChanged(nameof(UseNonInsertingCommitCharacters));
             }
         }
 
@@ -442,23 +390,6 @@ namespace LanguageServerWithUI
             }
 
             this.languageServer.SetDocumentSymbols(symbols);
-        }
-
-        public void SetContexts()
-        {
-            List<VSProjectContext> contexts = new List<VSProjectContext>();
-            foreach (ProjectContextItem item in this.Contexts)
-            {
-                var context = new VSProjectContext()
-                {
-                    Label = item.Label,
-                    Kind = item.Kind,
-                    Id = item.Id,
-                };
-
-                contexts.Add(context);
-            }
-            this.languageServer.SetProjectContexts(contexts);
         }
 
         public void ApplyTextEdit()

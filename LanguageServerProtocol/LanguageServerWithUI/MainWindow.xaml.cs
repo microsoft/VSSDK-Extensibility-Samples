@@ -121,21 +121,6 @@ namespace LanguageServerWithUI
             viewModel.SetSymbols();
         }
 
-        private void OnAddContextButtonClick(object sender, RoutedEventArgs e)
-        {
-            viewModel.Contexts.Add(new ProjectContextItem());
-        }
-
-        private void OnClearContextsButtonClick(object sender, RoutedEventArgs e)
-        {
-            viewModel.Contexts.Clear();
-        }
-
-        private void OnSetContextsButtonClick(object sender, RoutedEventArgs e)
-        {
-            viewModel.SetContexts();
-        }
-
         public override void BeginInit()
         {
             base.BeginInit();

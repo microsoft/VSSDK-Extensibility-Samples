@@ -91,16 +91,9 @@
                         <Button DockPanel.Dock="Bottom" Height="25" Width="75" Content="Clear" Click="OnClearDiagnosticButtonClick" />
                     </DockPanel>
                 </Grid>
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <StackPanel VerticalAlignment="Center" Margin="0,0,25,0">
-                        <TextBlock Text="Do not switch once diagnostics appear in error list." Margin="0,0,0,10"/>
-                        <RadioButton Content="Use Publish Model Diagnostic" Margin="0,0,0,10" IsChecked="{Binding UsePublishModelDiagnostic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <RadioButton Content="Use Pull Model Diagnostic" Margin="0,0,0,10" />
-                    </StackPanel>
-                    <StackPanel VerticalAlignment="Center" Margin="0,0,25,0">
-                        <Button Height="25" Width="250" Content="Send New Diagnostics (Publish Model)" Margin="0,0,0,10" Click="OnSendDiagnosticsButtonClick" />
-                    </StackPanel>
-                </StackPanel>
+                <Grid Grid.Row="1">
+                    <Button Height="26" Width="263" Content="Send New Diagnostics" Margin="0,0,0,10" Click="OnSendDiagnosticsButtonClick" />
+                </Grid>
             </Grid>
         </TabItem>
         <TabItem Header="Messaging">
@@ -224,13 +217,10 @@
         <TabItem Header="Completion">
             <DockPanel LastChildFill="True">
                 <StackPanel Orientation="Vertical" Margin="5" DockPanel.Dock="Top">
-                    <CheckBox Content="Suggestion Mode" IsChecked="{Binding SuggestionMode, Mode=TwoWay}"/>
                     <CheckBox Content="IsIncomplete" IsChecked="{Binding IsIncomplete, Mode=TwoWay}"/>
-                    <CheckBox Content="Continue Character Mode" IsChecked="{Binding ContinueCharacterMode, Mode=TwoWay}"/>
                     <CheckBox Content="Server error" IsChecked="{Binding CompletionServerError, Mode=TwoWay}"/>
                     <RadioButton IsChecked="{Binding UseServerCommitCharacters, Mode=TwoWay}" GroupName="CommitCharacters" Content="Use global commit characters: &quot; &quot; ( ) [ ] ; ." />
                     <RadioButton IsChecked="{Binding UseItemCommitCharacters, Mode=TwoWay}" GroupName="CommitCharacters" Content="Items override commit characters: &quot; &quot; ( ) [ ] ; -" />
-                    <RadioButton IsChecked="{Binding UseNonInsertingCommitCharacters, Mode=TwoWay}" GroupName="CommitCharacters" Content="Items override commit characters: &quot; &quot; ( ) Non inserting: [ ] ; -" />
                     <TextBlock>Recently received request:</TextBlock>
                 </StackPanel>
                 <TextBox Text="{Binding LastCompletionRequest, Mode=OneWay}" IsReadOnly="True" MinLines="5"></TextBox>
@@ -284,57 +274,6 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <Button Height="25" Width="150" Content="Set Symbols" Grid.Column="0" Click="OnSetSymbolsButtonClick" Margin="222,10,222, 10" />
-                </Grid>
-            </Grid>
-        </TabItem>
-        <TabItem Header="Project Context">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="45" />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="7*" />
-                        <ColumnDefinition Width="31*"/>
-                        <ColumnDefinition Width="100" />
-                    </Grid.ColumnDefinitions>
-                    <ListBox Grid.Column="0" ItemsSource="{Binding Contexts}" Grid.ColumnSpan="2">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Margin="2">Label:</Label>
-                                    <TextBox Grid.Column="1" Margin="2" Width="140" Text="{Binding Label}" VerticalContentAlignment="Center"/>
-                                    <Label Grid.Column="2" Margin="2">Id:</Label>
-                                    <TextBox Grid.Column="3" Margin="2" Width="140" Text="{Binding Id}" VerticalContentAlignment="Center"/>
-                                    <Label Grid.Column="4" Margin="2">Kind:</Label>
-                                    <ComboBox Grid.Column="5" Margin="2" Width="80" SelectedItem="{Binding Kind}" ItemsSource="{Binding Source={StaticResource contextKindEnums}}"/>
-                                    <Label Grid.Column="6" Margin="2">VSKind:</Label>
-                                    <StackPanel Orientation="Vertical" Grid.Column="7">
-                                        <TextBox Margin="2" Width="80" Text="{Binding VsKind}" VerticalContentAlignment="Center"/>
-                                        <TextBox Margin="2" Width="80" Text="{Binding VsKindModifier}" VerticalContentAlignment="Center"/>
-                                    </StackPanel>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <DockPanel Grid.Column="2" VerticalAlignment="Center" Margin="0,96,0,74" Height="56">
-                        <Button DockPanel.Dock="Top" Height="25" Width="75" Content="Add" Click="OnAddContextButtonClick" Margin="0,0,0,5" />
-                        <Button DockPanel.Dock="Bottom" Height="25" Width="75" Content="Clear" Click="OnClearContextsButtonClick" />
-                    </DockPanel>
-                </Grid>
-                <Grid Grid.Row="1">
-                    <Button Height="25" Width="150" Content="Set Contexts" Grid.Column="0" Click="OnSetContextsButtonClick" Margin="222,10,222, 10" />
                 </Grid>
             </Grid>
         </TabItem>

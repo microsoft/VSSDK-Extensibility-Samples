@@ -42,12 +42,6 @@ namespace LanguageServer
             set;
         } = false;
 
-        public bool ContinueCharacterMode
-        {
-            get;
-            set;
-        } = false;
-
         public bool CompletionServerError
         {
             get;
@@ -56,7 +50,6 @@ namespace LanguageServer
 
         public bool ServerCommitCharacters { get; internal set; } = true;
         public bool ItemCommitCharacters { get; internal set; } = false;
-        public bool NonInsertingCommitCharacters { get; internal set; } = false;
 
         private readonly string[] ServerCommitCharacterArray = new[] { " ", "[", "]", "(", ")", ";", "." };
         private readonly string[] ItemCommitCharacterArray = new[] { " ", "[", "]", "(", ")", ";", "-" };

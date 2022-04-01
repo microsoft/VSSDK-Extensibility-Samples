@@ -15,8 +15,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.LanguageServer.Protocol" Version="17.1.8" />
     <PackageReference Include="Microsoft.VisualStudio.LanguageServer.Protocol.Extensions" Version="17.1.8" />
-    <PackageReference Include="StreamJsonRpc" Version="2.11.16-alpha" />
-    <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="17.0.82-g2ecf33c7f7" />
+    <PackageReference Include="StreamJsonRpc" Version="2.10.44" />
+    <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="17.1.386" />
   </ItemGroup>
 
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />

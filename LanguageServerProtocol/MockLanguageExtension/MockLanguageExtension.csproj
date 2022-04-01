@@ -58,8 +58,11 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.LanguageServer.Client" Version="17.1.68" />
 		<PackageReference Include="Microsoft.VisualStudio.LanguageServer.Protocol" Version="17.1.8" />
-		<PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.0.5217-preview5" />
-		<PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="17.2.0-preview-1-32131-009" />
+		<PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.1.4054">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="17.1.32210.191" />
 		<Reference Include="System.Design" />
 	</ItemGroup>
 	<ItemGroup>

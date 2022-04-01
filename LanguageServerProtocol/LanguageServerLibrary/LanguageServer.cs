@@ -67,18 +67,6 @@ namespace LanguageServer
             set;
         }
 
-        public bool SuggestionMode
-        {
-            get
-            {
-                return this.target.SuggestionMode;
-            }
-            set
-            {
-                this.target.SuggestionMode = value;
-            }
-        }
-
         public bool IsIncomplete
         {
             get
@@ -92,18 +80,6 @@ namespace LanguageServer
                     this.target.IsIncomplete = value;
                     NotifyPropertyChanged(nameof(IsIncomplete));
                 }
-            }
-        }
-
-        public bool ContinueCharacterMode
-        {
-            get
-            {
-                return this.target.ContinueCharacterMode;
-            }
-            set
-            {
-                this.target.ContinueCharacterMode = value;
             }
         }
 
@@ -128,18 +104,6 @@ namespace LanguageServer
             set
             {
                 this.target.ItemCommitCharacters = value;
-            }
-        }
-
-        public bool NoninsertingCommitCharacters
-        {
-            get
-            {
-                return this.target.NonInsertingCommitCharacters;
-            }
-            set
-            {
-                this.target.NonInsertingCommitCharacters = value;
             }
         }
 
