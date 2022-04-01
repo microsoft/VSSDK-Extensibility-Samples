@@ -89,6 +89,6 @@
 	</Target>
 
 	<Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" />
-	<Import Project="$(VSToolsPath)\vssdk\Microsoft.VSSDK.targets" />
+	<Import Project="$(VSToolsPath)\vssdk\Microsoft.VSSDK.targets" Condition="'$(VSToolsPath)' != ''" />
 
 </Project>
