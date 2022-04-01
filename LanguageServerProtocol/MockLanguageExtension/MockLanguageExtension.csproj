@@ -23,6 +23,7 @@
 		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
 		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
 		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+		<VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
