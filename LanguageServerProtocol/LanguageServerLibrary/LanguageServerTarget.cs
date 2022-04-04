@@ -150,7 +150,7 @@ namespace LanguageServer
         public object[] OnTextDocumentFindReferences(ReferenceParams parameter, CancellationToken token)
         {
             this.traceSource.TraceEvent(TraceEventType.Information, 0, $"Received: {JToken.FromObject(parameter)}");
-            var result =  server.SendReferences(parameter, returnLocationsOnly: true, token);
+            var result =  server.SendReferences(parameter, returnLocationsOnly: true, token: token);
             this.traceSource.TraceEvent(TraceEventType.Information, 0, $"Sent: {JToken.FromObject(result)}");
             return result;
         }
