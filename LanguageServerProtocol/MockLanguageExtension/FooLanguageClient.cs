@@ -1,33 +1,28 @@
-﻿using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.LanguageServer.Client;
+﻿using Microsoft.VisualStudio.LanguageServer.Client;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.Threading;
 using Microsoft.VisualStudio.Utilities;
 using StreamJsonRpc;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.Threading;
+using Newtonsoft.Json.Linq;
+using Task = System.Threading.Tasks.Task;
+using Microsoft.VisualStudio.LanguageServer.Protocol;
+using System.ComponentModel.Composition;
 
 namespace MockLanguageExtension
 {
     [ContentType("foo")]
     [Export(typeof(ILanguageClient))]
-    public class FooLanguageClient : ILanguageClient, ILanguageClientCustomMessage
+    [RunOnContext(RunningContext.RunOnHost)]
+    public class FooLanguageClient : ILanguageClient, ILanguageClientCustomMessage2
     {
-        internal const string UiContextGuidString = "DE885E15-D44E-40B1-A370-45372EFC23AA";
-
-        private Guid uiContextGuid = new Guid(UiContextGuidString);
-
-        public event AsyncEventHandler<EventArgs> StartAsync;
-        public event AsyncEventHandler<EventArgs> StopAsync;
-
         public FooLanguageClient()
         {
             Instance = this;
@@ -45,6 +40,9 @@ namespace MockLanguageExtension
             set;
         }
 
+        public event AsyncEventHandler<EventArgs> StartAsync;
+        public event AsyncEventHandler<EventArgs> StopAsync;
+
         public string Name => "Foo Language Extension";
 
         public IEnumerable<string> ConfigurationSections
@@ -59,12 +57,20 @@ namespace MockLanguageExtension
 
         public IEnumerable<string> FilesToWatch => null;
 
-        public object MiddleLayer => null;
+        public object MiddleLayer
+        {
+            get;
+            set;
+        }
 
         public object CustomMessageTarget => null;
 
+        public bool ShowNotificationOnInitializeFailed => true;
+
         public async Task<Connection> ActivateAsync(CancellationToken token)
         {
+            // Debugger.Launch();
+
             ProcessStartInfo info = new ProcessStartInfo();
             var programPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Server", @"LanguageServerWithUI.exe");
             info.FileName = programPath;
@@ -79,7 +85,7 @@ namespace MockLanguageExtension
 
             var bufferSize = 256;
             var readerPipe = new NamedPipeServerStream(stdInPipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous, bufferSize, bufferSize, pipeSecurity);
-            var writerPipe = new NamedPipeServerStream(stdOutPipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous, bufferSize, bufferSize, pipeSecurity);            
+            var writerPipe = new NamedPipeServerStream(stdOutPipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous, bufferSize, bufferSize, pipeSecurity);
 
             Process process = new Process();
             process.StartInfo = info;
@@ -90,41 +96,70 @@ namespace MockLanguageExtension
                 await writerPipe.WaitForConnectionAsync(token);
 
                 return new Connection(readerPipe, writerPipe);
-        }
+            }
 
             return null;
         }
 
-        public async System.Threading.Tasks.Task AttachForCustomMessageAsync(JsonRpc rpc)
+        public async Task OnLoadedAsync()
         {
-            this.Rpc = rpc;
-
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-
-            // Sets the UI context so the custom command will be available.
-            var monitorSelection = ServiceProvider.GlobalProvider.GetService(typeof(IVsMonitorSelection)) as IVsMonitorSelection;
-            if (monitorSelection != null)
+            if (StartAsync != null)
             {
-                if (monitorSelection.GetCmdUIContextCookie(ref this.uiContextGuid, out uint cookie) == VSConstants.S_OK)
-                {
-                    monitorSelection.SetCmdUIContext(cookie, 1);
-                }
+                await StartAsync.InvokeAsync(this, EventArgs.Empty);
             }
         }
 
-        public async System.Threading.Tasks.Task OnLoadedAsync()
+        public async Task StopServerAsync()
         {
-            await StartAsync?.InvokeAsync(this, EventArgs.Empty);
+            if (StopAsync != null)
+            {
+                await StopAsync.InvokeAsync(this, EventArgs.Empty);
+            }
         }
 
-        public System.Threading.Tasks.Task OnServerInitializedAsync()
+        public Task OnServerInitializedAsync()
         {
-            return System.Threading.Tasks.Task.CompletedTask;
+            return Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task OnServerInitializeFailedAsync(Exception e)
+        public Task AttachForCustomMessageAsync(JsonRpc rpc)
         {
-            return System.Threading.Tasks.Task.CompletedTask;
+            this.Rpc = rpc;
+
+            return Task.CompletedTask;
+        }
+
+        public Task<InitializationFailureContext> OnServerInitializeFailedAsync(ILanguageClientInitializationInfo initializationState)
+        {
+            string message = "Oh no! Foo Language Client failed to activate, now we can't test LSP! :(";
+            string exception = initializationState.InitializationException?.ToString() ?? string.Empty;
+            message = $"{message}\n {exception}";
+
+            var failureContext = new InitializationFailureContext()
+            {
+                FailureMessage = message,
+            };
+
+            return Task.FromResult(failureContext);
+        }
+
+        internal class FooMiddleLayer : ILanguageClientMiddleLayer
+        {
+            public bool CanHandle(string methodName)
+            {
+                return methodName == Methods.TextDocumentCompletionName;
+            }
+
+            public Task HandleNotificationAsync(string methodName, JToken methodParam, Func<JToken, Task> sendNotification)
+            {
+                throw new NotImplementedException();
+            }
+
+            public async Task<JToken> HandleRequestAsync(string methodName, JToken methodParam, Func<JToken, Task<JToken>> sendRequest)
+            {
+                var result = await sendRequest(methodParam);
+                return result;
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 
 namespace MockLanguageExtension
 {
+#pragma warning disable 649
     public class FooContentDefinition
     {
         [Export]
@@ -17,4 +18,5 @@ namespace MockLanguageExtension
         [ContentType("foo")]
         internal static FileExtensionToContentTypeDefinition FooFileExtensionDefinition;
     }
+#pragma warning restore 649
 }
