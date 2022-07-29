@@ -12,13 +12,10 @@ namespace AdvancedVisualizer.DebuggerSide
         {
             IAsyncVisualizerObjectProvider asyncObjectProvider = (IAsyncVisualizerObjectProvider)objectProvider;
 
-            if (asyncObjectProvider != null)
-            {
-                AdvancedVisualizerViewModel viewModel = new AdvancedVisualizerViewModel(asyncObjectProvider);
-                Window advancedVisualizerWindow = new VisualizerDialog() { DataContext = viewModel };
+            AdvancedVisualizerViewModel viewModel = new AdvancedVisualizerViewModel(asyncObjectProvider);
+            Window advancedVisualizerWindow = new VisualizerDialog() { DataContext = viewModel };
 
-                advancedVisualizerWindow.ShowDialog();
-            }
+            advancedVisualizerWindow.ShowDialog();
         }
     }
 }

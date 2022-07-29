@@ -22,7 +22,7 @@ namespace AdvancedVisualizer.DebuggeeSide
             // Read the supplied command
             fromVisualizer.Seek(0, SeekOrigin.Begin);
             IDeserializableObject deserializableObject = GetDeserializableObject(fromVisualizer);
-            GetVeryLongListCommand command = (GetVeryLongListCommand)deserializableObject.ToObject(null);
+            GetVeryLongListCommand command = deserializableObject.ToObject<GetVeryLongListCommand>();
 
             List<string> returnValues = new List<string>();
 
