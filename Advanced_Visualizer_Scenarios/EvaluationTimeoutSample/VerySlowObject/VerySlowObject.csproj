@@ -2,8 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net4.7.2</TargetFramework>
-		<Nullable>enable</Nullable>
-		<LangVersion>8.0</LangVersion>
 	</PropertyGroup>
 
 </Project>
