@@ -14,4 +14,10 @@
 		<ProjectReference Include="..\AdvancedVisualizer.DebuggeeSide\AdvancedVisualizer.DebuggeeSide.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="PresentationCore" />
+	  <Reference Include="PresentationFramework" />
+	  <Reference Include="WindowsBase" />
+	</ItemGroup>
+
 </Project>
