@@ -17,7 +17,7 @@ namespace CustomObjects
         // More properties...
 
         // One of the properties we want to visualize.
-        public List<SomeRandomObject> VeryLongList { get; set; }
+        public List<SomeRandomObject>? VeryLongList { get; set; }
 
         // More properties...
     }
