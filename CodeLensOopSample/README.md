@@ -1,5 +1,5 @@
 # CodeLensOopProvider example 
-A example for demonstrating how to use the public CodeLens API to create an out-of-proc extension that provides a CodeLens indicator showing most recent Git commits made to the source code.
+An example for demonstrating how to use the public CodeLens API to create an out-of-proc extension that provides a CodeLens indicator showing most recent Git commits made to the source code.
 
 * Technologies: Visual Studio 2019 SDK
 * Topics: CodeLens
