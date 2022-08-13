@@ -2,7 +2,7 @@
 Add a toolbar to Visual Studio that has four different kinds of
 dropdown combo boxes.
 
-* Technologies: Visual Studio 2017 SDK
+* Technologies: Visual Studio 2019-2022 SDK
 * Topics: Visual Studio Editor, VSX
 
 
@@ -32,7 +32,7 @@ There are four styles of Combo Boxes:
 
 **Requirements**
 
-[ Visual Studio 2017 ](https://www.visualstudio.com/products/visual-studio-community-vs?wt.mc_id=o~display~github~vssdk)
+[ Visual Studio 2019 or VS2022 ](https://visualstudio.microsoft.com/downloads/)
 
 
 
