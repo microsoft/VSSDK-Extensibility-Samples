@@ -60,25 +60,23 @@ affecting the other instances.
 
 * **CommandTargetRGB.vsct**
 
-Defines the menu item, toolbar, and toolbar commands for the sample.
+   Defines the menu item, toolbar, and toolbar commands for the sample.
 
 * **CommandTargetRGBPackage.cs**
 
-Implements the Visual Studio Package, which creates and responds to the "Red
-Green Blue" menu command.
+   Implements the Visual Studio Package, which creates and responds to the "Red Green Blue" menu command.
 
 * **RGBControl.xaml**
 
-Defines the XAML layout for the WPF RGBControl.
+   Defines the XAML layout for the WPF RGBControl.
 
 * **RGBControl.xaml.cs**
 
-Implements the code-behind for the RGBControl.
+   Implements the code-behind for the RGBControl.
 
 * **RGBToolWindow.cs**
 
-Defines the tool window pane, creates the toolbar, and responds to
-IOleCommandTarget commands.
+   Defines the tool window pane, creates the toolbar, and responds to IOleCommandTarget commands.
 
 
 
