@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Threading;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;

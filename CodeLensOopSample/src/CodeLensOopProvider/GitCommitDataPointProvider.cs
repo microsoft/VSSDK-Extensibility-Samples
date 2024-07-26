@@ -39,24 +39,23 @@ namespace CodeLensOopProvider
 
         private class GitCommitDataPoint : IAsyncCodeLensDataPoint
         {
-            private readonly CodeLensDescriptor descriptor;
             private readonly Repository gitRepo;
             private readonly string gitRepoRootPath;
 
             public GitCommitDataPoint(CodeLensDescriptor descriptor)
             {
-                this.descriptor = descriptor ?? throw new ArgumentNullException(nameof(descriptor));
+                this.Descriptor = descriptor ?? throw new ArgumentNullException(nameof(descriptor));
                 this.gitRepo = GitUtil.ProbeGitRepository(descriptor.FilePath, out this.gitRepoRootPath);
             }
 
             public event AsyncEventHandler InvalidatedAsync;
 
-            public CodeLensDescriptor Descriptor => this.descriptor;
+            public CodeLensDescriptor Descriptor { get; }
 
             public Task<CodeLensDataPointDescriptor> GetDataAsync(CodeLensDescriptorContext context, CancellationToken token)
             {
                 // get the most recent commit
-                Commit commit = GitUtil.GetCommits(this.gitRepo, this.descriptor.FilePath, 1).FirstOrDefault();
+                Commit commit = GitUtil.GetCommits(this.gitRepo, this.Descriptor.FilePath, 1).FirstOrDefault();
                 if (commit == null)
                 {
                     return Task.FromResult<CodeLensDataPointDescriptor>(null);
@@ -76,7 +75,7 @@ namespace CodeLensOopProvider
             public Task<CodeLensDetailsDescriptor> GetDetailsAsync(CodeLensDescriptorContext context, CancellationToken token)
             {
                 // get the most recent 5 commits
-                var commits = GitUtil.GetCommits(this.gitRepo, this.descriptor.FilePath, 5).AsEnumerable();
+                var commits = GitUtil.GetCommits(this.gitRepo, this.Descriptor.FilePath, 5).AsEnumerable();
                 if (commits == null || commits.Count() == 0)
                 {
                     return Task.FromResult<CodeLensDetailsDescriptor>(null);
@@ -126,7 +125,7 @@ namespace CodeLensOopProvider
                                             },
                                             new CodeLensDetailEntryField()
                                             {
-                                                Text = commit.Id.Sha.Substring(0, 8),
+                                                Text = commit.Id.Sha[..8],
                                             },
                                             new CodeLensDetailEntryField()
                                             {
@@ -198,7 +197,7 @@ namespace CodeLensOopProvider
             /// </remarks>
             public void Invalidate()
             {
-                this.InvalidatedAsync?.Invoke(this, EventArgs.Empty).ConfigureAwait(false);
+                _ = this.InvalidatedAsync?.InvokeAsync(this, EventArgs.Empty).ConfigureAwait(false);
             }
 
             private static ImageId GetCommitTypeIcon(Commit commit)
